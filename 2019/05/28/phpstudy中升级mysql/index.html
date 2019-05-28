@@ -96,13 +96,18 @@
 
 
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="ShangguanHong的博客">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="1. 正文 从官网下载对应平台最新的 MySQL 解压缩版 http://www.mysql.com/downloads/">
+<meta name="keywords" content="phpstudy,mysql">
+<meta property="og:type" content="article">
+<meta property="og:title" content="phpstudy中升级mysql">
+<meta property="og:url" content="http://yoursite.com/2019/05/28/phpstudy中升级mysql/index.html">
 <meta property="og:site_name" content="ShangguanHong的博客">
+<meta property="og:description" content="1. 正文 从官网下载对应平台最新的 MySQL 解压缩版 http://www.mysql.com/downloads/">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-05-28T07:07:48.465Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ShangguanHong的博客">
+<meta name="twitter:title" content="phpstudy中升级mysql">
+<meta name="twitter:description" content="1. 正文 从官网下载对应平台最新的 MySQL 解压缩版 http://www.mysql.com/downloads/">
 
 
 
@@ -110,7 +115,7 @@
 
   
   
-  <link rel="canonical" href="http://yoursite.com/">
+  <link rel="canonical" href="http://yoursite.com/2019/05/28/phpstudy中升级mysql/">
 
 
 
@@ -120,7 +125,7 @@
   };
 </script>
 
-  <title>ShangguanHong的博客</title>
+  <title>phpstudy中升级mysql | ShangguanHong的博客</title>
   
 
 
@@ -168,8 +173,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -211,7 +215,7 @@
         
         
           
-          <li class="menu-item menu-item-home menu-item-active">
+          <li class="menu-item menu-item-home">
 
     
     
@@ -273,184 +277,9 @@
           
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/28/基于Linux-Kernel-2-6-的源码-分析其进程模型/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Hong Shangguan">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ShangguanHong的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/05/28/基于Linux-Kernel-2-6-的源码-分析其进程模型/" class="post-title-link" itemprop="url">基于Linux Kernel 2.6 的源码, 分析其进程模型</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-05-28 15:10:02 / 修改时间：15:12:49" itemprop="dateCreated datePublished" datetime="2019-05-28T15:10:02+08:00">2019-05-28</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/学习笔记/" itemprop="url" rel="index"><span itemprop="name">学习笔记</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>[TOC]</p>
-<h1 id="1-简介"><a href="#1-简介" class="headerlink" title="1. 简介"></a>1. 简介</h1><p>本文的内容是基于Linux Kernel 2.6 的源码, 深入分析其进程模型, 主要分析的内容如下:</p>
-<ul>
-<li>什么是进程(进程的概念)</li>
-<li>操作系统是如何组织进程的</li>
-<li>进程状态之间是如何转换的</li>
-<li>进程是如何进行调度的</li>
-<li>对该操作系统进程模型的看法</li>
-</ul>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2019/05/28/基于Linux-Kernel-2-6-的源码-分析其进程模型/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
 
   
 
@@ -482,10 +311,8 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/05/28/phpstudy中升级mysql/" class="post-title-link" itemprop="url">phpstudy中升级mysql</a>
+          <h1 class="post-title" itemprop="name headline">phpstudy中升级mysql
+
               
             
           </h1>
@@ -567,188 +394,29 @@
       
 
       
-        
-          <h2 id="1-正文"><a href="#1-正文" class="headerlink" title="1. 正文"></a>1. 正文</h2><ol>
+        <h2 id="1-正文"><a href="#1-正文" class="headerlink" title="1. 正文"></a>1. 正文</h2><ol>
 <li><p>从官网下载对应平台最新的 MySQL 解压缩版 <a href="http://www.mysql.com/downloads/" target="_blank" rel="noopener">http://www.mysql.com/downloads/</a></p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2019/05/28/phpstudy中升级mysql/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </li></ol></div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/28/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Hong Shangguan">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ShangguanHong的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/05/28/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-05-28 13:16:25 / 修改时间：14:42:51" itemprop="dateCreated datePublished" datetime="2019-05-28T13:16:25+08:00">2019-05-28</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/学习笔记/" itemprop="url" rel="index"><span itemprop="name">学习笔记</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2019/05/28/hello-world/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
+<a id="more"></a>
+</li>
+<li><p>解压缩下载的文件，复制到phpStudy的MySQL文件夹下，我是把文件夹清空后复制过去的；</p>
+</li>
+<li><p>将../phpStudy\MySQL\bin路径追加到Path</p>
+</li>
+<li><p>复制一份my-default.ini为my.ini；</p>
+</li>
+<li><p>配置my.ini，修改下面两处即可，别忘记去掉前面的#</p>
+<p><code>basedir=../MySQL\MySQL Server 5.6(mysql所在目录)</code></p>
+<p><code>datadir=../MySQL\MySQL Server 5.6\data(mysql所在目录\data)</code></p>
+</li>
+<li><p>以管理员运行cmd，cd到../phpStudy\MySQL\bin,先执行 </p>
+<p><code>mysqld -remove</code>, </p>
+<p>再执行</p>
+<p><code>mysqld -install</code></p>
+</li>
+<li><p>然后就可以用net start mysql来启动mysql，用net stop mysql来停止mysql了。用phpStudy中的按键也可以。</p>
+</li>
+</ol>
+<h2 id="2-附录"><a href="#2-附录" class="headerlink" title="2. 附录"></a>2. 附录</h2><h3 id="1-phpStudy中升级MySQL版本详细介绍"><a href="#1-phpStudy中升级MySQL版本详细介绍" class="headerlink" title="1. phpStudy中升级MySQL版本详细介绍"></a>1. phpStudy中升级MySQL版本详细介绍</h3><h3 id="http-www-jb51-net-article-120263-htm"><a href="#http-www-jb51-net-article-120263-htm" class="headerlink" title="http://www.jb51.net/article/120263.htm"></a><a href="http://www.jb51.net/article/120263.htm" target="_blank" rel="noopener">http://www.jb51.net/article/120263.htm</a></h3><h3 id="如何解决更新后phpStudy开启不了MySQL服务的问题"><a href="#如何解决更新后phpStudy开启不了MySQL服务的问题" class="headerlink" title="如何解决更新后phpStudy开启不了MySQL服务的问题"></a>如何解决更新后phpStudy开启不了MySQL服务的问题</h3><h3 id="https-www-cnblogs-com-mikusnail-p-8422013-html"><a href="#https-www-cnblogs-com-mikusnail-p-8422013-html" class="headerlink" title="https://www.cnblogs.com/mikusnail/p/8422013.html"></a><a href="https://www.cnblogs.com/mikusnail/p/8422013.html" target="_blank" rel="noopener">https://www.cnblogs.com/mikusnail/p/8422013.html</a></h3>
       
     </div>
 
@@ -769,14 +437,42 @@
 
     <footer class="post-footer">
       
-
+        <div class="post-tags">
+          
+            <a href="/tags/phpstudy/" rel="tag"># phpstudy</a>
+          
+            <a href="/tags/mysql/" rel="tag"># mysql</a>
+          
+        </div>
       
 
       
+      
+      
 
       
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/05/28/hello-world/" rel="next" title="Hello World">
+                <i class="fa fa-chevron-left"></i> Hello World
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/05/28/基于Linux-Kernel-2-6-的源码-分析其进程模型/" rel="prev" title="基于Linux Kernel 2.6 的源码, 分析其进程模型">
+                基于Linux Kernel 2.6 的源码, 分析其进程模型 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
       
-        <div class="post-eof"></div>
+
+      
       
     </footer>
   </div>
@@ -786,14 +482,15 @@
   </article>
 
 
-    
-  </section>
-
-  
+  </div>
 
 
           </div>
           
+
+  
+
+
 
         </div>
         
@@ -813,8 +510,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -898,6 +604,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-正文"><span class="nav-number">1.</span> <span class="nav-text">1. 正文</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-附录"><span class="nav-number">2.</span> <span class="nav-text">2. 附录</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-phpStudy中升级MySQL版本详细介绍"><span class="nav-number">2.1.</span> <span class="nav-text">1. phpStudy中升级MySQL版本详细介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#http-www-jb51-net-article-120263-htm"><span class="nav-number">2.2.</span> <span class="nav-text">http://www.jb51.net/article/120263.htm</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何解决更新后phpStudy开启不了MySQL服务的问题"><span class="nav-number">2.3.</span> <span class="nav-text">如何解决更新后phpStudy开启不了MySQL服务的问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#https-www-cnblogs-com-mikusnail-p-8422013-html"><span class="nav-number">2.4.</span> <span class="nav-text">https://www.cnblogs.com/mikusnail/p/8422013.html</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       
@@ -1026,6 +749,10 @@
 
 
   
+  <script src="/js/scrollspy.js?v=7.1.1"></script>
+<script src="/js/post-details.js?v=7.1.1"></script>
+
+
 
   
 
@@ -1041,6 +768,8 @@
 
   
 
+
+  
 
 
   

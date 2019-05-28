@@ -96,19 +96,19 @@
 
 
 
-  <meta name="description" content="1. 简介本文的内容是基于Linux Kernel 2.6 的源码, 深入分析其进程模型, 主要分析的内容如下:  什么是进程(进程的概念) 操作系统是如何组织进程的 进程状态之间是如何转换的 进程是如何进行调度的 对该操作系统进程模型的看法">
+  <meta name="description" content="1. 简介本文的内容是基于Linux Kernel 2.6 的源码, 深入分析其进程模型, 主要分析的内容如下:">
 <meta name="keywords" content="Linux">
 <meta property="og:type" content="article">
 <meta property="og:title" content="基于Linux Kernel 2.6 的源码, 分析其进程模型">
 <meta property="og:url" content="http://yoursite.com/2019/05/28/基于Linux-Kernel-2-6-的源码-分析其进程模型/index.html">
 <meta property="og:site_name" content="ShangguanHong的博客">
-<meta property="og:description" content="1. 简介本文的内容是基于Linux Kernel 2.6 的源码, 深入分析其进程模型, 主要分析的内容如下:  什么是进程(进程的概念) 操作系统是如何组织进程的 进程状态之间是如何转换的 进程是如何进行调度的 对该操作系统进程模型的看法">
+<meta property="og:description" content="1. 简介本文的内容是基于Linux Kernel 2.6 的源码, 深入分析其进程模型, 主要分析的内容如下:">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://images2018.cnblogs.com/blog/1369608/201804/1369608-20180425160244245-1374152778.jpg">
-<meta property="og:updated_time" content="2019-05-28T11:14:31.684Z">
+<meta property="og:updated_time" content="2019-05-28T14:19:37.478Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="基于Linux Kernel 2.6 的源码, 分析其进程模型">
-<meta name="twitter:description" content="1. 简介本文的内容是基于Linux Kernel 2.6 的源码, 深入分析其进程模型, 主要分析的内容如下:  什么是进程(进程的概念) 操作系统是如何组织进程的 进程状态之间是如何转换的 进程是如何进行调度的 对该操作系统进程模型的看法">
+<meta name="twitter:description" content="1. 简介本文的内容是基于Linux Kernel 2.6 的源码, 深入分析其进程模型, 主要分析的内容如下:">
 <meta name="twitter:image" content="https://images2018.cnblogs.com/blog/1369608/201804/1369608-20180425160244245-1374152778.jpg">
 
 
@@ -267,7 +267,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">3</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">5</span></a>
 
   </li>
         
@@ -305,7 +305,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">2</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">3</span></a>
 
   </li>
 
@@ -436,7 +436,7 @@
                 
               
 
-              <time title="创建时间：2019-05-28 15:10:02 / 修改时间：19:14:31" itemprop="dateCreated datePublished" datetime="2019-05-28T15:10:02+08:00">2019-05-28</time>
+              <time title="创建时间：2019-05-28 15:10:02 / 修改时间：22:19:37" itemprop="dateCreated datePublished" datetime="2019-05-28T15:10:02+08:00">2019-05-28</time>
             
 
             
@@ -542,6 +542,7 @@
 
       
         <h1 id="1-简介"><a href="#1-简介" class="headerlink" title="1. 简介"></a>1. 简介</h1><p>本文的内容是基于Linux Kernel 2.6 的源码, 深入分析其进程模型, 主要分析的内容如下:</p>
+<a id="more"></a>
 <ul>
 <li>什么是进程(进程的概念)</li>
 <li>操作系统是如何组织进程的</li>
@@ -549,7 +550,6 @@
 <li>进程是如何进行调度的</li>
 <li>对该操作系统进程模型的看法</li>
 </ul>
-<a id="more"></a>
 <h1 id="2-什么是进程"><a href="#2-什么是进程" class="headerlink" title="2. 什么是进程"></a>2. 什么是进程</h1><p>既然我们要分析操作系统的进程模型, 那么我们首先需要了解一下什么是进程。<br>首先, 我们先看下<a href="https://baike.baidu.com/item/%E8%BF%9B%E7%A8%8B/382503?fr=aladdin" target="_blank" rel="noopener">百度上对进程(Process)的定义</a>:</p>
 <blockquote>
 <p>进程（Process）是计算机中的程序关于某数据集合上的一次运行活动，是系统进行资源分配和调度的基本单位，是<a href="https://baike.baidu.com/item/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F" target="_blank" rel="noopener">操作系统</a>结构的基础。在早期面向进程设计的计算机结构中，进程是程序的基本执行实体；在当代面向线程设计的计算机结构中，进程是线程的容器。程序是指令、数据及其组织形式的描述，进程是程序的实体。</p>
@@ -757,6 +757,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2019/05/28/GithubPages + Hexo搭建自己的博客/" rel="prev" title="利用GithubPages + Hexo搭建自己的博客">
+                利用GithubPages + Hexo搭建自己的博客 <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -828,7 +832,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">2</span>
+                    <span class="site-state-item-count">3</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -870,7 +874,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">3</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">5</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -978,7 +986,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">11k</span>
+    <span title="站点总字数">12k</span>
   
 
   
@@ -987,7 +995,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">10 分钟</span>
+    <span title="站点阅读时长">11 分钟</span>
   
 </div>
 

@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Hexo上传图片]]></title>
+    <url>%2F2019%2F05%2F30%2FHexo%E4%B8%8A%E4%BC%A0%E5%9B%BE%E7%89%87%2F</url>
+    <content type="text"><![CDATA[修改 站点配置文件_config.yml 里的 post_asset_folder: false 为 post_asset_folder: true 当设置了 post_asset_folder 为 true 后，用 hexo new &quot;new page&quot; 生成新的博客时，Hexo会自动建立一个同名的文件夹，当文章用到了资源时，只需要将该资源放入此文件夹即可 注意:最好使用 hexo new &quot;new page&quot; 来自动生成相应的文章和文件夹，避免不必要的问题。 到站点根目录下执行 npm install hexo-asset-image --save 来安装图片资源插件 需要用到图片的时候只需要 ![图片描述](博客名称/用到的图片.jpg) 即可 测试是否成功。运行 hexo s ，本地博客出现图片即代表成功，这时便可运行 hexo d -g 推送到远程博客。下面放一张图片用来测试]]></content>
+      <categories>
+        <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Spring Boot入门(一)]]></title>
     <url>%2F2019%2F05%2F30%2FSpring-Boot%E5%85%A5%E9%97%A8-%E4%B8%80%2F</url>
     <content type="text"><![CDATA[本机环境Maven 3.3.9 + JDK1.8 + IDEA 新建Spring Boot项目 点击Create New Project 选择Spring Initializr，点击Next 接下来默认即可，可根据自己需求修改相应内容,点击Next 选择Web，勾选右侧的Web选项，点击Next 选择工程的名称和路径，根据自己需求填写，点击Finish 等待IDEA生成项目文件以及下载依赖与插件，当IDEA最下方没有东西要处理时，表示项目已经成功构建，pom.xml内的文件为 12345678910111213141516171819202122232425262728293031323334353637383940414243&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"&gt; &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt; &lt;parent&gt; &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt; &lt;artifactId&gt;spring-boot-starter-parent&lt;/artifactId&gt; &lt;version&gt;2.1.5.RELEASE&lt;/version&gt; &lt;relativePath/&gt; &lt;!-- lookup parent from repository --&gt; &lt;/parent&gt; &lt;groupId&gt;com.example&lt;/groupId&gt; &lt;artifactId&gt;demo&lt;/artifactId&gt; &lt;version&gt;0.0.1-SNAPSHOT&lt;/version&gt; &lt;name&gt;demo&lt;/name&gt; &lt;description&gt;Demo project for Spring Boot&lt;/description&gt; &lt;properties&gt; &lt;java.version&gt;1.8&lt;/java.version&gt; &lt;/properties&gt; &lt;dependencies&gt; &lt;dependency&gt; &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt; &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt; &lt;/dependency&gt; &lt;dependency&gt; &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt; &lt;artifactId&gt;spring-boot-starter-test&lt;/artifactId&gt; &lt;scope&gt;test&lt;/scope&gt; &lt;/dependency&gt; &lt;/dependencies&gt; &lt;build&gt; &lt;plugins&gt; &lt;plugin&gt; &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt; &lt;artifactId&gt;spring-boot-maven-plugin&lt;/artifactId&gt; &lt;/plugin&gt; &lt;/plugins&gt; &lt;/build&gt;&lt;/project&gt; 运行第一个Spring Boot项目 如下图所示，新建一个HelloWorldController ​ HelloWorldController 内的代码如下 123456789101112package com.example.demo;import org.springframework.web.bind.annotation.GetMapping;import org.springframework.web.bind.annotation.RestController;@RestController // @RestController = @ResponseBody + @Controllerpublic class HelloWorldController &#123; @GetMapping(value = "/helloworld") public String HelloWorld() &#123; return "Hello World!"; &#125;&#125; 点击项目右上角Run按钮，开始运行项目 在浏览器输入 localhost:8080/helloworld，可以看到页面显示的Hello World!信息 自此第一个最简单的Spring Boot项目已经搭建成功！]]></content>

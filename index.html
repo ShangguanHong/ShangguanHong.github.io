@@ -299,7 +299,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">7</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">8</span></a>
 
   </li>
 
@@ -371,6 +371,233 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/31/Spring-Boot入门-二/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ShangguanHong">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ShangguanHong的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/05/31/Spring-Boot入门-二/" class="post-title-link" itemprop="url">Spring-Boot入门(二)</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-05-31 10:40:42 / 修改时间：15:39:29" itemprop="dateCreated datePublished" datetime="2019-05-31T10:40:42+08:00">2019-05-31</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/学习笔记/" itemprop="url" rel="index"><span itemprop="name">学习笔记</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2019/05/31/Spring-Boot入门-二/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/31/Spring-Boot入门-二/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">2.5k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">2 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="启动Spring-Boot项目"><a href="#启动Spring-Boot项目" class="headerlink" title="启动Spring Boot项目"></a>启动Spring Boot项目</h1><ol>
+<li>第一种方法是使用IDE(集成开发环境)，例如IDEA、Eclipse等，我这里使用的是IDEA，所以我只需点击右上角的Run按钮即可</li>
+</ol>
+<p><img src="/2019/05/31/Spring-Boot入门-二/1559271612805.png" alt="1559271612805"></p>
+<ol start="2">
+<li>使用maven命令行启动。在项目根目录下运行 <code>mvn spring-boot:run</code>即可</li>
+</ol>
+<blockquote>
+<p><strong>注意:使用mvn命令请确保电脑上安装了maven并且配置了maven环境变量，可以输入 <code>mvn --version</code> 查看是否 安装（成功安装如下图），若没安装自行百度，按照教程一步一步完成即可</strong></p>
+</blockquote>
+<p><img src="/2019/05/31/Spring-Boot入门-二/1559271875750.png" alt="1559271875750"></p>
+<ol start="3">
+<li><p>使用jar文件启动。在项目根目录下运行命令 <code>mvn clean install</code> (clean表示清空之前编译的文件，install表示打包项目文件成为jar文件)</p>
+<p><img src="/2019/05/31/Spring-Boot入门-二/1559272084746.png" alt="1559272084746"></p>
+<p>出现 <code>BUILD SUCCESS</code> 表示创建jar成功，之后可以在项目根目录下的target目录下查看到对应的jar文件</p>
+<p><img src="/2019/05/31/Spring-Boot入门-二/1559272191102.png" alt="1559272191102"></p>
+<p>然后执行 <code>java -jar demo-0.0.1-SNAPSHOT.jar</code> 运行该文件即可。</p>
+</li>
+</ol>
+<h1 id="编写配置文件"><a href="#编写配置文件" class="headerlink" title="编写配置文件"></a>编写配置文件</h1>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/05/31/Spring-Boot入门-二/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
     
       
 
@@ -663,7 +890,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-05-31 10:28:48" itemprop="dateModified" datetime="2019-05-31T10:28:48+08:00">2019-05-31</time>
+                <time title="修改时间：2019-05-31 10:55:18" itemprop="dateModified" datetime="2019-05-31T10:55:18+08:00">2019-05-31</time>
               
             
           </span>
@@ -722,7 +949,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">2.9k</span>
+                <span title="本文字数">3k</span>
               
 
               
@@ -798,7 +1025,11 @@
 </ol>
 <p><img src="/2019/05/30/Spring-Boot入门-一/1559216610987.png" alt="图片不见啦！"></p>
 <ol start="4">
-<li>自此第一个最简单的Spring Boot项目已经搭建成功！</li>
+<li>自此第一个最简单的Spring Boot项目已经搭建成功！.</li>
+</ol>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><ol>
+<li><a href="https://www.cnblogs.com/zmfx/p/8903688.html" target="_blank" rel="noopener">https://www.cnblogs.com/zmfx/p/8903688.html</a></li>
+<li><a href="https://www.jianshu.com/p/1e9dcb1d606c" target="_blank" rel="noopener">https://www.jianshu.com/p/1e9dcb1d606c</a></li>
 </ol>
 
           
@@ -1938,7 +2169,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">7</span>
+                    <span class="site-state-item-count">8</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -2079,7 +2310,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">20k</span>
+    <span title="站点总字数">23k</span>
   
 
   
@@ -2088,7 +2319,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">18 分钟</span>
+    <span title="站点阅读时长">20 分钟</span>
   
 </div>
 

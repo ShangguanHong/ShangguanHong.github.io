@@ -299,7 +299,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">10</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">11</span></a>
 
   </li>
 
@@ -615,7 +615,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/03/Spring-Boot入门-三/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/03/Spring-Boot整合MyBatis/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ShangguanHong">
@@ -635,7 +635,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2019/06/03/Spring-Boot入门-三/" class="post-title-link" itemprop="url">Spring-Boot入门(三)</a>
+                <a href="/2019/06/03/Spring-Boot整合MyBatis/" class="post-title-link" itemprop="url">Spring-Boot整合MyBatis</a>
               
             
           </h1>
@@ -660,12 +660,24 @@
                 
               
 
-              <time title="创建时间：2019-06-03 09:38:28 / 修改时间：18:58:01" itemprop="dateCreated datePublished" datetime="2019-06-03T09:38:28+08:00">2019-06-03</time>
+              <time title="创建时间：2019-06-03 09:38:28" itemprop="dateCreated datePublished" datetime="2019-06-03T09:38:28+08:00">2019-06-03</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-06-04 20:11:27" itemprop="dateModified" datetime="2019-06-04T20:11:27+08:00">2019-06-04</time>
               
             
           </span>
@@ -701,8 +713,8 @@
                 </span>
             
                 <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/06/03/Spring-Boot入门-三/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/06/03/Spring-Boot入门-三/" itemprop="commentCount"></span>
+                <a href="/2019/06/03/Spring-Boot整合MyBatis/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/06/03/Spring-Boot整合MyBatis/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -774,11 +786,11 @@
 </ol>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.mybatis.generator<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mybatis-generator-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.3.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">verbose</span>&gt;</span>true<span class="tag">&lt;/<span class="name">verbose</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">overwrite</span>&gt;</span>true<span class="tag">&lt;/<span class="name">overwrite</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <h1 id="mybatis-generator自动生成代码"><a href="#mybatis-generator自动生成代码" class="headerlink" title="mybatis-generator自动生成代码"></a>mybatis-generator自动生成代码</h1><p>我的数据库如下</p>
-<p><img src="/2019/06/03/Spring-Boot入门-三/1559552411277.png" alt="1559552411277"></p>
+<p><img src="/2019/06/03/Spring-Boot整合MyBatis/1559552411277.png" alt="1559552411277"></p>
 <p>创建代码如下</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">CREATE DATABASE IF NOT EXISTS `demo` </span><br><span class="line">USE `demo`;</span><br><span class="line"></span><br><span class="line">CREATE TABLE IF NOT EXISTS `country` (</span><br><span class="line">  `code` varchar(2) NOT NULL,</span><br><span class="line">  `name` varchar(50) NOT NULL,</span><br><span class="line">  `population` int(11) NOT NULL DEFAULT &apos;0&apos;,</span><br><span class="line">  PRIMARY KEY (`code`)</span><br><span class="line">) ENGINE=InnoDB DEFAULT CHARSET=utf8;</span><br><span class="line"></span><br><span class="line">INSERT INTO `country` (`code`, `name`, `population`) VALUES</span><br><span class="line">	(&apos;AU&apos;, &apos;Australia&apos;, 18886000),</span><br><span class="line">	(&apos;BR&apos;, &apos;Brazil&apos;, 170115000),</span><br><span class="line">	(&apos;CA&apos;, &apos;Canada&apos;, 1147000),</span><br><span class="line">	(&apos;CN&apos;, &apos;China&apos;, 1277558000),</span><br><span class="line">	(&apos;DE&apos;, &apos;Germany&apos;, 82164700),</span><br><span class="line">	(&apos;FR&apos;, &apos;France&apos;, 59225700),</span><br><span class="line">	(&apos;GB&apos;, &apos;United Kingdom&apos;, 59623400),</span><br><span class="line">	(&apos;IN&apos;, &apos;India&apos;, 1013662000),</span><br><span class="line">	(&apos;RU&apos;, &apos;Russia&apos;, 146934000),</span><br><span class="line">	(&apos;US&apos;, &apos;United States&apos;, 278357000);</span><br></pre></td></tr></table></figure>
 <p>项目目录如下</p>
-<p><img src="/2019/06/03/Spring-Boot入门-三/1559559335403.png" alt="1559559335403"></p>
+<p><img src="/2019/06/03/Spring-Boot整合MyBatis/1559559335403.png" alt="1559559335403"></p>
 <ol>
 <li>编写配置文件</li>
 </ol>
@@ -795,20 +807,20 @@
 <p>2.1 进入Edit Configurations</p>
 </li>
 </ol>
-<p><img src="/2019/06/03/Spring-Boot入门-三/1559551438655.png" alt="1559551438655"></p>
+<p><img src="/2019/06/03/Spring-Boot整合MyBatis/1559551438655.png" alt="1559551438655"></p>
 <p>​        2.2 点击左上角+号，选择Maven</p>
-<p><img src="/2019/06/03/Spring-Boot入门-三/1559551679441.png" alt="1559551679441"></p>
+<p><img src="/2019/06/03/Spring-Boot整合MyBatis/1559551679441.png" alt="1559551679441"></p>
 <p>​        2.3 Name为generator，Command line输入 <code>mybatis-generator:generate -e</code></p>
-<p><img src="/2019/06/03/Spring-Boot入门-三/1559551758839.png" alt="1559551758839"></p>
+<p><img src="/2019/06/03/Spring-Boot整合MyBatis/1559551758839.png" alt="1559551758839"></p>
 <p>​        2.4 运行此插件</p>
-<p><img src="/2019/06/03/Spring-Boot入门-三/1559551867828.png" alt="1559551867828"></p>
+<p><img src="/2019/06/03/Spring-Boot整合MyBatis/1559551867828.png" alt="1559551867828"></p>
 <p>窗口出现 <code>BUILD SUCCESS</code> 即自动生成代码成功</p>
-<p><img src="/2019/06/03/Spring-Boot入门-三/1559551931385.png" alt="1559551931385"></p>
+<p><img src="/2019/06/03/Spring-Boot整合MyBatis/1559551931385.png" alt="1559551931385"></p>
 <p>如果没生成成功，查看一下报错信息，检查下配置文件是否写错。</p>
 <ol start="3">
 <li>成功生成后工程目录如下，标记的都是自动生成的</li>
 </ol>
-<p><img src="/2019/06/03/Spring-Boot入门-三/1559552898240.png" alt="1559552898240"></p>
+<p><img src="/2019/06/03/Spring-Boot整合MyBatis/1559552898240.png" alt="1559552898240"></p>
 <p>​    <code>Country.java</code> :</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.example.demo.model;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Country</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String code;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Integer population;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getCode</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> code;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setCode</span><span class="params">(String code)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.code = code == <span class="keyword">null</span> ? <span class="keyword">null</span> : code.trim();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setName</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name == <span class="keyword">null</span> ? <span class="keyword">null</span> : name.trim();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Integer <span class="title">getPopulation</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> population;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setPopulation</span><span class="params">(Integer population)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.population = population;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><code>CountryMapper.java</code> :</p>
@@ -819,7 +831,7 @@
 <h1 id="测试接口"><a href="#测试接口" class="headerlink" title="测试接口"></a>测试接口</h1><p>写一个 <code>CountryController.java</code>:</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.example.demo.controller;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.example.demo.mapper.CountryMapper;</span><br><span class="line"><span class="keyword">import</span> com.example.demo.model.Country;</span><br><span class="line"><span class="keyword">import</span> org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.RequestMapping;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.RequestMethod;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.RequestParam;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.RestController;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Author</span> sgh</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Date</span> 2019/6/3 14:10</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Description</span>: No Description</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@RestController</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CountryController</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> CountryMapper countryMapper;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@RequestMapping</span>(value = <span class="string">"/country"</span>, method = RequestMethod.GET)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Country <span class="title">findCountryByCode</span><span class="params">(@RequestParam String code)</span> </span>&#123;</span><br><span class="line">        Country country = countryMapper.selectByPrimaryKey(code);</span><br><span class="line">        <span class="keyword">return</span> country;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>利用postman等接口测试软件查看是否成功</p>
-<p><img src="/2019/06/03/Spring-Boot入门-三/1559557407976.png" alt="1559557407976"></p>
+<p><img src="/2019/06/03/Spring-Boot整合MyBatis/1559557407976.png" alt="1559557407976"></p>
 <h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><ol>
 <li><a href="https://www.cnblogs.com/ityouknow/p/6037431.html" target="_blank" rel="noopener">Spring Boot(六)：如何优雅的使用 Mybatis</a></li>
 <li><a href="https://www.cnblogs.com/liaojie970/p/7058543.html" target="_blank" rel="noopener">IDEA 中使用MyBatis-generator 自动生成MyBatis代码</a></li>
@@ -882,7 +894,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/31/Spring-Boot入门-二/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/31/配置Spring-Boot配置文件/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ShangguanHong">
@@ -902,7 +914,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2019/05/31/Spring-Boot入门-二/" class="post-title-link" itemprop="url">Spring-Boot入门(二)</a>
+                <a href="/2019/05/31/配置Spring-Boot配置文件/" class="post-title-link" itemprop="url">配置Spring-Boot配置文件</a>
               
             
           </h1>
@@ -944,7 +956,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-06-03 19:05:06" itemprop="dateModified" datetime="2019-06-03T19:05:06+08:00">2019-06-03</time>
+                <time title="修改时间：2019-06-04 20:10:51" itemprop="dateModified" datetime="2019-06-04T20:10:51+08:00">2019-06-04</time>
               
             
           </span>
@@ -980,8 +992,8 @@
                 </span>
             
                 <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/05/31/Spring-Boot入门-二/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/31/Spring-Boot入门-二/" itemprop="commentCount"></span>
+                <a href="/2019/05/31/配置Spring-Boot配置文件/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/31/配置Spring-Boot配置文件/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1041,19 +1053,19 @@
           <h1 id="启动Spring-Boot项目"><a href="#启动Spring-Boot项目" class="headerlink" title="启动Spring Boot项目"></a>启动Spring Boot项目</h1><ol>
 <li>第一种方法是使用IDE(集成开发环境)，例如IDEA、Eclipse等，我这里使用的是IDEA，所以我只需点击右上角的Run按钮即可</li>
 </ol>
-<p><img src="/2019/05/31/Spring-Boot入门-二/1559271612805.png" alt="1559271612805"></p>
+<p><img src="/2019/05/31/配置Spring-Boot配置文件/1559271612805.png" alt="1559271612805"></p>
 <ol start="2">
 <li>使用maven命令行启动。在项目根目录下运行 <code>mvn spring-boot:run</code>即可</li>
 </ol>
 <blockquote>
 <p><strong>注意:使用mvn命令请确保电脑上安装了maven并且配置了maven环境变量，可以输入 <code>mvn --version</code> 查看是否 安装（成功安装如下图），若没安装自行百度，按照教程一步一步完成即可</strong></p>
 </blockquote>
-<p><img src="/2019/05/31/Spring-Boot入门-二/1559271875750.png" alt="1559271875750"></p>
+<p><img src="/2019/05/31/配置Spring-Boot配置文件/1559271875750.png" alt="1559271875750"></p>
 <ol start="3">
 <li><p>使用jar文件启动。在项目根目录下运行命令 <code>mvn clean install</code> (clean表示清空之前编译的文件，install表示打包项目文件成为jar文件)</p>
-<p><img src="/2019/05/31/Spring-Boot入门-二/1559272084746.png" alt="1559272084746"></p>
+<p><img src="/2019/05/31/配置Spring-Boot配置文件/1559272084746.png" alt="1559272084746"></p>
 <p>出现 <code>BUILD SUCCESS</code> 表示创建jar成功，之后可以在项目根目录下的target目录下查看到对应的jar文件</p>
-<p><img src="/2019/05/31/Spring-Boot入门-二/1559272191102.png" alt="1559272191102"></p>
+<p><img src="/2019/05/31/配置Spring-Boot配置文件/1559272191102.png" alt="1559272191102"></p>
 <p>然后执行 <code>java -jar demo-0.0.1-SNAPSHOT.jar</code> 运行该文件即可。</p>
 </li>
 </ol>
@@ -1061,7 +1073,7 @@
           <!--noindex-->
           
             <div class="post-button text-center">
-              <a class="btn" href="/2019/05/31/Spring-Boot入门-二/#more" rel="contents">
+              <a class="btn" href="/2019/05/31/配置Spring-Boot配置文件/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -1415,24 +1427,6 @@
           </span>
 
           
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/SpringBoot学习笔记/" itemprop="url" rel="index"><span itemprop="name">SpringBoot学习笔记</span></a></span>
-
-                
-                
-              
-            </span>
-          
 
           
             
@@ -1543,6 +1537,265 @@
 <li>在浏览器输入 localhost:8080/helloworld，可以看到页面显示的Hello World!信息</li>
 </ol>
 <p><img src="/2019/05/30/Spring-Boot入门-一/1559216610987.png" alt="图片不见啦！"></p>
+<ol start="4">
+<li>自此第一个最简单的Spring Boot项目已经搭建成功！.</li>
+</ol>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><ol>
+<li><a href="https://www.cnblogs.com/zmfx/p/8903688.html" target="_blank" rel="noopener">SpringBoot入门（IDEA篇）（一）</a></li>
+<li><a href="https://www.jianshu.com/p/1e9dcb1d606c" target="_blank" rel="noopener">Spring Boot 菜鸟教程 1 HelloWorld</a></li>
+</ol>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/30/使用Spring Boot初始化一个项目/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ShangguanHong">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ShangguanHong的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/05/30/使用Spring Boot初始化一个项目/" class="post-title-link" itemprop="url">使用Spring Boot初始化一个项目</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-05-30 18:39:55" itemprop="dateCreated datePublished" datetime="2019-05-30T18:39:55+08:00">2019-05-30</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-06-04 20:09:25" itemprop="dateModified" datetime="2019-06-04T20:09:25+08:00">2019-06-04</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/SpringBoot学习笔记/" itemprop="url" rel="index"><span itemprop="name">SpringBoot学习笔记</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2019/05/30/使用Spring Boot初始化一个项目/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/30/使用Spring Boot初始化一个项目/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">2.9k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">3 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="本机环境"><a href="#本机环境" class="headerlink" title="本机环境"></a>本机环境</h1><p>Maven 3.3.9 + JDK1.8 + IDEA</p>
+<h1 id="新建Spring-Boot项目"><a href="#新建Spring-Boot项目" class="headerlink" title="新建Spring Boot项目"></a>新建Spring Boot项目</h1><ol>
+<li>点击Create New Project</li>
+</ol>
+<p><img src="/2019/05/30/使用Spring Boot初始化一个项目/1559214683522.png" alt="123"></p>
+<ol start="2">
+<li>选择Spring Initializr，点击Next</li>
+</ol>
+<p><img src="/2019/05/30/使用Spring Boot初始化一个项目/1559214771820.png" alt="图片不见啦！"></p>
+<ol start="3">
+<li>接下来默认即可，可根据自己需求修改相应内容,点击Next</li>
+</ol>
+<p><img src="/2019/05/30/使用Spring Boot初始化一个项目/1559214965459.png" alt="图片不见啦！"></p>
+<ol start="4">
+<li>选择Web，勾选右侧的Web选项，点击Next</li>
+</ol>
+<p><img src="/2019/05/30/使用Spring Boot初始化一个项目/1559215142819.png" alt="图片不见啦！"></p>
+<ol start="5">
+<li>选择工程的名称和路径，根据自己需求填写，点击Finish</li>
+</ol>
+<p><img src="/2019/05/30/使用Spring Boot初始化一个项目/1559215307380.png" alt="图片不见啦！"></p>
+<ol start="6">
+<li>等待IDEA生成项目文件以及下载依赖与插件，当IDEA最下方没有东西要处理时，表示项目已经成功构建，pom.xml内的文件为</li>
+</ol>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">project</span> <span class="attr">xmlns</span>=<span class="string">"http://maven.apache.org/POM/4.0.0"</span> <span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span></span></span><br><span class="line"><span class="tag">         <span class="attr">xsi:schemaLocation</span>=<span class="string">"http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">modelVersion</span>&gt;</span>4.0.0<span class="tag">&lt;/<span class="name">modelVersion</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">parent</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-parent<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.1.5.RELEASE<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">relativePath</span>/&gt;</span> <span class="comment">&lt;!-- lookup parent from repository --&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">parent</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.example<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>demo<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>0.0.1-SNAPSHOT<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>demo<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">description</span>&gt;</span>Demo project for Spring Boot<span class="tag">&lt;/<span class="name">description</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">properties</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">java.version</span>&gt;</span>1.8<span class="tag">&lt;/<span class="name">java.version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">properties</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-web<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-test<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">scope</span>&gt;</span>test<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">build</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">plugins</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">plugins</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">build</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">project</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h1 id="运行第一个Spring-Boot项目"><a href="#运行第一个Spring-Boot项目" class="headerlink" title="运行第一个Spring Boot项目"></a>运行第一个Spring Boot项目</h1><ol>
+<li>如下图所示，新建一个HelloWorldController</li>
+</ol>
+<p><img src="/2019/05/30/使用Spring Boot初始化一个项目/1559216040292.png" alt="图片不见啦！"></p>
+<p>​    HelloWorldController 内的代码如下</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.example.demo;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.GetMapping;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.RequestMapping;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.RequestMethod;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.RestController;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Author</span> sgh</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Date</span> 2019/5/30 20:30</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Description</span>: No Description</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@RestController</span> <span class="comment">// 这里的@RestController = @ResponseBody + @Controller，可以使每一个方法返回的都是数据而不是页面</span></span><br><span class="line"><span class="comment">// @Controller表示该类内的所有方法默认返回的是页面路径，加了@ResponseBody后返回的是JSON等格式的数据。</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloWorldController</span> </span>&#123;</span><br><span class="line">    <span class="meta">@RequestMapping</span>(value = <span class="string">"/helloworld"</span>, method = RequestMethod.GET)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">HelloWorld</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"Hello World!"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>点击项目右上角Run按钮，开始运行项目</li>
+</ol>
+<p><img src="/2019/05/30/使用Spring Boot初始化一个项目/1559216247923.png" alt="图片不见啦！"></p>
+<ol start="3">
+<li>在浏览器输入 localhost:8080/helloworld，可以看到页面显示的Hello World!信息</li>
+</ol>
+<p><img src="/2019/05/30/使用Spring Boot初始化一个项目/1559216610987.png" alt="图片不见啦！"></p>
 <ol start="4">
 <li>自此第一个最简单的Spring Boot项目已经搭建成功！.</li>
 </ol>
@@ -2473,230 +2726,13 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/28/phpstudy中升级mysql/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ShangguanHong">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ShangguanHong的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/05/28/phpstudy中升级mysql/" class="post-title-link" itemprop="url">phpstudy中升级mysql</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-05-28 14:45:56" itemprop="dateCreated datePublished" datetime="2019-05-28T14:45:56+08:00">2019-05-28</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-06-03 23:05:19" itemprop="dateModified" datetime="2019-06-03T23:05:19+08:00">2019-06-03</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/MySQL学习笔记/" itemprop="url" rel="index"><span itemprop="name">MySQL学习笔记</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-              
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-            
-                <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/05/28/phpstudy中升级mysql/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/28/phpstudy中升级mysql/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">本文字数：</span>
-                
-                <span title="本文字数">578</span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">1 分钟</span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="1-正文"><a href="#1-正文" class="headerlink" title="1. 正文"></a>1. 正文</h2><ol>
-<li><p>从官网下载对应平台最新的 MySQL 解压缩版 <a href="http://www.mysql.com/downloads/" target="_blank" rel="noopener">http://www.mysql.com/downloads/</a></p></li></ol>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2019/05/28/phpstudy中升级mysql/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
+
 
 
           </div>
@@ -2736,7 +2772,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">10</span>
+                    <span class="site-state-item-count">11</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -2889,7 +2925,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">35k</span>
+    <span title="站点总字数">38k</span>
   
 
   
@@ -2898,7 +2934,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">32 分钟</span>
+    <span title="站点阅读时长">34 分钟</span>
   
 </div>
 

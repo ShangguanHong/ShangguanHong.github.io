@@ -17,6 +17,8 @@ tags:
 的代码即可实现对数据的访问和操作。它提供了包括增删改查等在内的常用功能， 
 且易于扩展！学习并使用Spring Data JPA可以极大的提供开发效率。
 
+<!--more-->
+
 # Spring Boot整合Spring Data Jpa
 
 ## 导入依赖

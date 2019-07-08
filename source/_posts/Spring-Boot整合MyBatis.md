@@ -14,6 +14,8 @@ tags:
 >
 > 本文开发环境为  JDK1.8 + mybatis3 + IDEA。
 
+<!--more-->
+
 # 配置pom.xml
 
 1. 加入数据库依赖

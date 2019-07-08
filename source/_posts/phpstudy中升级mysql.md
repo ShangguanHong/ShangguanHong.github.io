@@ -23,9 +23,9 @@ tags:
 
    `basedir=../MySQL/MySQL(mysql所在目录)`
 
-   `datadir=../MySQL/MySQL/data(mysql所在目录\data)`
+   `datadir=../MySQL/MySQL/data(mysql所在目录/data)`
 
-6. 以管理员运行cmd，cd到../phpStudy\MySQL\bin,先执行 
+6. 以管理员运行cmd，cd到../phpStudy/MySQL/bin,先执行 
 
    `mysqld -remove`, 
 

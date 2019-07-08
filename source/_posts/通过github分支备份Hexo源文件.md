@@ -8,6 +8,8 @@ tags:
 
 利用hexo搭建博后（还不懂的朋友可以看这篇文章 [利用GithubPages + Hexo搭建自己的博客](https://shangguanhong.github.io/2019/05/28/GithubPages + Hexo搭建自己的博客/) ），仓库里只有生成的静态网页文件，是没有Hexo的源文件的。如果一不小心删除或者损坏了hexo源文件，那可就不得了了。这个时候就需要将hexo源文件也进行一下备份，我们这里就利用github的分支功能进行备份。
 
+<!--more-->
+
 # 配置
 
 1. 在你的博客仓库创建一个分支hexo

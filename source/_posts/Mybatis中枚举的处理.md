@@ -1,9 +1,8 @@
 ---
 title: Mybatis中枚举的处理
 date: 2019-06-20 16:25:07
-categories: SpringBoot学习笔记
+categories: Mybatis学习笔记
 tags:
-- Spring Boot
 - Mybatis
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: Spring-Boot整合MyBatis
+title: Spring Boot整合MyBatis
 date: 2019-06-03 09:38:28
 categories: SpringBoot学习笔记
 tags:

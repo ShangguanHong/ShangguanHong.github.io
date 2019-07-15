@@ -6,7 +6,7 @@ tags:
 - Spring Boot
 ---
 
-# 前言
+# 1. 前言
 
 Spring Boot是由Pivotal团队提供的全新框架，其设计目的是用来简化新Spring应用的初始搭建以及开发过程。该框架使用了特定的方式来进行配置，从而使开发人员不再需要定义样板化的配置。通过这种方式，Spring Boot致力于在蓬勃发展的快速应用开发领域（rapid application development）成为领导者。
 
@@ -16,7 +16,7 @@ Spring Boot是由Pivotal团队提供的全新框架，其设计目的是用来�
 
 <!--more-->
 
-# 新建Spring Boot项目
+# 2. 新建Spring Boot项目
 
 1. 点击Create New Project
 
@@ -87,7 +87,7 @@ Spring Boot是由Pivotal团队提供的全新框架，其设计目的是用来�
 
 ```
 
-# 运行第一个Spring Boot项目
+# 3. 运行第一个Spring Boot项目
 
 1. 如下图所示，新建一个HelloWorldController
 
@@ -131,7 +131,7 @@ public class HelloWorldController {
 
 4. 自此第一个最简单的Spring Boot项目已经搭建成功！.
 
-# 参考资料
+# 4. 参考资料
 
 1. [SpringBoot入门（IDEA篇）（一）](https://www.cnblogs.com/zmfx/p/8903688.html)
 2. [Spring Boot 菜鸟教程 1 HelloWorld](https://www.jianshu.com/p/1e9dcb1d606c)

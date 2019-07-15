@@ -7,7 +7,7 @@ tags:
 - Maven
 ---
 
-# 启动Spring Boot项目
+# 1. 启动Spring Boot项目
 
 1. 第一种方法是使用IDE(集成开发环境)，例如IDEA、Eclipse等，我这里使用的是IDEA，所以我只需点击右上角的Run按钮即可
 
@@ -31,7 +31,7 @@ tags:
 
    然后执行 `java -jar demo-0.0.1-SNAPSHOT.jar` 运行该文件即可。
 
-# 编写配置文件
+# 2. 编写配置文件
 
 <!--more-->
 
@@ -123,7 +123,7 @@ tags:
 
    以上便是最基础的不同环境下切换配置文件的方法
 
-# 在配置文件中定义变量
+# 3. 在配置文件中定义变量
 
 1. 在application-dev中增加如下字段（以下示例皆在dev环境下）
 
@@ -137,7 +137,7 @@ tags:
 
 ![1559279312150](Spring-Boot配置文件/1559279312150.png)
 
-# 配置文件中定义对象
+# 4. 配置文件中定义对象
 
 1. 在pom.xml中添加如下依赖，不是红色说明添加依赖成功
 
@@ -187,6 +187,6 @@ public User Test1() {
 
 ![1559286262297](Spring-Boot配置文件/1559286262297.png)
 
-# 参考资料
+# 5. 参考资料
 
 1. [SpringBoot入门（IDEA篇）（二）](https://www.cnblogs.com/zmfx/p/8906943.html)

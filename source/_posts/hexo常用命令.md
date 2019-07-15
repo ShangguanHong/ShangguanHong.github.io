@@ -7,7 +7,7 @@ tags:
 
 ---
 
-# Hexo
+# 1. Hexo
 
 ```bash
 $ npm install hexp -g #安装
@@ -17,7 +17,7 @@ $ hexo init #初始化
 
 <!--more-->
 
-# 简写
+# 2. 简写
 
 ```bash
 $ hexo n "title" == $ hexo new "title" # 新建博客文章
@@ -27,7 +27,7 @@ $ hexo s == $ hexo server # 启动服务预览
 $ hexo d == $ hexo deploy # 部署上服务器
 ```
 
-# 服务器
+# 3. 服务器
 
 ``` bash
 $ hexo server # hexo会监视文件变动并启动更新，无需重启服务
@@ -40,9 +40,9 @@ $ hexo g # 生成静态网页
 $ hexo d # 部署上服务器
 ```
 
-# 常见错误
+# 4. 常见错误
 
-## 找不到git部署
+## 4.1 找不到git部署
 
 错误提示：ERROR Deployer not found: git
 

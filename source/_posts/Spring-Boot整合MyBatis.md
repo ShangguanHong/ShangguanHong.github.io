@@ -6,7 +6,10 @@ tags:
 - Spring Boot
 - Mybatis
 - Mybatis-generator
+
 ---
+
+# 1. 前言
 
 本文介绍如何将mybatis整合进Spring Boot,  并且使用mybatis-generator插件自动根据数据库生成一些基本的代码。
 
@@ -18,7 +21,7 @@ tags:
 
 <!--more-->
 
-# 配置pom.xml
+# 2. 配置pom.xml
 
 1. 加入数据库依赖
 
@@ -56,7 +59,7 @@ tags:
             </plugin>
 ```
 
-# mybatis-generator自动生成代码
+# 3. mybatis-generator自动生成代码
 
 我的数据库如下
 
@@ -369,7 +372,7 @@ public interface CountryMapper {
 
 最后在启动类上添加 `@MapperScan("com.example.demo.mapper")` ，告诉Mapper需要扫描的包，这样就不用每个Mapper上都添加@Mapper注解了。
 
-# 测试接口
+# 4. 测试接口
 
 写一个 `CountryController.java `:
 
@@ -410,7 +413,7 @@ public class CountryController {
 
 ![1559557407976](Spring-Boot整合MyBatis/1559557407976.png)
 
-# 参考资料
+# 5. 参考资料
 
 1. [Spring Boot(六)：如何优雅的使用 Mybatis](https://www.cnblogs.com/ityouknow/p/6037431.html)
 2. [IDEA 中使用MyBatis-generator 自动生成MyBatis代码](https://www.cnblogs.com/liaojie970/p/7058543.html)

@@ -18,6 +18,7 @@ date: 2019-05-28 15:10:02
 - 对该操作系统进程模型的看法
 
 # 2. 什么是进程
+
 既然我们要分析操作系统的进程模型, 那么我们首先需要了解一下什么是进程。
 首先, 我们先看下[百度上对进程(Process)的定义](https://baike.baidu.com/item/%E8%BF%9B%E7%A8%8B/382503?fr=aladdin):
 > 进程（Process）是计算机中的程序关于某数据集合上的一次运行活动，是系统进行资源分配和调度的基本单位，是[操作系统](https://baike.baidu.com/item/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F)结构的基础。在早期面向进程设计的计算机结构中，进程是程序的基本执行实体；在当代面向线程设计的计算机结构中，进程是线程的容器。程序是指令、数据及其组织形式的描述，进程是程序的实体。
@@ -156,7 +157,8 @@ struct task_struct *group_leader;	/* threadgroup leader */
 >**real_parent指向其父进程，如果创建它的父进程不再存在，则指向PID为1的init进程。 parent指向其父进程，当它终止时，必须向它的父进程发送信号。它的值通常与 real_parent相同。 children表示链表的头部，链表中的所有元素都是它的子进程（进程的子进程链表）。 sibling用于把当前进程插入到兄弟链表中（进程的兄弟链表）。 group_leader指向其所在进程组的领头进程。**
 
 ## 3.5 进程调度 
-###3.5.1 优先级 
+### 3.5.1 优先级
+
 ```C
 	int prio, static_prio, normal_prio;
 	unsigned int rt_priority;
@@ -168,6 +170,7 @@ struct task_struct *group_leader;	/* threadgroup leader */
 */
 ```
 ### 3.5.2 调度策略
+
 ```C
 unsigned int policy;
 cpumask_t cpus_allowed;
@@ -217,9 +220,10 @@ struct mm_struct *mm, *active_mm;
 ![img](https://images2018.cnblogs.com/blog/1369608/201804/1369608-20180425160244245-1374152778.jpg)
 									(图片来源网上)
 
+# 5.进程是如何进行调度的 
 
-#5.进程是如何进行调度的 
-## 5.1 与进程调度有关的数据结构 
+## 5.1 与进程调度有关的数据结构
+
 在了解进程是如何进行调度之前, 我们需要先了解一些与进程调度有关的数据结构。
 ###5.1.1 可运行队列(runqueue)
 在`` /kernel/sched.c ``文件下,  可运行队列被定义为`` struct rq ``,  每一个CPU都会拥有一个`` struct rq ``, 它主要被用来存储一些基本的用于调度的信息, 包括及时调度和CFS调度。在Linux kernel 2.6中, `` struct rq ``是一个非常重要的数据结构, 接下来我们介绍一下它的部分重要字段:
@@ -264,9 +268,11 @@ struct prio_array {
 ###5.1.3 调度器主函数(schedule())
  ``schedule``函数存在``/kernel/sched.c``中, 是Linux kernel很重要的一个函数, 它的作用是用来挑选出下一个应该执行的进程, 并且完成进程的切换工作, 是进程调度的主要执行者。
 ## 5.2 调度算法(O(1)算法)
-###5.2.1 介绍O(1)算法
+### 5.2.1 介绍O(1)算法
 何为O(1)算法: 该算法总能够在有限的时间内选出优先级最高的进程然后执行, 而不管系统中有多少个可运行的进程, 因此命名为O(1)算法。
+
 ### 5.2.2 O(1)算法的原理
+
 在前面我们提到了两个按优先级排序的数组```active array```和```expired array```, 这两个数组是实现O(1)算法的关键所在。
 O(1)调度算法每次都是选取在active array数组中且优先级最高的进程来运行。
 那么该算法如何找到优先级最高的进程呢? 大家还记得前面``prio_array``内的``DECLARE_BITMAP(bitmap, MAX_PRIO+1);``字段吗？这里它就发挥出作用了(详情看代码注释), 这里只要找到``bitmap``内哪一个位被设置为了1, 即可得到当前系统所运行的task的优先级(idx, 通过sehed_find_first_bit()方法实现), 接下来找到idx所对应的进程链表(queue), queue内的所有进程都是目前可运行的并且拥有最高优先级的进程, 接着依次执行这些进程,。

@@ -7,7 +7,7 @@ tags:
 - Spring Boot
 ---
 
-### 前言
+### 1. 前言
 
 POI是常用的解析Excel文件的工具库，Excel文件有两种格式(.xls和.xlsx)，POI都支持解析。解析Excel文件的流程为读取工作簿(Workbook) → 工作表(Sheet) → 行 (Row)→ 单元格(Cell)。
 
@@ -17,21 +17,21 @@ POI是常用的解析Excel文件的工具库，Excel文件有两种格式(.xls�
 
 <!--more-->
 
-### 前期准备
+### 2. 前期准备
 
-#### 1. excel文件
+#### 2.1. excel文件
 
 创建一个测试的Excel文件，内容如下
 
 ![1563100954781](利用POI操纵Excel/1563100954781.png)
 
-#### 2. user表
+#### 2. 2. user表
 
 建一个user表用来存储excel文件内的数据，字段如下
 
 ![1563101014769](利用POI操纵Excel/1563101014769.png)
 
-#### 3. maven文件
+#### 2.3. maven文件
 
 ``` xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -115,7 +115,7 @@ POI是常用的解析Excel文件的工具库，Excel文件有两种格式(.xls�
 
 ```
 
-#### 4. 前端测试页面
+#### 2.4. 前端测试页面
 
 在 `src/main/resources/templates/` 路径下，新建一个HTML页面，名称为 `uploadexcelfile.html` ，用来上传excel文件，内容如下
 
@@ -137,7 +137,7 @@ POI是常用的解析Excel文件的工具库，Excel文件有两种格式(.xls�
 </html>
 ```
 
-#### 5. Entity层
+#### 2.5. Entity层
 
  User.java
 
@@ -162,7 +162,7 @@ public class User {
 }
 ```
 
-#### 6. DAO层
+#### 2.6. DAO层
 
 UserMpper.java
 
@@ -180,7 +180,7 @@ public interface UserMapper {
 }
 ```
 
-#### 7. XML文件
+#### 2.7. XML文件
 
  UserMapper.xml
 
@@ -204,7 +204,7 @@ public interface UserMapper {
 </mapper>
 ```
 
-#### 8. Util类
+#### 2.8. Util类
 
  ExcelUtil.java  ( **主要操作都在此类，重点理解**)
 
@@ -348,7 +348,7 @@ public class ExcelUtil {
 
 ```
 
-#### 9. Service层与其实现
+#### 2.9. Service层与其实现
 
 ExcelService.java
 
@@ -417,7 +417,7 @@ public class ExcelServiceImpl implements ExcelService {
 }
 ```
 
-#### 10. Controller层
+#### 2.10. Controller层
 
 ExcelController.java
 
@@ -475,7 +475,7 @@ public class ExcelController {
 }
 ```
 
-### 测试
+### 3. 测试
 
 打开 `localhost:8080/excel/in` ，选择刚才的测试的excel文件
 
@@ -491,7 +491,7 @@ public class ExcelController {
 
 成功将excel文件内的数据导入数据库中
 
-### 参考资料
+### 4. 参考资料
 
 1. [spring-boot-excelimport将excel数据导入到数据库](https://blog.csdn.net/csdn_12345678910/article/details/81008397)
 

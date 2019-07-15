@@ -8,13 +8,13 @@ tags:
 
 ---
 
-# 前言
+# 1. 前言
 
 之前的 [利用GitHubPages + Hexo搭建自己的博客](https://shangguanhong.github.io/2019/05/28/GithubPages + Hexo搭建自己的博客/)  中，已经拥有了一个自己的博客，但是它是非常的简陋的，所以这里将介绍Hexo中最热门的NexT主题的详细配置过程，将博客变得更加美观
 
 <!--more-->
 
-# 安装NexT主题
+# 2. 安装NexT主题
 
 在网站根目录下输入以下命令
 
@@ -26,7 +26,7 @@ $  git clone https://github.com/theme-next/hexo-theme-next themes/next
 
 >我们将站点根目录下的 _config.yml文件称为 `站点配置文件` , 将 themes/next 文件夹内的_config.yml文件称为 `主题配置文件` 。
 
-# 启用主题
+# 3. 启用主题
 
 打开`站点配置文件` ，找到 `theme` ，建议用 `ctrl+f` 搜索`theme` 快速定位，修改为
 
@@ -37,7 +37,7 @@ $  git clone https://github.com/theme-next/hexo-theme-next themes/next
 theme: next
 ```
 
-# 选择主题风格
+# 4. 选择主题风格
 
 打开 `主题配置文件` ，找到 `Scheme Settings` ，`Next`主题提供四种风格，分别为 `Muse` , `Mist` , `Pisces` , `Gemini` , 使用时只需将想启用的风格前面的 `#` 删除即可，我使用的是 `Gemini` 风格的
 
@@ -53,7 +53,7 @@ theme: next
 scheme: Gemini
 ```
 
-#  菜单设置
+#  5. 菜单设置
 
 > 菜单包括：首页、归档、分类、标签、关于等等
 
@@ -81,7 +81,7 @@ menu:
   #commonweal: /404/ || heartbeat
 ```
 
-## 添加分类模块
+## 5.1 添加分类模块
 
 1. 新建一个分类页面
 
@@ -94,7 +94,7 @@ $ hexo new page categories
 4.  打开 `scaffolds/post.md` 文件，在后面增加 `categories:`
 5. 之后的每一篇文章会自动创建 `categories:` ,后面输入分类名即可
 
-## 添加标签模块
+## 5.2 添加标签模块
 
 1. 新建一个分类页面
 
@@ -114,7 +114,7 @@ tags:
 ...
 ```
 
-## 添加关于模块
+## 5.3 添加关于模块
 
 1. 新建一个分类页面
 
@@ -125,7 +125,7 @@ $ hexo new page about
 2. 修改 `source/about/index.md` 文件的内容为关于的内容即可
 3.   在菜单设置中将 `about`取消注释
 
-## 添加搜索模块
+## 5.4 添加搜索模块
 
 1. 安装 `hexo-generator-searchdb` 插件
 
@@ -152,7 +152,7 @@ local_search:
   enable: true
 ```
 
-## 修改个人社交信息
+## 5.5 修改个人社交信息
 
 在 `主题配置文件` 中搜索 `social` ，选择想展示的社交信息，如下
 
@@ -165,9 +165,9 @@ social:
   #Twitter: https://twitter.com/yourname || twitter
 ```
 
-# 网站效果
+# 6 网站效果
 
-## 网站动画效果
+## 6.1 网站动画效果
 
 1. 使用canvas_nest
 
@@ -185,11 +185,11 @@ social:
 
 将 `主题配置文件` 中的`canvas_sphere: false` 改为 `canvas_sphere: true`
 
-## 网站评论系统
+## 6.2 网站评论系统
 
 请先登录或注册 [LeanCloud](https://leancloud.cn/), 进入控制台后点击左下角创建应用，进入刚刚创建的应用，选择左下角的`设置`>`应用Key`，然后就能看到你的`APP ID`和`APP Key`了。在 `主题配置文件` 中搜索Valine填写APP ID 和 APP Key即可
 
-## 文章字数统计与阅读时间
+## 6.3 文章字数统计与阅读时间
 
 1. 在网站根目录下运行命令
 

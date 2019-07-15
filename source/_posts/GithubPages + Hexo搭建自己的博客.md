@@ -7,9 +7,9 @@ tags:
 - Hexo
 ---
 
-# 搭建博客
 
-## 部署本地博客
+
+## 1. 部署本地博客
 
 1. 安装Node.js, 参考 <https://www.runoob.com/nodejs/nodejs-install-setup.html>
 
@@ -34,7 +34,7 @@ npm install
 
 5. 启动服务器：在站点目录下运行 `hexo s` 启动服务, 在浏览器输入 http://localhost:4000/ 便可看到本地博客已经部署完成
 
-## 绑定GithubPages
+## 2. 绑定GithubPages
 
 1. 如果没有Github账号的创建Github账号, 有的直接登录即可
 

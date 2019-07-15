@@ -6,13 +6,13 @@ tags:
 - Mybatis
 ---
 
-# 前言
+# 1. 前言
 
 在数据库设计中，有的字段需要用字符串来标识，拿用户角色role来说比如`0`代表管理员，`1`代表普通用户。在Java里面定义这样的字段为 `枚举` ，但是一般使用 `mybatis` 查出来的话不符合我们的期望，我们想要让它自动装换成我们想要的枚举，不需要再手动根据数值去判断设置成我们想要的枚举。要是实现这样的效果，那么我们就要用到 `mybatis` 的`BaseTypeHandler` 了。
 
 <!--more-->
 
-# 实现通用转换处理器
+# 2. 实现通用转换处理器
 
 1. 定义一个通用枚举接口
 
@@ -178,7 +178,7 @@ public final class UniversalEnumHandler<E extends BaseEnum> extends BaseTypeHand
 
 可以看到字段取出来即为我们期望的
 
-# 参考资料
+# 3. 参考资料
 
 1. [mybatis枚举自动转换（通用转换处理器实现）](https://blog.csdn.net/fighterandknight/article/details/51520595)
 2. [SpringBoot整合Mybatis实现自动转换枚举类型](https://blog.csdn.net/qq_26440803/article/details/83451221)

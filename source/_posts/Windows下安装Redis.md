@@ -6,7 +6,7 @@ tags:
 - Redis
 ---
 
-# 下载
+# 1. 下载
 
 **下载地址：**<https://github.com/MSOpenTech/redis/releases>。
 
@@ -22,7 +22,7 @@ Redis 支持 32 位和 64 位。这个需要根据你系统平台的实际情况
 
 **建议将redis所在路径加入到系统环境变量中，便于以后操作**
 
-# 运行
+# 2. 运行
 
 打开一个 **cmd** 窗体，使用 `cd` 命令切换到redis目录下，运行
 
@@ -50,7 +50,7 @@ redis-cli.exe -h 127.0.0.1 -p 6379
 
 ![1559658392718](Windows下安装Redis/1559658392718.png)
 
-# 设置服务
+# 3. 设置服务
 
 每次运行Redis的时候都需要 `redis-server.exe redis.windows.conf` 下，cmd还得保持在后台，这样是非常麻烦的。可以将redis加入到windows服务中，这样只要启动redis服务就可以了。
 
@@ -86,7 +86,7 @@ net stop redis
 
 
 
-# 参考资料
+# 4. 参考资料
 
 1. [Redis 安装](https://www.runoob.com/redis/redis-install.html)
 2. [window 安装redis服务、卸载redis服务和启动redis服务](https://www.cnblogs.com/guzhanyu/p/8947940.html)

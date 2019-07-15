@@ -7,13 +7,13 @@ tags:
 - Spring Data Jpa
 ---
 
-# 前言
+# 1. 前言
 
 之前的文章中写到了如何使用Spring Boot整合mybatis(传送门: [Spring-Boot整合MyBatis](https://shangguanhong.github.io/2019/06/03/Spring-Boot整合MyBatis/))，今天学习一下如何使用Spring Boot整合SpringDataJpa。
 
 项目代码:  https://github.com/ShangguanHong/DemoSpringBoot/tree/master/springboot_jpa
 
-# Spring Data JPA简介
+# 2. Spring Data JPA简介
 
 它是Spring基于ORM框架、JPA规范封装的一套JPA应用框架，可使开发者用极简 
 的代码即可实现对数据的访问和操作。它提供了包括增删改查等在内的常用功能， 
@@ -21,9 +21,9 @@ tags:
 
 <!--more-->
 
-# Spring Boot整合Spring Data Jpa
+# 3. Spring Boot整合Spring Data Jpa
 
-## 导入依赖
+## 3.1 导入依赖
 
 1. SpringDataJpa依赖
 
@@ -43,7 +43,7 @@ tags:
         </dependency>
 ```
 
-## 配置文件
+## 3.2 配置文件
 
 ```yaml
 server:
@@ -72,7 +72,7 @@ jpa:
 > -  `validate`：运行程序会校验数据与数据库的字段类型是否相同，字段不同会报错
 > -  `none`: 禁用DDL处理，即什么都不做
 
-## 编写Entity层
+## 3.3 编写Entity层
 
 Country.java
 
@@ -102,7 +102,7 @@ public class Country {
 >
 >- `@Id`：注解在主键上，一个实体只能有一个@Id注解
 
-## 编写DAO层
+## 3.4 编写DAO层
 
 CountryRepository.java
 
@@ -132,7 +132,7 @@ public interface CountryRepository extends JpaRepository<Country, String>, JpaSp
 > - 第一个queryAll()为自带的方法
 > - 第二个queryAllByMyself()为自己写的一个方法，实现与上一个一致都是查询country表中的全部数据
 
-## 编写Controller层
+## 3.5 编写Controller层
 
 CountryController.java
 
@@ -167,7 +167,7 @@ public class CountryController {
 
 ```
 
-## 利用postman测试接口
+## 3.6 利用postman测试接口
 
 数据库中country表数据为
 
@@ -183,6 +183,6 @@ public class CountryController {
 
 可以看到结果一致，表示我们自己写的方法也是成功的，因此一些复杂的sql语句我们就可以自己写，不需要依赖Reposority帮我们实现
 
-# 参考资料
+# 4. 参考资料
 
 1. [Spring Boot(五)：Spring Boot Jpa 的使用](http://www.ityouknow.com/springboot/2016/08/20/spring-boot-jpa.html)

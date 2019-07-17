@@ -11,7 +11,7 @@ tags:
 
 之前的文章中写到了如何使用Spring Boot整合mybatis(传送门: [Spring-Boot整合MyBatis](https://shangguanhong.github.io/2019/06/03/Spring-Boot整合MyBatis/))，今天学习一下如何使用Spring Boot整合SpringDataJpa。
 
-项目代码:  https://github.com/ShangguanHong/DemoSpringBoot/tree/master/springboot_jpa
+项目代码:  https://github.com/ShangguanHong/DemoSpringBoot/tree/master/springboot-jpa
 
 # 2. Spring Data JPA简介
 

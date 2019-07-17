@@ -23,6 +23,8 @@ tags:
 
 4. PO中应该不包含任何对数据库的操作。
 
+<!--more-->
+
 ## **2.2. VO(value object): 值对象 / view object表现层对象**
 
 1. 理解为view层中用于显示的java bean

@@ -9,15 +9,15 @@ tags:
 
 # 1. 前言
 
-之前的文章中写到了如何使用Spring Boot整合mybatis(传送门: [Spring-Boot整合MyBatis](https://shangguanhong.github.io/2019/06/03/Spring-Boot整合MyBatis/))，今天学习一下如何使用Spring Boot整合SpringDataJpa。
+之前的文章中写到了如何使用 Spring Boot 整合 mybatis(传送门: [Spring-Boot整合MyBatis](https://shangguanhong.github.io/2019/06/03/Spring-Boot整合MyBatis/))，今天学习一下如何使用 Spring Boot 整合 Spring Data Jpa。
 
 项目代码:  https://github.com/ShangguanHong/DemoSpringBoot/tree/master/springboot-jpa
 
 # 2. Spring Data JPA简介
 
-它是Spring基于ORM框架、JPA规范封装的一套JPA应用框架，可使开发者用极简 
-的代码即可实现对数据的访问和操作。它提供了包括增删改查等在内的常用功能， 
-且易于扩展！学习并使用Spring Data JPA可以极大的提供开发效率。
+Spring Data JPA 是 Spring 基于 ORM 框架、JPA 规范封装的一套 JPA 应用框架，可使开发者用极简的代码即可实现对数据的访问和操作。它提供了包括增删改查等在内的常用功能， 且易于扩展！学习并使用 Spring Data JPA 可以极大的提供开发效率。
+
+Spring Data JPA 让我们解脱了 DAO 层 的操作，基本上所有 CRUD 都可以依赖于它来实现，在实际的工作工程中，推荐使用 Spring Data JPA + ORM (如: hibernate) 完成操作，这样在切换不同的 ORM 框架时提供了极大的方便，同时也使数据库层操作更加简单，方便解耦。
 
 <!--more-->
 

@@ -1,8 +1,9 @@
 ---
-title: Spring Boot整合SpringDataJpa
+title: Spring Boot整合Spring Data Jpa
 date: 2019-07-08 14:14:55
 categories: SpringBoot学习笔记
 tags:
+- Jpa
 - Spring Boot
 - Spring Data Jpa
 ---
@@ -52,18 +53,20 @@ server:
         context-path: /
 spring:
     datasource:
-        driver-class-name: com.mysql.jdbc.Driver
-        url: jdbc:mysql://localhost:3306/demo?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true&useSSL=false
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        url: jdbc:mysql://localhost:3306/demo?serverTimezone=UTC&useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true&useSSL=false
         username: root
         password: root
-jpa:
-    database: MySQL
-    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
-    show-sql: true
-    hibernate:
-        ddl-auto: update
+    jpa:
+        database: MySQL
+        database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+        show-sql: true
+        hibernate:
+            ddl-auto: update
 ```
 
+> show-sql：控制台显示SQL语句
+>
 > ddl-auto可以有以下几种取值
 >
 > -  `create`：每次运行程序时，都会重新创建表，这会导致数据丢失
@@ -74,115 +77,194 @@ jpa:
 
 ## 3.3 编写Entity层
 
-Country.java
+User.java
 
 ```java
 package com.example.domain;
 
 import lombok.Data;
-
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
-@Table(name = "country")
 @Data
-public class Country {
+@Table(name = "sys_user")
+public class User {
+
     @Id
-    private String code;
-    private String name;
-    private Integer population;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private Long id;
+
+    @Column(name = "user_name")
+    private String userName;
+
+    @Column(name = "user_addr")
+    private String userAddr;
+    
+    @Column(name = "email")
+    private String Email;
 }
+
 ```
 
+>- `@Data`：Lombok 的注解，可以使我们省略 POJO的 Getter/Setter 的编写
+>
 >- `@Entity`：表示该类是一个实体类
 >
->- `@Table`：对应的数据库中的表
+>- `@Table`：配置表与实体类的映射关系，name 代表数据库表的名称
 >
->- `@Id`：注解在主键上，一个实体只能有一个@Id注解
+>- `@Id`：注解在主键上，一个实体只能有一个 @Id 注解
+>
+>- `@GeneratedValue`：strategy 属性表示主键的生成策略
+>
+>  1. GenerationType.IDENTITY：自增(底层数据库必须支持自动增长，例如 MySQL)， 最常用的一种
+>
+>  2. GenerationType.SEQUENCE：序列(底层数据库必须支持序列，例如 Oracle)
+>
+>  3. GenerationType.TABLE：jpa 提供的一种机制，通过一张表的形式帮助我们完成主键的自增
+>
+>  4. GenerationType.AUTO：由程序自动帮我们选择一种主键的生成策略
+>
+>- `@Column`：配置属性与字段的映射关系，name 代表字段的名称
 
-## 3.4 编写DAO层
+## 3.5 编写DAO层
 
-CountryRepository.java
+UserRepository.java
 
 ``` java
 package com.example.repository;
 
-import com.example.domain.Country;
+import com.example.domain.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
-import org.springframework.data.jpa.repository.Query;
-import java.io.Serializable;
-import java.util.List;
 
-public interface CountryRepository extends JpaRepository<Country, String>, JpaSpecificationExecutor<Country>, Serializable {
-
-    List<Country> queryAll();
-
-    @Query("from Country")
-    List<Country> queryAllByMyself();
+public interface UserRepository extends JpaRepository<User, Long>, JpaSpecificationExecutor<User> {
 
 }
 
-
 ```
 
-> - 创建CountryRepository接口并且继承SpringDataJPA内的接口作为父类，CountryRepository继承了JpaRepository接口（SpringDataJPA提供的简单数据操作接口）、JpaSpecificationExecutor（SpringDataJPA提供的复杂查询接口）、Serializable（序列化接口）。
-> - 第一个queryAll()为自带的方法
-> - 第二个queryAllByMyself()为自己写的一个方法，实现与上一个一致都是查询country表中的全部数据
+> - 只需要编写 DAO 层的接口，并不需要编写 DAO 层接口的实现类
+> - DAO 层接口必须继承 JpaRepository接口（SpringDataJPA 提供的简单数据操作接口，基本的CRUD操作）和JpaSpecificationExecutor（SpringDataJPA 提供的复杂查询接口，例如分页等）。
+> - JpaRepository 接口需要两个泛型，分别是操作的实体类的类型和实体类中主键属性的类型
+> - JpaSpecificationExecutor 接口需要提供一个泛型，为操作的实体类的类型
 
-## 3.5 编写Controller层
+## 3.6 基础方法
 
-CountryController.java
+Spring Boot Jpa 默认预先生成了一些基本的 CRUD 的方法，例如：增、删、改等等
 
-``` java
-package com.example.controller;
-
-import com.example.domain.Country;
-import com.example.repository.CountryRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
-
-@RestController
-public class CountryController {
+```java
+@RunWith(SpringRunner.class)
+@SpringBootTest
+public class UserDaoTest {
 
     @Autowired
-    CountryRepository countryRepository;
+    private UserRepository userRepository;
 
-    @GetMapping(value = "/test1")
-    public List<Country> test1() {
-        List<Country> countries = countryRepository.queryAll();
-        return countries;
-    }
-    @GetMapping(value = "/test2")
-    public List<Country> test2() {
-        List<Country> countries = countryRepository.queryAllByMyself();
-        return countries;
+    public void testUserDaoBaseOperate() {
+        User user = new User();
+        // 查找所有用户
+        userRepository.findAll();
+        // 根据id查找用户
+        userRepository.findById(1l);
+        // 保存/更新用户信息
+        userRepository.save(user);
+        // 删除用户
+        userRepository.delete(user);
+        // 统计用户数量
+        userRepository.count();
+        // 通过id查找用户是否存在
+        userRepository.existsById(1l);
+        // ...
     }
 }
 
 ```
 
-## 3.6 利用postman测试接口
+>Spring Data Jpa 的更新和新建都由 save 方法来实现，根据传入 save的实体类是否带有主键来进行判断，含有主键为更新操作，无主键进行新建操作
 
-数据库中country表数据为
+## 3.7 自定义简单查询
 
-![1562600262796](Spring-Boot整合SpringDataJpa/1562600262796.png)
+自定义的简单查询就是根据方法名来自动生成 SQL，需要定义在 DAO 层，这样才能自动生成实现方法。主要的语法是 `findXXBy` , `readAXXBy` , `queryXXBy` , `countXXBy` ,  `getXXBy` 后面跟属性名称：
 
-1. 测试自带的queryAll
+```java
+User findByUserName(String userName);
+```
 
-![1562600279372](Spring-Boot整合SpringDataJpa/1562600279372.png)
+也可以使用一些关键字 `And ` 、 `Or`
 
-2. 测试我们写的queryAllByMyself
+```java
+User findByUserNameOrEmail(String userName, String email);
+```
 
-![1562600475107](Spring-Boot整合SpringDataJpa/1562600475107.png)
+修改、删除、统计也是类似语法
 
-可以看到结果一致，表示我们自己写的方法也是成功的，因此一些复杂的sql语句我们就可以自己写，不需要依赖Reposority帮我们实现
+```java
+Long deleteById(Long id);
+Long countByUserName(String userName)
+```
 
-# 4. 参考资料
+基本上 SQL 体系中的关键词都可以使用，例如：` LIKE `、 `IgnoreCase`、 `OrderBy`。
+
+```java
+List<User> findByEmailLike(String email);
+User findByUserNameIgnoreCase(String userName);
+List<User> findByUserNameOrderByEmailDesc(String email);
+```
+
+**具体的关键字，使用方法和生产成SQL如下表所示**
+
+| Keyword           | Sample                                  | JPQL snippet                                                 |
+| :---------------- | :-------------------------------------- | :----------------------------------------------------------- |
+| And               | findByLastnameAndFirstname              | … where x.lastname = ?1 and x.firstname = ?2                 |
+| Or                | findByLastnameOrFirstname               | … where x.lastname = ?1 or x.firstname = ?2                  |
+| Is,Equals         | findByFirstnameIs,findByFirstnameEquals | … where x.firstname = ?1                                     |
+| Between           | findByStartDateBetween                  | … where x.startDate between ?1 and ?2                        |
+| LessThan          | findByAgeLessThan                       | … where x.age < ?1                                           |
+| LessThanEqual     | findByAgeLessThanEqual                  | … where x.age ⇐ ?1                                           |
+| GreaterThan       | findByAgeGreaterThan                    | … where x.age > ?1                                           |
+| GreaterThanEqual  | findByAgeGreaterThanEqual               | … where x.age >= ?1                                          |
+| After             | findByStartDateAfter                    | … where x.startDate > ?1                                     |
+| Before            | findByStartDateBefore                   | … where x.startDate < ?1                                     |
+| IsNull            | findByAgeIsNull                         | … where x.age is null                                        |
+| IsNotNull,NotNull | findByAge(Is)NotNull                    | … where x.age not null                                       |
+| Like              | findByFirstnameLike                     | … where x.firstname like ?1                                  |
+| NotLike           | findByFirstnameNotLike                  | … where x.firstname not like ?1                              |
+| StartingWith      | findByFirstnameStartingWith             | … where x.firstname like ?1 (parameter bound with appended %) |
+| EndingWith        | findByFirstnameEndingWith               | … where x.firstname like ?1 (parameter bound with prepended %) |
+| Containing        | findByFirstnameContaining               | … where x.firstname like ?1 (parameter bound wrapped in %)   |
+| OrderBy           | findByAgeOrderByLastnameDesc            | … where x.age = ?1 order by x.lastname desc                  |
+| Not               | findByLastnameNot                       | … where x.lastname <> ?1                                     |
+| In                | findByAgeIn(Collection ages)            | … where x.age in ?1                                          |
+| NotIn             | findByAgeNotIn(Collection age)          | … where x.age not in ?1                                      |
+| TRUE              | findByActiveTrue()                      | … where x.active = true                                      |
+| FALSE             | findByActiveFalse()                     | … where x.active = false                                     |
+| IgnoreCase        | findByFirstnameIgnoreCase               | … where UPPER(x.firstame) = UPPER(?1)                        |
+
+
+
+# 4. 使用 JPQL 自定义语句
+
+有时我们想使用自定义的 JPQL 来查询，Spring Data JPA 也是完美支持的，编写在 DAO 中。不懂 JPQL 的可以先了解一下(传送门：[JPQL详解](https://blog.csdn.net/dtttyc/article/details/80001826))
+
+```java
+@Query(value = "from User where userName = ?1")
+User findByUserName(String userName);
+
+@Modifying
+@Query(value = "update User set userName = ?1 where id = ?2")
+int modifyByIdAndUserId(String userName, Long id);
+	
+@Transactional
+@Modifying
+@Query(value = "delete from User where id = ?1")
+void deleteByUserId(Long id);
+```
+
+>- 在 查询方法上面使用 @Query 注解，value 为需要执行的 JPQL 语句
+>- 如果涉及到删除和修改还需要加上 @Modifying 
+>- 也可以根据需要添加 @Transactional 对事务的支持
+
+# 5. 参考资料
 
 1. [Spring Boot(五)：Spring Boot Jpa 的使用](http://www.ityouknow.com/springboot/2016/08/20/spring-boot-jpa.html)

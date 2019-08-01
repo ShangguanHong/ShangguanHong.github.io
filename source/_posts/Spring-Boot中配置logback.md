@@ -193,7 +193,7 @@ debug：当此属性设置为true时，将打印出logback内部日志信息，�
             <onMismatch>DENY</onMismatch>
         </filter>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>${base_log_dir}/info/info-%d{yyyy-MM-dd}.log</fileNamePattern>
+            <fileNamePattern>${base_log_dir}/info/info-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
             <maxHistory>15</maxHistory>
             <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
                 <maxFileSize>50MB</maxFileSize>

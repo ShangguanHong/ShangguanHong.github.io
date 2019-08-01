@@ -276,7 +276,7 @@ debug：当此属性设置为true时，将打印出logback内部日志信息，�
         <appender-ref ref="framework"/>
     </logger>
 	
-    <!--特别制定该目录下为debug模式-->
+    <!--特别指定该目录下为debug模式-->
     <logger name="com.example" level="debug" additivity="false">
         <appender-ref ref="debug"/>
         <appender-ref ref="info"/>

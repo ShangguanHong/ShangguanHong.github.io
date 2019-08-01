@@ -146,7 +146,7 @@ debug：当此属性设置为true时，将打印出logback内部日志信息，�
         -->
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <!--设置日志命名模式:根据日期命名-->
-            <fileNamePattern>${base_log_dir}/error/error-%d{yyyy-MM-dd}-%i.log</fileNamePattern>
+            <fileNamePattern>${base_log_dir}/error/error-%d{yyyy-MM-dd.%i.log</fileNamePattern>
             <!--最多保留15天日志文件，默认30天-->
             <maxHistory>15</maxHistory>
             <!-- 设置每个日志文件的最大文件大小，超过指定大小后，会将日志文件进行拆分 0,1,2... -->
@@ -214,7 +214,7 @@ debug：当此属性设置为true时，将打印出logback内部日志信息，�
             <onMismatch>DENY</onMismatch>
         </filter>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>${base_log_dir}/debug/debug-%d{yyyy-MM-dd}.log</fileNamePattern>
+            <fileNamePattern>${base_log_dir}/debug/debug-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
             <maxHistory>15</maxHistory>
             <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
                 <maxFileSize>50MB</maxFileSize>
@@ -231,7 +231,7 @@ debug：当此属性设置为true时，将打印出logback内部日志信息，�
     <appender name="framework" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <file>${base_log_dir}/framework.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>${base_log_dir}/framework/framework-%d{yyyy-MM-dd}.log</fileNamePattern>
+            <fileNamePattern>${base_log_dir}/framework/framework-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
             <maxHistory>15</maxHistory>
             <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
                 <maxFileSize>50MB</maxFileSize>

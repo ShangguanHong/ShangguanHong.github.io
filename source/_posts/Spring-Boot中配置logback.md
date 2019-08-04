@@ -9,7 +9,7 @@ tags:
 
 # 1. 前言
 
->Slf4j的全称是Simple Loging Facade For Java(Java简单日志门面)，它仅仅是一个为Java程序提供日志输出的统一接口，并不是一个具体的日志实现方案，就比如JPA一样，只是一种规则而已。所以单独的Slf4j是不能工作的，必须搭配其他具体的日志实现方案，比如apache的org.apache.log4j.Logger，jdk自带的java.util.logging.Logger等。
+>Slf4j的全称是 Simple Loging Facade For Java(Java简单日志门面)，它仅仅是一个为Java程序提供日志输出的统一接口，并不是一个具体的日志实现方案，就比如JPA一样，只是一种规则而已。所以单独的Slf4j是不能工作的，必须搭配其他具体的日志实现方案，比如apache的org.apache.log4j.Logger，jdk自带的java.util.logging.Logger等。
 >
 >logback和log4j以及log4j2三者，推荐使用logback，因为logback的效率显著高于log4j，而且logback也是Springboot推荐并且默认使用的日志系统。
 

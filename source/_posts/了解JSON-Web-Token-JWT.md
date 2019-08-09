@@ -7,7 +7,7 @@ tags:
 - JWT
 ---
 
-# 前言
+# 1. 前言
 
  互联网服务离不开用户认证，一般流程是下面这样。
 
@@ -33,11 +33,11 @@ tags:
 
 <!--more-->
 
-# 什么是JWT
+# 2. 什么是JWT
 
 JWT是 `Json Web Token` 的缩写。它是基于 [RFC 7519](https://link.jianshu.com/?t=https://tools.ietf.org/html/rfc7519) 标准定义的一种可以安全传输的 **小巧** 和 **自包含** 的 JSON 对象。由于数据是使用数字签名的，所以是可信任的和安全的。JWT 可以使用 HMAC 算法对 secret 进行加密或者使用 RSA 的公钥私钥对来进行签名。
 
-# JWT的工作流程
+# 3. JWT的工作流程
 
 下面是模拟 JWT 的实际工作流程（假设受保护的 API 在 `/protected` 中）
 
@@ -49,7 +49,7 @@ JWT是 `Json Web Token` 的缩写。它是基于 [RFC 7519](https://link.jianshu
 > 6. 服务器端对此token进行检验，如果合法就解析其中内容，根据其拥有的权限和自己的业务逻辑给出对应的响应结果
 > 7. 用户取得结果
 
-# JWT的数据结构
+# 4. JWT的数据结构
 
 为了更好的理解 JWT 是什么，我们先来看一个 JWT 生成后的样子
 
@@ -69,7 +69,7 @@ eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ3YW5nIiwiY3JlYXRlZCI6MTQ4OTA3OTk4MTM5MywiZXhwIjo
 Header.Payload.Signature
 ```
 
-## Header
+## 4.1 Header
 
 第一部分 Header 是一个 JSON 对象，描述 JWT 的元数据，通常是这个样子的
 
@@ -88,7 +88,7 @@ Header.Payload.Signature
 
 
 
-## Payload
+## 4.2 Payload
 
 第二部分 Payload 也是一个 JSON 对象，用来存放实际需要传递的数据。 JWT 规定了7个官方字段供使用
 
@@ -113,7 +113,7 @@ Header.Payload.Signature
 
 这个 JSON 对象也要使用 Base64URL 算法转成字符串。
 
-## Signature
+## 4.3 Signature
 
 第三个部分 Signature 是对前两个部分的签名，防止数据被篡改。
 
@@ -128,13 +128,27 @@ HMACSHA256(
 
 算出签名以后，把 Header、Payload、Signature 三个部分拼成一个字符串，每个部分之间用 `.` 分隔，就可以返回给用户。
 
-## Base64URL
+## 4.4 Base64URL
 
 前面提到，Header 和 Payload 串型化的算法是 Base64URL。这个算法跟 Base64 算法基本类似，但有一些小的不同。
 
 JWT 作为一个令牌（token），有些场合可能会放到 URL（比如 api.example.com/?token=xxx）。Base64 有三个字符`+`、`/`和`=`，在 URL 里面有特殊含义，所以要被替换掉：`=`被省略、`+`替换成`-`，`/`替换成`_` 。这就是 Base64URL 算法。
 
-# JWT的生成和解析
+# 5. JWT的特点
+
+>1. JWT 默认是不加密，但也是可以加密的。生成原始 Token 以后，可以用密钥再加密一次。
+>
+>2. JWT 不加密的情况下，不能将秘密数据写入 JWT。
+>
+>3. JWT 不仅可以用于认证，也可以用于交换信息。有效使用 JWT，可以降低服务器查询数据库的次数。
+>
+>4. JWT 的最大缺点是，由于服务器不保存 session 状态，因此无法在使用过程中废止某个 token，或者更改 token 的权限。也就是说，一旦 JWT 签发了，在到期之前就会始终有效，除非服务器部署额外的逻辑。
+>
+>5. JWT 本身包含了认证信息，一旦泄露，任何人都可以获得该令牌的所有权限。为了减少盗用，JWT 的有效期应该设置得比较短。对于一些比较重要的权限，使用时应该再次对用户进行认证。
+>
+>6. 为了减少盗用，JWT 不应该使用 HTTP 协议明码传输，要使用 HTTPS 协议传输。
+
+# 6. JWT的生成和解析
 
 为了简化我们的工作，这里引入一个比较成熟的 JWT 类库，叫 [jjwt]( [https://github.com/jwtk/jjwt](https://link.jianshu.com/?t=https://github.com/jwtk/jjwt) )。这个类库可以用于 Java 和 Android 的 JWT  token 的生成和验证。
 
@@ -178,7 +192,7 @@ JWT 本身没啥难度，但安全整体是一个比较复杂的事情，JWT 只
 
 具体如何操作，请看下篇文章。
 
-# 参考资料
+# 7. 参考资料
 
 1. [重拾后端之Spring Boot（四）：使用 JWT 和 Spring Security 保护 REST API](https://www.jianshu.com/p/6307c89fe3fa)
 2. [JSON Web Token 入门教程 - 阮一峰的网络日志](http://www.baidu.com/link?url=gs1xCBsMDfGGT1Mbq646U12Eodu63eiMLBDp3-JnSTb6v0fGFFnUJqbyJSV0D_UGzisIlXVOfGZ6-os7EQWpTsPnLjwgE0ZxqLOaKy22gOC)

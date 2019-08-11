@@ -1,6 +1,7 @@
 ---
 title: 了解JSON Web Token(JWT)
 date: 2019-08-08 22:04:06
+copyright: true
 categories: SpringBoot学习笔记
 tags:
 - Spring Boot

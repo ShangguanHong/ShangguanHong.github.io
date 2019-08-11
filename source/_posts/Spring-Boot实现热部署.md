@@ -1,6 +1,7 @@
 ---
 title: Spring Boot实现热部署
 date: 2019-07-07 17:18:15
+copyright: true
 categories: SpringBoot学习笔记
 tags:
 - Spring Boot

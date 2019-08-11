@@ -1,6 +1,7 @@
 ---
 title: 解决Redis重启后密码失效问题
 date: 2019-06-04 21:48:22
+copyright: true
 categories: Redis学习笔记
 tags:
 - Redis

@@ -1,6 +1,7 @@
 ---
 title: Win10下安装MySQL8.0.16
 date: 2019-06-04 00:15:32
+copyright: true
 categories: MySQL学习笔记
 tags:
 - MySQL

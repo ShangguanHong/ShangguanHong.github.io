@@ -1,6 +1,7 @@
 ---
 title: Mybatis中枚举的处理
 date: 2019-06-20 16:25:07
+copyright: true
 categories: Mybatis学习笔记
 tags:
 - Mybatis

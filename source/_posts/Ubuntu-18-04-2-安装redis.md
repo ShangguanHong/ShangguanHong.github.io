@@ -1,6 +1,7 @@
 ---
 title: Ubuntu 18.04.2 安装redis
 date: 2019-07-28 22:49:37
+copyright: true
 categories: Redis学习笔记
 tags:
 - Redis

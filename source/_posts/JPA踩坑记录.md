@@ -1,6 +1,7 @@
 ---
 title: JPA踩坑记录
 date: 2019-07-19 10:22:40
+copyright: true
 categories: 常见错误分类
 tags:
 - Jpa

@@ -1,6 +1,7 @@
 ---
 title: 利用GithubPages + Hexo搭建自己的博客
 date: 2019-05-28 20:48:13
+copyright: true
 categories: Hexo学习笔记
 tags:
 - GithubPages

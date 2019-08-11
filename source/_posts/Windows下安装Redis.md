@@ -1,6 +1,7 @@
 ---
 title: Windows下安装Redis
 date: 2019-06-04 21:45:14
+copyright: true
 categories: Redis学习笔记
 tags:
 - Redis

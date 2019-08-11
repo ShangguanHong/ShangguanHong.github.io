@@ -1,6 +1,7 @@
 ---
 title: Java中的对象术语(PO/POJO/VO/BO/DAO/DTO)
 date: 2019-07-17 20:09:34
+copyright: true
 categories: Java学习笔记
 tags:
 - Java

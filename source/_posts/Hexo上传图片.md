@@ -1,6 +1,7 @@
 ---
 title: Hexo上传图片
 date: 2019-05-30 21:27:06
+copyright: true
 categories: Hexo学习笔记
 tags:
 - Hexo

@@ -1,6 +1,7 @@
 ---
 title: phpstudy中升级mysql
 date: 2019-05-28 14:45:56
+copyright: true
 categories: MySQL学习笔记
 tags:
 - PHPstudy

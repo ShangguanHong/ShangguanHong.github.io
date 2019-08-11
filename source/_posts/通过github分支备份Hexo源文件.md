@@ -1,6 +1,7 @@
 ---
 title: 通过github分支备份Hexo源文件
 date: 2019-06-26 13:08:15
+copyright: true
 categories: Hexo学习笔记
 tags:
 - Hexo

@@ -1,6 +1,7 @@
 ---
 title: Spring Boot配置文件
 date: 2019-05-31 10:40:42
+copyright: true
 categories: SpringBoot学习笔记
 tags:
 - Spring Boot

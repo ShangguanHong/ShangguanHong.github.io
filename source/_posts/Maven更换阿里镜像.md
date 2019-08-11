@@ -1,6 +1,7 @@
 ---
 title: Maven更换阿里镜像
 date: 2019-08-07 19:12:57
+copyright: true
 categories: 更换镜像
 tags:
 - Maven

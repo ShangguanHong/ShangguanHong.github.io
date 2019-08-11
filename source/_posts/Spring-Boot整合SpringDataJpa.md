@@ -1,6 +1,7 @@
 ---
 title: Spring Boot整合Spring Data Jpa
 date: 2019-07-08 14:14:55
+copyright: true
 categories: SpringBoot学习笔记
 tags:
 - Jpa

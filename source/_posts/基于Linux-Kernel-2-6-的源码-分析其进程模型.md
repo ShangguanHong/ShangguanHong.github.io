@@ -1,6 +1,7 @@
 ---
 title: '基于Linux Kernel 2.6 的源码, 分析其进程模型'
 categories: Linux学习笔记
+copyright: true
 tags:
   - Linux
 date: 2019-05-28 15:10:02

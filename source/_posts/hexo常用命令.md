@@ -1,6 +1,7 @@
 ---
 title: hexo常用命令
 date: 2019-05-29 12:38:52
+copyright: true
 categories: Hexo学习笔记
 tags:
 - Hexo

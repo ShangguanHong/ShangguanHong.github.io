@@ -1,6 +1,7 @@
 ---
 title: Hexo的NexT主题详细配置过程
 date: 2019-05-29 16:18:40
+copyright: true
 categories: Hexo学习笔记
 tags:
 - Hexo

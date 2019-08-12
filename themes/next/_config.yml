@@ -94,7 +94,7 @@ footer:
 creative_commons:
   license: by-nc-sa
   sidebar: true
-  post: true
+  post: false
   language:
 
 # `Follow me on GitHub` banner in the top-right corner.

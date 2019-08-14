@@ -5,7 +5,7 @@ copyright: true
 categories: SpringBoot学习笔记
 tags:
 - Spring Boot
-- JWT
+- Jwt
 ---
 
 # 1. 前言
@@ -153,7 +153,18 @@ JWT 作为一个令牌（token），有些场合可能会放到 URL（比如 api
 
 为了简化我们的工作，这里引入一个比较成熟的 JWT 类库，叫 [jjwt]( [https://github.com/jwtk/jjwt](https://link.jianshu.com/?t=https://github.com/jwtk/jjwt) )。这个类库可以用于 Java 和 Android 的 JWT  token 的生成和验证。
 
-利用 `jjwt` , JWT 的生成可以使用下面这样的代码完成
+首先要导入 jjwt 的坐标
+
+```xml
+<!--JWT-->
+<dependency>
+    <groupId>io.jsonwebtoken</groupId>
+    <artifactId>jjwt</artifactId>
+    <version>0.9.1</version>
+</dependency>
+```
+
+导入完 jjwt 的坐标之后, JWT 的生成可以使用下面这样的代码完成
 
 ```JAVA
 String generateToken(Map<String, Object> claims) {
@@ -191,7 +202,7 @@ Claims getClaimsFromToken(String token) {
 
 JWT 本身没啥难度，但安全整体是一个比较复杂的事情，JWT 只不过提供了一种基于 token 的请求验证机制。但我们的用户权限，对于 API 的权限划分、资源的权限划分，用户的验证等等都不是 JWT 负责的。也就是说，请求验证后，你是否有权限看对应的内容是由你的用户角色决定的。所以我们这里要利用 Spring 的一个子项目 Spring Security 来简化我们的工作。
 
-具体如何操作，请看下篇文章。
+具体如何操作，请看 [JWT整合Spring-Security](https://shangguanhong.github.io/2019/08/14/JWT整合Spring-Security/)
 
 # 7. 参考资料
 

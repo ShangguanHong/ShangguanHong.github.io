@@ -1,3 +1,31 @@
+---
+title: gulp优化hexo方法
+copyright: false
+date: 2019-08-18 00:45:17
+categories: Hexo学习笔记
+tags:
+- Hexo
+---
+
+本文转载自：[gulp优化hexo方法](https://www.cnblogs.com/Mayfly-nymph/p/10623234.html)
+
+
+
+`gulp` 通过对站点使用的静态资源进行压缩，来优化网站的访问速度。 
+
+首先安装 `gulp` 以及所需要的模块：
+
+```shell
+npm install gulp -g
+```
+
+```shell
+npm install gulp-htmlclean gulp-htmlmin gulp-minify-css gulp-uglify gulp-imagemin --save
+```
+
+然后在博客的根目录下创建 **gulpfile.js** 文件写入代码：
+
+```js
 var gulp = require('gulp');
 var minifycss = require('gulp-minify-css');
 var uglify = require('gulp-uglify');
@@ -46,3 +74,11 @@ gulp.task('minify-images', function() {
 gulp.task('default', gulp.parallel(
     'minify-html','minify-css','minify-js','minify-images'
 ));
+```
+
+最后执行命令，上传 GitHub
+
+```shell
+hexo clean && hexo g && gulp && hexo d
+```
+

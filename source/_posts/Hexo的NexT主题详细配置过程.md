@@ -11,9 +11,7 @@ tags:
 
 # 1. 前言
 
-之前的 [利用GitHubPages + Hexo搭建自己的博客](https://shangguanhong.github.io/2019/05/28/GithubPages + Hexo搭建自己的博客/)  中，已经拥有了一个自己的博客，但是它是非常的简陋的，所以这里将介绍Hexo中最热门的NexT主题的详细配置过程，将博客变得更加美观
-
-<!--more-->
+之前的 [利用GithubPages + Hexo搭建自己的博客](https://shangguanhong.github.io/2019/05/28/GithubPages%20+%20Hexo%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E5%8D%9A%E5%AE%A2/) 中，已经拥有了一个自己的博客，但是它是非常的简陋的，所以这里将介绍 `Hexo` 中最热门的 `NexT` 主题的详细配置过程，将博客变得更加美观
 
 # 2. 安装NexT主题
 
@@ -25,7 +23,9 @@ $  git clone https://github.com/theme-next/hexo-theme-next themes/next
 
 这样在当前目录下的themes文件夹中就有了Next主题
 
->我们将站点根目录下的 _config.yml文件称为 `站点配置文件` , 将 themes/next 文件夹内的_config.yml文件称为 `主题配置文件` 。
+>我们将站点根目录下的 `_config.yml`文件称为 `站点配置文件` , 将 `themes/next` 文件夹内的  `_config.yml` 文件称为主题配置文件 。
+
+<!--more-->
 
 # 3. 启用主题
 

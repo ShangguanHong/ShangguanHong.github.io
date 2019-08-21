@@ -28,7 +28,7 @@ tags:
 
 接下来就进行Swagger2的学习
 
-项目代码: https://github.com/ShangguanHong/DemoSpringBoot/tree/master/springboot-swagger2
+项目代码: https://github.com/ShangguanHong/SpringBootDemo/tree/master/springboot-swagger2
 
 <!--more-->
 

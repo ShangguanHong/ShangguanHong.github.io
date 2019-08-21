@@ -324,7 +324,7 @@ public class SpringbootMapstructApplicationTests {
 
 > 这里使用传两个参数进行属性映射，结果一致
 
-项目代码: https://github.com/ShangguanHong/DemoSpringBoot/tree/master/springboot-mapstruct
+项目代码: https://github.com/ShangguanHong/SpringBootDemo/tree/master/springboot-mapstruct
 
 # 8. 参考资料
 

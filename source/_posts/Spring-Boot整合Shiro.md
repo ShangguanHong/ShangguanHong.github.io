@@ -615,7 +615,7 @@ public class UserController {
 - 散列的次数要一致（2次）
 - salt要保持一致（保存到数据库中）
 
-具体内容可以查看 [demo源码](https://github.com/ShangguanHong/SpringBootDemo/tree/master/shiro-single-reaml)
+具体内容可以查看 [demo源码](https://github.com/ShangguanHong/SpringBootDemo/tree/master/shiro-single-realm)
 
 # 8. 参考资料
 

@@ -19,7 +19,7 @@ tags:
 >
 > 本文开发环境为  JDK1.8 + mybatis3 + IDEA。
 
-项目代码: https://github.com/ShangguanHong/DemoSpringBoot/tree/master/springboot-mybatis
+项目代码: https://github.com/ShangguanHong/SpringBootDemo/tree/master/springboot-mybatis
 
 <!--more-->
 

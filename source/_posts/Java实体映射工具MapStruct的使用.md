@@ -2,7 +2,8 @@
 title: Java实体映射工具MapStruct的使用
 date: 2019-07-17 19:49:06
 copyright: true
-categories: SpringBoot学习笔记
+categories:
+- [MapStruct学习笔记]
 tags:
 - Spring Boot
 - MapStruct
@@ -13,13 +14,11 @@ tags:
 
 官网地址：http://mapstruct.org/
 
-MapStruct是一个代码生成器，简化了不同的Java Bean之间映射的处理，所谓的映射指的就是从一个实体变化成一个实体。例如我们在实际开发中，DAO层的实体(PO)和一些数据传输对象(DTO)，大部分属性都是相同的，只有少部分的不同，通过mapStruct，可以让不同实体之间的转换变的简单。我们只需要按照约定的方式进行配置即可。
+MapStruct 是一个代码生成器，简化了不同的 Java Bean 之间映射的处理，所谓的映射指的就是从一个实体变化成一个实体。例如我们在实际开发中，DAO 层的实体(PO)和一些数据传输对象(DTO)，大部分属性都是相同的，只有少部分的不同，通过 mapStruct，可以让不同实体之间的转换变的简单。我们只需要按照约定的方式进行配置即可。
 
-MapStruct是一个可以处理注解的Java编译器插件，可以在命令行中使用，也可以在IDE中使用。MapStruct有一些默认配置，但是也为用户提供了自己进行配置的途径。
+MapStruct 是一个可以处理注解的 Java 编译器插件，可以在命令行中使用，也可以在 IDE 中使用。MapStruct 有一些默认配置，但是也为用户提供了自己进行配置的途径。
 
-下面进行MapStruct的使用。
-
-项目代码: https://github.com/ShangguanHong/DemoSpringBoot/tree/master/springboot-mapstruct
+下面进行 MapStruct 的使用。
 
 <!--more-->
 
@@ -85,18 +84,6 @@ public class UserRoleDto {
 新建一个 UserRoleMapper.java ，这个类用来定义 User.java 、 Role.java 和 UserRoleDto.java 之间属性对应规则。
 
 ```java
-package com.example.mapper;
-
-import com.example.domain.User;
-import com.example.dto.UserRoleDto;
-import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
-import org.mapstruct.Mappings;
-
-/**
- * @author sgh
- * @date 2019/7/17 16:24
- */
 @Mapper(componentModel = "spring")
 public interface UserMapper {
 
@@ -118,7 +105,7 @@ public interface UserMapper {
 >     - spring：在实现类上注解 @Component，可通过 @Autowired 方式注入
 >     - cdi: the generated mapper is an application-scoped CDI bean and can be retrieved via @Inject
 >     - jsr330：实现类上添加@javax.inject.Named 和@Singleton注解，可以通过 @Inject注解获取。
-> - **@Mappings**：配置多个@Mapping
+> - @Mappings：配置多个@Mapping
 > - @Mapping：配置属性映射，若源对象属性与目标对象名字一致，会自动映射对应属性
 >   - source：源属性、target：目标属性
 >   - dateFormat：可将 String 到 Date 日期之间相互转换，通过 SimpleDateFormat，该值为 SimpleDateFormat 的日期格式
@@ -127,14 +114,6 @@ public interface UserMapper {
 
 ``` java
 // 该类为自动生成的
-package com.example.mapper;
-
-import com.example.domain.Role;
-import com.example.domain.User;
-import com.example.dto.UserRoleDto;
-import javax.annotation.Generated;
-import org.springframework.stereotype.Component;
-
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
     date = "2019-07-17T21:00:35+0800",
@@ -182,22 +161,7 @@ public class UserMapperImpl implements UserMapper {
 
 # 5. 测试
 
-编写测试类 SpringbootMapstructApplicationTests.java
-
 ```java
-package com.example;
-
-import com.example.domain.Role;
-import com.example.domain.User;
-import com.example.dto.UserRoleDto;
-import com.example.mapper.UserMapper;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
-
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class SpringbootMapstructApplicationTests {
@@ -233,26 +197,13 @@ public class SpringbootMapstructApplicationTests {
 
 ![1563369041341](Java实体映射工具MapStruct的使用/1563369041341.png)
 
-可以看到 user.role.name 字段成功映射到了 userRoleDto 的roleName字段上。
+可以看到 user.role.name 字段成功映射到了 userRoleDto 的 roleName 字段上。
 
 # 6. 使用实现类的实例进行转换
 
  UserRoleMapper.java 类修改如下
 
 ```java
-package com.example.mapper;
-
-import com.example.domain.User;
-import com.example.dto.UserRoleDto;
-import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
-import org.mapstruct.Mappings;
-import org.mapstruct.factory.Mappers;
-
-/**
- * @author sgh
- * @date 2019/7/17 16:24
- */
 @Mapper
 public interface UserRoleMapper {
 
@@ -271,22 +222,9 @@ public interface UserRoleMapper {
 
 > Mapper 的 componentModel 属性使用默认的 default (不写即为 default)
 
-测试类 SpringbootMapstructApplicationTests.java 修改为
+测试类修改为
 
 ```java
-package com.example;
-
-import com.example.domain.Role;
-import com.example.domain.User;
-import com.example.dto.UserRoleDto;
-import com.example.mapper.UserRoleMapper;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
-
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class SpringbootMapstructApplicationTests {
@@ -327,20 +265,6 @@ public class SpringbootMapstructApplicationTests {
 可以绑定多个对象的属性值到目标对象中
 
 ```java
-package com.example.mapper;
-
-import com.example.domain.Role;
-import com.example.domain.User;
-import com.example.dto.UserRoleDto;
-import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
-import org.mapstruct.Mappings;
-import org.mapstruct.factory.Mappers;
-
-/**
- * @author sgh
- * @date 2019/7/17 16:24
- */
 @Mapper(componentModel = "spring")
 public interface UserRoleMapper {
     
@@ -365,22 +289,9 @@ public interface UserRoleMapper {
 
 ```
 
-测试类 SpringbootMapstructApplicationTests.java 修改为
+测试类修改为
 
 ```java
-package com.example;
-
-import com.example.domain.Role;
-import com.example.domain.User;
-import com.example.dto.UserRoleDto;
-import com.example.mapper.UserRoleMapper;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
-
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class SpringbootMapstructApplicationTests {
@@ -412,6 +323,8 @@ public class SpringbootMapstructApplicationTests {
 ```
 
 > 这里使用传两个参数进行属性映射，结果一致
+
+项目代码: https://github.com/ShangguanHong/DemoSpringBoot/tree/master/springboot-mapstruct
 
 # 8. 参考资料
 

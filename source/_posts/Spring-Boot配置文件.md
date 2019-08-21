@@ -5,7 +5,6 @@ copyright: true
 categories: SpringBoot学习笔记
 tags:
 - Spring Boot
-- Maven
 ---
 
 # 1. 启动Spring Boot项目

@@ -2,7 +2,9 @@
 title: Spring Boot中配置Slf4j+logback日志框架
 date: 2019-07-31 23:50:50
 copyright: true
-categories: SpringBoot学习笔记
+categories: 
+- [SpringBoot学习笔记]
+- [Logback学习笔记]
 tags:
 - Spring Boot
 - Logback

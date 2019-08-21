@@ -2,11 +2,12 @@
 title: Spring Boot整合MyBatis
 date: 2019-06-03 09:38:28
 copyright: true
-categories: SpringBoot学习笔记
+categories: 
+- [SpringBoot学习笔记]
+- [Mybatis学习笔记]
 tags:
 - Spring Boot
 - Mybatis
-- Mybatis-generator
 
 ---
 

@@ -2,7 +2,9 @@
 title: Spring Boot整合Shiro
 copyright: true
 date: 2019-08-20 20:11:28
-categories: Shiro学习笔记
+categories: 
+- [Shiro学习笔记]
+- [SpringBoot学习笔记]
 tags:
 - Spring Boot
 - Shiro

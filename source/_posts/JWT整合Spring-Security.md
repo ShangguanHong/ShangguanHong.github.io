@@ -2,9 +2,13 @@
 title: JWT整合Spring Security
 copyright: true
 date: 2019-08-14 10:56:07
-categories: SpringBoot学习笔记
+categories: 
+- [SpringBoot学习笔记]
+- [SpringSecurity学习笔记]
+- [JWT学习笔记]
 tags:
-- Jwt
+- Spring Boot
+- JWT
 - Spring Security
 ---
 

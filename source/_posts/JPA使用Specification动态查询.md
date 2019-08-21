@@ -2,10 +2,9 @@
 title: JPA使用Specification动态查询
 date: 2019-07-22 16:28:17
 copyright: true
-categories: Jpa学习笔记
+categories: SpringDataJpa学习笔记
 tags:
-- Jap
-- Specification
+- Spring Data Jpa
 
 ---
 

@@ -2,7 +2,8 @@
 title: 利用POI操纵Excel
 date: 2019-07-14 18:26:41
 copyright: true
-categories: SpringBoot学习笔记
+categories:
+- [POI学习笔记]
 tags:
 - POI
 - Spring Boot
@@ -10,9 +11,9 @@ tags:
 
 ### 1. 前言
 
-POI是常用的解析Excel文件的工具库，Excel文件有两种格式(.xls和.xlsx)，POI都支持解析。解析Excel文件的流程为读取工作簿(Workbook) → 工作表(Sheet) → 行 (Row)→ 单元格(Cell)。
+POI 是常用的解析 Excel 文件的工具库，Excel 文件有两种格式(.xls和.xlsx)，POI 都支持解析。解析 Excel 文件的流程为读取工作簿(Workbook) → 工作表(Sheet) → 行 (Row)→ 单元格(Cell)。
 
-接下来的实例需要你掌握 `mybatis` 来进行数据库的操作，如果对   `mybatis` 不是很熟悉可以参考 [Spring Boot整合MyBatis](https://shangguanhong.github.io/2019/06/03/Spring-Boot整合MyBatis/) 来进行学习, 以下关于mybatis的配置都和上面教程一致。
+接下来的实例需要你掌握 `mybatis` 来进行数据库的操作，如果对   `mybatis` 不是很熟悉可以参考 [Spring Boot整合MyBatis](https://shangguanhong.github.io/2019/06/03/Spring-Boot整合MyBatis/) 来进行学习, 以下关于 mybatis 的配置都和上面教程一致。
 
 项目代码: https://github.com/ShangguanHong/DemoSpringBoot/tree/master/springboot-poi
 
@@ -22,17 +23,17 @@ POI是常用的解析Excel文件的工具库，Excel文件有两种格式(.xls�
 
 #### 2.1. excel文件
 
-创建一个测试的Excel文件，内容如下
+创建一个测试的 Excel 文件，内容如下
 
 ![1563100954781](利用POI操纵Excel/1563100954781.png)
 
 #### 2. 2. user表
 
-建一个user表用来存储excel文件内的数据，字段如下
+建一个 user 表用来存储 excel 文件内的数据，字段如下
 
 ![1563101014769](利用POI操纵Excel/1563101014769.png)
 
-#### 2.3. maven文件
+#### 2.3. maven 文件
 
 ``` xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -118,7 +119,7 @@ POI是常用的解析Excel文件的工具库，Excel文件有两种格式(.xls�
 
 #### 2.4. 前端测试页面
 
-在 `src/main/resources/templates/` 路径下，新建一个HTML页面，名称为 `uploadexcelfile.html` ，用来上传excel文件，内容如下
+在 `src/main/resources/templates/` 路径下，新建一个 HTML 页面，名称为 `uploadexcelfile.html` ，用来上传 excel 文件，内容如下
 
 ``` html
 <!DOCTYPE html>
@@ -140,7 +141,7 @@ POI是常用的解析Excel文件的工具库，Excel文件有两种格式(.xls�
 
 #### 2.5. Entity层
 
- User.java
+ `User.java`
 
 ``` java
 package com.example.domain;
@@ -165,7 +166,7 @@ public class User {
 
 #### 2.6. DAO层
 
-UserMpper.java
+`UserMpper.java`
 
 ``` java
 package com.example.mapper;
@@ -183,7 +184,7 @@ public interface UserMapper {
 
 #### 2.7. XML文件
 
- UserMapper.xml
+ `UserMapper.xml`
 
 ``` xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -207,7 +208,7 @@ public interface UserMapper {
 
 #### 2.8. Util类
 
- ExcelUtil.java  ( **主要操作都在此类，重点理解**)
+ `ExcelUtil.java`  ( **主要操作都在此类，重点理解**)
 
 ``` java
 package com.example.utils;
@@ -351,7 +352,7 @@ public class ExcelUtil {
 
 #### 2.9. Service层与其实现
 
-ExcelService.java
+`ExcelService.java`
 
 ```java
 package com.example.service;
@@ -374,7 +375,7 @@ public interface ExcelService {
 }
 ```
 
-ExcelServiceImpl.java
+`ExcelServiceImpl.java`
 
 ```java
 package com.example.service.impl;
@@ -420,7 +421,7 @@ public class ExcelServiceImpl implements ExcelService {
 
 #### 2.10. Controller层
 
-ExcelController.java
+`ExcelController.java`
 
 ```java
 package com.example.controller;
@@ -478,7 +479,7 @@ public class ExcelController {
 
 ### 3. 测试
 
-打开 `localhost:8080/excel/in` ，选择刚才的测试的excel文件
+打开 `localhost:8080/excel/in` ，选择刚才的测试的 excel 文件
 
 ![1563119422129](利用POI操纵Excel/1563119422129.png)
 
@@ -490,7 +491,7 @@ public class ExcelController {
 
 ![1563119473999](利用POI操纵Excel/1563119473999.png)
 
-成功将excel文件内的数据导入数据库中
+成功将 excel 文件内的数据导入数据库中
 
 ### 4. 参考资料
 

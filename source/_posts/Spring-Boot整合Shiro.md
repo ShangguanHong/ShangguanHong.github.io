@@ -16,6 +16,8 @@ tags:
 
 Spring Security 虽然强大，但是它过于的庞大与复杂并且与 Spring 的联系比较紧密，在实际开发中，大多数的公司会选择 Apache 的 Shiro 来使用，这篇文章来学习如何使用 Spring Boot 集成 Apache Shiro 。
 
+具体内容可以查看 [demo源码](https://github.com/ShangguanHong/SpringBootDemo/tree/master/shiro-single-realm)
+
 <!--more-->
 
 # 2. 什么是Apache shiro
@@ -615,9 +617,7 @@ public class UserController {
 - 散列的次数要一致（2次）
 - salt要保持一致（保存到数据库中）
 
-具体内容可以查看 [demo源码](https://github.com/ShangguanHong/SpringBootDemo/tree/master/shiro-single-realm)
-
-# 8. 参考资料
+# 9. 参考资料
 
 1. [Spring Boot (十四)： Spring Boot 整合 Shiro-登录认证和权限管理](http://www.ityouknow.com/springboot/2017/06/26/spring-boot-shiro.html)
 2. [SpringBoot2.0集成Shiro](https://blog.csdn.net/bicheng4769/article/details/86668209)

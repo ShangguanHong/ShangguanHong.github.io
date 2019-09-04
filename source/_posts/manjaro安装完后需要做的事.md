@@ -54,6 +54,8 @@ sudo vim /etc/pacman.conf
 
 在换源之后，就可以使用 `sudo pacman -Syyu` 更新一下软件。
 
+更多的 pacman 指令参考这篇文章：[ArchLinux的pacman命令详解](http://www.ha97.com/3459.html)
+
 # 配置 oh-my-zsh
 
 ## 切换到 zsh

@@ -76,7 +76,7 @@ Apache Shiro 是一个功能强大、灵活的，开源的安全框架。它可�
 
 # 3. 前期准备
 
-## 3.1 导入坐标
+## 3.1 导入依赖
 
 ```xml
 <!-- shiro核心 -->
@@ -96,7 +96,7 @@ Apache Shiro 是一个功能强大、灵活的，开源的安全框架。它可�
 	<groupId>org.springframework.boot</groupId>
 	<artifactId>spring-boot-starter-thymeleaf</artifactId>
 </dependency>
-<!-- jap -->
+<!-- jpa -->
 <dependency>
 	<groupId>org.springframework.boot</groupId>
 	<artifactId>spring-boot-starter-data-jpa</artifactId>

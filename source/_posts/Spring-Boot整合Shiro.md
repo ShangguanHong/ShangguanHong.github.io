@@ -451,8 +451,7 @@ public class HomeIndexController {
     }
 
     @RequestMapping(value = "/login")
-    public String login(@RequestParam(value = "username", required = false) String username,
-                        @RequestParam(value = "password", required = false) String password) {
+    public String login(@RequestParam(value = "username", required = false) String username, @RequestParam(value = "password", required = false) String password) {
         if (username == null || password == null) {
             return "/login";
         }
@@ -478,7 +477,6 @@ public class HomeIndexController {
         } else {
             return "/login";
         }
-
     }
     
     @RequestMapping("/403")
@@ -517,7 +515,6 @@ public class HomeIndexController {
 @Controller
 @RequestMapping("/user")
 public class UserController {
-
 
     @GetMapping("/list")
     @RequiresPermissions("user:view") // 只有拥有 user:view 权限的用户才能访问此接口

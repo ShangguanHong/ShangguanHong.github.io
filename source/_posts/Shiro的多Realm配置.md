@@ -269,8 +269,7 @@ public class ShiroConfig {
 public class HomeController {
 
     @RequestMapping("/user/login")
-    public String userLogin(@RequestParam(value = "username") String username,
-                            @RequestParam(value = "password") String password) throws Exception {
+    public String userLogin(@RequestParam(value = "username") String username, @RequestParam(value = "password") String password) throws Exception {
         // 得到当前 subject
         Subject subject = SecurityUtils.getSubject();
         UserToken userToken = new UserToken(username, password, LoginTypeEnum.USER.getType());
@@ -283,8 +282,7 @@ public class HomeController {
     }
 
     @RequestMapping("/admin/login")
-    public String adminLogin(@RequestParam(value = "username") String username,
-                             @RequestParam(value = "password") String password) throws Exception {
+    public String adminLogin(@RequestParam(value = "username") String username, @RequestParam(value = "password") String password) throws Exception {
         // 得到当前 subject
         Subject subject = SecurityUtils.getSubject();
         UserToken userToken = new UserToken(username, password, LoginTypeEnum.ADMIN.getType());

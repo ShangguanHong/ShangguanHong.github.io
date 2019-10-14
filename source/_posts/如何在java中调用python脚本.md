@@ -3,7 +3,7 @@ title: 在java中调用python脚本
 copyright: true
 date: 2019-09-09 14:34:16
 categories:
-- Java学习记录
+- Java学习笔记
 tags:
 - Java
 ---

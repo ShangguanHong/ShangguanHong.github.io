@@ -2,7 +2,7 @@
 title: Spring Boot中CommandLineRunner的使用
 copyright: true
 date: 2019-08-29 21:24:02
-categories: SpringBoot学习记录
+categories: SpringBoot学习笔记
 tags:
 - Spring Boot
 ---

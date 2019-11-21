@@ -3,7 +3,7 @@ title: manjaro安装完后需要做的事
 copyright: true
 date: 2019-09-01 19:57:19
 categories:
-- manjaro学习记录
+- Linux学习记录
 tags:
 - manjaro
 - 美化
@@ -21,38 +21,7 @@ manjaro 需要捣鼓的东西还是挺多的，因此为了避免以后重新安
 
 # 换源更新
 
-manjaro 使用的包管理工具是 pacman，它的源配置文件在 `/etc/pacman.d/mirrorlist`文件中，如果没有可以自己创建一个，一般都是有的，然后将原来的源删除，添加自己需要的即可，如果你不知道你需要换的源 url 的话可以使用下面的方法。
-
-输入以下指令，会自动寻找最快的源，只需要勾选即可
-
-```shell
-sudo pacman-mirrors -i -c China -m rank
-```
-
-![深度截图plasmashell_20190901203111](manjaro安装完后需要做的事/深度截图_plasmashell_20190901203111.png)
-
-这里我选择的是 华中科技大学(USTC)的镜像源，校外人员可以使用华为的。
-
-在执行完上面的操作之后，在 `/etc/pacman.conf` 文件末尾添加两行：
-
-```
-[archlinuxcn]
-Server = https://mirrors.ustc.edu.cn/archlinuxcn/$arch
-```
-
-然后请安装 `archlinuxcn-keyring` 包以导入 GPG key。
-
-安装 yay
-
-```sh
-# aur社区上的软件需要使用yay来下载
-sudo pacman -S yay
-# 打开pacman与yay的color
-sudo vim /etc/pacman.conf
-# 找到color将其取消注释
-```
-
-在换源之后，就可以使用 `sudo pacman -Syyu` 更新一下软件。
+参考：[Linux系统换源](https://shangguanhong.github.io/2019/11/21/linux系统换源/)
 
 更多的 pacman 指令参考这篇文章：[ArchLinux的pacman命令详解](http://www.ha97.com/3459.html)
 

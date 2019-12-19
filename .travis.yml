@@ -1,0 +1,30 @@
+language: node_js
+node_js: stable
+
+# S: Build Lifecycle
+install:
+  - npm install
+
+#before_script:
+ # - npm install -g gulp
+
+script:
+  - hexo g
+  - gulp
+
+after_script:
+  - cd ./public
+  - git init
+  - git config user.name "ShangguanHong"
+  - git config user.email "sgh1450280694@gmail.com"
+  - git add .
+  - git commit -m "update post"
+  - git push --force --quiet "https://{GH_REF}" master:master
+# E: Build LifeCycle
+
+branches:
+  only:
+    - hexo
+env:
+ global:
+   - GH_REF: github.com/ShangguanHong/ShangguanHong.github.io.git

@@ -64,6 +64,12 @@ tags:
 language: node_js
 node_js: stable
 
+# .travis.yml 配置
+# 指定缓存模块，可选。缓存可加快编译速度。
+cache:
+  directories:
+    - node_modules
+
 # S: Build Lifecycle
 install:
   - npm install
@@ -71,25 +77,43 @@ install:
 #before_script:
  # - npm install -g gulp
 
+# 执行清缓存，生成网页操作
 script:
+  - hexo clean
   - hexo g
 
+# 设置git提交名，邮箱；替换真实token到_config.yml文件，最后depoy部署
 after_script:
-  - cd ./public
-  - git init
-  - git config user.name "ShangguanHong" --{GitHub账户名称}
-  - git config user.email "sgh1450280694@gmail.com" --{Github账户邮箱}
-  - git add .
-  - git commit -m "update post"
-  - git push --force --quiet "https://${GH_REF}" master:master
+  - git config user.name "ShangguanHong"
+  - git config user.email "sgh1450280694@gmail.com"
+  # 替换同目录下的_config.yml文件中gh_token字符串为travis后台刚才配置的变量，注意此处sed命令用了双引号。单引号无效！
+  - sed -i "s/gh_token/${GH_TOKEN}/g" ./_config.yml
+  - hexo d
 # E: Build LifeCycle
 
 branches:
   only:
-    - hexo --{Hexo源码分支名称}
-env:
- global:
-   - GH_REF: github.com/ShangguanHong/ShangguanHong.github.io.git --{仓库地址}
+    - hexo
+```
+
+修改  `_config.yml` 文件的deploy节点：
+
+原内容：
+
+```yml
+deploy:
+  type: git
+  repo: git@github.com/ShangguanHong/ShangguanHong.github.io.git
+  branch: master
+```
+
+新内容：
+
+```
+deploy:
+  type: git
+  repo: https://gh_token@github.com/ShangguanHong/ShangguanHong.github.io.git
+  branch: master
 ```
 
 至此，配置已经结束。

@@ -92,5 +92,5 @@ theme: next
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: git@github.com:ShangguanHong/ShangguanHong.github.io.git
+  repo: https://gh_token@github.com/ShangguanHong/ShangguanHong.github.io.git
   branch: master

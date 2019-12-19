@@ -81,7 +81,7 @@ after_script:
   - git config user.email "sgh1450280694@gmail.com" --{Github账户邮箱}
   - git add .
   - git commit -m "update post"
-  - git push --force --quiet "https://{GH_REF}" master:master
+  - git push --force --quiet "https://${GH_REF}" master:master
 # E: Build LifeCycle
 
 branches:

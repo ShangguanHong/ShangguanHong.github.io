@@ -142,13 +142,13 @@ func main() {
     wg := sync.WaitGroup{}
     wg.Add(n)
     for i := 0; i < n; i++ {
-        go f(i, &wg)
+        go f(&wg)
     }
     wg.Wait()
 }
 
 // 一定要通过指针传值，不然进程会进入死锁状态
-func f(i int, wg *sync.WaitGroup) { 
+func f(wg *sync.WaitGroup) { 
     fmt.Println("Hello World")
     wg.Done()
 }

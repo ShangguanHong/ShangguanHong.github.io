@@ -1,5 +1,5 @@
 ---
-title: Golang中sync.WaitGroup的使用
+title: Golang并发之sync.WaitGroup
 toc_number: true
 copyright: true
 date: 2019-12-22 10:37:28
@@ -129,7 +129,7 @@ func main() {
 
 2. WaitGroup对象不是一个引用类型
 
-WaitGroup对象不是一个引用类型，在通过函数传值的时候需要使用地址：
+`WaitGroup` 对象不是一个引用类型，在通过函数传值的时候需要使用地址：
 
 ```go
 package main

@@ -1,5 +1,5 @@
 ---
-title: Golang并发之sync.WaitGroup
+title: Golang的sync包-WaitGroup
 toc_number: true
 copyright: true
 date: 2019-12-22 10:37:28

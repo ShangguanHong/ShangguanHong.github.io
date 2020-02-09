@@ -1,5 +1,5 @@
 ---
-title: Golang并发之sync.Once
+title: Golang的sync包-Once
 toc_number: true
 copyright: true
 date: 2019-12-22 22:39:57

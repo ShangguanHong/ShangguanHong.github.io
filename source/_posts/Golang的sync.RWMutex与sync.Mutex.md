@@ -1,5 +1,5 @@
 ---
-title: Golang的sync包-RWMutex与Mutex
+title: Golang的sync.RWMutex与sync.Mutex
 toc_number: true
 copyright: true
 date: 2019-12-26 20:46:29

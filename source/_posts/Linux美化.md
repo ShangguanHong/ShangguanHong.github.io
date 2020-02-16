@@ -4,7 +4,7 @@ toc_number: true
 copyright: true
 date: 2019-11-21 21:11:12
 categories:
-- Linux学习记录
+- Linux学习笔记
 tags:
 - linux
 - zsh

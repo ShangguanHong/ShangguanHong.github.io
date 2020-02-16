@@ -3,7 +3,7 @@ title: manjaro安装完后需要做的事
 copyright: true
 date: 2019-09-01 19:57:19
 categories:
-- Linux学习记录
+- Linux学习笔记
 tags:
 - manjaro
 - 美化

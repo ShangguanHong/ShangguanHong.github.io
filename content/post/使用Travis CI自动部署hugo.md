@@ -13,7 +13,7 @@ tags: ["Travis CI", "hugo"]
 
 - 使用的hugo源文件存放在hugo分支下
 - 网站的静态文件存放在master分支下
-- 
+- 具体的变量根据实际来变化
 
 具体看如下配置
 
@@ -50,19 +50,7 @@ install:
 script:
   - hugo
 
-# after_script:
-#   # 部署
-#   - cd ./public
-#   - git init
-#   - git config user.name "ShangguanHong"
-#   - git config user.email "sgh1450280694@gmail.com"
-#   - git add .
-#   - git commit -m "Update Blog By TravisCI With Build ${TRAVIS_BUILD_NUMBER}"
-#   # Github Pages
-#   - git push --force --quiet "https://$GH_TOKEN@${GH_REF}" master:master
-#   # Github Pages
-#   # - git push --quiet "https://$GH_TOKEN@${GH_REF}" master:master --tags
-
+# 部署的配置在这里
 deploy:
   provider: pages # 重要，指定这是一份github pages的部署配置
   skip-cleanup: true # 重要，不能省略

@@ -48,7 +48,7 @@
 <meta itemprop="description" content="之前写过了一篇使用 Travis CI 自动部署hexo的文章(传送门)，最近从hexo迁移到了hugo，那自然也是要使用一下自动部署工具来自动部署，操作基本">
 <meta itemprop="datePublished" content="2020-03-20T13:24:09&#43;08:00" />
 <meta itemprop="dateModified" content="2020-03-20T13:24:09&#43;08:00" />
-<meta itemprop="wordCount" content="673">
+<meta itemprop="wordCount" content="705">
 
 
 
@@ -124,7 +124,7 @@
         <div class="post-category">
             <a href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/"> 工具使用 </a>
             </div>
-          <span class="more-meta"> 约 673 字 </span>
+          <span class="more-meta"> 约 705 字 </span>
           <span class="more-meta"> 预计阅读 2 分钟 </span>
         
       </div>
@@ -190,6 +190,9 @@
 </span><span class="lnt">41
 </span><span class="lnt">42
 </span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="k">language</span><span class="p">:</span><span class="w"> </span>go<span class="w">
@@ -204,7 +207,9 @@
 </span><span class="w"></span><span class="c"># 设置环境变量</span><span class="w">
 </span><span class="w"></span><span class="k">env</span><span class="p">:</span><span class="w">
 </span><span class="w"> </span><span class="k">global</span><span class="p">:</span><span class="w">
+</span><span class="w"> </span><span class="c"># 使用的hugo版本</span><span class="w">
 </span><span class="w">  </span>- <span class="k">version</span><span class="p">:</span><span class="w"> </span><span class="m">0.67.1</span><span class="w">
+</span><span class="w">  </span><span class="c"># ***.github.io url</span><span class="w">
 </span><span class="w">  </span>- <span class="k">GH_REF</span><span class="p">:</span><span class="w"> </span>github.com/ShangguanHong/ShangguanHong.github.io/<span class="w">
 </span><span class="w">
 </span><span class="w"></span><span class="k">before_install</span><span class="p">:</span><span class="w">
@@ -217,6 +222,7 @@
 </span><span class="w">  </span>- chmod<span class="w"> </span>+x<span class="w"> </span>hugo<span class="w">
 </span><span class="w">  </span>- export<span class="w"> </span>PATH=$PATH<span class="p">:</span>$PWD<span class="w">
 </span><span class="w">  </span>- hugo<span class="w"> </span>version<span class="w">
+</span><span class="w">  </span><span class="c"># 安装使用的主题，记得放在 themes 目录下</span><span class="w">
 </span><span class="w">  </span>- git<span class="w"> </span>clone<span class="w"> </span>https<span class="p">:</span>//github.com/olOwOlo/hugo-theme-even.git<span class="w"> </span>themes/even<span class="w">
 </span><span class="w">  </span>- git<span class="w"> </span>log<span class="w"> </span>-p<span class="w"> </span>-<span class="m">2</span><span class="w"> </span>|<span class="w"> </span>cat<span class="w">
 </span><span class="w">  </span>- commit_msg=$(git<span class="w"> </span>log<span class="w"> </span>-n1<span class="w"> </span>--pretty=format<span class="p">:</span><span class="s2">&#34;%s&#34;</span>)<span class="w">

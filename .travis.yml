@@ -1,34 +1,42 @@
-language: node_js
-node_js: stable
-
-# .travis.yml 配置
-# 指定缓存模块，可选。缓存可加快编译速度。
-cache:
-  directories:
-    - node_modules
-
-# S: Build Lifecycle
-install:
-  - npm install
-
-#before_script:
- # - npm install -g gulp
-
-# 执行清缓存，生成网页操作
-script:
-  - hexo clean
-  - hexo g
-  - gulp
-
-# 设置git提交名，邮箱；替换真实token到_config.yml文件，最后depoy部署
-after_script:
-  - git config user.name "ShangguanHong"
-  - git config user.email "sgh1450280694@gmail.com"
-  # 替换同目录下的_config.yml文件中gh_token字符串为travis后台刚才配置的变量，注意此处sed命令用了双引号。单引号无效！
-  - sed -i "s/gh_token/${GH_TOKEN}/g" ./_config.yml
-  - hexo d
-# E: Build LifeCycle
+language: go
 
 branches:
   only:
-    - hexo
+    - hugo  # 设置自动化部署的源码分支
+
+# cache this directory
+cache:
+  directories:
+    - themes
+    # - public
+    #- themes 主题没有更改时可以缓存
+
+before_install:
+- export TZ='Asia/Shanghai'  # 设置时区
+
+# 安装依赖组件
+install:
+  - wget https://github.com/gohugoio/hugo/releases/download/v${version}/hugo_${version}_Linux-64bit.tar.gz
+  - tar -xzvf hugo_${version}_Linux-64bit.tar.gz
+  - chmod +x hugo
+  - export PATH=$PATH:$PWD
+  - hugo version
+    #- git clone -b ${TRAVIS_BRANCH} --recursive https://github.com/m2kar.github.io.git
+    #- cd m2kar.github.io
+  - git log -p -2 | cat
+  - commit_msg=$(git log -n1 --pretty=format:"%s")
+  - git clone --recursive -b master https://${GH_TOKEN}@github.com/ShangguanHong/ShangguanHong.github.io.git public
+  - rm -rf public/*
+
+script:
+  - hugo -t even
+  - cp CNAME public/
+  - pushd public 
+  - git add .
+  - git commit -m "auto depoly ${commit_msg} "
+  - git push
+  - echo "depoly done"
+
+env:
+ global:
+  - version: 0.67.1

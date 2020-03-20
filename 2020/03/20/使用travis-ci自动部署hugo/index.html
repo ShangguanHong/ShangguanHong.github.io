@@ -48,7 +48,7 @@
 <meta itemprop="description" content="之前写过了一篇使用 Travis CI 自动部署hexo的文章(传送门)，最近从hexo迁移到了hugo，那自然也是要使用一下自动部署工具来自动部署，操作基本">
 <meta itemprop="datePublished" content="2020-03-20T13:24:09&#43;08:00" />
 <meta itemprop="dateModified" content="2020-03-20T13:24:09&#43;08:00" />
-<meta itemprop="wordCount" content="700">
+<meta itemprop="wordCount" content="673">
 
 
 
@@ -124,7 +124,7 @@
         <div class="post-category">
             <a href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/"> 工具使用 </a>
             </div>
-          <span class="more-meta"> 约 700 字 </span>
+          <span class="more-meta"> 约 673 字 </span>
           <span class="more-meta"> 预计阅读 2 分钟 </span>
         
       </div>
@@ -142,7 +142,7 @@
 <ul>
 <li>使用的hugo源文件存放在hugo分支下</li>
 <li>网站的静态文件存放在master分支下</li>
-<li></li>
+<li>具体的变量根据实际来变化</li>
 </ul>
 <p>具体看如下配置</p>
 <div class="highlight"><div class="chroma">
@@ -190,18 +190,6 @@
 </span><span class="lnt">41
 </span><span class="lnt">42
 </span><span class="lnt">43
-</span><span class="lnt">44
-</span><span class="lnt">45
-</span><span class="lnt">46
-</span><span class="lnt">47
-</span><span class="lnt">48
-</span><span class="lnt">49
-</span><span class="lnt">50
-</span><span class="lnt">51
-</span><span class="lnt">52
-</span><span class="lnt">53
-</span><span class="lnt">54
-</span><span class="lnt">55
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="k">language</span><span class="p">:</span><span class="w"> </span>go<span class="w">
@@ -236,19 +224,7 @@
 </span><span class="w"></span><span class="k">script</span><span class="p">:</span><span class="w">
 </span><span class="w">  </span>- hugo<span class="w">
 </span><span class="w">
-</span><span class="w"></span><span class="c"># after_script:</span><span class="w">
-</span><span class="w"></span><span class="c">#   # 部署</span><span class="w">
-</span><span class="w"></span><span class="c">#   - cd ./public</span><span class="w">
-</span><span class="w"></span><span class="c">#   - git init</span><span class="w">
-</span><span class="w"></span><span class="c">#   - git config user.name &#34;ShangguanHong&#34;</span><span class="w">
-</span><span class="w"></span><span class="c">#   - git config user.email &#34;sgh1450280694@gmail.com&#34;</span><span class="w">
-</span><span class="w"></span><span class="c">#   - git add .</span><span class="w">
-</span><span class="w"></span><span class="c">#   - git commit -m &#34;Update Blog By TravisCI With Build ${TRAVIS_BUILD_NUMBER}&#34;</span><span class="w">
-</span><span class="w"></span><span class="c">#   # Github Pages</span><span class="w">
-</span><span class="w"></span><span class="c">#   - git push --force --quiet &#34;https://$GH_TOKEN@${GH_REF}&#34; master:master</span><span class="w">
-</span><span class="w"></span><span class="c">#   # Github Pages</span><span class="w">
-</span><span class="w"></span><span class="c">#   # - git push --quiet &#34;https://$GH_TOKEN@${GH_REF}&#34; master:master --tags</span><span class="w">
-</span><span class="w">
+</span><span class="w"></span><span class="c"># 部署的配置在这里</span><span class="w">
 </span><span class="w"></span><span class="k">deploy</span><span class="p">:</span><span class="w">
 </span><span class="w">  </span><span class="k">provider</span><span class="p">:</span><span class="w"> </span>pages<span class="w"> </span><span class="c"># 重要，指定这是一份github pages的部署配置</span><span class="w">
 </span><span class="w">  </span><span class="k">skip-cleanup</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="c"># 重要，不能省略</span><span class="w">

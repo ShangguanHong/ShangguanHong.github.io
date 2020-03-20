@@ -3,35 +3,56 @@
   
   <url>
     <loc>https://shangguanhong.github.io/categories/</loc>
-    <lastmod>2020-03-20T13:24:09+08:00</lastmod>
+    <lastmod>2020-03-20T22:26:01+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://shangguanhong.github.io/tags/hexo/</loc>
+    <lastmod>2020-03-20T22:26:01+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://shangguanhong.github.io/tags/hugo/</loc>
-    <lastmod>2020-03-20T13:24:09+08:00</lastmod>
+    <lastmod>2020-03-20T22:26:01+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://shangguanhong.github.io/post/</loc>
-    <lastmod>2020-03-20T13:24:09+08:00</lastmod>
+    <lastmod>2020-03-20T22:26:01+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://shangguanhong.github.io/</loc>
-    <lastmod>2020-03-20T13:24:09+08:00</lastmod>
+    <lastmod>2020-03-20T22:26:01+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://shangguanhong.github.io/tags/</loc>
-    <lastmod>2020-03-20T13:24:09+08:00</lastmod>
+    <lastmod>2020-03-20T22:26:01+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://shangguanhong.github.io/2020/03/20/%E4%BB%8Ehexo%E8%BF%81%E7%A7%BB%E5%88%B0hugo/</loc>
+    <lastmod>2020-03-20T22:26:01+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://shangguanhong.github.io/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/</loc>
+    <lastmod>2020-03-20T22:26:01+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -45,13 +66,6 @@
   
   <url>
     <loc>https://shangguanhong.github.io/2020/03/20/%E4%BD%BF%E7%94%A8travis-ci%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2hugo/</loc>
-    <lastmod>2020-03-20T13:24:09+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://shangguanhong.github.io/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/</loc>
     <lastmod>2020-03-20T13:24:09+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -199,13 +213,6 @@
   
   <url>
     <loc>https://shangguanhong.github.io/2019/12/19/github%E4%BD%BF%E7%94%A8travis-ci/</loc>
-    <lastmod>2019-12-19T20:39:10+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://shangguanhong.github.io/tags/hexo/</loc>
     <lastmod>2019-12-19T20:39:10+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>

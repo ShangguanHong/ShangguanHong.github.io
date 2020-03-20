@@ -45,7 +45,7 @@ Hugo Static Site Generator v0.67.1-4F44227B windows/amd64 BuildDate: 2020-03-15T
 
 ### 创建站点
 
-在空闲目录下，建立一些名为`blog`的站点，使用下面 的命令：
+在空闲目录下，建立一些名为`blog`的站点，使用命令
 
 ```bash
 $ hugo new site blog

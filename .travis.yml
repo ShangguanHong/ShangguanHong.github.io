@@ -23,7 +23,7 @@ install:
   - chmod +x hugo
   - export PATH=$PATH:$PWD
   - hugo version
-  # - git clone https://github.com/olOwOlo/hugo-theme-even.git themes/even
+  - git clone https://github.com/olOwOlo/hugo-theme-even.git themes/even
   - git log -p -2 | cat
   - commit_msg=$(git log -n1 --pretty=format:"%s")
 

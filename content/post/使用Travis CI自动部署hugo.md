@@ -1,3 +1,23 @@
+---
+title: "使用Travis CI自动部署hugo"
+date: 2020-03-20T13:24:09+08:00
+lastmod: 2020-03-20T13:24:09+08:00
+draft: false
+categories: [工具使用]
+tags: ["Travis CI", "hugo"]
+---
+
+之前写过了一篇使用 `Travis CI` 自动部署hexo的文章([传送门]([https://shangguanhong.github.io/2019/12/19/github%E4%BD%BF%E7%94%A8travis-ci/](https://shangguanhong.github.io/2019/12/19/github使用travis-ci/)))，最近从hexo迁移到了hugo，那自然也是要使用一下自动部署工具来自动部署，操作基本和之前的一样，就是最后使用的`.travis.yml` 文件内容需要更改一下，因此如果不知道如何使用 `Travis CI`的可以查看之前的文章，这里就直接把 `.travis.yml` 的配置贴出来，修改部分参数即可直接使用。
+
+**说明**：
+
+- 使用的hugo源文件存放在hugo分支下
+- 网站的静态文件存放在master分支下
+- 
+
+具体看如下配置
+
+```yaml
 language: go
 
 go:
@@ -53,3 +73,6 @@ deploy:
   keep-history: true # 是否保持target-branch分支的提交记录
   on:
     branch: hugo # 博客源码的分支
+```
+
+最后将 `.travis.yml` 文件一起上传到github的hugo分支上，即可做到自动部署网页到master分支。

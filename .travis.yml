@@ -1,15 +1,17 @@
 language: go
 
+go:
+  - "1.14"  # 指定Golang 1.14
+
 branches:
   only:
     - hugo  # 设置自动化部署的源码分支
 
-# cache this directory
-cache:
-  directories:
-    - themes
-    # - public
-    #- themes 主题没有更改时可以缓存
+# 设置环境变量
+env:
+ global:
+  - version: 0.67.1
+  - GH_REF: github.com/ShangguanHong/ShangguanHong.github.io/
 
 before_install:
 - export TZ='Asia/Shanghai'  # 设置时区
@@ -21,22 +23,33 @@ install:
   - chmod +x hugo
   - export PATH=$PATH:$PWD
   - hugo version
-    #- git clone -b ${TRAVIS_BRANCH} --recursive https://github.com/m2kar.github.io.git
-    #- cd m2kar.github.io
+  # - git clone https://github.com/olOwOlo/hugo-theme-even.git themes/even
   - git log -p -2 | cat
   - commit_msg=$(git log -n1 --pretty=format:"%s")
-  - git clone --recursive -b master https://${GH_TOKEN}@github.com/ShangguanHong/ShangguanHong.github.io.git public
-  - rm -rf public/*
 
 script:
-  - hugo -t even
-  - cp CNAME public/
-  - pushd public 
-  - git add .
-  - git commit -m "auto depoly ${commit_msg} "
-  - git push
-  - echo "depoly done"
+  - hugo
 
-env:
- global:
-  - version: 0.67.1
+after_script:
+  # 部署
+  - cd ./public
+  - git init
+  - git config user.name "ShangguanHong"
+  - git config user.email "sgh1450280694@gmail.com"
+  - git add .
+  - git commit -m "Update Blog By TravisCI With Build $TRAVIS_BUILD_NUMBER"
+  # Github Pages
+  - git push --force --quiet "https://$GITHUB_TOKEN@${GH_REF}" master:master
+  # Github Pages
+  # - git push --quiet "https://$GITHUB_TOKEN@${GH_REF}" master:master --tags
+
+deploy:
+  provider: pages # 重要，指定这是一份github pages的部署配置
+  skip-cleanup: true # 重要，不能省略
+  local-dir: public # 静态站点文件所在目录
+  # target-branch: master # 要将静态站点文件发布到哪个分支
+  github-token: $GH_TOKEN # 重要，$GITHUB_TOKEN是变量，需要在GitHub上申请、再到配置到Travis
+  # fqdn:  # 如果是自定义域名，此处要填
+  keep-history: true # 是否保持target-branch分支的提交记录
+  on:
+    branch: master # 博客源码的分支

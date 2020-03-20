@@ -5,11 +5,13 @@ lastmod: 2020-03-20T10:09:17+08:00
 draft: false
 categories: [工具使用]
 tags: [typora, emoji]
+toc: true
+
 ---
 
-原文地址：https://www.cnblogs.com/wangjs-jacky/p/12011208.html
+[原文地址](https://www.cnblogs.com/wangjs-jacky/p/12011208.html)
 
-# People
+## People
 
 | 😄 `:smile:`                        | 😆 `:laughing:`                     |                        |
 | ---------------------------------- | ---------------------------------- | ---------------------- |
@@ -76,7 +78,7 @@ tags: [typora, emoji]
 | 👅 `:tongue:`                   | 💌 `:love_letter:`             | 👤 `:bust_in_silhouette:` |
 | 👥 `:busts_in_silhouette:`      | 💬 `:speech_balloon:`          | 💭 `:thought_balloon:`    |
 
-# Nature
+## Nature
 
 | ☀️ `:sunny:`                        | ☔️ `:umbrella:`             | ☁️ `:cloud:`                       |
 | ---------------------------------- | -------------------------- | --------------------------------- |
@@ -118,7 +120,7 @@ tags: [typora, emoji]
 | 🌎 `:earth_americas:`               | 🌏 `:earth_asia:`           | 🌋 `:volcano:`                     |
 | 🌌 `:milky_way:`                    | ⛅️ `:partly_sunny:`         |                                   |
 
-# Objects
+## Objects
 
 | 🎍 `:bamboo:`                         | 💝 `:gift_heart:`                 | 🎎 `:dolls:`                  |
 | ------------------------------------ | -------------------------------- | ---------------------------- |
@@ -209,7 +211,7 @@ tags: [typora, emoji]
 | 🍠 `:sweet_potato:`                   | 🍆 `:eggplant:`                   | 🍅 `:tomato:`                 |
 | 🌽 `:corn:`                           |                                  |                              |
 
-# Places
+## Places
 
 | 🏠 `:house:`               | 🏡 `:house_with_garden:`       | 🏫 `:school:`                 |
 | ------------------------- | ----------------------------- | ---------------------------- |
@@ -249,7 +251,7 @@ tags: [typora, emoji]
 | 🇷🇺 `:ru:`                 | 🇬🇧 `:gb:`                     | 🇬🇧 `:uk:`                    |
 | 🇩🇪 `:de:`                 |                               |                              |
 
-# Symbols
+## Symbols
 
 | 1️⃣ `:one:`                            | 2️⃣ `:two:`                        | 3️⃣ `:three:`                     |
 | ------------------------------------ | -------------------------------- | ------------------------------- |

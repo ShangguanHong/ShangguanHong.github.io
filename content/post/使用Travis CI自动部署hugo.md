@@ -30,7 +30,9 @@ branches:
 # 设置环境变量
 env:
  global:
+ # 使用的hugo版本
   - version: 0.67.1
+  # ***.github.io url
   - GH_REF: github.com/ShangguanHong/ShangguanHong.github.io/
 
 before_install:
@@ -43,6 +45,7 @@ install:
   - chmod +x hugo
   - export PATH=$PATH:$PWD
   - hugo version
+  # 安装使用的主题，记得放在 themes 目录下
   - git clone https://github.com/olOwOlo/hugo-theme-even.git themes/even
   - git log -p -2 | cat
   - commit_msg=$(git log -n1 --pretty=format:"%s")

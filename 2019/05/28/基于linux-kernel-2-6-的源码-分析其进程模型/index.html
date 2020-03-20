@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>基于Linux Kernel 2.6 的源码, 分析其进程模型 - ShangguanHong</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="ShangguanHong" /><meta name="description" content="1. 简介 本文的内容是基于Linux Kernel 2.6 的源码, 深入分析其进程模型, 主要分析的内容如下: 什么是进程(进程的概念) 操作系统是如何组织进程的 进程状态" /><meta name="keywords" content="go, golang, hugo" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.67.1 with theme even" />
+
+
+<link rel="canonical" href="https://shangguanhong.github.io/2019/05/28/%E5%9F%BA%E4%BA%8Elinux-kernel-2-6-%E7%9A%84%E6%BA%90%E7%A0%81-%E5%88%86%E6%9E%90%E5%85%B6%E8%BF%9B%E7%A8%8B%E6%A8%A1%E5%9E%8B/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="基于Linux Kernel 2.6 的源码, 分析其进程模型" />
+<meta property="og:description" content="1. 简介 本文的内容是基于Linux Kernel 2.6 的源码, 深入分析其进程模型, 主要分析的内容如下: 什么是进程(进程的概念) 操作系统是如何组织进程的 进程状态" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://shangguanhong.github.io/2019/05/28/%E5%9F%BA%E4%BA%8Elinux-kernel-2-6-%E7%9A%84%E6%BA%90%E7%A0%81-%E5%88%86%E6%9E%90%E5%85%B6%E8%BF%9B%E7%A8%8B%E6%A8%A1%E5%9E%8B/" />
+<meta property="article:published_time" content="2019-05-28T15:10:02+00:00" />
+<meta property="article:modified_time" content="2019-05-28T15:10:02+00:00" />
+<meta itemprop="name" content="基于Linux Kernel 2.6 的源码, 分析其进程模型">
+<meta itemprop="description" content="1. 简介 本文的内容是基于Linux Kernel 2.6 的源码, 深入分析其进程模型, 主要分析的内容如下: 什么是进程(进程的概念) 操作系统是如何组织进程的 进程状态">
+<meta itemprop="datePublished" content="2019-05-28T15:10:02&#43;00:00" />
+<meta itemprop="dateModified" content="2019-05-28T15:10:02&#43;00:00" />
+<meta itemprop="wordCount" content="5562">
+
+
+
+<meta itemprop="keywords" content="linux," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="基于Linux Kernel 2.6 的源码, 分析其进程模型"/>
+<meta name="twitter:description" content="1. 简介 本文的内容是基于Linux Kernel 2.6 的源码, 深入分析其进程模型, 主要分析的内容如下: 什么是进程(进程的概念) 操作系统是如何组织进程的 进程状态"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">赏我一个好梦如旧</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">赏我一个好梦如旧</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">基于Linux Kernel 2.6 的源码, 分析其进程模型</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2019-05-28 </span>
+        <div class="post-category">
+            <a href="/categories/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"> Linux学习笔记 </a>
+            </div>
+          <span class="more-meta"> 约 5562 字 </span>
+          <span class="more-meta"> 预计阅读 12 分钟 </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#31-进程状态state">3.1 进程状态(STATE)</a></li>
+    <li><a href="#32-进程标识符pid">3.2 进程标识符(PID)</a></li>
+    <li><a href="#34-进程之间的关系">3.4 进程之间的关系</a></li>
+    <li><a href="#35-进程调度">3.5 进程调度</a>
+      <ul>
+        <li><a href="#351-优先级">3.5.1 优先级</a></li>
+        <li><a href="#352-调度策略">3.5.2 调度策略</a></li>
+      </ul>
+    </li>
+    <li><a href="#36-进程的地址空间">3.6 进程的地址空间</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#51-与进程调度有关的数据结构">5.1 与进程调度有关的数据结构</a></li>
+    <li><a href="#52-调度算法o1算法">5.2 调度算法(O(1)算法)</a>
+      <ul>
+        <li><a href="#521-介绍o1算法">5.2.1 介绍O(1)算法</a></li>
+        <li><a href="#522-o1算法的原理">5.2.2 O(1)算法的原理</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <h1 id="1-简介">1. 简介</h1>
+<p>本文的内容是基于Linux Kernel 2.6 的源码, 深入分析其进程模型, 主要分析的内容如下:</p>
+<ul>
+<li>什么是进程(进程的概念)</li>
+<li>操作系统是如何组织进程的</li>
+<li>进程状态之间是如何转换的</li>
+<li>进程是如何进行调度的</li>
+<li>对该操作系统进程模型的看法</li>
+</ul>
+<h1 id="2-什么是进程">2. 什么是进程</h1>
+<p>既然我们要分析操作系统的进程模型, 那么我们首先需要了解一下什么是进程。
+首先, 我们先看下<a href="https://baike.baidu.com/item/%E8%BF%9B%E7%A8%8B/382503?fr=aladdin">百度上对进程(Process)的定义</a>:</p>
+<blockquote>
+<p>进程（Process）是计算机中的程序关于某数据集合上的一次运行活动，是系统进行资源分配和调度的基本单位，是<a href="https://baike.baidu.com/item/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F">操作系统</a>结构的基础。在早期面向进程设计的计算机结构中，进程是程序的基本执行实体；在当代面向线程设计的计算机结构中，进程是线程的容器。程序是指令、数据及其组织形式的描述，进程是程序的实体。</p>
+</blockquote>
+<p>接着我们看下<a href="https://en.wikipedia.org/wiki/Process_(computing)">维基百科上对进程(Process)的定义</a>:</p>
+<blockquote>
+<p>In computing, a process is an instance of a computer program that is being executed. It contains the program code and its current activity. Depending on the operating system (OS), a process may be made up of multiple threads of execution that execute instructions concurrently.</p>
+</blockquote>
+<p>Google翻译一波, 内容如下:</p>
+<blockquote>
+<p>在计算中，进程是正在执行的计算机程序的一个实例。它包含程序代码及其当前活动。根据操作系统（OS），一个进程可能由多个执行线程并发执行指令组成。</p>
+</blockquote>
+<p>在对进程有了一些基础的了解之后,  我们便可以进行下一步的分析了。</p>
+<h1 id="3-操作系统是如何组织进程的">3. 操作系统是如何组织进程的</h1>
+<p>在Linux系统中, 进程在<code>/linux/include/linux/sched.h </code> 头文件中被定义为<code>task_struct</code>, 它是一个结构体, 一个它的实例化即为一个进程, <code>task_struct</code>由许多元素构成, 下面列举一些重要的元素进行分析。</p>
+<blockquote>
+<ul>
+<li><strong>标识符</strong>：与进程相关的唯一标识符，用来区别正在执行的进程和其他进程。</li>
+<li><strong>状态</strong>：描述进程的状态，因为进程有挂起，阻塞，运行等好几个状态，所以都有个标识符来记录进程的执行状态。</li>
+<li><strong>优先级</strong>：如果有好几个进程正在执行，就涉及到进程被执行的先后顺序的问题，这和进程优先级这个标识符有关。</li>
+<li><strong>程序计数器</strong>：程序中即将被执行的下一条指令的地址。</li>
+<li><strong>内存指针</strong>：程序代码和进程相关数据的指针。</li>
+<li><strong>上下文数据</strong>：进程执行时处理器的寄存器中的数据。</li>
+<li><strong>I/O状态信息</strong>：包括显示的I/O请求，分配给进程的I/O设备和被进程使用的文件列表等。</li>
+<li><strong>记账信息</strong>：包括处理器的时间总和，记账号等等。</li>
+</ul>
+</blockquote>
+<h2 id="31-进程状态state">3.1 进程状态(STATE)</h2>
+<p>在<code>task_struct</code>结构体中, 定义进程的状态语句为</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="k">volatile</span> <span class="kt">long</span> <span class="n">state</span><span class="p">;</span>	<span class="cm">/* -1 unrunnable, 0 runnable, &gt;0 stopped */</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><code>valatile</code>关键字的作用是确保本条指令不会因编译器的优化而省略, 且要求每次直接读值, 这样保证了对进程实时访问的稳定性。
+进程在<code>/linux/include/linux/sched.h </code> 头文件中我们可以找到<code>state</code>的可能取值如下</p>
+<blockquote>
+<p>/*</p>
+<p>* Task state bitmask. NOTE! These bits are also</p>
+<p>* encoded in fs/proc/array.c: get_task_state().</p>
+<p>* We have two separate sets of flags: task-&gt;state</p>
+<p>* is about runnability, while task-&gt;exit_state are</p>
+<p>* the task exiting. Confusing, but this way</p>
+<p>* modifying one set can&rsquo;t modify the other one by</p>
+<p>* mistake.
+*/
+define TASK_RUNNING		0
+define TASK_INTERRUPTIBLE	1
+define TASK_UNINTERRUPTIBLE	2
+define TASK_STOPPED		4
+define TASK_TRACED		8</p>
+<p>/* in tsk-&gt;exit_state */
+define EXIT_ZOMBIE		16
+define EXIT_DEAD		32</p>
+<p>/* in tsk-&gt;state again */
+define TASK_NONINTERACTIVE	64
+define TASK_DEAD		128</p>
+</blockquote>
+<p>根据<code>state</code>后面的注释, 可以得到当state&lt;0时，表示此进程是处于不可运行的状态, 当state=0时, 表示此进程正处于运行状态, 当state&gt;0时, 表示此进程处于停止运行状态。
+以下列举一些state的常用取值</p>
+<blockquote>
+<table>
+<thead>
+<tr>
+<th align="left">状态</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">0(TASK_RUNNING)</td>
+<td align="left">进程处于正在运行或者准备运行的状态中</td>
+</tr>
+<tr>
+<td align="left">1(TASK_INTERRUPTIBLE)</td>
+<td align="left">进程处于可中断睡眠状态, 可通过信号唤醒</td>
+</tr>
+<tr>
+<td align="left">2(TASK_UNINTERRUPTIBLE)</td>
+<td align="left">进程处于不可中断睡眠状态, 不可通过信号进行唤醒</td>
+</tr>
+<tr>
+<td align="left">4( TASK_STOPPED)</td>
+<td align="left">进程被停止执行</td>
+</tr>
+<tr>
+<td align="left">8( TASK_TRACED)</td>
+<td align="left">进程被监视</td>
+</tr>
+<tr>
+<td align="left">16( EXIT_ZOMBIE)</td>
+<td align="left">僵尸状态进程, 表示进程被终止, 但是其父程序还未获取其被终止的信息。</td>
+</tr>
+<tr>
+<td align="left">32(EXIT_DEAD)</td>
+<td align="left">进程死亡, 此状态为进程的最终状态</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<h2 id="32-进程标识符pid">3.2 进程标识符(PID)</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="n">pid_t</span> <span class="n">pid</span><span class="p">;</span> <span class="cm">/*进程的唯一表示*/</span>
+<span class="n">pid_t</span> <span class="n">tgid</span><span class="p">;</span> <span class="cm">/*进程组的标识符*/</span><span class="err">```</span>
+<span class="o">&gt;</span> <span class="o">**</span><span class="err">在</span><span class="n">Linux系统中</span><span class="err">，一个线程组中的所有线程使用和该线程组的领头线程（该组中的第一个轻量级进程）相同的</span><span class="n">PID</span><span class="err">，并被存放在</span><span class="n">tgid成员中</span><span class="err">。只有线程组的领头线程的</span><span class="n">pid成员才会被设置为与tgid相同的值</span><span class="err">。注意，</span><span class="n">getpid</span><span class="p">()</span><span class="err">系统调用返回的是当前进程的</span><span class="n">tgid值而不是pid值</span><span class="err">。（线程是程序运行的最小单位，进程是程序运行的基本单位。）</span><span class="o">**</span>
+
+<span class="cp">## 3.3 进程的标记(FLAGS)
+</span><span class="cp"></span><span class="err">​```</span><span class="n">C</span>
+<span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">flags</span><span class="p">;</span>	<span class="cm">/* per process flags, defined below */</span>
+</code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>反应进程状态的信息，但不是运行状态，用于内核识别进程当前的状态，以备下一步操作</p>
+<p>flags成员的可能取值如下，这些宏以PF(ProcessFlag)开头</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-C" data-lang="C"><span class="cm">/*
+</span><span class="cm"> * Per process flags
+</span><span class="cm"> */</span>
+<span class="cp">#define PF_ALIGNWARN	0x00000001	</span><span class="cm">/* Print alignment warning msgs */</span><span class="cp">
+</span><span class="cp"></span>					<span class="cm">/* Not implemented yet, only for 486*/</span>
+<span class="cp">#define PF_STARTING	0x00000002	</span><span class="cm">/* being created */</span><span class="cp">
+</span><span class="cp">#define PF_EXITING	0x00000004	</span><span class="cm">/* getting shut down */</span><span class="cp">
+</span><span class="cp">#define PF_EXITPIDONE	0x00000008	</span><span class="cm">/* pi exit done on shut down */</span><span class="cp">
+</span><span class="cp">#define PF_FORKNOEXEC	0x00000040	</span><span class="cm">/* forked but didn&#39;t exec */</span><span class="cp">
+</span><span class="cp">#define PF_SUPERPRIV	0x00000100	</span><span class="cm">/* used super-user privileges */</span><span class="cp">
+</span><span class="cp">#define PF_DUMPCORE	0x00000200	</span><span class="cm">/* dumped core */</span><span class="cp">
+</span><span class="cp">#define PF_SIGNALED	0x00000400	</span><span class="cm">/* killed by a signal */</span><span class="cp">
+</span><span class="cp">#define PF_MEMALLOC	0x00000800	</span><span class="cm">/* Allocating memory */</span><span class="cp">
+</span><span class="cp">#define PF_FLUSHER	0x00001000	</span><span class="cm">/* responsible for disk writeback */</span><span class="cp">
+</span><span class="cp">#define PF_USED_MATH	0x00002000	</span><span class="cm">/* if unset the fpu must be initialized before use */</span><span class="cp">
+</span><span class="cp">#define PF_NOFREEZE	0x00008000	</span><span class="cm">/* this thread should not be frozen */</span><span class="cp">
+</span><span class="cp">#define PF_FROZEN	0x00010000	</span><span class="cm">/* frozen for system suspend */</span><span class="cp">
+</span><span class="cp">#define PF_FSTRANS	0x00020000	</span><span class="cm">/* inside a filesystem transaction */</span><span class="cp">
+</span><span class="cp">#define PF_KSWAPD	0x00040000	</span><span class="cm">/* I am kswapd */</span><span class="cp">
+</span><span class="cp">#define PF_SWAPOFF	0x00080000	</span><span class="cm">/* I am in swapoff */</span><span class="cp">
+</span><span class="cp">#define PF_LESS_THROTTLE 0x00100000	</span><span class="cm">/* Throttle me less: I clean memory */</span><span class="cp">
+</span><span class="cp">#define PF_BORROWED_MM	0x00200000	</span><span class="cm">/* I am a kthread doing use_mm */</span><span class="cp">
+</span><span class="cp">#define PF_RANDOMIZE	0x00400000	</span><span class="cm">/* randomize virtual address space */</span><span class="cp">
+</span><span class="cp">#define PF_SWAPWRITE	0x00800000	</span><span class="cm">/* Allowed to write to swap */</span><span class="cp">
+</span><span class="cp">#define PF_SPREAD_PAGE	0x01000000	</span><span class="cm">/* Spread page cache over cpuset */</span><span class="cp">
+</span><span class="cp">#define PF_SPREAD_SLAB	0x02000000	</span><span class="cm">/* Spread some slab caches over cpuset */</span><span class="cp">
+</span><span class="cp">#define PF_MEMPOLICY	0x10000000	</span><span class="cm">/* Non-default NUMA mempolicy */</span><span class="cp">
+</span><span class="cp">#define PF_MUTEX_TESTER	0x20000000	</span><span class="cm">/* Thread belongs to the rt mutex tester */</span><span class="cp">
+</span><span class="cp">#define PF_FREEZER_SKIP	0x40000000	</span><span class="cm">/* Freezer should not count it as freezeable */</span><span class="cp">
+</span></code></pre></td></tr></table>
+</div>
+</div><h2 id="34-进程之间的关系">3.4 进程之间的关系</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="cm">/* 
+</span><span class="cm"> * pointers to (original) parent process, youngest child, younger sibling,
+</span><span class="cm"> * older sibling, respectively.  (p-&gt;father can be replaced with 
+</span><span class="cm"> * p-&gt;parent-&gt;pid)
+</span><span class="cm"> */</span>
+<span class="k">struct</span> <span class="n">task_struct</span> <span class="o">*</span><span class="n">real_parent</span><span class="p">;</span> <span class="cm">/* real parent process (when being debugged) */</span>
+<span class="k">struct</span> <span class="n">task_struct</span> <span class="o">*</span><span class="n">parent</span><span class="p">;</span>	<span class="cm">/* parent process */</span>
+<span class="cm">/*
+</span><span class="cm"> * children/sibling forms the list of my children plus the
+</span><span class="cm"> * tasks I&#39;m ptracing.
+</span><span class="cm"> */</span>
+<span class="k">struct</span> <span class="n">list_head</span> <span class="n">children</span><span class="p">;</span>	<span class="cm">/* list of my children */</span>
+<span class="k">struct</span> <span class="n">list_head</span> <span class="n">sibling</span><span class="p">;</span>	<span class="cm">/* linkage in my parent&#39;s children list */</span>
+<span class="k">struct</span> <span class="n">task_struct</span> <span class="o">*</span><span class="n">group_leader</span><span class="p">;</span>	<span class="cm">/* threadgroup leader */</span>
+</code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p><strong>在Linux系统中，所有进程之间都有着直接或间接地联系，每个进程都有其父进程，也可能有零个或多个子进程。拥有同一父进程的所有进程具有兄弟关系。</strong></p>
+<p><strong>real_parent指向其父进程，如果创建它的父进程不再存在，则指向PID为1的init进程。 parent指向其父进程，当它终止时，必须向它的父进程发送信号。它的值通常与 real_parent相同。 children表示链表的头部，链表中的所有元素都是它的子进程（进程的子进程链表）。 sibling用于把当前进程插入到兄弟链表中（进程的兄弟链表）。 group_leader指向其所在进程组的领头进程。</strong></p>
+</blockquote>
+<h2 id="35-进程调度">3.5 进程调度</h2>
+<h3 id="351-优先级">3.5.1 优先级</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-C" data-lang="C">	<span class="kt">int</span> <span class="n">prio</span><span class="p">,</span> <span class="n">static_prio</span><span class="p">,</span> <span class="n">normal_prio</span><span class="p">;</span>
+	<span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">rt_priority</span><span class="p">;</span>
+<span class="cm">/*
+</span><span class="cm">	prio: 用于保存动态优先级
+</span><span class="cm">	static_prio: 用于保存静态优先级, 可以通过nice系统调用来修改
+</span><span class="cm">	normal_prio: 它的值取决于静态优先级和调度策略
+</span><span class="cm">	priort_priority: 用于保存实时优先级
+</span><span class="cm">*/</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="352-调度策略">3.5.2 调度策略</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-C" data-lang="C"><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">policy</span><span class="p">;</span>
+<span class="n">cpumask_t</span> <span class="n">cpus_allowed</span><span class="p">;</span>
+<span class="cm">/*
+</span><span class="cm">	policy: 表示进程的调度策略
+</span><span class="cm">	cpus_allowed: 用于控制进程可以在哪个处理器上运行
+</span><span class="cm">*/</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><code>policy</code>表示进程调度策略, 目前主要有以下五种策略</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="cm">/*
+</span><span class="cm"> * Scheduling policies
+</span><span class="cm"> */</span>
+<span class="cp">#define SCHED_NORMAL	0 </span><span class="c1">//按优先级进行调度
+</span><span class="c1"></span><span class="cp">#define SCHED_FIFO	    1 </span><span class="c1">//先进先出的调度算法
+</span><span class="c1"></span><span class="cp">#define SCHED_RR	   	2 </span><span class="c1">//时间片轮转的调度算法
+</span><span class="c1"></span><span class="cp">#define SCHED_BATCH		3 </span><span class="c1">//用于非交互的处理机消耗型的进程
+</span><span class="c1"></span><span class="cp">#define SCHED_IDLE        5</span><span class="c1">//系统负载很低时的调度算法 
+</span></code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<table>
+<thead>
+<tr>
+<th align="left">字段</th>
+<th align="left">描述</th>
+<th>所在调度器类</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">SCHED_NORMAL</td>
+<td align="left">（也叫SCHED_OTHER）用于普通进程，通过CFS调度器实现。SCHED_BATCH用于非交互的处理器消耗型进程。SCHED_IDLE是在系统负载很低时使用</td>
+<td>CFS</td>
+</tr>
+<tr>
+<td align="left">SCHED_FIFO</td>
+<td align="left">先入先出调度算法（实时调度策略），相同优先级的任务先到先服务，高优先级的任务可以抢占低优先级的任务</td>
+<td>RT</td>
+</tr>
+<tr>
+<td align="left">SCHED_RR</td>
+<td align="left">轮流调度算法（实时调度策略），后 者提供 Roound-Robin 语义，采用时间片，相同优先级的任务当用完时间片会被放到队列尾部，以保证公平性，同样，高优先级的任务可以抢占低优先级的任务。不同要求的实时任务可以根据需要用sched_setscheduler()API 设置策略</td>
+<td>RT</td>
+</tr>
+<tr>
+<td align="left">SCHED_BATCH</td>
+<td align="left">SCHED_NORMAL普通进程策略的分化版本。采用分时策略，根据动态优先级(可用nice()API设置），分配 CPU 运算资源。注意：这类进程比上述两类实时进程优先级低，换言之，在有实时进程存在时，实时进程优先调度。但针对吞吐量优化</td>
+<td>CFS</td>
+</tr>
+<tr>
+<td align="left">SCHED_IDLE</td>
+<td align="left">优先级最低，在系统空闲时才跑这类进程(如利用闲散计算机资源跑地外文明搜索，蛋白质结构分析等任务，是此调度策略的适用者）</td>
+<td>CFS</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<h2 id="36-进程的地址空间">3.6 进程的地址空间</h2>
+<p>进程都拥有自己的资源，这些资源指的就是进程的地址空间，每个进程都有着自己的地址空间，在task_struct中，有关进程地址空间的定义如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="k">struct</span> <span class="n">mm_struct</span> <span class="o">*</span><span class="n">mm</span><span class="p">,</span> <span class="o">*</span><span class="n">active_mm</span><span class="p">;</span>
+
+<span class="cm">/*
+</span><span class="cm">	mm: 进程所拥有的用户空间内存描述符，内核线程无的mm为NULL
+</span><span class="cm">	active_mm: active_mm指向进程运行时所使用的内存描述符， 对于普通进程而言，这两个指针变量的值相同。但是内核线程kernel thread是没有进程地址空间的，所以内核线程的tsk-&gt;mm域是空（NULL）。但是内核必须知道用户空间包含了什么，因此它的active_mm成员被初始化为前一个运行进程的active_mm值。
+</span><span class="cm">	
+</span><span class="cm">*/</span>
+</code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p><strong>如果当前内核线程被调度之前运行的也是另外一个内核线程时候，那么其mm和avtive_mm都是NULL</strong>
+<strong>以上即为操作系统是怎么组织进程的一些分析, 有了这些作为基础, 我们就可以进行下一步的分析了</strong></p>
+</blockquote>
+<h1 id="4-进程状态之间是如何转换的">4. 进程状态之间是如何转换的</h1>
+<p>关于linux进程状态(STATE)的定义, 取值以及描述都在进程状态中进行了详细的分析, 这里就不做过多的赘述。
+下面给出进程的各种状态之间是如何进行互相转换的关系图:</p>
+<p><img src="https://images2018.cnblogs.com/blog/1369608/201804/1369608-20180425160244245-1374152778.jpg" alt="img">
+(图片来源网上)</p>
+<h1 id="5进程是如何进行调度的">5.进程是如何进行调度的</h1>
+<h2 id="51-与进程调度有关的数据结构">5.1 与进程调度有关的数据结构</h2>
+<p>在了解进程是如何进行调度之前, 我们需要先了解一些与进程调度有关的数据结构。
+###5.1.1 可运行队列(runqueue)
+在<code>/kernel/sched.c</code>文件下,  可运行队列被定义为<code>struct rq</code>,  每一个CPU都会拥有一个<code>struct rq</code>, 它主要被用来存储一些基本的用于调度的信息, 包括及时调度和CFS调度。在Linux kernel 2.6中, <code>struct rq</code>是一个非常重要的数据结构, 接下来我们介绍一下它的部分重要字段:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-C" data-lang="C">							<span class="cm">/*   选取出部分字段做注释   */</span>
+    <span class="c1">//runqueue的自旋锁，当对runqueue进行操作的时候，需要对其加锁。由于每个CPU都有一个runqueue，这样会大大减少竞争的机会
+</span><span class="c1"></span>    <span class="n">spinlock_t</span> <span class="n">lock</span><span class="p">;</span> 
+    
+    <span class="c1">// 此变量是用来记录active array中最早用完时间片的时间
+</span><span class="c1"></span>	<span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">expired_timestamp</span><span class="p">;</span> 
+    
+    <span class="c1">//记录该CPU上就绪进程总数，是active array和expired array进程总数和
+</span><span class="c1"></span>	<span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">nr_running</span><span class="p">;</span> 
+    
+    <span class="c1">// 记录该CPU运行以来发生的进程切换次数
+</span><span class="c1"></span>	<span class="kt">unsigned</span> <span class="kt">long</span> <span class="kt">long</span> <span class="n">nr_switches</span><span class="p">;</span> 
+    
+    <span class="c1">// 记录该CPU不可中断状态进程的个数
+</span><span class="c1"></span>	<span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">nr_uninterruptible</span><span class="p">;</span> 
+    
+    <span class="c1">// 这部分是rq的最最最重要的部分, 我将在下面仔细分析它们
+</span><span class="c1"></span>    <span class="k">struct</span> <span class="n">prio_array</span> <span class="o">*</span><span class="n">active</span><span class="p">,</span> <span class="o">*</span><span class="n">expired</span><span class="p">,</span> <span class="n">arrays</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>###5.1.2  优先级数组(prio_array)
+Linux kernel 2.6版本中, 在rq中多加了两个按优先级排序的数组<code>active array </code>和<code>expired array</code> 。
+这两个队列的结构是<code>struct prio_array </code>, 它被定义在<code>/kernel/sched.c </code>中, 其数据结构为:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-C" data-lang="C"><span class="k">struct</span> <span class="n">prio_array</span> <span class="p">{</span>
+	<span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">nr_active</span><span class="p">;</span> <span class="c1">// 
+</span><span class="c1"></span>	<span class="n">DECLARE_BITMAP</span><span class="p">(</span><span class="n">bitmap</span><span class="p">,</span> <span class="n">MAX_PRIO</span><span class="o">+</span><span class="mi">1</span><span class="p">);</span> <span class="cm">/* include 1 bit for delimiter */</span>
+    <span class="cm">/*开辟MAX_PRIO + 1个bit的空间, 当某一个优先级的task正处于TASK_RUNNING状态时, 其优先级对应的二进制位将会被标记为1, 因此当你需要找此时需要运行的最高的优先级时, 只需要找到bitmap的哪一位被标记为1了即可*/</span>
+    
+	<span class="k">struct</span> <span class="n">list_head</span> <span class="n">queue</span><span class="p">[</span><span class="n">MAX_PRIO</span><span class="p">];</span> <span class="c1">// 每一个优先级都有一个list头
+</span><span class="c1"></span><span class="p">};</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><code>Active array</code>表示的是CPU选择执行的运行进程队列, 在这个队列里的进程都有时间片剩余, <code>*active</code>指针总是指向它。
+<code>Expired array</code>则是用来存放在<code>Active array</code>中使用完时间片的进程, *expired指针总是指向它。
+一旦在<code>active array</code>里面的某一个普通进程的时间片使用完了, 调度器将重新计算该进程的时间片与优先级, 并将它从<code>active array</code>中删除, 插入到<code>expired array</code>中的相应的优先级队列中 。
+当active array内的所有task都用完了时间片, 这时只需要将<code>*active</code>与<code>*expired</code>这两个指针交换下, 即可切换运行队列。
+###5.1.3 调度器主函数(schedule())
+<code>schedule</code>函数存在<code>/kernel/sched.c</code>中, 是Linux kernel很重要的一个函数, 它的作用是用来挑选出下一个应该执行的进程, 并且完成进程的切换工作, 是进程调度的主要执行者。</p>
+<h2 id="52-调度算法o1算法">5.2 调度算法(O(1)算法)</h2>
+<h3 id="521-介绍o1算法">5.2.1 介绍O(1)算法</h3>
+<p>何为O(1)算法: 该算法总能够在有限的时间内选出优先级最高的进程然后执行, 而不管系统中有多少个可运行的进程, 因此命名为O(1)算法。</p>
+<h3 id="522-o1算法的原理">5.2.2 O(1)算法的原理</h3>
+<p>在前面我们提到了两个按优先级排序的数组<code>active array</code>和<code>expired array</code>, 这两个数组是实现O(1)算法的关键所在。
+O(1)调度算法每次都是选取在active array数组中且优先级最高的进程来运行。
+那么该算法如何找到优先级最高的进程呢? 大家还记得前面<code>prio_array</code>内的<code>DECLARE_BITMAP(bitmap, MAX_PRIO+1);</code>字段吗？这里它就发挥出作用了(详情看代码注释), 这里只要找到<code>bitmap</code>内哪一个位被设置为了1, 即可得到当前系统所运行的task的优先级(idx, 通过sehed_find_first_bit()方法实现), 接下来找到idx所对应的进程链表(queue), queue内的所有进程都是目前可运行的并且拥有最高优先级的进程, 接着依次执行这些进程,。
+该过程定义在<code>schedule</code>函数中, 主要代码如下:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-C" data-lang="C"><span class="k">struct</span> <span class="n">task_struct</span> <span class="o">*</span><span class="n">prev</span><span class="p">,</span> <span class="o">*</span><span class="n">next</span><span class="p">;</span>
+<span class="k">struct</span> <span class="n">list_head</span> <span class="o">*</span><span class="n">queue</span><span class="p">;</span>
+<span class="k">struct</span> <span class="n">prio_array</span> <span class="o">*</span><span class="n">array</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">idx</span><span class="p">;</span>
+
+<span class="n">prev</span> <span class="o">=</span> <span class="n">current</span><span class="p">;</span>
+<span class="n">array</span> <span class="o">=</span> <span class="n">rq</span><span class="o">-&gt;</span><span class="n">active</span><span class="p">;</span>
+<span class="n">idx</span> <span class="o">=</span> <span class="n">sehed_find_first_bit</span><span class="p">(</span><span class="n">array</span><span class="o">-&gt;</span><span class="n">bitmap</span><span class="p">);</span> <span class="c1">//找到位图中第一个不为0的位的序号
+</span><span class="c1"></span><span class="n">queue</span> <span class="o">=</span> <span class="n">array</span><span class="o">-&gt;</span><span class="n">queue</span> <span class="o">+</span> <span class="n">idx</span><span class="p">;</span> <span class="c1">//得到对应的队列链表头
+</span><span class="c1"></span><span class="n">next</span> <span class="o">=</span> <span class="n">list_entry</span><span class="p">(</span><span class="n">queue</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">,</span> <span class="k">struct</span> <span class="n">task_struct</span><span class="p">,</span> <span class="n">run_list</span><span class="p">);</span> <span class="c1">//得到进程描述符
+</span><span class="c1"></span><span class="k">if</span> <span class="p">(</span><span class="n">prev</span> <span class="o">!=</span> <span class="n">next</span><span class="p">)</span> <span class="c1">//如果选出的进程和当前进程不是同一个,则交换上下文
+</span><span class="c1"></span>    <span class="n">context_switch</span><span class="p">();</span>
+</code></pre></td></tr></table>
+</div>
+</div><h1 id="6-对该操作系统进程模型的看法">6. 对该操作系统进程模型的看法</h1>
+<p>该算法模型解决了在Linux kernel 2.4下找寻优先级最高的进程时(时间复杂度为O(n)), 花费时间过多的问题, 并且能够在O(1)的时间复杂度内实现其功能, 可以说是已经非常的优秀了, 但是此算法仍然存在着一些不足之处, 比如当系统中交互式进程过多时( 如桌面系统),此时系统运行的就不太理想, 希望今后能够有更多的大佬们可以改善此算法, 精益求精。</p>
+<h1 id="7参考资料">7.参考资料</h1>
+<ul>
+<li><a href="https://blog.csdn.net/bit_clearoff/article/details/54292300">task_struct结构体成员详解</a></li>
+<li><a href="https://blog.csdn.net/qq_29503203/article/details/54618275">浅析Linux下的task_struct结构体</a></li>
+<li><a href="https://blog.csdn.net/gatieme/article/details/51383272">Linux进程描述符task_struct结构体详解&ndash;Linux进程的管理与调度（一）</a></li>
+<li><a href="https://blog.csdn.net/bullbat/article/details/7160246">linux内核分析之调度算法（一）</a></li>
+<li><a href="https://blog.csdn.net/liuxiaowu19911121/article/details/47010721">O(1)调度算法</a></li>
+<li><a href="https://mirrors.edge.kernel.org/pub/linux/kernel/v2.6/">Linux kernel 2.6 源码下载链接</a></li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">ShangguanHong</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2019-05-28
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/linux/">linux</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/2019/05/28/githubpages-hexo%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E5%8D%9A%E5%AE%A2/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">利用GithubPages &#43; Hexo搭建自己的博客</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/2019/05/28/phpstudy%E4%B8%AD%E5%8D%87%E7%BA%A7mysql/">
+            <span class="next-text nav-default">phpstudy中升级mysql</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+  <div id="vcomments"></div>
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+  <script type="text/javascript">
+    new Valine({
+        el: '#vcomments' ,
+        appId: 'X0gLmyOh1himl7jHPYcpKKop-gzGzoHsz',
+        appKey: 'hoYFzkrMqrD9SyRNpkiNf0LH',
+        notify:  false ,
+        verify:  false ,
+        avatar:'mm',
+        placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊!',
+        visitor:  false 
+    });
+  </script>
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:www.sgh1450280694@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/ShangguanHong" class="iconfont icon-github" title="github"></a>
+      <a href="https://weibo.com/5590338381" class="iconfont icon-weibo" title="weibo"></a>
+      <a href="https://space.bilibili.com/105190849" class="iconfont icon-bilibili" title="bilibili"></a>
+  <a href="https://shangguanhong.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2019 - 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">ShangguanHong</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

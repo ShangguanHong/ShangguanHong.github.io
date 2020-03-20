@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>manjaro安装完后需要做的事 - ShangguanHong</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="ShangguanHong" /><meta name="description" content="前言 之前在朋友的推荐下放弃了以前使用的 Ubuntu，使用了 manjaro 作为我日常使用的 Linux，用了一段时间之后发现这个 Linux 发行版是真的香，以致于我换" /><meta name="keywords" content="go, golang, hugo" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.67.1 with theme even" />
+
+
+<link rel="canonical" href="https://shangguanhong.github.io/2019/09/01/manjaro%E5%AE%89%E8%A3%85%E5%AE%8C%E5%90%8E%E9%9C%80%E8%A6%81%E5%81%9A%E7%9A%84%E4%BA%8B/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="manjaro安装完后需要做的事" />
+<meta property="og:description" content="前言 之前在朋友的推荐下放弃了以前使用的 Ubuntu，使用了 manjaro 作为我日常使用的 Linux，用了一段时间之后发现这个 Linux 发行版是真的香，以致于我换" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://shangguanhong.github.io/2019/09/01/manjaro%E5%AE%89%E8%A3%85%E5%AE%8C%E5%90%8E%E9%9C%80%E8%A6%81%E5%81%9A%E7%9A%84%E4%BA%8B/" />
+<meta property="article:published_time" content="2019-09-01T19:57:19+00:00" />
+<meta property="article:modified_time" content="2019-09-01T19:57:19+00:00" />
+<meta itemprop="name" content="manjaro安装完后需要做的事">
+<meta itemprop="description" content="前言 之前在朋友的推荐下放弃了以前使用的 Ubuntu，使用了 manjaro 作为我日常使用的 Linux，用了一段时间之后发现这个 Linux 发行版是真的香，以致于我换">
+<meta itemprop="datePublished" content="2019-09-01T19:57:19&#43;00:00" />
+<meta itemprop="dateModified" content="2019-09-01T19:57:19&#43;00:00" />
+<meta itemprop="wordCount" content="1295">
+
+
+
+<meta itemprop="keywords" content="manjaro,美化," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="manjaro安装完后需要做的事"/>
+<meta name="twitter:description" content="前言 之前在朋友的推荐下放弃了以前使用的 Ubuntu，使用了 manjaro 作为我日常使用的 Linux，用了一段时间之后发现这个 Linux 发行版是真的香，以致于我换"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">赏我一个好梦如旧</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">赏我一个好梦如旧</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">manjaro安装完后需要做的事</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2019-09-01 </span>
+        <div class="post-category">
+            <a href="/categories/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"> Linux学习笔记 </a>
+            </div>
+          <span class="more-meta"> 约 1295 字 </span>
+          <span class="more-meta"> 预计阅读 3 分钟 </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#切换到-zsh">切换到 zsh</a></li>
+    <li><a href="#插件">插件</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#pacman">pacman</a></li>
+    <li><a href="#yay">yay</a></li>
+    <li><a href="#安装搜狗输入法">安装搜狗输入法</a></li>
+    <li><a href="#配置小飞机">配置小飞机</a></li>
+    <li><a href="#终端代理">终端代理</a></li>
+    <li><a href="#wine">wine</a></li>
+    <li><a href="#安装字体">安装字体</a></li>
+    <li><a href="#配置jdk8">配置jdk8</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#修改home下的目录">修改Home下的目录</a></li>
+    <li><a href="#解决时间问题">解决时间问题</a></li>
+    <li><a href="#解决关机卡死问题">解决关机卡死问题</a></li>
+    <li><a href="#开机开启小键盘">开机开启小键盘</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <h1 id="前言">前言</h1>
+<p>之前在朋友的推荐下放弃了以前使用的 Ubuntu，使用了 manjaro 作为我日常使用的 Linux，用了一段时间之后发现这个 Linux 发行版是真的香，以致于我换了电脑之后也想要迅速将 manjaro 安装回来。</p>
+<p>manjaro 需要捣鼓的东西还是挺多的，因此为了避免以后重新安装的时候又到处找教程，还不如我将这次用到的东西记录下来，便于以后的查阅。</p>
+<p>官方网站：https://www.manjaro.cn/</p>
+<h1 id="换源更新">换源更新</h1>
+<p>参考：<a href="https://shangguanhong.github.io/2019/11/21/linux%E7%B3%BB%E7%BB%9F%E6%8D%A2%E6%BA%90/">Linux系统换源</a></p>
+<p>更多的 pacman 指令参考这篇文章：<a href="http://www.ha97.com/3459.html">ArchLinux的pacman命令详解</a></p>
+<h1 id="配置-oh-my-zsh">配置 oh-my-zsh</h1>
+<h2 id="切换到-zsh">切换到 zsh</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># 查看本地的 shell</span>
+cat /etc/shells 
+<span class="c1"># 切换到zsh(重启后生效)</span>
+chsh -s /bin/zsh
+<span class="c1"># 安装 oh-my-zsh 配置文件</span>
+<span class="c1"># via curl</span>
+sh -c <span class="s2">&#34;</span><span class="k">$(</span>curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh<span class="k">)</span><span class="s2">&#34;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="插件">插件</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># 语法高亮</span> 
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git <span class="nv">$ZSH_CUSTOM</span>/plugins/zsh-syntax-highlighting
+<span class="c1"># 自动补全</span>
+git clone https://github.com/zsh-users/zsh-autosuggestions <span class="nv">$ZSH_CUSTOM</span>/plugins/zsh-autosuggestions
+<span class="c1"># 自动跳转 j指令跳转</span>
+sudo pacman -S autojump
+<span class="c1"># 修改配置文件</span>
+vim ~/.zshrc
+<span class="c1"># 在plugins后括号里添加安装的插件名字</span>
+<span class="c1"># extract 自带的解压缩工具，使用x指令解压全部格式的压缩包</span>
+<span class="nv">plugins</span><span class="o">=(</span>
+    git
+    autojump
+    extract
+    zsh-syntax-highlighting
+    zsh-autosuggestions
+<span class="o">)</span>
+<span class="c1"># 更新配置文件</span>
+<span class="nb">source</span> ~/.zshrc    
+</code></pre></td></tr></table>
+</div>
+</div><h1 id="安装软件">安装软件</h1>
+<h2 id="pacman">pacman</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">sudo pacman -S 
+vim 
+google-chrome 
+typora 
+teamviewer 
+visual-studio-code-bin 
+intellij-idea-ultimate-edition 
+uget 
+neofetch
+vlc
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="yay">yay</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">yay -S 
+wps-office <span class="c1"># wps</span>
+ttf-wps-fonts <span class="c1"># wps字体</span>
+netease-cloud-music <span class="c1"># 网易云音乐</span>
+deepin-com-qq-im <span class="c1"># QQ</span>
+deepin-com-qq-office <span class="c1"># TIM</span>
+deepin-wine-wechat <span class="c1"># wechat</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="安装搜狗输入法">安装搜狗输入法</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">sudo pacman -S fcitx-sogoupinyin
+sudo pacman -S fcitx-im
+<span class="c1"># 图形化的配置工具</span>
+sudo pacman -S fcitx-configtool 
+<span class="c1"># 打开配置文件</span>
+vim ~/.xprofile
+<span class="c1"># 添加下列语句</span>
+<span class="nb">export</span> <span class="nv">GTK_IM_MODULE</span><span class="o">=</span>fcitx
+<span class="nb">export</span> <span class="nv">QT_IM_MODULE</span><span class="o">=</span>fcitx
+<span class="nb">export</span> <span class="nv">XMODIFIERS</span><span class="o">=</span><span class="s2">&#34;@im=fcitx&#34;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>重启或者注销之后即可使用搜狗输入法</p>
+<h2 id="配置小飞机">配置小飞机</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">sudo pacman -S shadowsocks-libev
+</code></pre></td></tr></table>
+</div>
+</div><p>配置文件格式为</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
+    <span class="nt">&#34;server&#34;</span><span class="p">:</span><span class="s2">&#34;server_ip&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;server_port&#34;</span><span class="p">:</span><span class="err">server_port</span><span class="p">,</span>
+	<span class="nt">&#34;mode&#34;</span><span class="p">:</span><span class="s2">&#34;tcp_and_udp&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;local_address&#34;</span><span class="p">:</span> <span class="s2">&#34;0.0.0.0&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;local_port&#34;</span><span class="p">:</span> <span class="mi">1080</span><span class="p">,</span>
+	<span class="nt">&#34;password&#34;</span><span class="p">:</span><span class="s2">&#34;password&#34;</span><span class="p">,</span>
+	<span class="nt">&#34;method&#34;</span><span class="p">:</span><span class="s2">&#34;chacha20-ietf-poly1305&#34;</span><span class="p">,</span>
+	<span class="nt">&#34;timeout&#34;</span><span class="p">:</span><span class="mi">60</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="终端代理">终端代理</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">sudo pacman -S proxychains-ng
+<span class="c1"># 修改配置文件</span>
+sudo vim /etc/proxychains.conf
+<span class="c1"># 修改最后一行 配置代理 我的如下</span>
+<span class="o">[</span>ProxyyList<span class="o">]</span>
+socks5 127.0.0.1 <span class="m">1080</span>
+<span class="c1"># 之后就可以在需要用到代理的命令之前加上proxychains来启动代理</span>
+<span class="c1"># proxychains curl www.google.com</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="wine">wine</h2>
+<p>安装</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">sudo pacman -S wine wine_gecko wine-mono
+</code></pre></td></tr></table>
+</div>
+</div><p>字体设置</p>
+<p>新建一个 reg 文件，名字随意 如 zh.reg，内容如下</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">REGEDIT4
+<span class="o">[</span>HKEY_LOCAL_MACHINE<span class="se">\S</span>oftware<span class="se">\M</span>icrosoft<span class="se">\W</span>indows NT<span class="se">\C</span>urrentVersion<span class="se">\F</span>ontLink<span class="se">\S</span>ystemLink<span class="o">]</span>
+<span class="s2">&#34;Lucida Sans Unicode&#34;</span><span class="o">=</span><span class="s2">&#34;wqy-microhei.ttc&#34;</span>
+<span class="s2">&#34;Microsoft Sans Serif&#34;</span><span class="o">=</span><span class="s2">&#34;wqy-microhei.ttc&#34;</span>
+<span class="s2">&#34;Microsoft YaHei&#34;</span><span class="o">=</span><span class="s2">&#34;wqy-microhei.ttc&#34;</span>
+<span class="s2">&#34;微软雅黑&#34;</span><span class="o">=</span><span class="s2">&#34;wqy-microhei.ttc&#34;</span>
+<span class="s2">&#34;MS Sans Serif&#34;</span><span class="o">=</span><span class="s2">&#34;wqy-microhei.ttc&#34;</span>
+<span class="s2">&#34;Tahoma&#34;</span><span class="o">=</span><span class="s2">&#34;wqy-microhei.ttc&#34;</span> 
+<span class="s2">&#34;Tahoma Bold&#34;</span><span class="o">=</span><span class="s2">&#34;wqy-microhei.ttc&#34;</span>
+<span class="s2">&#34;SimSun&#34;</span><span class="o">=</span><span class="s2">&#34;wqy-microhei.ttc&#34;</span>
+<span class="s2">&#34;Arial&#34;</span><span class="o">=</span><span class="s2">&#34;wqy-microhei.ttc&#34;</span>
+<span class="s2">&#34;Arial Black&#34;</span><span class="o">=</span><span class="s2">&#34;wqy-microhei.ttc&#34;</span>
+<span class="s2">&#34;宋体&#34;</span><span class="o">=</span><span class="s2">&#34;wqy-microhei.ttc&#34;</span>
+<span class="s2">&#34;新細明體&#34;</span><span class="o">=</span><span class="s2">&#34;wqy-microhei.ttc&#34;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>打开注册表编辑器</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">wine regedit
+</code></pre></td></tr></table>
+</div>
+</div><p>在注册表编辑器界面选择“注册表&rdquo;-&ldquo;导入”，导入 zh.reg 文件。重启电脑，wine 字体就正常了。</p>
+<h2 id="安装字体">安装字体</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">sudo pacman -S 
+wqy-microhei 
+wqy-zenhei 
+ttf-wps-fonts 
+adobe-source-code-pro-fonts 
+adobe-source-sans-pro-fonts
+adobe-source-serif-pro-fonts
+adobe-source-han-sans-cn-fonts
+adobe-source-han-serif-cn-fonts
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="配置jdk8">配置jdk8</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># 安装jdk8</span>
+sudo pacman -S jdk8
+<span class="c1"># 配置环境变量</span>
+sudo vim /etc/profile
+<span class="c1"># 在最后添加</span>
+<span class="nb">export</span> <span class="nv">JAVA_HOME</span><span class="o">=</span>/usr/lib/jvm/default
+<span class="nb">export</span> <span class="nv">JRE_HOME</span><span class="o">=</span><span class="si">${</span><span class="nv">JAVA_HOEM</span><span class="si">}</span>/jre
+<span class="nb">export</span> <span class="nv">CLASSPATH</span><span class="o">=</span>.:<span class="si">${</span><span class="nv">JAVA_HOME</span><span class="si">}</span>/lib:<span class="si">${</span><span class="nv">JRE_HOME</span><span class="si">}</span>/lib 
+<span class="c1"># 更新配置文件</span>
+<span class="nb">source</span> /etc/profile
+</code></pre></td></tr></table>
+</div>
+</div><p>查看是否成功</p>
+<p><img src="https://raw.githubusercontent.com/ShangguanHong/PictureBed/master/%E6%B7%B1%E5%BA%A6%E6%88%AA%E5%9B%BE_%E9%80%89%E6%8B%A9%E5%8C%BA%E5%9F%9F_20190901212331.png" alt="深度截图_选择区域_20190901212331"></p>
+<h1 id="其他问题">其他问题</h1>
+<h2 id="修改home下的目录">修改Home下的目录</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">vim ~/.config/user-dirs.dirs
+</code></pre></td></tr></table>
+</div>
+</div><p>修改内容如下</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">XDG_DESKTOP_DIR=&#34;$HOME/Desktop&#34;
+XDG_DOWNLOAD_DIR=&#34;$HOME/Download&#34;
+XDG_TEMPLATES_DIR=&#34;$HOME/Templates&#34;
+XDG_PUBLICSHARE_DIR=&#34;$HOME/Public&#34;
+XDG_DOCUMENTS_DIR=&#34;$HOME/Documents&#34;
+XDG_MUSIC_DIR=&#34;$HOME/Music&#34;
+XDG_PICTURES_DIR=&#34;$HOME/Pictures&#34;
+XDG_VIDEOS_DIR=&#34;$HOME/Videos&#34;
+</code></pre></td></tr></table>
+</div>
+</div><p>将 Home 目录下的中文文件夹删除</p>
+<h2 id="解决时间问题">解决时间问题</h2>
+<p>如果是双系统的话，manjaro 时间会比正常时间慢 8 小时</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">sudo timedatectl set-local-rtc <span class="nb">true</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>然后注销或者重启。</p>
+<h2 id="解决关机卡死问题">解决关机卡死问题</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># 使用vs code打开文件 /boot/grub/grub.cfg(root权限)</span>
+sudo code /boot/grub/grub.cfg --user-data-dir     
+<span class="c1"># 使用find从头开始查找quiet，第一个quiet空格后面加上 uveau.modeset=0</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>注意</strong>：manjaro 每次更新内核的时候，都会刷新 grub.cfg 文件，因此每次更新内核的时候都需要进行一次此操作</p>
+<h2 id="开机开启小键盘">开机开启小键盘</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">sudo vim /etc/sddm.conf
+<span class="c1"># general下的Numlock设为on</span>
+<span class="o">[</span>General<span class="o">]</span>
+<span class="nv">Numlock</span><span class="o">=</span>on
+</code></pre></td></tr></table>
+</div>
+</div>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">ShangguanHong</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2019-09-01
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/manjaro/">manjaro</a>
+          <a href="/tags/%E7%BE%8E%E5%8C%96/">美化</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/2019/09/09/%E5%A6%82%E4%BD%95%E5%9C%A8java%E4%B8%AD%E8%B0%83%E7%94%A8python%E8%84%9A%E6%9C%AC/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">在java中调用python脚本</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/2019/08/29/spring-boot%E4%B8%ADcommandlinerunner%E7%9A%84%E4%BD%BF%E7%94%A8/">
+            <span class="next-text nav-default">Spring Boot中CommandLineRunner的使用</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+  <div id="vcomments"></div>
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+  <script type="text/javascript">
+    new Valine({
+        el: '#vcomments' ,
+        appId: 'X0gLmyOh1himl7jHPYcpKKop-gzGzoHsz',
+        appKey: 'hoYFzkrMqrD9SyRNpkiNf0LH',
+        notify:  false ,
+        verify:  false ,
+        avatar:'mm',
+        placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊!',
+        visitor:  false 
+    });
+  </script>
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:www.sgh1450280694@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/ShangguanHong" class="iconfont icon-github" title="github"></a>
+      <a href="https://weibo.com/5590338381" class="iconfont icon-weibo" title="weibo"></a>
+      <a href="https://space.bilibili.com/105190849" class="iconfont icon-bilibili" title="bilibili"></a>
+  <a href="https://shangguanhong.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2019 - 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">ShangguanHong</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

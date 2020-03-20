@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>工具使用 on ShangguanHong</title>
+    <link>https://shangguanhong.github.io/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/</link>
+    <description>Recent content in 工具使用 on ShangguanHong</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Fri, 20 Mar 2020 10:09:17 +0800</lastBuildDate>
+    
+	<atom:link href="https://shangguanhong.github.io/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Typora上的emoji表情</title>
+      <link>https://shangguanhong.github.io/2020/03/20/typora%E4%B8%8A%E7%9A%84emoji%E8%A1%A8%E6%83%85/</link>
+      <pubDate>Fri, 20 Mar 2020 10:09:17 +0800</pubDate>
+      
+      <guid>https://shangguanhong.github.io/2020/03/20/typora%E4%B8%8A%E7%9A%84emoji%E8%A1%A8%E6%83%85/</guid>
+      <description>原文地址 People 😄 😄 😆 😆 😊 😊 😃 😃 ☺️ ☺ 😏 😏 😍 😍 😘 😘 😚 😚 😳 😳 😌 😌 😆 😆 😁 😄 😉 😉 😜 😜 😝 😝 😀 😀 😗 😗 😙 😙 😛 😛 😴 😴 😟 😟 😦 😦 😧 😧 😮 😮 😬 😬 😕 😕 😯 😯 😑 😑 😒 😒 😅 😅 😓 😓</description>
+    </item>
+    
+    <item>
+      <title>github使用Travis CI</title>
+      <link>https://shangguanhong.github.io/2019/12/19/github%E4%BD%BF%E7%94%A8travis-ci/</link>
+      <pubDate>Thu, 19 Dec 2019 20:39:10 +0000</pubDate>
+      
+      <guid>https://shangguanhong.github.io/2019/12/19/github%E4%BD%BF%E7%94%A8travis-ci/</guid>
+      <description>前言 使用 hexo + gitPages 搭建个人博客的都知道，每当要发表一篇博文的时候，都需要手动使用 hexo g 生成静态网页，然后再通过 hexo d 命令将静态文件推送到 GitHub</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Ubuntu 18.04.2 安装redis - ShangguanHong</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="ShangguanHong" /><meta name="description" content="1. 前言 Redis 是目前业界使用最广泛的内存数据存储。相比 Memcached，Redis 支持更丰富的数据结构，例如 hashes, lists, sets 等，同时支持数据持久化。除此之" /><meta name="keywords" content="go, golang, hugo" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.67.1 with theme even" />
+
+
+<link rel="canonical" href="https://shangguanhong.github.io/2019/07/28/ubuntu-18-04-2-%E5%AE%89%E8%A3%85redis/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="Ubuntu 18.04.2 安装redis" />
+<meta property="og:description" content="1. 前言 Redis 是目前业界使用最广泛的内存数据存储。相比 Memcached，Redis 支持更丰富的数据结构，例如 hashes, lists, sets 等，同时支持数据持久化。除此之" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://shangguanhong.github.io/2019/07/28/ubuntu-18-04-2-%E5%AE%89%E8%A3%85redis/" />
+<meta property="article:published_time" content="2019-07-28T22:49:37+00:00" />
+<meta property="article:modified_time" content="2019-07-28T22:49:37+00:00" />
+<meta itemprop="name" content="Ubuntu 18.04.2 安装redis">
+<meta itemprop="description" content="1. 前言 Redis 是目前业界使用最广泛的内存数据存储。相比 Memcached，Redis 支持更丰富的数据结构，例如 hashes, lists, sets 等，同时支持数据持久化。除此之">
+<meta itemprop="datePublished" content="2019-07-28T22:49:37&#43;00:00" />
+<meta itemprop="dateModified" content="2019-07-28T22:49:37&#43;00:00" />
+<meta itemprop="wordCount" content="912">
+
+
+
+<meta itemprop="keywords" content="Redis," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Ubuntu 18.04.2 安装redis"/>
+<meta name="twitter:description" content="1. 前言 Redis 是目前业界使用最广泛的内存数据存储。相比 Memcached，Redis 支持更丰富的数据结构，例如 hashes, lists, sets 等，同时支持数据持久化。除此之"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">赏我一个好梦如旧</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">赏我一个好梦如旧</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Ubuntu 18.04.2 安装redis</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2019-07-28 </span>
+        <div class="post-category">
+            <a href="/categories/redis%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"> Redis学习笔记 </a>
+            </div>
+          <span class="more-meta"> 约 912 字 </span>
+          <span class="more-meta"> 预计阅读 2 分钟 </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#21-安装-redis-服务器端">2.1 安装 Redis 服务器端</a></li>
+    <li><a href="#22-通过命令行客户端访问-redis">2.2 通过命令行客户端访问 Redis</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <h1 id="1-前言">1. 前言</h1>
+<p>Redis 是目前业界使用最广泛的内存数据存储。相比 Memcached，Redis 支持更丰富的数据结构，例如 hashes, lists, sets 等，同时支持数据持久化。除此之外，Redis 还提供一些类数据库的特性，比如事务，HA，主从库。可以说 Redis 兼具了缓存系统和数据库的一些特性，因此有着丰富的应用场景。本文介绍 Redis 在Ubuntu 18.04.2 系统下的安装，为后续学习奠定基础。</p>
+<p><a href="https://redis.io/">redis官网</a></p>
+<h1 id="2-安装">2. 安装</h1>
+<h2 id="21-安装-redis-服务器端">2.1 安装 Redis 服务器端</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">$ sudo apt-get update
+$ sudo apt-get install redis-server
+</code></pre></td></tr></table>
+</div>
+</div><p>安装完 redis-server 后，redis-server 服务会自动开启，我们查看 redis-server 信息</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">$ ps -aux<span class="p">|</span>grep redis
+redis    <span class="m">29179</span>  0.1  0.3  <span class="m">51664</span>  <span class="m">3856</span> ?        Ssl  14:59   0:00 /usr/bin/redis-server 127.0.0.1:6379
+</code></pre></td></tr></table>
+</div>
+</div><p>可以看到 redis-server 服务已经开启，已经监听了本机的 6379 端口号</p>
+<h2 id="22-通过命令行客户端访问-redis">2.2 通过命令行客户端访问 Redis</h2>
+<p>安装 Redis 服务器，会自动地一起安装 Redis 命令行客户端程序。</p>
+<p>在本机输入 redis-cli 命令就可以启动，客户端程序访问 Redis 服务器。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">$ redis-cli
+127.0.0.1:6379&gt; ping
+PONG
+</code></pre></td></tr></table>
+</div>
+</div><p>当我们输入了 ping，能出现 PONG 就说明 redis 已经成功安装。</p>
+<h1 id="3-配置">3. 配置</h1>
+<p>redis 的配置文件位置为 <code>/etc/redis/redis.conf</code> ，下面例举几个重要配置</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># 配置能访问该redis服务的ip，注释即为允许所有ip访问（这里我注释掉了）</span>
+<span class="c1"># bind 127.0.0.1 ::1</span>
+<span class="c1"># redis服务端口号，默认即为6379</span>
+port <span class="m">6379</span>
+<span class="c1"># 是否在后台执行，yes：后台运行；no：不是后台运行</span>
+daemonize yes
+<span class="c1"># 数据库的数量，默认使用的数据库是DB 0。可以通过”SELECT “命令选择一个db</span>
+databases <span class="m">16</span>
+<span class="c1"># 把数据库存到磁盘上:</span> 
+<span class="c1"># save &lt;seconds&gt; &lt;changes&gt;</span> 
+<span class="c1"># 会在指定秒数和数据变化次数之后把数据库写到磁盘上。</span> 
+# 
+<span class="c1"># 下面的例子将会进行把数据写入磁盘的操作:</span> 
+<span class="c1"># 900秒（15分钟）之后，且至少1次变更</span> 
+<span class="c1"># 300秒（5分钟）之后，且至少10次变更</span> 
+<span class="c1"># 60秒之后，且至少10000次变更</span> 
+# 
+<span class="c1"># 注意：你要想不写磁盘的话就把所有 &#34;save&#34; 设置注释掉就行了</span>
+save <span class="m">900</span> <span class="m">1</span> 
+save <span class="m">300</span> <span class="m">10</span> 
+save <span class="m">60</span> <span class="m">10000</span>
+<span class="c1"># 登录redis服务时的认证密码，默认为foobared（这里我更改为了123456）</span>
+requirepass <span class="m">123456</span> 
+</code></pre></td></tr></table>
+</div>
+</div><p>修改完配置文件后，重启 redis 服务</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">$ sudo /etc/init.d/redis-server restart
+<span class="o">[</span> ok <span class="o">]</span> Restarting redis-server <span class="o">(</span>via systemctl<span class="o">)</span>: redis-server.service.
+</code></pre></td></tr></table>
+</div>
+</div><p>此时再通过 redis-cli 登录 redis 服务就需要指定登录密码</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">$ redis-cli -a <span class="m">123456</span>
+127.0.0.1:6379&gt; ping
+PONG
+<span class="c1"># 未认证登录</span>
+$ redis-cli
+127.0.0.1:6379&gt; ping
+<span class="o">(</span>error<span class="o">)</span> NOAUTH Authentication required.
+127.0.0.1:6379&gt; auth <span class="m">123456</span>
+OK
+127.0.0.1:6379&gt; ping
+PONG
+</code></pre></td></tr></table>
+</div>
+</div><p>同时我们也可以远程访问该 redis 服务</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">redis-cli -h yourhost -a <span class="m">123456</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>将 <code>yourhost</code> 更改为启动 redis 服务的机器的 ip 地址，即可远程访问 redis 服务</p>
+<h1 id="4-参考资料">4. 参考资料</h1>
+<ol>
+<li><a href="https://www.cnblogs.com/zongfa/p/7808807.html">Ubuntu16.04安装Redis</a></li>
+</ol>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">ShangguanHong</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2019-07-28
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/redis/">Redis</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/2019/07/31/spring-boot%E4%B8%AD%E9%85%8D%E7%BD%AElogback/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Spring Boot中配置Slf4j&#43;logback日志框架</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/2019/07/22/jpa%E4%BD%BF%E7%94%A8specification%E5%8A%A8%E6%80%81%E6%9F%A5%E8%AF%A2/">
+            <span class="next-text nav-default">JPA使用Specification动态查询</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+  <div id="vcomments"></div>
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+  <script type="text/javascript">
+    new Valine({
+        el: '#vcomments' ,
+        appId: 'X0gLmyOh1himl7jHPYcpKKop-gzGzoHsz',
+        appKey: 'hoYFzkrMqrD9SyRNpkiNf0LH',
+        notify:  false ,
+        verify:  false ,
+        avatar:'mm',
+        placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊!',
+        visitor:  false 
+    });
+  </script>
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:www.sgh1450280694@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/ShangguanHong" class="iconfont icon-github" title="github"></a>
+      <a href="https://weibo.com/5590338381" class="iconfont icon-weibo" title="weibo"></a>
+      <a href="https://space.bilibili.com/105190849" class="iconfont icon-bilibili" title="bilibili"></a>
+  <a href="https://shangguanhong.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2019 - 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">ShangguanHong</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

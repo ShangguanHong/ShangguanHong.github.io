@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Logback on ShangguanHong</title>
+    <link>https://shangguanhong.github.io/tags/logback/</link>
+    <description>Recent content in Logback on ShangguanHong</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Wed, 31 Jul 2019 23:50:50 +0000</lastBuildDate>
+    
+	<atom:link href="https://shangguanhong.github.io/tags/logback/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Spring Boot中配置Slf4j&#43;logback日志框架</title>
+      <link>https://shangguanhong.github.io/2019/07/31/spring-boot%E4%B8%AD%E9%85%8D%E7%BD%AElogback/</link>
+      <pubDate>Wed, 31 Jul 2019 23:50:50 +0000</pubDate>
+      
+      <guid>https://shangguanhong.github.io/2019/07/31/spring-boot%E4%B8%AD%E9%85%8D%E7%BD%AElogback/</guid>
+      <description>1. 前言 Slf4j的全称是 Simple Loging Facade For Java(Java简单日志门面)，它仅仅是一个为Java程序提供日志输出的统一接口，并不是一个具体的日志实现</description>
+    </item>
+    
+  </channel>
+</rss>

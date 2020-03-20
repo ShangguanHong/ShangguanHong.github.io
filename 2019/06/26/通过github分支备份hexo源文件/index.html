@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>通过github分支备份Hexo源文件 - ShangguanHong</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="ShangguanHong" /><meta name="description" content="1. 前言 利用hexo搭建博后（还不懂的朋友可以看这篇文章 [利用GithubPages &#43; Hexo搭建自己的博客](https://shanggu" /><meta name="keywords" content="go, golang, hugo" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.67.1 with theme even" />
+
+
+<link rel="canonical" href="https://shangguanhong.github.io/2019/06/26/%E9%80%9A%E8%BF%87github%E5%88%86%E6%94%AF%E5%A4%87%E4%BB%BDhexo%E6%BA%90%E6%96%87%E4%BB%B6/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="通过github分支备份Hexo源文件" />
+<meta property="og:description" content="1. 前言 利用hexo搭建博后（还不懂的朋友可以看这篇文章 [利用GithubPages &#43; Hexo搭建自己的博客](https://shanggu" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://shangguanhong.github.io/2019/06/26/%E9%80%9A%E8%BF%87github%E5%88%86%E6%94%AF%E5%A4%87%E4%BB%BDhexo%E6%BA%90%E6%96%87%E4%BB%B6/" />
+<meta property="article:published_time" content="2019-06-26T13:08:15+00:00" />
+<meta property="article:modified_time" content="2019-06-26T13:08:15+00:00" />
+<meta itemprop="name" content="通过github分支备份Hexo源文件">
+<meta itemprop="description" content="1. 前言 利用hexo搭建博后（还不懂的朋友可以看这篇文章 [利用GithubPages &#43; Hexo搭建自己的博客](https://shanggu">
+<meta itemprop="datePublished" content="2019-06-26T13:08:15&#43;00:00" />
+<meta itemprop="dateModified" content="2019-06-26T13:08:15&#43;00:00" />
+<meta itemprop="wordCount" content="609">
+
+
+
+<meta itemprop="keywords" content="hexo," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="通过github分支备份Hexo源文件"/>
+<meta name="twitter:description" content="1. 前言 利用hexo搭建博后（还不懂的朋友可以看这篇文章 [利用GithubPages &#43; Hexo搭建自己的博客](https://shanggu"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">赏我一个好梦如旧</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">赏我一个好梦如旧</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">通过github分支备份Hexo源文件</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2019-06-26 </span>
+        <div class="post-category">
+            <a href="/categories/hexo%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"> Hexo学习笔记 </a>
+            </div>
+          <span class="more-meta"> 约 609 字 </span>
+          <span class="more-meta"> 预计阅读 2 分钟 </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents"></nav>
+  </div>
+</div>
+    <div class="post-content">
+      <h1 id="1-前言">1. 前言</h1>
+<p>利用hexo搭建博后（还不懂的朋友可以看这篇文章 [利用GithubPages + Hexo搭建自己的博客](<a href="https://shangguanhong.github.io/2019/05/28/GithubPages">https://shangguanhong.github.io/2019/05/28/GithubPages</a> + Hexo搭建自己的博客/) ），仓库里只有生成的静态网页文件，是没有Hexo的源文件的。如果一不小心删除或者损坏了hexo源文件，那可就不得了了。这个时候就需要将hexo源文件也进行一下备份，我们这里就利用github的分支功能进行备份。</p>
+<h1 id="2-配置">2. 配置</h1>
+<ol>
+<li>在你的博客仓库创建一个分支hexo</li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/ShangguanHong/PictureBed/master/1561526447447.png" alt="1561526447447"></p>
+<ol start="2">
+<li>切换默认分支为hexo</li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/ShangguanHong/PictureBed/master/1561526500792.png" alt="1561526500792"></p>
+<ol start="3">
+<li>clone博客仓库到本地</li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/ShangguanHong/PictureBed/master/1561526823075.png" alt="1561526823075"></p>
+<p>显示hexo表示使用的是hexo分支</p>
+<ol start="3">
+<li>
+<p>将之前的博客源文件中的 <code>_config.yml</code>  <code>themes</code> ,  <code>source</code> , <code>scffolds</code> , <code>package.json</code> , <code>.gitignore</code> 文件复制到博客仓库内</p>
+</li>
+<li>
+<p>将 <code>themes/next/</code> 中的<code>.git/</code>删除</p>
+</li>
+<li>
+<p>在博客仓库中执行 <code>npm install</code> ， <code>npm install hexo-deployer-git</code></p>
+</li>
+<li>
+<p>执行 <code>git add</code> ， <code>git commit -m &quot;message&quot;</code> ，<code>git push origin hexo</code> 来提交Hexo网站源文件</p>
+</li>
+<li>
+<p>执行hexo g -d 生成静态网页部署到github上。</p>
+<p>这样就可以使远程仓库的master分支保存静态网页，hexo分支保存源文件。</p>
+</li>
+</ol>
+<h1 id="3-修改">3. 修改</h1>
+<p>每次在本地对博客修改后，都要进行接下来两步</p>
+<p>1、执行 <code>git add</code> ， <code>git commit -m &quot;message&quot;</code> ， <code>git push origin hexo</code> 来提交Hexo网站源文件</p>
+<p>2、执行hexo g -d 生成静态网页部署到github上</p>
+<h1 id="4-恢复">4. 恢复</h1>
+<p>有的时候换电脑了，可以这样来恢复Hexo网站源文件
+1、安装 <code>git</code>
+2、安装 <code>Nodejs</code> 和 <code>npm</code>
+3、clone博客仓库到本地
+4、在博客仓库内执行命令 <code>npm install hexo-cli -g</code> 、 <code>npm install</code> 、 <code>npm install hexo-deployer-git</code></p>
+<h1 id="5-参考资料">5. 参考资料</h1>
+<ol>
+<li><a href="https://www.jianshu.com/p/baab04284923">怎么去备份你的Hexo博客</a></li>
+</ol>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">ShangguanHong</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2019-06-26
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/hexo/">hexo</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/2019/07/07/spring-boot%E5%AE%9E%E7%8E%B0%E7%83%AD%E9%83%A8%E7%BD%B2/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Spring Boot实现热部署</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/2019/06/20/mybatis%E4%B8%AD%E6%9E%9A%E4%B8%BE%E7%9A%84%E5%A4%84%E7%90%86/">
+            <span class="next-text nav-default">Mybatis中枚举的处理</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+  <div id="vcomments"></div>
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+  <script type="text/javascript">
+    new Valine({
+        el: '#vcomments' ,
+        appId: 'X0gLmyOh1himl7jHPYcpKKop-gzGzoHsz',
+        appKey: 'hoYFzkrMqrD9SyRNpkiNf0LH',
+        notify:  false ,
+        verify:  false ,
+        avatar:'mm',
+        placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊!',
+        visitor:  false 
+    });
+  </script>
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:www.sgh1450280694@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/ShangguanHong" class="iconfont icon-github" title="github"></a>
+      <a href="https://weibo.com/5590338381" class="iconfont icon-weibo" title="weibo"></a>
+      <a href="https://space.bilibili.com/105190849" class="iconfont icon-bilibili" title="bilibili"></a>
+  <a href="https://shangguanhong.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2019 - 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">ShangguanHong</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

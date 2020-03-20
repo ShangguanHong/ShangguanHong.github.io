@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>ShangguanHong</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="ShangguanHong" /><meta name="description" content="golang后端研发工程师" /><meta name="keywords" content="go, golang, hugo" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.67.1 with theme even" />
+
+
+<link rel="canonical" href="https://shangguanhong.github.io/" />
+  <link href="https://shangguanhong.github.io/index.xml" rel="alternate" type="application/rss+xml" title="ShangguanHong" />
+  <link href="https://shangguanhong.github.io/index.xml" rel="feed" type="application/rss+xml" title="ShangguanHong" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="ShangguanHong" />
+<meta property="og:description" content="golang后端研发工程师" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://shangguanhong.github.io/" />
+<meta property="og:updated_time" content="2020-03-20T10:09:17+08:00" />
+<meta itemprop="name" content="ShangguanHong">
+<meta itemprop="description" content="golang后端研发工程师"><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="ShangguanHong"/>
+<meta name="twitter:description" content="golang后端研发工程师"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">赏我一个好梦如旧</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">赏我一个好梦如旧</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <section id="posts" class="posts">
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/2019/12/19/github%E4%BD%BF%E7%94%A8travis-ci/">github使用Travis CI</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2019-12-19 </span>
+      <div class="post-category">
+          <a href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/"> 工具使用 </a>
+          </div>
+        <span class="more-meta"> 约 1413 字 </span>
+        <span class="more-meta"> 预计阅读 3 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      前言 使用 hexo + gitPages 搭建个人博客的都知道，每当要发表一篇博文的时候，都需要手动使用 hexo g 生成静态网页，然后再通过 hexo d 命令将静态文件推送到 GitHub
+    </div>
+    <div class="read-more">
+      <a href="/2019/12/19/github%E4%BD%BF%E7%94%A8travis-ci/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/2019/11/21/windows%E4%B8%8A%E4%BD%BF%E7%94%A8docker%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/">Windows上使用docker遇到的问题(持续更新...)</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2019-11-21 </span>
+      <div class="post-category">
+          <a href="/categories/docker%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"> Docker学习笔记 </a>
+          </div>
+        <span class="more-meta"> 约 905 字 </span>
+        <span class="more-meta"> 预计阅读 2 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <p>这里记录了一些在windows系统上使用docker的时候遇到的一些问题，并给出最终解决方法。</p>
+    </div>
+    <div class="read-more">
+      <a href="/2019/11/21/windows%E4%B8%8A%E4%BD%BF%E7%94%A8docker%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/2019/11/21/linux%E7%BE%8E%E5%8C%96/">Linux美化</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2019-11-21 </span>
+      <div class="post-category">
+          <a href="/categories/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"> Linux学习笔记 </a>
+          </div>
+        <span class="more-meta"> 约 735 字 </span>
+        <span class="more-meta"> 预计阅读 2 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      记录每次安装Linux系统必完成的流程，方便以后的开发 zsh 1 2 3 4 5 6 # ubuntu $ sudo apt-get install zsh # contos $ sudo yum install zsh -y # arch $ sudo pacman -S zsh on-my-zsh 安装 通过在线脚本安装 1 sh -c
+    </div>
+    <div class="read-more">
+      <a href="/2019/11/21/linux%E7%BE%8E%E5%8C%96/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/2019/11/21/windows%E4%B8%8A%E5%AE%89%E8%A3%85wsl/">windows上安装WSL</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2019-11-21 </span>
+      <div class="post-category">
+          <a href="/categories/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"> Linux学习笔记 </a>
+          </div>
+        <span class="more-meta"> 约 593 字 </span>
+        <span class="more-meta"> 预计阅读 2 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      介绍 Windows Subsystem for Linux（简称WSL）是一个为在Windows 10上能够原生运行Linux二进制可执行文件（ELF格式）的兼容层。 意思就是一个能
+    </div>
+    <div class="read-more">
+      <a href="/2019/11/21/windows%E4%B8%8A%E5%AE%89%E8%A3%85wsl/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/2019/10/31/lombok%E7%9A%84%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3/">lombok的常用注解</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2019-10-31 </span>
+      <div class="post-category">
+          <a href="/categories/lombok/"> lombok </a>
+          </div>
+        <span class="more-meta"> 约 1142 字 </span>
+        <span class="more-meta"> 预计阅读 3 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      Lombok介绍 官网介绍： Project Lombok is a java library that automatically plugs into your editor and build tools, spicing up your java. Never write another getter or equals method again, with one annotation your class has a fully featured builder, Automate your logging variables, and much more. 翻译：Lombok 项目是一
+    </div>
+    <div class="read-more">
+      <a href="/2019/10/31/lombok%E7%9A%84%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/2019/10/14/%E5%8D%81%E5%A4%A7%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E6%80%BB%E7%BB%93/">十大排序算法总结</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2019-10-14 </span>
+      <div class="post-category">
+          <a href="/categories/java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"> Java学习笔记 </a>
+          </div>
+        <span class="more-meta"> 约 5239 字 </span>
+        <span class="more-meta"> 预计阅读 11 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      最近在准备面试, 看到一篇公众号总结的排序算法十分详细 面试常问的十个排序算法都在这里了（含JAVA代码实现） , 因此在这里记录下. 本文将采取文字
+    </div>
+    <div class="read-more">
+      <a href="/2019/10/14/%E5%8D%81%E5%A4%A7%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E6%80%BB%E7%BB%93/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/2019/10/11/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/">设计模式之单例模式</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2019-10-11 </span>
+      <div class="post-category">
+          <a href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"> 设计模式 </a>
+          </div>
+        <span class="more-meta"> 约 1319 字 </span>
+        <span class="more-meta"> 预计阅读 3 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      概念 单例模式是指一个类只有一个实例对象, 且该类能自行创建这个实例的一种模式. 该模式的特点为: 单例类只有一个实例对象 该单例对象必须由单例类自行
+    </div>
+    <div class="read-more">
+      <a href="/2019/10/11/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/2019/09/19/spring-cache%E6%95%B4%E5%90%88redis/">Spring Cache整合Redis</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2019-09-19 </span>
+      <div class="post-category">
+          <a href="/categories/springboot%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"> SpringBoot学习笔记 </a>
+          <a href="/categories/redis%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"> Redis学习笔记 </a>
+          </div>
+        <span class="more-meta"> 约 1693 字 </span>
+        <span class="more-meta"> 预计阅读 4 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      前言 缓存现在已经成为了互联网必不可少的利器，合理的利用缓存不仅能大大的提升网站的访问速度，还能够降低数据库的访问压力。 在上一篇文章中，介绍了
+    </div>
+    <div class="read-more">
+      <a href="/2019/09/19/spring-cache%E6%95%B4%E5%90%88redis/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/2019/09/10/spring-boot%E6%95%B4%E5%90%88redis/">Spring Boot整合Redis</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2019-09-10 </span>
+      <div class="post-category">
+          <a href="/categories/springboot%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"> SpringBoot学习笔记 </a>
+          <a href="/categories/redis%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"> Redis学习笔记 </a>
+          </div>
+        <span class="more-meta"> 约 4218 字 </span>
+        <span class="more-meta"> 预计阅读 9 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      Redis简介 Redis 是完全开元免费的，遵守BSD协议，是一个高性能的 key-value 数据库。 Redis 与其他 key - value 缓存产品有以下三个特点： Redis 支持数据的持久化，可以将内
+    </div>
+    <div class="read-more">
+      <a href="/2019/09/10/spring-boot%E6%95%B4%E5%90%88redis/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/2019/09/09/%E5%A6%82%E4%BD%95%E5%9C%A8java%E4%B8%AD%E8%B0%83%E7%94%A8python%E8%84%9A%E6%9C%AC/">在java中调用python脚本</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2019-09-09 </span>
+      <div class="post-category">
+          <a href="/categories/java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"> Java学习笔记 </a>
+          </div>
+        <span class="more-meta"> 约 698 字 </span>
+        <span class="more-meta"> 预计阅读 2 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      1. 前言 最近的项目中遇到了一个问题，我的后台管理系统是使用 Java 语言来开发的，然后有一个模块需要调用使用 Python 写的一个脚本，为此查了许多资料，在这里记
+    </div>
+    <div class="read-more">
+      <a href="/2019/09/09/%E5%A6%82%E4%BD%95%E5%9C%A8java%E4%B8%AD%E8%B0%83%E7%94%A8python%E8%84%9A%E6%9C%AC/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    </section>
+  
+  <nav class="pagination">
+    <a class="prev" href="/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text">上一页</span>
+      </a>
+    <a class="next" href="/page/3/">
+        <span class="next-text">下一页</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+  </nav>
+        </div>
+        
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:www.sgh1450280694@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/ShangguanHong" class="iconfont icon-github" title="github"></a>
+      <a href="https://weibo.com/5590338381" class="iconfont icon-weibo" title="weibo"></a>
+      <a href="https://space.bilibili.com/105190849" class="iconfont icon-bilibili" title="bilibili"></a>
+  <a href="https://shangguanhong.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2019 - 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">ShangguanHong</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

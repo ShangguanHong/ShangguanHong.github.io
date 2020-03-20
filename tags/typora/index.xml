@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>typora on ShangguanHong</title>
+    <link>https://shangguanhong.github.io/tags/typora/</link>
+    <description>Recent content in typora on ShangguanHong</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Fri, 20 Mar 2020 10:09:17 +0800</lastBuildDate>
+    
+	<atom:link href="https://shangguanhong.github.io/tags/typora/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Typora上的emoji表情</title>
+      <link>https://shangguanhong.github.io/2020/03/20/typora%E4%B8%8A%E7%9A%84emoji%E8%A1%A8%E6%83%85/</link>
+      <pubDate>Fri, 20 Mar 2020 10:09:17 +0800</pubDate>
+      
+      <guid>https://shangguanhong.github.io/2020/03/20/typora%E4%B8%8A%E7%9A%84emoji%E8%A1%A8%E6%83%85/</guid>
+      <description>原文地址 People 😄 😄 😆 😆 😊 😊 😃 😃 ☺️ ☺ 😏 😏 😍 😍 😘 😘 😚 😚 😳 😳 😌 😌 😆 😆 😁 😄 😉 😉 😜 😜 😝 😝 😀 😀 😗 😗 😙 😙 😛 😛 😴 😴 😟 😟 😦 😦 😧 😧 😮 😮 😬 😬 😕 😕 😯 😯 😑 😑 😒 😒 😅 😅 😓 😓</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Linux学习笔记 on ShangguanHong</title>
+    <link>https://shangguanhong.github.io/categories/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</link>
+    <description>Recent content in Linux学习笔记 on ShangguanHong</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 16 Feb 2020 21:06:13 +0000</lastBuildDate>
+    
+	<atom:link href="https://shangguanhong.github.io/categories/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Ubuntu18.04更换国内源</title>
+      <link>https://shangguanhong.github.io/2020/02/16/ubuntu18.04%E6%9B%B4%E6%8D%A2%E5%9B%BD%E5%86%85%E6%BA%90/</link>
+      <pubDate>Sun, 16 Feb 2020 21:06:13 +0000</pubDate>
+      
+      <guid>https://shangguanhong.github.io/2020/02/16/ubuntu18.04%E6%9B%B4%E6%8D%A2%E5%9B%BD%E5%86%85%E6%BA%90/</guid>
+      <description>备份源文件，以防止操作失误后无法还原文件 1 sudo cp /etc/apt/sources.list /ect/apt/sources.list.backup 打开 /etc/apt/sources.list 文件 1 sudo vim /ect/apt/sources.list 将源文件里的内容全部注释或者全部删除，然后写入以下内容 阿里云源 1 2 3 4 5</description>
+    </item>
+    
+    <item>
+      <title>Linux美化</title>
+      <link>https://shangguanhong.github.io/2019/11/21/linux%E7%BE%8E%E5%8C%96/</link>
+      <pubDate>Thu, 21 Nov 2019 21:11:12 +0000</pubDate>
+      
+      <guid>https://shangguanhong.github.io/2019/11/21/linux%E7%BE%8E%E5%8C%96/</guid>
+      <description>记录每次安装Linux系统必完成的流程，方便以后的开发 zsh 1 2 3 4 5 6 # ubuntu $ sudo apt-get install zsh # contos $ sudo yum install zsh -y # arch $ sudo pacman -S zsh on-my-zsh 安装 通过在线脚本安装 1 sh -c</description>
+    </item>
+    
+    <item>
+      <title>windows上安装WSL</title>
+      <link>https://shangguanhong.github.io/2019/11/21/windows%E4%B8%8A%E5%AE%89%E8%A3%85wsl/</link>
+      <pubDate>Thu, 21 Nov 2019 20:12:53 +0000</pubDate>
+      
+      <guid>https://shangguanhong.github.io/2019/11/21/windows%E4%B8%8A%E5%AE%89%E8%A3%85wsl/</guid>
+      <description>介绍 Windows Subsystem for Linux（简称WSL）是一个为在Windows 10上能够原生运行Linux二进制可执行文件（ELF格式）的兼容层。 意思就是一个能</description>
+    </item>
+    
+    <item>
+      <title>manjaro安装完后需要做的事</title>
+      <link>https://shangguanhong.github.io/2019/09/01/manjaro%E5%AE%89%E8%A3%85%E5%AE%8C%E5%90%8E%E9%9C%80%E8%A6%81%E5%81%9A%E7%9A%84%E4%BA%8B/</link>
+      <pubDate>Sun, 01 Sep 2019 19:57:19 +0000</pubDate>
+      
+      <guid>https://shangguanhong.github.io/2019/09/01/manjaro%E5%AE%89%E8%A3%85%E5%AE%8C%E5%90%8E%E9%9C%80%E8%A6%81%E5%81%9A%E7%9A%84%E4%BA%8B/</guid>
+      <description>前言 之前在朋友的推荐下放弃了以前使用的 Ubuntu，使用了 manjaro 作为我日常使用的 Linux，用了一段时间之后发现这个 Linux 发行版是真的香，以致于我换</description>
+    </item>
+    
+    <item>
+      <title>基于Linux Kernel 2.6 的源码, 分析其进程模型</title>
+      <link>https://shangguanhong.github.io/2019/05/28/%E5%9F%BA%E4%BA%8Elinux-kernel-2-6-%E7%9A%84%E6%BA%90%E7%A0%81-%E5%88%86%E6%9E%90%E5%85%B6%E8%BF%9B%E7%A8%8B%E6%A8%A1%E5%9E%8B/</link>
+      <pubDate>Tue, 28 May 2019 15:10:02 +0000</pubDate>
+      
+      <guid>https://shangguanhong.github.io/2019/05/28/%E5%9F%BA%E4%BA%8Elinux-kernel-2-6-%E7%9A%84%E6%BA%90%E7%A0%81-%E5%88%86%E6%9E%90%E5%85%B6%E8%BF%9B%E7%A8%8B%E6%A8%A1%E5%9E%8B/</guid>
+      <description>1. 简介 本文的内容是基于Linux Kernel 2.6 的源码, 深入分析其进程模型, 主要分析的内容如下: 什么是进程(进程的概念) 操作系统是如何组织进程的 进程状态</description>
+    </item>
+    
+  </channel>
+</rss>

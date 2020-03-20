@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Shiro学习笔记 on ShangguanHong</title>
+    <link>https://shangguanhong.github.io/categories/shiro%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</link>
+    <description>Recent content in Shiro学习笔记 on ShangguanHong</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Fri, 23 Aug 2019 20:35:19 +0000</lastBuildDate>
+    
+	<atom:link href="https://shangguanhong.github.io/categories/shiro%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Shiro的多Realm配置</title>
+      <link>https://shangguanhong.github.io/2019/08/23/shiro%E7%9A%84%E5%A4%9Arealm%E9%85%8D%E7%BD%AE/</link>
+      <pubDate>Fri, 23 Aug 2019 20:35:19 +0000</pubDate>
+      
+      <guid>https://shangguanhong.github.io/2019/08/23/shiro%E7%9A%84%E5%A4%9Arealm%E9%85%8D%E7%BD%AE/</guid>
+      <description>前言 之前写了一篇 Spring Boot整合Shiro，如果不了解 Shiro 的建议先去阅读之前的文章，因为这篇是在它的基础上进行的拓展，需要您具备一定的 Shiro 知识。 之</description>
+    </item>
+    
+    <item>
+      <title>Spring Boot整合Shiro</title>
+      <link>https://shangguanhong.github.io/2019/08/20/spring-boot%E6%95%B4%E5%90%88shiro/</link>
+      <pubDate>Tue, 20 Aug 2019 20:11:28 +0000</pubDate>
+      
+      <guid>https://shangguanhong.github.io/2019/08/20/spring-boot%E6%95%B4%E5%90%88shiro/</guid>
+      <description>1. 前言 在 Java 领域一般有 Spring Security、Apache Shiro 等安全框架，之前写了一篇关于 JWT整合Spring Security 的文章，里面介绍了使用 Spring Boot + JWT + Spring</description>
+    </item>
+    
+  </channel>
+</rss>

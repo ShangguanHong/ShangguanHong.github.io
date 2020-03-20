@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Mybatis学习笔记 on ShangguanHong</title>
+    <link>https://shangguanhong.github.io/categories/mybatis%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</link>
+    <description>Recent content in Mybatis学习笔记 on ShangguanHong</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Thu, 20 Jun 2019 16:25:07 +0000</lastBuildDate>
+    
+	<atom:link href="https://shangguanhong.github.io/categories/mybatis%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Mybatis中枚举的处理</title>
+      <link>https://shangguanhong.github.io/2019/06/20/mybatis%E4%B8%AD%E6%9E%9A%E4%B8%BE%E7%9A%84%E5%A4%84%E7%90%86/</link>
+      <pubDate>Thu, 20 Jun 2019 16:25:07 +0000</pubDate>
+      
+      <guid>https://shangguanhong.github.io/2019/06/20/mybatis%E4%B8%AD%E6%9E%9A%E4%B8%BE%E7%9A%84%E5%A4%84%E7%90%86/</guid>
+      <description>1. 前言 在数据库设计中，有的字段需要用字符串来标识，拿用户角色role来说比如0代表管理员，1代表普通用户。在Java里面定义这样的字段为 枚举</description>
+    </item>
+    
+    <item>
+      <title>Spring Boot整合MyBatis</title>
+      <link>https://shangguanhong.github.io/2019/06/03/spring-boot%E6%95%B4%E5%90%88mybatis/</link>
+      <pubDate>Mon, 03 Jun 2019 09:38:28 +0000</pubDate>
+      
+      <guid>https://shangguanhong.github.io/2019/06/03/spring-boot%E6%95%B4%E5%90%88mybatis/</guid>
+      <description>1. 前言 本文介绍如何将mybatis整合进Spring Boot, 并且使用mybatis-generator插件自动根据数据库生成一些基本的代码。 本文用</description>
+    </item>
+    
+  </channel>
+</rss>

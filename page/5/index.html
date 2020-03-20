@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>ShangguanHong</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="ShangguanHong" /><meta name="description" content="golang后端研发工程师" /><meta name="keywords" content="go, golang, hugo" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.67.1 with theme even" />
+
+
+<link rel="canonical" href="https://shangguanhong.github.io/" />
+  <link href="https://shangguanhong.github.io/index.xml" rel="alternate" type="application/rss+xml" title="ShangguanHong" />
+  <link href="https://shangguanhong.github.io/index.xml" rel="feed" type="application/rss+xml" title="ShangguanHong" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="ShangguanHong" />
+<meta property="og:description" content="golang后端研发工程师" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://shangguanhong.github.io/" />
+<meta property="og:updated_time" content="2020-03-20T10:09:17+08:00" />
+<meta itemprop="name" content="ShangguanHong">
+<meta itemprop="description" content="golang后端研发工程师"><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="ShangguanHong"/>
+<meta name="twitter:description" content="golang后端研发工程师"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">赏我一个好梦如旧</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">赏我一个好梦如旧</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <section id="posts" class="posts">
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/2019/07/07/spring-boot%E5%AE%9E%E7%8E%B0%E7%83%AD%E9%83%A8%E7%BD%B2/">Spring Boot实现热部署</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2019-07-07 </span>
+      <div class="post-category">
+          <a href="/categories/springboot%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"> SpringBoot学习笔记 </a>
+          </div>
+        <span class="more-meta"> 约 428 字 </span>
+        <span class="more-meta"> 预计阅读 1 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      1. 前言 我们在开发中反复修改类、页面等资源，每次修改后都是需要重新启动服务才能使得修改生效，这是非常麻烦的，浪费了大量的时间。我们能够在修改代
+    </div>
+    <div class="read-more">
+      <a href="/2019/07/07/spring-boot%E5%AE%9E%E7%8E%B0%E7%83%AD%E9%83%A8%E7%BD%B2/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/2019/06/26/%E9%80%9A%E8%BF%87github%E5%88%86%E6%94%AF%E5%A4%87%E4%BB%BDhexo%E6%BA%90%E6%96%87%E4%BB%B6/">通过github分支备份Hexo源文件</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2019-06-26 </span>
+      <div class="post-category">
+          <a href="/categories/hexo%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"> Hexo学习笔记 </a>
+          </div>
+        <span class="more-meta"> 约 609 字 </span>
+        <span class="more-meta"> 预计阅读 2 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      1. 前言 利用hexo搭建博后（还不懂的朋友可以看这篇文章 [利用GithubPages + Hexo搭建自己的博客](https://shanggu
+    </div>
+    <div class="read-more">
+      <a href="/2019/06/26/%E9%80%9A%E8%BF%87github%E5%88%86%E6%94%AF%E5%A4%87%E4%BB%BDhexo%E6%BA%90%E6%96%87%E4%BB%B6/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/2019/06/20/mybatis%E4%B8%AD%E6%9E%9A%E4%B8%BE%E7%9A%84%E5%A4%84%E7%90%86/">Mybatis中枚举的处理</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2019-06-20 </span>
+      <div class="post-category">
+          <a href="/categories/mybatis%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"> Mybatis学习笔记 </a>
+          </div>
+        <span class="more-meta"> 约 1308 字 </span>
+        <span class="more-meta"> 预计阅读 3 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      1. 前言 在数据库设计中，有的字段需要用字符串来标识，拿用户角色role来说比如0代表管理员，1代表普通用户。在Java里面定义这样的字段为 枚举
+    </div>
+    <div class="read-more">
+      <a href="/2019/06/20/mybatis%E4%B8%AD%E6%9E%9A%E4%B8%BE%E7%9A%84%E5%A4%84%E7%90%86/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/2019/06/04/%E8%A7%A3%E5%86%B3redis%E9%87%8D%E5%90%AF%E5%90%8E%E5%AF%86%E7%A0%81%E5%A4%B1%E6%95%88%E9%97%AE%E9%A2%98/">解决Redis重启后密码失效问题</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2019-06-04 </span>
+      <div class="post-category">
+          <a href="/categories/redis%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"> Redis学习笔记 </a>
+          </div>
+        <span class="more-meta"> 约 175 字 </span>
+        <span class="more-meta"> 预计阅读 1 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      1. 前言 在用命令行设置了密码之后，下次启动redis的时候密码又没了，这是因为 config set requirepass password 这种设置只是临时的，当服务器重启后，密码就会失效。 真正的
+    </div>
+    <div class="read-more">
+      <a href="/2019/06/04/%E8%A7%A3%E5%86%B3redis%E9%87%8D%E5%90%AF%E5%90%8E%E5%AF%86%E7%A0%81%E5%A4%B1%E6%95%88%E9%97%AE%E9%A2%98/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/2019/06/04/windows%E4%B8%8B%E5%AE%89%E8%A3%85redis/">Windows下安装Redis</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2019-06-04 </span>
+      <div class="post-category">
+          <a href="/categories/redis%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"> Redis学习笔记 </a>
+          </div>
+        <span class="more-meta"> 约 597 字 </span>
+        <span class="more-meta"> 预计阅读 2 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      1. 下载 **下载地址：**https://github.com/MSOpenTech/redis/releases。 Redis 支持 32 位和 64 位。这个需要
+    </div>
+    <div class="read-more">
+      <a href="/2019/06/04/windows%E4%B8%8B%E5%AE%89%E8%A3%85redis/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/2019/06/04/win10%E4%B8%8B%E5%AE%89%E8%A3%85mysql8-0-16/">Win10下安装MySQL8.0.16</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2019-06-04 </span>
+      <div class="post-category">
+          <a href="/categories/mysql%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"> MySQL学习笔记 </a>
+          </div>
+        <span class="more-meta"> 约 458 字 </span>
+        <span class="more-meta"> 预计阅读 1 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <ol>
+<li>首先去 <a href="https://dev.mysql.com/downloads/mysql/">MySQL官网</a> ，拉到最底下，下载最新版MySQL安装包</li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/ShangguanHong/PictureBed/master/1559578686937.png" alt="1559578686937"></p>
+    </div>
+    <div class="read-more">
+      <a href="/2019/06/04/win10%E4%B8%8B%E5%AE%89%E8%A3%85mysql8-0-16/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/2019/06/03/spring-boot%E6%95%B4%E5%90%88mybatis/">Spring Boot整合MyBatis</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2019-06-03 </span>
+      <div class="post-category">
+          <a href="/categories/springboot%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"> SpringBoot学习笔记 </a>
+          <a href="/categories/mybatis%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"> Mybatis学习笔记 </a>
+          </div>
+        <span class="more-meta"> 约 2151 字 </span>
+        <span class="more-meta"> 预计阅读 5 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      1. 前言 本文介绍如何将mybatis整合进Spring Boot, 并且使用mybatis-generator插件自动根据数据库生成一些基本的代码。 本文用
+    </div>
+    <div class="read-more">
+      <a href="/2019/06/03/spring-boot%E6%95%B4%E5%90%88mybatis/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/2019/05/31/spring-boot%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/">Spring Boot配置文件</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2019-05-31 </span>
+      <div class="post-category">
+          <a href="/categories/springboot%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"> SpringBoot学习笔记 </a>
+          </div>
+        <span class="more-meta"> 约 1386 字 </span>
+        <span class="more-meta"> 预计阅读 3 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <h1 id="1-启动spring-boot项目">1. 启动Spring Boot项目</h1>
+<ol>
+<li>第一种方法是使用IDE(集成开发环境)，例如IDEA、Eclipse等，我这里使用的是IDEA，所以我只需点击右上角的Run按钮即可</li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/ShangguanHong/PictureBed/master/1559271612805.png" alt="1559271612805"></p>
+<ol start="2">
+<li>使用maven命令行启动。在项目根目录下运行 <code>mvn spring-boot:run</code>即可</li>
+</ol>
+<blockquote>
+<p><strong>注意:使用mvn命令请确保电脑上安装了maven并且配置了maven环境变量，可以输入 <code>mvn --version</code> 查看是否 安装（成功安装如下图），若没安装自行百度，按照教程一步一步完成即可</strong></p>
+</blockquote>
+<p><img src="https://raw.githubusercontent.com/ShangguanHong/PictureBed/master/1559271875750.png" alt="1559271875750"></p>
+<ol start="3">
+<li>
+<p>使用jar文件启动。在项目根目录下运行命令 <code>mvn clean install</code> (clean表示清空之前编译的文件，install表示打包项目文件成为jar文件)</p>
+<p><img src="https://raw.githubusercontent.com/ShangguanHong/PictureBed/master/1559272084746.png" alt="1559272084746"></p>
+<p>出现 <code>BUILD SUCCESS</code> 表示创建jar成功，之后可以在项目根目录下的target目录下查看到对应的jar文件</p>
+<p><img src="https://raw.githubusercontent.com/ShangguanHong/PictureBed/master/1559272191102.png" alt="1559272191102"></p>
+<p>然后执行 <code>java -jar demo-0.0.1-SNAPSHOT.jar</code> 运行该文件即可。</p>
+</li>
+</ol>
+<h1 id="2-编写配置文件">2. 编写配置文件</h1>
+    </div>
+    <div class="read-more">
+      <a href="/2019/05/31/spring-boot%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/2019/05/30/hexo%E4%B8%8A%E4%BC%A0%E5%9B%BE%E7%89%87/">Hexo上传图片</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2019-05-30 </span>
+      <div class="post-category">
+          <a href="/categories/hexo%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"> Hexo学习笔记 </a>
+          </div>
+        <span class="more-meta"> 约 239 字 </span>
+        <span class="more-meta"> 预计阅读 1 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      修改 站点配置文件_config.yml 里的 post_asset_folder: false 为 post_asset_folder: true 当设置了 post_asset_folder 为 true 后，用 hexo new &quot;new page&quot; 生成新的博客时，Hexo会自动建立一个同名的文件夹，当文章用
+    </div>
+    <div class="read-more">
+      <a href="/2019/05/30/hexo%E4%B8%8A%E4%BC%A0%E5%9B%BE%E7%89%87/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/2019/05/30/spring-boot%E6%96%B0%E5%BB%BA%E9%A1%B9%E7%9B%AE/">Spring Boot新建项目</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2019-05-30 </span>
+      <div class="post-category">
+          <a href="/categories/springboot%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"> SpringBoot学习笔记 </a>
+          </div>
+        <span class="more-meta"> 约 850 字 </span>
+        <span class="more-meta"> 预计阅读 2 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      1. 前言 Spring Boot是由Pivotal团队提供的全新框架，其设计目的是用来简化新Spring应用的初始搭建以及开发过程。该框架使用了特定的方式来
+    </div>
+    <div class="read-more">
+      <a href="/2019/05/30/spring-boot%E6%96%B0%E5%BB%BA%E9%A1%B9%E7%9B%AE/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    </section>
+  
+  <nav class="pagination">
+    <a class="prev" href="/page/4/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text">上一页</span>
+      </a>
+    <a class="next" href="/page/6/">
+        <span class="next-text">下一页</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+  </nav>
+        </div>
+        
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:www.sgh1450280694@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/ShangguanHong" class="iconfont icon-github" title="github"></a>
+      <a href="https://weibo.com/5590338381" class="iconfont icon-weibo" title="weibo"></a>
+      <a href="https://space.bilibili.com/105190849" class="iconfont icon-bilibili" title="bilibili"></a>
+  <a href="https://shangguanhong.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2019 - 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">ShangguanHong</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

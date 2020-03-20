@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>zsh on ShangguanHong</title>
+    <link>https://shangguanhong.github.io/tags/zsh/</link>
+    <description>Recent content in zsh on ShangguanHong</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Thu, 21 Nov 2019 21:11:12 +0000</lastBuildDate>
+    
+	<atom:link href="https://shangguanhong.github.io/tags/zsh/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Linux美化</title>
+      <link>https://shangguanhong.github.io/2019/11/21/linux%E7%BE%8E%E5%8C%96/</link>
+      <pubDate>Thu, 21 Nov 2019 21:11:12 +0000</pubDate>
+      
+      <guid>https://shangguanhong.github.io/2019/11/21/linux%E7%BE%8E%E5%8C%96/</guid>
+      <description>记录每次安装Linux系统必完成的流程，方便以后的开发 zsh 1 2 3 4 5 6 # ubuntu $ sudo apt-get install zsh # contos $ sudo yum install zsh -y # arch $ sudo pacman -S zsh on-my-zsh 安装 通过在线脚本安装 1 sh -c</description>
+    </item>
+    
+  </channel>
+</rss>

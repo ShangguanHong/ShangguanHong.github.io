@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Spring Boot中CommandLineRunner的使用 - ShangguanHong</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="ShangguanHong" /><meta name="description" content="前言 在项目中经常会遇到需要在项目启动之前做一些初始化数据的操作，例如初始化线程池、初始化一些脚本等等。但是往往这些操作又需要在 Spring Beans 加载完成之" /><meta name="keywords" content="go, golang, hugo" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.67.1 with theme even" />
+
+
+<link rel="canonical" href="https://shangguanhong.github.io/2019/08/29/spring-boot%E4%B8%ADcommandlinerunner%E7%9A%84%E4%BD%BF%E7%94%A8/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="Spring Boot中CommandLineRunner的使用" />
+<meta property="og:description" content="前言 在项目中经常会遇到需要在项目启动之前做一些初始化数据的操作，例如初始化线程池、初始化一些脚本等等。但是往往这些操作又需要在 Spring Beans 加载完成之" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://shangguanhong.github.io/2019/08/29/spring-boot%E4%B8%ADcommandlinerunner%E7%9A%84%E4%BD%BF%E7%94%A8/" />
+<meta property="article:published_time" content="2019-08-29T21:24:02+00:00" />
+<meta property="article:modified_time" content="2019-08-29T21:24:02+00:00" />
+<meta itemprop="name" content="Spring Boot中CommandLineRunner的使用">
+<meta itemprop="description" content="前言 在项目中经常会遇到需要在项目启动之前做一些初始化数据的操作，例如初始化线程池、初始化一些脚本等等。但是往往这些操作又需要在 Spring Beans 加载完成之">
+<meta itemprop="datePublished" content="2019-08-29T21:24:02&#43;00:00" />
+<meta itemprop="dateModified" content="2019-08-29T21:24:02&#43;00:00" />
+<meta itemprop="wordCount" content="1007">
+
+
+
+<meta itemprop="keywords" content="Spring Boot," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Spring Boot中CommandLineRunner的使用"/>
+<meta name="twitter:description" content="前言 在项目中经常会遇到需要在项目启动之前做一些初始化数据的操作，例如初始化线程池、初始化一些脚本等等。但是往往这些操作又需要在 Spring Beans 加载完成之"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">赏我一个好梦如旧</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">赏我一个好梦如旧</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Spring Boot中CommandLineRunner的使用</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2019-08-29 </span>
+        <div class="post-category">
+            <a href="/categories/springboot%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"> SpringBoot学习笔记 </a>
+            </div>
+          <span class="more-meta"> 约 1007 字 </span>
+          <span class="more-meta"> 预计阅读 3 分钟 </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents"></nav>
+  </div>
+</div>
+    <div class="post-content">
+      <h1 id="前言">前言</h1>
+<p>在项目中经常会遇到需要在项目启动之前做一些初始化数据的操作，例如初始化线程池、初始化一些脚本等等。但是往往这些操作又需要在 <code>Spring Beans</code> 加载完成之后，因为需要依赖于一些 <code>Spring Beans</code>。<code>CommandLineRunner</code> 可以很好的解决这个问题，继承了 <code>ComandLineRunner</code> 接口并且加上了 <code>@Component</code> 注解的类可以在  <code>Spring Beans</code>  都初始化之后，而又在 <code>SpringApplication.run()</code>  之前执行。下面来详细介绍 <code>CommandLineRunner</code> 的使用。</p>
+<h1 id="正文">正文</h1>
+<p>修改启动类，添加两行打印代码，看查看 <code>CommandLineRunner</code>  运行的时机</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@SpringBootApplication</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">TestApplication</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;This Application run before&#34;</span><span class="o">);</span>
+        <span class="n">SpringApplication</span><span class="o">.</span><span class="na">run</span><span class="o">(</span><span class="n">TestApplication</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="n">args</span><span class="o">);</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;This Application run after&#34;</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>然后写一个 <code>Runner</code> 类，继承 <code>ComandLineRunner</code> 接口，并实现 <code>run()</code> 方法</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Component</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Runner</span> <span class="kd">implements</span> <span class="n">CommandLineRunner</span> <span class="o">{</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">(</span><span class="n">String</span><span class="o">...</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">5</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;Runner no.&#34;</span> <span class="o">+</span> <span class="n">i</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>注意</strong> ：一定要加上 <code>@Component</code> 注解</p>
+<p>我们启动应用查看输出，输出顺序如下（省略不重要的）</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">This Application run before
+
+  .   ____          _            __ _ _
+ /<span class="se">\\</span> / ___<span class="s1">&#39;_ __ _ _(_)_ __  __ _ \ \ \ \
+</span><span class="s1">( ( )\___ | &#39;</span>_ <span class="p">|</span> <span class="s1">&#39;_| | &#39;</span>_ <span class="se">\/</span> _<span class="sb">`</span> <span class="p">|</span> <span class="se">\ \ \ \
+</span><span class="se"></span> <span class="se">\\</span>/  ___<span class="o">)</span><span class="p">|</span> <span class="p">|</span>_<span class="o">)</span><span class="p">|</span> <span class="p">|</span> <span class="p">|</span> <span class="p">|</span> <span class="p">|</span> <span class="o">||</span> <span class="o">(</span>_<span class="p">|</span> <span class="p">|</span>  <span class="o">)</span> <span class="o">)</span> <span class="o">)</span> <span class="o">)</span>
+  <span class="err">&#39;</span>  <span class="p">|</span>____<span class="p">|</span> .__<span class="p">|</span>_<span class="p">|</span> <span class="p">|</span>_<span class="p">|</span>_<span class="p">|</span> <span class="p">|</span>_<span class="se">\_</span>_, <span class="p">|</span> / / / /
+ <span class="o">=========</span><span class="p">|</span>_<span class="p">|</span><span class="o">==============</span><span class="p">|</span>___/<span class="o">=</span>/_/_/_/
+ :: Spring Boot ::        <span class="o">(</span>v2.1.7.RELEASE<span class="o">)</span>
+ 
+2019-08-29 21:51:55.532  INFO <span class="m">5576</span> --- <span class="o">[</span>           main<span class="o">]</span> o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port<span class="o">(</span>s<span class="o">)</span>: <span class="m">8080</span> <span class="o">(</span>http<span class="o">)</span>
+2019-08-29 21:51:55.555  INFO <span class="m">5576</span> --- <span class="o">[</span>           main<span class="o">]</span> o.apache.catalina.core.StandardService   : Starting service <span class="o">[</span>Tomcat<span class="o">]</span>
+2019-08-29 21:51:55.555  INFO <span class="m">5576</span> --- <span class="o">[</span>           main<span class="o">]</span> org.apache.catalina.core.StandardEngine  : Starting Servlet engine: <span class="o">[</span>Apache Tomcat/9.0.22<span class="o">]</span>
+2019-08-29 21:51:55.660  INFO <span class="m">5576</span> --- <span class="o">[</span>           main<span class="o">]</span> o.a.c.c.C.<span class="o">[</span>Tomcat<span class="o">]</span>.<span class="o">[</span>localhost<span class="o">]</span>.<span class="o">[</span>/<span class="o">]</span>       : Initializing Spring embedded WebApplicationContext
+2019-08-29 21:51:55.660  INFO <span class="m">5576</span> --- <span class="o">[</span>           main<span class="o">]</span> o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in <span class="m">1361</span>
+Runner no.0
+Runner no.1
+Runner no.2
+Runner no.3
+Runner no.4
+This Application run after
+</code></pre></td></tr></table>
+</div>
+</div><p>可以看到 <code>run()</code> 方法确实是在 <code>Spring Beans</code> 都加载完成后，但是又在 <code>SpringApplication.run()</code>  之前执行。</p>
+<p>那么如果有多个类继承了 <code>CommandLineRunner</code>  接口并且加上了 <code>@Component</code> 注解，那么执行顺序如何呢？</p>
+<p><code>Spring Boot</code> 提供一个注解 <code>@Order</code> 来解决这个问题，@Order 注解内有一个 <code>value</code> 值，该值设置的越小，则该类越早被执行。</p>
+<p><code>RunnerOrder1.class</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Component</span>
+<span class="nd">@Order</span><span class="o">(</span><span class="n">value</span> <span class="o">=</span> <span class="n">1</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">RunnerOrder1</span> <span class="kd">implements</span> <span class="n">CommandLineRunner</span> <span class="o">{</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">(</span><span class="n">String</span><span class="o">...</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="k">this</span><span class="o">.</span><span class="na">getClass</span><span class="o">().</span><span class="na">getName</span><span class="o">());</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><code>RunnerOrder2.class</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Component</span>
+<span class="nd">@Order</span><span class="o">(</span><span class="n">value</span> <span class="o">=</span> <span class="n">2</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">RunnerOrder2</span> <span class="kd">implements</span> <span class="n">CommandLineRunner</span> <span class="o">{</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">(</span><span class="n">String</span><span class="o">...</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="k">this</span><span class="o">.</span><span class="na">getClass</span><span class="o">().</span><span class="na">getName</span><span class="o">());</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>执行结果如下</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">This Application run before
+
+  .   ____          _            __ _ _
+ /<span class="se">\\</span> / ___<span class="s1">&#39;_ __ _ _(_)_ __  __ _ \ \ \ \
+</span><span class="s1">( ( )\___ | &#39;</span>_ <span class="p">|</span> <span class="s1">&#39;_| | &#39;</span>_ <span class="se">\/</span> _<span class="sb">`</span> <span class="p">|</span> <span class="se">\ \ \ \
+</span><span class="se"></span> <span class="se">\\</span>/  ___<span class="o">)</span><span class="p">|</span> <span class="p">|</span>_<span class="o">)</span><span class="p">|</span> <span class="p">|</span> <span class="p">|</span> <span class="p">|</span> <span class="p">|</span> <span class="o">||</span> <span class="o">(</span>_<span class="p">|</span> <span class="p">|</span>  <span class="o">)</span> <span class="o">)</span> <span class="o">)</span> <span class="o">)</span>
+  <span class="err">&#39;</span>  <span class="p">|</span>____<span class="p">|</span> .__<span class="p">|</span>_<span class="p">|</span> <span class="p">|</span>_<span class="p">|</span>_<span class="p">|</span> <span class="p">|</span>_<span class="se">\_</span>_, <span class="p">|</span> / / / /
+ <span class="o">=========</span><span class="p">|</span>_<span class="p">|</span><span class="o">==============</span><span class="p">|</span>___/<span class="o">=</span>/_/_/_/
+ :: Spring Boot ::        <span class="o">(</span>v2.1.7.RELEASE<span class="o">)</span>
+
+2019-08-29 22:06:31.538  INFO <span class="m">13368</span> --- <span class="o">[</span>           main<span class="o">]</span> o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port<span class="o">(</span>s<span class="o">)</span>: <span class="m">8080</span> <span class="o">(</span>http<span class="o">)</span>
+2019-08-29 22:06:31.566  INFO <span class="m">13368</span> --- <span class="o">[</span>           main<span class="o">]</span> o.apache.catalina.core.StandardService   : Starting service <span class="o">[</span>Tomcat<span class="o">]</span>
+2019-08-29 22:06:31.566  INFO <span class="m">13368</span> --- <span class="o">[</span>           main<span class="o">]</span> org.apache.catalina.core.StandardEngine  : Starting Servlet engine: <span class="o">[</span>Apache Tomcat/9.0.22<span class="o">]</span>
+2019-08-29 22:06:31.680  INFO <span class="m">13368</span> --- <span class="o">[</span>           main<span class="o">]</span> o.a.c.c.C.<span class="o">[</span>Tomcat<span class="o">]</span>.<span class="o">[</span>localhost<span class="o">]</span>.<span class="o">[</span>/<span class="o">]</span>       : Initializing Spring embedded WebApplicationContext
+2019-08-29 22:06:31.681  INFO <span class="m">13368</span> --- <span class="o">[</span>           main<span class="o">]</span> o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in <span class="m">1617</span> ms
+com.example.mybatisplus.service.component.RunnerOrder1
+com.example.mybatisplus.service.component.RunnerOrder2
+This Application run after
+</code></pre></td></tr></table>
+</div>
+</div><p>那么如果两个类的执行优先级一致呢？本人的测试结果是：<strong>对于执行优先度同一级的类，按类的全限定类名的字符串排序，字典序越小的越早被执行。</strong></p>
+<p>对于上述的需求，还有一种方法是实现 <code>ApplicationRunner</code> 接口，用法与上述一致，唯一的区别就是 <code>ApplicationRunner</code>  的 run() 方法传入的参数是 <code>ApplicationArguments</code>，而 <code>CommandLineRunner</code>  的 run() 方法传入的是 String 数组，如果你想要得到更加详细传入信息就可以使用 <code>ApplicationRunner</code> 。</p>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">ShangguanHong</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2019-08-29
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/spring-boot/">Spring Boot</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/2019/09/01/manjaro%E5%AE%89%E8%A3%85%E5%AE%8C%E5%90%8E%E9%9C%80%E8%A6%81%E5%81%9A%E7%9A%84%E4%BA%8B/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">manjaro安装完后需要做的事</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/2019/08/23/shiro%E7%9A%84%E5%A4%9Arealm%E9%85%8D%E7%BD%AE/">
+            <span class="next-text nav-default">Shiro的多Realm配置</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+  <div id="vcomments"></div>
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+  <script type="text/javascript">
+    new Valine({
+        el: '#vcomments' ,
+        appId: 'X0gLmyOh1himl7jHPYcpKKop-gzGzoHsz',
+        appKey: 'hoYFzkrMqrD9SyRNpkiNf0LH',
+        notify:  false ,
+        verify:  false ,
+        avatar:'mm',
+        placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊!',
+        visitor:  false 
+    });
+  </script>
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:www.sgh1450280694@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/ShangguanHong" class="iconfont icon-github" title="github"></a>
+      <a href="https://weibo.com/5590338381" class="iconfont icon-weibo" title="weibo"></a>
+      <a href="https://space.bilibili.com/105190849" class="iconfont icon-bilibili" title="bilibili"></a>
+  <a href="https://shangguanhong.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2019 - 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">ShangguanHong</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

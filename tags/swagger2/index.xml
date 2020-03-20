@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Swagger2 on ShangguanHong</title>
+    <link>https://shangguanhong.github.io/tags/swagger2/</link>
+    <description>Recent content in Swagger2 on ShangguanHong</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Tue, 16 Jul 2019 16:15:21 +0000</lastBuildDate>
+    
+	<atom:link href="https://shangguanhong.github.io/tags/swagger2/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Spring Boot整合Swagger2</title>
+      <link>https://shangguanhong.github.io/2019/07/16/spring-boot%E6%95%B4%E5%90%88swagger2/</link>
+      <pubDate>Tue, 16 Jul 2019 16:15:21 +0000</pubDate>
+      
+      <guid>https://shangguanhong.github.io/2019/07/16/spring-boot%E6%95%B4%E5%90%88swagger2/</guid>
+      <description>1. 前言 ​ 现如今，前后端分离已经逐渐成为互联网项目一种标准的开发方式，前端与后端交给不同的人员开发，但是项目开发中的沟通成本也随之升高，这部分</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>windows上安装WSL - ShangguanHong</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="ShangguanHong" /><meta name="description" content="介绍 Windows Subsystem for Linux（简称WSL）是一个为在Windows 10上能够原生运行Linux二进制可执行文件（ELF格式）的兼容层。 意思就是一个能" /><meta name="keywords" content="go, golang, hugo" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.67.1 with theme even" />
+
+
+<link rel="canonical" href="https://shangguanhong.github.io/2019/11/21/windows%E4%B8%8A%E5%AE%89%E8%A3%85wsl/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="windows上安装WSL" />
+<meta property="og:description" content="介绍 Windows Subsystem for Linux（简称WSL）是一个为在Windows 10上能够原生运行Linux二进制可执行文件（ELF格式）的兼容层。 意思就是一个能" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://shangguanhong.github.io/2019/11/21/windows%E4%B8%8A%E5%AE%89%E8%A3%85wsl/" />
+<meta property="article:published_time" content="2019-11-21T20:12:53+00:00" />
+<meta property="article:modified_time" content="2019-11-21T20:12:53+00:00" />
+<meta itemprop="name" content="windows上安装WSL">
+<meta itemprop="description" content="介绍 Windows Subsystem for Linux（简称WSL）是一个为在Windows 10上能够原生运行Linux二进制可执行文件（ELF格式）的兼容层。 意思就是一个能">
+<meta itemprop="datePublished" content="2019-11-21T20:12:53&#43;00:00" />
+<meta itemprop="dateModified" content="2019-11-21T20:12:53&#43;00:00" />
+<meta itemprop="wordCount" content="593">
+
+
+
+<meta itemprop="keywords" content="linux,wsl," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="windows上安装WSL"/>
+<meta name="twitter:description" content="介绍 Windows Subsystem for Linux（简称WSL）是一个为在Windows 10上能够原生运行Linux二进制可执行文件（ELF格式）的兼容层。 意思就是一个能"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">赏我一个好梦如旧</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">赏我一个好梦如旧</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">windows上安装WSL</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2019-11-21 </span>
+        <div class="post-category">
+            <a href="/categories/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"> Linux学习笔记 </a>
+            </div>
+          <span class="more-meta"> 约 593 字 </span>
+          <span class="more-meta"> 预计阅读 2 分钟 </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#美化">美化</a></li>
+    <li><a href="#换源与zsh">换源与ZSH</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <h1 id="介绍">介绍</h1>
+<p>Windows Subsystem for Linux（简称WSL）是一个为在Windows 10上能够原生运行Linux二进制可执行文件（ELF格式）的兼容层。</p>
+<p>意思就是一个能在windows系统上运行的linux系统。</p>
+<p>下面我以介绍在 windows 10 中安装 ubuntu 18.04 LTS为例子，来说明如何进行安装。</p>
+<h1 id="安装">安装</h1>
+<ol>
+<li>
+<p>首先在控制面板-&gt;程序-&gt;程序与功能-&gt;启用或关闭windows功能界面中，勾选<strong>适用于Linux的Windows子系统</strong>，然后重启电脑</p>
+<p><img src="https://raw.githubusercontent.com/ShangguanHong/PictureBed/master/image-20191121201819830.png" alt="image-20191121201819830"></p>
+</li>
+<li>
+<p>在 <code>Microsoft store</code> 中搜索 ubuntu，会出现许多windows支持的linux系统，这里我选择 ubuntu 18.04 LTS版本</p>
+<p><img src="https://raw.githubusercontent.com/ShangguanHong/PictureBed/master/image-20191121202316844.png" alt="image-20191121202316844"></p>
+</li>
+<li>
+<p>安装完成后在开始菜单上就会显示一个 Ubuntu 的图标，这就表示该Ubuntu已经安装完成，点击它设置初始密码，就可以将其当作一个 Ubuntu 系统来使用了。</p>
+</li>
+</ol>
+<h1 id="后续">后续</h1>
+<h2 id="美化">美化</h2>
+<ol>
+<li>更换配色</li>
+</ol>
+<p>下载 microsoft 官方出品的终端调色工具，ColorTool</p>
+<p>github源码地址：<a href="https://links.jianshu.com/go?to=https%3A%2F%2Fgithub.com%2FMicrosoft%2FTerminal%2Ftree%2Fmaster%2Fsrc%2Ftools%2FColorTool">https://github.com/Microsoft/Terminal/tree/master/src/tools/ColorTool</a></p>
+<p>github下载地址： <a href="https://github.com/microsoft/terminal/releases/tag/1904.29002">https://github.com/microsoft/terminal/releases/tag/1904.29002</a></p>
+<p>下载完后解压压缩包，管理员身份运行cmd到压缩目录下，运行 <code>ColorTool.exe -d schemes/solarized_dark.itermcolors</code> 命令，显示 Wrote selected scheme to the defaults. 表示调色成功，重启 wsl 生效。</p>
+<ol start="2">
+<li>更换字体</li>
+</ol>
+<p>Fire Code Retina 字体的下载地址为： <a href="https://links.jianshu.com/go?to=https%3A%2F%2Fraw.githubusercontent.com%2Ftonsky%2FFiraCode%2Fmaster%2Fdistr%2Fttf%2FFiraCode-Retina.ttf">https://raw.githubusercontent.com/tonsky/FiraCode/master/distr/ttf/FiraCode-Retina.ttf</a></p>
+<p>下载完后双击，安装即可。</p>
+<p>然后在 wsl 终端，右键终端上方的空白处点击属性，将字体更改为 Fire Code Retina 即可，这时回去看终端字体，是不是感觉心旷神怡</p>
+<p><img src="https://raw.githubusercontent.com/ShangguanHong/PictureBed/master/image-20191121203951851.png" alt="image-20191121203951851"></p>
+<p><img src="https://raw.githubusercontent.com/ShangguanHong/PictureBed/master/image-20191121204047086.png" alt="image-20191121204047086"></p>
+<h2 id="换源与zsh">换源与ZSH</h2>
+<p>参考：<a href="https://shangguanhong.github.io/2019/11/21/Linux%E7%BE%8E%E5%8C%96/">Linux美化</a></p>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">ShangguanHong</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2019-11-21
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/linux/">linux</a>
+          <a href="/tags/wsl/">wsl</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/2019/11/21/linux%E7%BE%8E%E5%8C%96/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Linux美化</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/2019/10/31/lombok%E7%9A%84%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3/">
+            <span class="next-text nav-default">lombok的常用注解</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+  <div id="vcomments"></div>
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+  <script type="text/javascript">
+    new Valine({
+        el: '#vcomments' ,
+        appId: 'X0gLmyOh1himl7jHPYcpKKop-gzGzoHsz',
+        appKey: 'hoYFzkrMqrD9SyRNpkiNf0LH',
+        notify:  false ,
+        verify:  false ,
+        avatar:'mm',
+        placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊!',
+        visitor:  false 
+    });
+  </script>
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:www.sgh1450280694@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/ShangguanHong" class="iconfont icon-github" title="github"></a>
+      <a href="https://weibo.com/5590338381" class="iconfont icon-weibo" title="weibo"></a>
+      <a href="https://space.bilibili.com/105190849" class="iconfont icon-bilibili" title="bilibili"></a>
+  <a href="https://shangguanhong.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2019 - 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">ShangguanHong</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

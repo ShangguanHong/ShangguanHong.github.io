@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Spring Boot整合MyBatis - ShangguanHong</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="ShangguanHong" /><meta name="description" content="1. 前言 本文介绍如何将mybatis整合进Spring Boot, 并且使用mybatis-generator插件自动根据数据库生成一些基本的代码。 本文用" /><meta name="keywords" content="go, golang, hugo" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.67.1 with theme even" />
+
+
+<link rel="canonical" href="https://shangguanhong.github.io/2019/06/03/spring-boot%E6%95%B4%E5%90%88mybatis/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="Spring Boot整合MyBatis" />
+<meta property="og:description" content="1. 前言 本文介绍如何将mybatis整合进Spring Boot, 并且使用mybatis-generator插件自动根据数据库生成一些基本的代码。 本文用" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://shangguanhong.github.io/2019/06/03/spring-boot%E6%95%B4%E5%90%88mybatis/" />
+<meta property="article:published_time" content="2019-06-03T09:38:28+00:00" />
+<meta property="article:modified_time" content="2019-06-03T09:38:28+00:00" />
+<meta itemprop="name" content="Spring Boot整合MyBatis">
+<meta itemprop="description" content="1. 前言 本文介绍如何将mybatis整合进Spring Boot, 并且使用mybatis-generator插件自动根据数据库生成一些基本的代码。 本文用">
+<meta itemprop="datePublished" content="2019-06-03T09:38:28&#43;00:00" />
+<meta itemprop="dateModified" content="2019-06-03T09:38:28&#43;00:00" />
+<meta itemprop="wordCount" content="2151">
+
+
+
+<meta itemprop="keywords" content="Spring Boot,Mybatis," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Spring Boot整合MyBatis"/>
+<meta name="twitter:description" content="1. 前言 本文介绍如何将mybatis整合进Spring Boot, 并且使用mybatis-generator插件自动根据数据库生成一些基本的代码。 本文用"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">赏我一个好梦如旧</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">赏我一个好梦如旧</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Spring Boot整合MyBatis</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2019-06-03 </span>
+        <div class="post-category">
+            <a href="/categories/springboot%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"> SpringBoot学习笔记 </a>
+            <a href="/categories/mybatis%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"> Mybatis学习笔记 </a>
+            </div>
+          <span class="more-meta"> 约 2151 字 </span>
+          <span class="more-meta"> 预计阅读 5 分钟 </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents"></nav>
+  </div>
+</div>
+    <div class="post-content">
+      <h1 id="1-前言">1. 前言</h1>
+<p>本文介绍如何将mybatis整合进Spring Boot,  并且使用mybatis-generator插件自动根据数据库生成一些基本的代码。</p>
+<blockquote>
+<p>本文用的是mybatis的xml配置模式，它还有一种注解模式，需要了解的可以搜索学习</p>
+<p>本文开发环境为  JDK1.8 + mybatis3 + IDEA。</p>
+</blockquote>
+<p>项目代码: <a href="https://github.com/ShangguanHong/SpringBootDemo/tree/master/springboot-mybatis">https://github.com/ShangguanHong/SpringBootDemo/tree/master/springboot-mybatis</a></p>
+<h1 id="2-配置pomxml">2. 配置pom.xml</h1>
+<ol>
+<li>加入数据库依赖</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-xml" data-lang="xml">        <span class="nt">&lt;dependency&gt;</span>
+            <span class="nt">&lt;groupId&gt;</span>org.mybatis.spring.boot<span class="nt">&lt;/groupId&gt;</span>
+            <span class="nt">&lt;artifactId&gt;</span>mybatis-spring-boot-starter<span class="nt">&lt;/artifactId&gt;</span>
+            <span class="nt">&lt;version&gt;</span>2.0.0<span class="nt">&lt;/version&gt;</span>
+        <span class="nt">&lt;/dependency&gt;</span>
+        <span class="nt">&lt;dependency&gt;</span>
+            <span class="nt">&lt;groupId&gt;</span>mysql<span class="nt">&lt;/groupId&gt;</span>
+            <span class="nt">&lt;artifactId&gt;</span>mysql-connector-java<span class="nt">&lt;/artifactId&gt;</span>
+            <span class="nt">&lt;version&gt;</span>5.1.47<span class="nt">&lt;/version&gt;</span>
+        <span class="nt">&lt;/dependency&gt;</span>
+        <span class="nt">&lt;dependency&gt;</span>
+            <span class="nt">&lt;groupId&gt;</span>com.alibaba<span class="nt">&lt;/groupId&gt;</span>
+            <span class="nt">&lt;artifactId&gt;</span>druid-spring-boot-starter<span class="nt">&lt;/artifactId&gt;</span>
+            <span class="nt">&lt;version&gt;</span>1.1.10<span class="nt">&lt;/version&gt;</span>
+        <span class="nt">&lt;/dependency&gt;</span>
+
+
+</code></pre></td></tr></table>
+</div>
+</div><ol start="2">
+<li>加入mybatis-generator插件</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-xml" data-lang="xml">            <span class="nt">&lt;plugin&gt;</span>
+                <span class="nt">&lt;groupId&gt;</span>org.mybatis.generator<span class="nt">&lt;/groupId&gt;</span>
+                <span class="nt">&lt;artifactId&gt;</span>mybatis-generator-maven-plugin<span class="nt">&lt;/artifactId&gt;</span>
+                <span class="nt">&lt;version&gt;</span>1.3.2<span class="nt">&lt;/version&gt;</span>
+                <span class="nt">&lt;configuration&gt;</span>
+                    <span class="nt">&lt;verbose&gt;</span>true<span class="nt">&lt;/verbose&gt;</span>
+                    <span class="nt">&lt;overwrite&gt;</span>true<span class="nt">&lt;/overwrite&gt;</span>
+                <span class="nt">&lt;/configuration&gt;</span>
+            <span class="nt">&lt;/plugin&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h1 id="3-mybatis-generator自动生成代码">3. mybatis-generator自动生成代码</h1>
+<p>我的数据库如下</p>
+<p><img src="https://raw.githubusercontent.com/ShangguanHong/PictureBed/master/1559552411277.png" alt="1559552411277"></p>
+<p>创建代码如下</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="k">CREATE</span> <span class="k">DATABASE</span> <span class="k">IF</span> <span class="k">NOT</span> <span class="k">EXISTS</span> <span class="o">`</span><span class="n">demo</span><span class="o">`</span> 
+<span class="k">USE</span> <span class="o">`</span><span class="n">demo</span><span class="o">`</span><span class="p">;</span>
+
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="k">IF</span> <span class="k">NOT</span> <span class="k">EXISTS</span> <span class="o">`</span><span class="n">country</span><span class="o">`</span> <span class="p">(</span>
+  <span class="o">`</span><span class="n">code</span><span class="o">`</span> <span class="kt">varchar</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="k">NOT</span> <span class="no">NULL</span><span class="p">,</span>
+  <span class="o">`</span><span class="n">name</span><span class="o">`</span> <span class="kt">varchar</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span> <span class="k">NOT</span> <span class="no">NULL</span><span class="p">,</span>
+  <span class="o">`</span><span class="n">population</span><span class="o">`</span> <span class="kt">int</span><span class="p">(</span><span class="mi">11</span><span class="p">)</span> <span class="k">NOT</span> <span class="no">NULL</span> <span class="k">DEFAULT</span> <span class="s1">&#39;0&#39;</span><span class="p">,</span>
+  <span class="k">PRIMARY</span> <span class="k">KEY</span> <span class="p">(</span><span class="o">`</span><span class="n">code</span><span class="o">`</span><span class="p">)</span>
+<span class="p">)</span> <span class="kp">ENGINE</span><span class="o">=</span><span class="n">InnoDB</span> <span class="k">DEFAULT</span> <span class="kp">CHARSET</span><span class="o">=</span><span class="n">utf8</span><span class="p">;</span>
+
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="o">`</span><span class="n">country</span><span class="o">`</span> <span class="p">(</span><span class="o">`</span><span class="n">code</span><span class="o">`</span><span class="p">,</span> <span class="o">`</span><span class="n">name</span><span class="o">`</span><span class="p">,</span> <span class="o">`</span><span class="n">population</span><span class="o">`</span><span class="p">)</span> <span class="k">VALUES</span>
+	<span class="p">(</span><span class="s1">&#39;AU&#39;</span><span class="p">,</span> <span class="s1">&#39;Australia&#39;</span><span class="p">,</span> <span class="mi">18886000</span><span class="p">),</span>
+	<span class="p">(</span><span class="s1">&#39;BR&#39;</span><span class="p">,</span> <span class="s1">&#39;Brazil&#39;</span><span class="p">,</span> <span class="mi">170115000</span><span class="p">),</span>
+	<span class="p">(</span><span class="s1">&#39;CA&#39;</span><span class="p">,</span> <span class="s1">&#39;Canada&#39;</span><span class="p">,</span> <span class="mi">1147000</span><span class="p">),</span>
+	<span class="p">(</span><span class="s1">&#39;CN&#39;</span><span class="p">,</span> <span class="s1">&#39;China&#39;</span><span class="p">,</span> <span class="mi">1277558000</span><span class="p">),</span>
+	<span class="p">(</span><span class="s1">&#39;DE&#39;</span><span class="p">,</span> <span class="s1">&#39;Germany&#39;</span><span class="p">,</span> <span class="mi">82164700</span><span class="p">),</span>
+	<span class="p">(</span><span class="s1">&#39;FR&#39;</span><span class="p">,</span> <span class="s1">&#39;France&#39;</span><span class="p">,</span> <span class="mi">59225700</span><span class="p">),</span>
+	<span class="p">(</span><span class="s1">&#39;GB&#39;</span><span class="p">,</span> <span class="s1">&#39;United Kingdom&#39;</span><span class="p">,</span> <span class="mi">59623400</span><span class="p">),</span>
+	<span class="p">(</span><span class="s1">&#39;IN&#39;</span><span class="p">,</span> <span class="s1">&#39;India&#39;</span><span class="p">,</span> <span class="mi">1013662000</span><span class="p">),</span>
+	<span class="p">(</span><span class="s1">&#39;RU&#39;</span><span class="p">,</span> <span class="s1">&#39;Russia&#39;</span><span class="p">,</span> <span class="mi">146934000</span><span class="p">),</span>
+	<span class="p">(</span><span class="s1">&#39;US&#39;</span><span class="p">,</span> <span class="s1">&#39;United States&#39;</span><span class="p">,</span> <span class="mi">278357000</span><span class="p">);</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>项目目录如下</p>
+<p><img src="https://raw.githubusercontent.com/ShangguanHong/PictureBed/master/1559559335403.png" alt="1559559335403"></p>
+<ol>
+<li>编写配置文件</li>
+</ol>
+<p><code>generator.properties</code> 中的内容为</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback"># 本地jdbc驱动地址
+jdbc.driverLocation=C:\\Users\\fate\\.m2\\repository\\mysql\\mysql-connector-java\\5.1.47\\mysql-connector-java-5.1.47.jar
+# 使用jdbc驱动类型
+jdbc.driverClass=com.mysql.jdbc.Driver
+# jdbc连接URL
+jdbc.connectionURL=jdbc:mysql://localhost:3306/demo?serverTimezone=UTC&amp;useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=true
+# 用户名
+jdbc.userId=root
+# 密码
+jdbc.password=root
+</code></pre></td></tr></table>
+</div>
+</div><p><code>generatorConfig.xml</code> 中的内容如下</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="cp">&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;</span>
+<span class="cp">&lt;!DOCTYPE generatorConfiguration
+</span><span class="cp">        PUBLIC &#34;-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN&#34;
+</span><span class="cp">        &#34;http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd&#34;&gt;</span>
+<span class="nt">&lt;generatorConfiguration&gt;</span>
+    <span class="c">&lt;!--导入属性配置--&gt;</span>
+    <span class="nt">&lt;properties</span> <span class="na">resource=</span><span class="s">&#34;generator.properties&#34;</span><span class="nt">&gt;&lt;/properties&gt;</span>
+    <span class="c">&lt;!-- 数据库驱动:选择你的本地硬盘上面的数据库驱动包--&gt;</span>
+    <span class="nt">&lt;classPathEntry</span>  <span class="na">location=</span><span class="s">&#34;${jdbc.driverLocation}&#34;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;context</span> <span class="na">id=</span><span class="s">&#34;demo&#34;</span>  <span class="na">targetRuntime=</span><span class="s">&#34;MyBatis3&#34;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;commentGenerator&gt;</span>
+            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;suppressDate&#34;</span> <span class="na">value=</span><span class="s">&#34;true&#34;</span><span class="nt">/&gt;</span>
+            <span class="c">&lt;!-- 是否去除自动生成的注释 true：是 ： false:否 --&gt;</span>
+            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;suppressAllComments&#34;</span> <span class="na">value=</span><span class="s">&#34;true&#34;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/commentGenerator&gt;</span>
+        <span class="c">&lt;!--数据库链接URL，用户名、密码 --&gt;</span>
+        <span class="nt">&lt;jdbcConnection</span> <span class="na">driverClass=</span><span class="s">&#34;${jdbc.driverClass}&#34;</span> <span class="na">connectionURL=</span><span class="s">&#34;${jdbc.connectionURL}&#34;</span> <span class="na">userId=</span><span class="s">&#34;${jdbc.userId}&#34;</span> <span class="na">password=</span><span class="s">&#34;${jdbc.password}&#34;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;/jdbcConnection&gt;</span>
+        <span class="nt">&lt;javaTypeResolver&gt;</span>
+            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;forceBigDecimals&#34;</span> <span class="na">value=</span><span class="s">&#34;false&#34;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/javaTypeResolver&gt;</span>
+        <span class="c">&lt;!-- 生成模型的包名和位置--&gt;</span>
+        <span class="nt">&lt;javaModelGenerator</span> <span class="na">targetPackage=</span><span class="s">&#34;com.example.demo.model&#34;</span> <span class="na">targetProject=</span><span class="s">&#34;src/main/java&#34;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;enableSubPackages&#34;</span> <span class="na">value=</span><span class="s">&#34;true&#34;</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;trimStrings&#34;</span> <span class="na">value=</span><span class="s">&#34;true&#34;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/javaModelGenerator&gt;</span>
+        <span class="c">&lt;!-- 生成映射文件的包名和位置--&gt;</span>
+        <span class="nt">&lt;sqlMapGenerator</span> <span class="na">targetPackage=</span><span class="s">&#34;mapper&#34;</span> <span class="na">targetProject=</span><span class="s">&#34;src/main/resources/mybatis&#34;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;enableSubPackages&#34;</span> <span class="na">value=</span><span class="s">&#34;true&#34;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/sqlMapGenerator&gt;</span>
+        <span class="c">&lt;!-- 生成DAO的包名和位置--&gt;</span>
+        <span class="nt">&lt;javaClientGenerator</span> <span class="na">type=</span><span class="s">&#34;XMLMAPPER&#34;</span> <span class="na">targetPackage=</span><span class="s">&#34;com.example.demo.mapper&#34;</span> <span class="na">targetProject=</span><span class="s">&#34;src/main/java&#34;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;enableSubPackages&#34;</span> <span class="na">value=</span><span class="s">&#34;true&#34;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/javaClientGenerator&gt;</span>
+        <span class="c">&lt;!-- 要生成的表 tableName是数据库中的表名或视图名 domainObjectName是实体类名--&gt;</span>
+        <span class="nt">&lt;table</span> <span class="na">tableName=</span><span class="s">&#34;country&#34;</span> <span class="na">domainObjectName=</span><span class="s">&#34;Country&#34;</span> <span class="na">enableCountByExample=</span><span class="s">&#34;false&#34;</span> <span class="na">enableUpdateByExample=</span><span class="s">&#34;false&#34;</span> <span class="na">enableDeleteByExample=</span><span class="s">&#34;false&#34;</span> <span class="na">enableSelectByExample=</span><span class="s">&#34;false&#34;</span> <span class="na">selectByExampleQueryId=</span><span class="s">&#34;false&#34;</span><span class="nt">&gt;&lt;/table&gt;</span>
+    <span class="nt">&lt;/context&gt;</span>
+<span class="nt">&lt;/generatorConfiguration&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><code>application.yml</code> 中添加如下配置</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-yml" data-lang="yml"><span class="k">spring</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="k">datasource</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="k">url</span><span class="p">:</span><span class="w"> </span>jdbc<span class="p">:</span>mysql<span class="p">:</span>//localhost<span class="p">:</span><span class="m">3306</span>/demo<span class="p">?</span>serverTimezone=UTC<span class="cp">&amp;useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=true</span><span class="w">
+</span><span class="w">    </span><span class="k">username</span><span class="p">:</span><span class="w"> </span>root<span class="w">
+</span><span class="w">    </span><span class="k">password</span><span class="p">:</span><span class="w"> </span>root<span class="w">
+</span><span class="w">    </span><span class="k">driver-class-name</span><span class="p">:</span><span class="w"> </span>com.mysql.jdbc.Driver<span class="w">
+</span><span class="w">    </span><span class="c"># druid 连接池</span><span class="w">
+</span><span class="w">    </span><span class="k">type</span><span class="p">:</span><span class="w"> </span>com.alibaba.druid.pool.DruidDataSource<span class="w">
+</span><span class="w">    </span><span class="k">filters</span><span class="p">:</span><span class="w"> </span>stat<span class="w">
+</span><span class="w">    </span><span class="k">maxActive</span><span class="p">:</span><span class="w"> </span><span class="m">20</span><span class="w">
+</span><span class="w">    </span><span class="k">initialSize</span><span class="p">:</span><span class="w"> </span><span class="m">1</span><span class="w">
+</span><span class="w">    </span><span class="k">maxWait</span><span class="p">:</span><span class="w"> </span><span class="m">60000</span><span class="w">
+</span><span class="w">    </span><span class="k">minIdle</span><span class="p">:</span><span class="w"> </span><span class="m">1</span><span class="w">
+</span><span class="w">    </span><span class="k">timeBetweenEvictionRunsMillis</span><span class="p">:</span><span class="w"> </span><span class="m">60000</span><span class="w">
+</span><span class="w">    </span><span class="k">minEvictableIdleTimeMillis</span><span class="p">:</span><span class="w"> </span><span class="m">300000</span><span class="w">
+</span><span class="w">    </span><span class="k">validationQuery</span><span class="p">:</span><span class="w"> </span>select<span class="w"> </span><span class="s1">&#39;x&#39;</span><span class="w">
+</span><span class="w">    </span><span class="k">testWhileIdle</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="w">    </span><span class="k">testOnBorrow</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="w">    </span><span class="k">testOnReturn</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="w">    </span><span class="k">poolPreparedStatements</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="w">    </span><span class="k">maxOpenPreparedStatements</span><span class="p">:</span><span class="w"> </span><span class="m">20</span><span class="w">
+</span><span class="w">    
+</span><span class="w"></span><span class="k">mybatis</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="k">config-location</span><span class="p">:</span><span class="w"> </span>classpath<span class="p">:</span>mybatis/mybatis-config.xml<span class="w">
+</span><span class="w">  </span><span class="k">mapper-locations</span><span class="p">:</span><span class="w"> </span>classpath<span class="p">:</span>mybatis/mapper/<span class="cp">*.xml</span><span class="w">
+</span><span class="w">  </span><span class="k">type-aliases-package</span><span class="p">:</span><span class="w"> </span>com.example.demo.model<span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><p><code>mybatis-config.xml</code> 中内容如下</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="cp">&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;</span>
+<span class="cp">&lt;!DOCTYPE configuration PUBLIC &#34;-//mybatis.org//DTD Config 3.0//EN&#34; &#34;http://mybatis.org/dtd/mybatis-3-config.dtd&#34;&gt;</span>
+<span class="nt">&lt;configuration&gt;</span>
+    <span class="nt">&lt;typeAliases&gt;</span>
+        <span class="nt">&lt;typeAlias</span> <span class="na">alias=</span><span class="s">&#34;String&#34;</span> <span class="na">type=</span><span class="s">&#34;java.lang.String&#34;</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;typeAlias</span> <span class="na">alias=</span><span class="s">&#34;Integer&#34;</span> <span class="na">type=</span><span class="s">&#34;java.lang.Integer&#34;</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;typeAlias</span> <span class="na">alias=</span><span class="s">&#34;Long&#34;</span> <span class="na">type=</span><span class="s">&#34;java.lang.Long&#34;</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;typeAlias</span> <span class="na">alias=</span><span class="s">&#34;HashMap&#34;</span> <span class="na">type=</span><span class="s">&#34;java.util.HashMap&#34;</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;typeAlias</span> <span class="na">alias=</span><span class="s">&#34;LinkedHashMap&#34;</span> <span class="na">type=</span><span class="s">&#34;java.util.LinkedHashMap&#34;</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;typeAlias</span> <span class="na">alias=</span><span class="s">&#34;ArrayList&#34;</span> <span class="na">type=</span><span class="s">&#34;java.util.ArrayList&#34;</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;typeAlias</span> <span class="na">alias=</span><span class="s">&#34;LinkedList&#34;</span> <span class="na">type=</span><span class="s">&#34;java.util.LinkedList&#34;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;/typeAliases&gt;</span>
+<span class="nt">&lt;/configuration&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><ol start="2">
+<li>
+<p>利用IDEA运行maven插件</p>
+<p>2.1 进入Edit Configurations</p>
+</li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/ShangguanHong/PictureBed/master/1559551438655.png" alt="1559551438655"></p>
+<p>​		2.2 点击左上角+号，选择Maven</p>
+<p><img src="https://raw.githubusercontent.com/ShangguanHong/PictureBed/master/1559551679441.png" alt="1559551679441"></p>
+<p>​		2.3 Name为generator，Command line输入 <code>mybatis-generator:generate -e</code></p>
+<p><img src="https://raw.githubusercontent.com/ShangguanHong/PictureBed/master/1559551758839.png" alt="1559551758839"></p>
+<p>​		2.4 运行此插件</p>
+<p><img src="https://raw.githubusercontent.com/ShangguanHong/PictureBed/master/1559551867828.png" alt="1559551867828"></p>
+<p>窗口出现 <code>BUILD SUCCESS</code> 即自动生成代码成功</p>
+<p><img src="https://raw.githubusercontent.com/ShangguanHong/PictureBed/master/1559551931385.png" alt="1559551931385"></p>
+<p>如果没生成成功，查看一下报错信息，检查下配置文件是否写错。</p>
+<ol start="3">
+<li>成功生成后工程目录如下，标记的都是自动生成的</li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/ShangguanHong/PictureBed/master/1559552898240.png" alt="1559552898240"></p>
+<p>​	<code>Country.java</code> :</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="nn">com.example.demo.model</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Country</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">code</span><span class="o">;</span>
+
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
+
+    <span class="kd">private</span> <span class="n">Integer</span> <span class="n">population</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getCode</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">code</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setCode</span><span class="o">(</span><span class="n">String</span> <span class="n">code</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">code</span> <span class="o">=</span> <span class="n">code</span> <span class="o">==</span> <span class="kc">null</span> <span class="o">?</span> <span class="kc">null</span> <span class="o">:</span> <span class="n">code</span><span class="o">.</span><span class="na">trim</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getName</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">name</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setName</span><span class="o">(</span><span class="n">String</span> <span class="n">name</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span> <span class="o">==</span> <span class="kc">null</span> <span class="o">?</span> <span class="kc">null</span> <span class="o">:</span> <span class="n">name</span><span class="o">.</span><span class="na">trim</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="n">Integer</span> <span class="nf">getPopulation</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">population</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setPopulation</span><span class="o">(</span><span class="n">Integer</span> <span class="n">population</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">population</span> <span class="o">=</span> <span class="n">population</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><code>CountryMapper.java</code> :</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="nn">com.example.demo.mapper</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">com.example.demo.model.Country</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">interface</span> <span class="nc">CountryMapper</span> <span class="o">{</span>
+    <span class="kt">int</span> <span class="nf">deleteByPrimaryKey</span><span class="o">(</span><span class="n">String</span> <span class="n">code</span><span class="o">);</span>
+
+    <span class="kt">int</span> <span class="nf">insert</span><span class="o">(</span><span class="n">Country</span> <span class="n">record</span><span class="o">);</span>
+
+    <span class="kt">int</span> <span class="nf">insertSelective</span><span class="o">(</span><span class="n">Country</span> <span class="n">record</span><span class="o">);</span>
+
+    <span class="n">Country</span> <span class="nf">selectByPrimaryKey</span><span class="o">(</span><span class="n">String</span> <span class="n">code</span><span class="o">);</span>
+
+    <span class="kt">int</span> <span class="nf">updateByPrimaryKeySelective</span><span class="o">(</span><span class="n">Country</span> <span class="n">record</span><span class="o">);</span>
+
+    <span class="kt">int</span> <span class="nf">updateByPrimaryKey</span><span class="o">(</span><span class="n">Country</span> <span class="n">record</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><code>CountryMapper.xml</code> :</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="cp">&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34; ?&gt;</span>
+<span class="cp">&lt;!DOCTYPE mapper PUBLIC &#34;-//mybatis.org//DTD Mapper 3.0//EN&#34; &#34;http://mybatis.org/dtd/mybatis-3-mapper.dtd&#34; &gt;</span>
+<span class="nt">&lt;mapper</span> <span class="na">namespace=</span><span class="s">&#34;com.example.demo.mapper.CountryMapper&#34;</span> <span class="nt">&gt;</span>
+  <span class="nt">&lt;resultMap</span> <span class="na">id=</span><span class="s">&#34;BaseResultMap&#34;</span> <span class="na">type=</span><span class="s">&#34;com.example.demo.model.Country&#34;</span> <span class="nt">&gt;</span>
+    <span class="nt">&lt;id</span> <span class="na">column=</span><span class="s">&#34;code&#34;</span> <span class="na">property=</span><span class="s">&#34;code&#34;</span> <span class="na">jdbcType=</span><span class="s">&#34;VARCHAR&#34;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;result</span> <span class="na">column=</span><span class="s">&#34;name&#34;</span> <span class="na">property=</span><span class="s">&#34;name&#34;</span> <span class="na">jdbcType=</span><span class="s">&#34;VARCHAR&#34;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;result</span> <span class="na">column=</span><span class="s">&#34;population&#34;</span> <span class="na">property=</span><span class="s">&#34;population&#34;</span> <span class="na">jdbcType=</span><span class="s">&#34;INTEGER&#34;</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;/resultMap&gt;</span>
+  <span class="nt">&lt;sql</span> <span class="na">id=</span><span class="s">&#34;Base_Column_List&#34;</span> <span class="nt">&gt;</span>
+    code, name, population
+  <span class="nt">&lt;/sql&gt;</span>
+  <span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">&#34;selectByPrimaryKey&#34;</span> <span class="na">resultMap=</span><span class="s">&#34;BaseResultMap&#34;</span> <span class="na">parameterType=</span><span class="s">&#34;java.lang.String&#34;</span> <span class="nt">&gt;</span>
+    select 
+    <span class="nt">&lt;include</span> <span class="na">refid=</span><span class="s">&#34;Base_Column_List&#34;</span> <span class="nt">/&gt;</span>
+    from country
+    where code = #{code,jdbcType=VARCHAR}
+  <span class="nt">&lt;/select&gt;</span>
+  <span class="nt">&lt;delete</span> <span class="na">id=</span><span class="s">&#34;deleteByPrimaryKey&#34;</span> <span class="na">parameterType=</span><span class="s">&#34;java.lang.String&#34;</span> <span class="nt">&gt;</span>
+    delete from country
+    where code = #{code,jdbcType=VARCHAR}
+  <span class="nt">&lt;/delete&gt;</span>
+  <span class="nt">&lt;insert</span> <span class="na">id=</span><span class="s">&#34;insert&#34;</span> <span class="na">parameterType=</span><span class="s">&#34;com.example.demo.model.Country&#34;</span> <span class="nt">&gt;</span>
+    insert into country (code, name, population
+      )
+    values (#{code,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{population,jdbcType=INTEGER}
+      )
+  <span class="nt">&lt;/insert&gt;</span>
+  <span class="nt">&lt;insert</span> <span class="na">id=</span><span class="s">&#34;insertSelective&#34;</span> <span class="na">parameterType=</span><span class="s">&#34;com.example.demo.model.Country&#34;</span> <span class="nt">&gt;</span>
+    insert into country
+    <span class="nt">&lt;trim</span> <span class="na">prefix=</span><span class="s">&#34;(&#34;</span> <span class="na">suffix=</span><span class="s">&#34;)&#34;</span> <span class="na">suffixOverrides=</span><span class="s">&#34;,&#34;</span> <span class="nt">&gt;</span>
+      <span class="nt">&lt;if</span> <span class="na">test=</span><span class="s">&#34;code != null&#34;</span> <span class="nt">&gt;</span>
+        code,
+      <span class="nt">&lt;/if&gt;</span>
+      <span class="nt">&lt;if</span> <span class="na">test=</span><span class="s">&#34;name != null&#34;</span> <span class="nt">&gt;</span>
+        name,
+      <span class="nt">&lt;/if&gt;</span>
+      <span class="nt">&lt;if</span> <span class="na">test=</span><span class="s">&#34;population != null&#34;</span> <span class="nt">&gt;</span>
+        population,
+      <span class="nt">&lt;/if&gt;</span>
+    <span class="nt">&lt;/trim&gt;</span>
+    <span class="nt">&lt;trim</span> <span class="na">prefix=</span><span class="s">&#34;values (&#34;</span> <span class="na">suffix=</span><span class="s">&#34;)&#34;</span> <span class="na">suffixOverrides=</span><span class="s">&#34;,&#34;</span> <span class="nt">&gt;</span>
+      <span class="nt">&lt;if</span> <span class="na">test=</span><span class="s">&#34;code != null&#34;</span> <span class="nt">&gt;</span>
+        #{code,jdbcType=VARCHAR},
+      <span class="nt">&lt;/if&gt;</span>
+      <span class="nt">&lt;if</span> <span class="na">test=</span><span class="s">&#34;name != null&#34;</span> <span class="nt">&gt;</span>
+        #{name,jdbcType=VARCHAR},
+      <span class="nt">&lt;/if&gt;</span>
+      <span class="nt">&lt;if</span> <span class="na">test=</span><span class="s">&#34;population != null&#34;</span> <span class="nt">&gt;</span>
+        #{population,jdbcType=INTEGER},
+      <span class="nt">&lt;/if&gt;</span>
+    <span class="nt">&lt;/trim&gt;</span>
+  <span class="nt">&lt;/insert&gt;</span>
+  <span class="nt">&lt;update</span> <span class="na">id=</span><span class="s">&#34;updateByPrimaryKeySelective&#34;</span> <span class="na">parameterType=</span><span class="s">&#34;com.example.demo.model.Country&#34;</span> <span class="nt">&gt;</span>
+    update country
+    <span class="nt">&lt;set</span> <span class="nt">&gt;</span>
+      <span class="nt">&lt;if</span> <span class="na">test=</span><span class="s">&#34;name != null&#34;</span> <span class="nt">&gt;</span>
+        name = #{name,jdbcType=VARCHAR},
+      <span class="nt">&lt;/if&gt;</span>
+      <span class="nt">&lt;if</span> <span class="na">test=</span><span class="s">&#34;population != null&#34;</span> <span class="nt">&gt;</span>
+        population = #{population,jdbcType=INTEGER},
+      <span class="nt">&lt;/if&gt;</span>
+    <span class="nt">&lt;/set&gt;</span>
+    where code = #{code,jdbcType=VARCHAR}
+  <span class="nt">&lt;/update&gt;</span>
+  <span class="nt">&lt;update</span> <span class="na">id=</span><span class="s">&#34;updateByPrimaryKey&#34;</span> <span class="na">parameterType=</span><span class="s">&#34;com.example.demo.model.Country&#34;</span> <span class="nt">&gt;</span>
+    update country
+    set name = #{name,jdbcType=VARCHAR},
+      population = #{population,jdbcType=INTEGER}
+    where code = #{code,jdbcType=VARCHAR}
+  <span class="nt">&lt;/update&gt;</span>
+<span class="nt">&lt;/mapper&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>最后在启动类上添加 <code>@MapperScan(&quot;com.example.demo.mapper&quot;)</code> ，告诉Mapper需要扫描的包，这样就不用每个Mapper上都添加@Mapper注解了。</p>
+<h1 id="4-测试接口">4. 测试接口</h1>
+<p>写一个 <code>CountryController.java </code>:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="nn">com.example.demo.controller</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">com.example.demo.mapper.CountryMapper</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.example.demo.model.Country</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.beans.factory.annotation.Autowired</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.web.bind.annotation.RequestMapping</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.web.bind.annotation.RequestMethod</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.web.bind.annotation.RequestParam</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.web.bind.annotation.RestController</span><span class="o">;</span>
+
+<span class="cm">/**
+</span><span class="cm"> * @Author sgh
+</span><span class="cm"> * @Date 2019/6/3 14:10
+</span><span class="cm"> * @Description: No Description
+</span><span class="cm"> */</span>
+
+<span class="nd">@RestController</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">CountryController</span> <span class="o">{</span>
+
+    <span class="nd">@Autowired</span>
+    <span class="kd">private</span> <span class="n">CountryMapper</span> <span class="n">countryMapper</span><span class="o">;</span>
+
+    <span class="nd">@RequestMapping</span><span class="o">(</span><span class="n">value</span> <span class="o">=</span> <span class="s">&#34;/country&#34;</span><span class="o">,</span> <span class="n">method</span> <span class="o">=</span> <span class="n">RequestMethod</span><span class="o">.</span><span class="na">GET</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="n">Country</span> <span class="nf">findCountryByCode</span><span class="o">(</span><span class="nd">@RequestParam</span> <span class="n">String</span> <span class="n">code</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">Country</span> <span class="n">country</span> <span class="o">=</span> <span class="n">countryMapper</span><span class="o">.</span><span class="na">selectByPrimaryKey</span><span class="o">(</span><span class="n">code</span><span class="o">);</span>
+        <span class="k">return</span> <span class="n">country</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+</code></pre></td></tr></table>
+</div>
+</div><p>利用postman等接口测试软件查看是否成功</p>
+<p><img src="https://raw.githubusercontent.com/ShangguanHong/PictureBed/master/1559557407976.png" alt="1559557407976"></p>
+<h1 id="5-参考资料">5. 参考资料</h1>
+<ol>
+<li><a href="https://www.cnblogs.com/ityouknow/p/6037431.html">Spring Boot(六)：如何优雅的使用 Mybatis</a></li>
+<li><a href="https://www.cnblogs.com/liaojie970/p/7058543.html">IDEA 中使用MyBatis-generator 自动生成MyBatis代码</a></li>
+<li><a href="https://www.jianshu.com/p/c15094bd1965">spring boot2 整合（一）Mybatis （特别完整！）</a></li>
+<li><a href="http://www.mybatis.org/mybatis-3/zh/index.html">mybatis官方文档</a></li>
+</ol>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">ShangguanHong</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2019-06-03
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/spring-boot/">Spring Boot</a>
+          <a href="/tags/mybatis/">Mybatis</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/2019/06/04/win10%E4%B8%8B%E5%AE%89%E8%A3%85mysql8-0-16/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Win10下安装MySQL8.0.16</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/2019/05/31/spring-boot%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/">
+            <span class="next-text nav-default">Spring Boot配置文件</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+  <div id="vcomments"></div>
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+  <script type="text/javascript">
+    new Valine({
+        el: '#vcomments' ,
+        appId: 'X0gLmyOh1himl7jHPYcpKKop-gzGzoHsz',
+        appKey: 'hoYFzkrMqrD9SyRNpkiNf0LH',
+        notify:  false ,
+        verify:  false ,
+        avatar:'mm',
+        placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊!',
+        visitor:  false 
+    });
+  </script>
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:www.sgh1450280694@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/ShangguanHong" class="iconfont icon-github" title="github"></a>
+      <a href="https://weibo.com/5590338381" class="iconfont icon-weibo" title="weibo"></a>
+      <a href="https://space.bilibili.com/105190849" class="iconfont icon-bilibili" title="bilibili"></a>
+  <a href="https://shangguanhong.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2019 - 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">ShangguanHong</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

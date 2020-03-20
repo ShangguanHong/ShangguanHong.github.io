@@ -1,0 +1,1327 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>JWT整合Spring Security - ShangguanHong</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="ShangguanHong" /><meta name="description" content="1. 前言 之前介绍了一下 JWT ,在最后提到了 JWT 本身没啥难度，但安全整体是一个比较复杂的事情，JWT 只不过提供了一种基于 token 的请求验证机制。但我们的用户" /><meta name="keywords" content="go, golang, hugo" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.67.1 with theme even" />
+
+
+<link rel="canonical" href="https://shangguanhong.github.io/2019/08/14/jwt%E6%95%B4%E5%90%88spring-security/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="JWT整合Spring Security" />
+<meta property="og:description" content="1. 前言 之前介绍了一下 JWT ,在最后提到了 JWT 本身没啥难度，但安全整体是一个比较复杂的事情，JWT 只不过提供了一种基于 token 的请求验证机制。但我们的用户" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://shangguanhong.github.io/2019/08/14/jwt%E6%95%B4%E5%90%88spring-security/" />
+<meta property="article:published_time" content="2019-08-14T10:56:07+00:00" />
+<meta property="article:modified_time" content="2019-08-14T10:56:07+00:00" />
+<meta itemprop="name" content="JWT整合Spring Security">
+<meta itemprop="description" content="1. 前言 之前介绍了一下 JWT ,在最后提到了 JWT 本身没啥难度，但安全整体是一个比较复杂的事情，JWT 只不过提供了一种基于 token 的请求验证机制。但我们的用户">
+<meta itemprop="datePublished" content="2019-08-14T10:56:07&#43;00:00" />
+<meta itemprop="dateModified" content="2019-08-14T10:56:07&#43;00:00" />
+<meta itemprop="wordCount" content="3393">
+
+
+
+<meta itemprop="keywords" content="Spring Boot,JWT,Spring Security," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="JWT整合Spring Security"/>
+<meta name="twitter:description" content="1. 前言 之前介绍了一下 JWT ,在最后提到了 JWT 本身没啥难度，但安全整体是一个比较复杂的事情，JWT 只不过提供了一种基于 token 的请求验证机制。但我们的用户"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">赏我一个好梦如旧</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">赏我一个好梦如旧</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">JWT整合Spring Security</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2019-08-14 </span>
+        <div class="post-category">
+            <a href="/categories/springsecurity%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"> SpringSecurity学习笔记 </a>
+            </div>
+          <span class="more-meta"> 约 3393 字 </span>
+          <span class="more-meta"> 预计阅读 7 分钟 </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#31-表结构">3.1 表结构</a></li>
+    <li><a href="#32-applicationyml配置文件与pomxml">3.2 application.yml配置文件与pom.xml</a></li>
+    <li><a href="#34-实现spring-security接口">3.4 实现Spring Security接口</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#41-jwttokenutil">4.1 JwtTokenUtil</a></li>
+    <li><a href="#42-jwtauthorizationtokenfilter">4.2 JwtAuthorizationTokenFilter</a></li>
+    <li><a href="#43-websecurityconfig">4.3 WebSecurityConfig</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <h1 id="1-前言">1. 前言</h1>
+<p>之前介绍了一下 <a href="https://shangguanhong.github.io/2019/08/08/%E4%BA%86%E8%A7%A3JSON-Web-Token-JWT/">JWT</a> ,在最后提到了</p>
+<blockquote>
+<p>JWT 本身没啥难度，但安全整体是一个比较复杂的事情，JWT 只不过提供了一种基于 token 的请求验证机制。但我们的用户权限，对于 API 的权限划分、资源的权限划分，用户的验证等等都不是 JWT 负责的。也就是说，请求验证后，你是否有权限看对应的内容是由你的用户角色决定的。所以我们这里要利用 Spring 的一个子项目 Spring Security 来简化我们的工作。</p>
+</blockquote>
+<p>本文就介绍一下如何利用 Spring Security 来配合 JWT 来使用。</p>
+<h1 id="2-spring-security的介绍">2. Spring Security的介绍</h1>
+<p>Spring Security 是一个基于 Spring 的通用安全框架，里面内容太多了，本文的主要目的也不是展开讲这个框架，而是如何利用 Spring Security 和 JWT 一起来完成 API 保护。所以关于 Spring Secruity 的基础内容或展开内容，请自行去 <a href="http://projects.spring.io/spring-security/">官网</a> 学习。</p>
+<h1 id="3-使用spring-security">3. 使用Spring Security</h1>
+<h2 id="31-表结构">3.1 表结构</h2>
+<p>首先使用 Spring Security 的系统需要有用户与角色的概念，一个用户可以拥有多个角色，一个角色可以分配给多个用户，因此用户和角色之间是多对多的关系，利用一个中间表来维护它们之间的关系。</p>
+<p>sys_user:</p>
+<table>
+<thead>
+<tr>
+<th align="center">id</th>
+<th align="center">username</th>
+<th align="center">password</th>
+<th align="center">lastPasswordResetDate</th>
+<th align="center">enabled</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">1</td>
+<td align="center">admin</td>
+<td align="center">admin</td>
+<td align="center">null</td>
+<td align="center">1</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">user</td>
+<td align="center">user</td>
+<td align="center">null</td>
+<td align="center">1</td>
+</tr>
+</tbody>
+</table>
+<p>sys_role:</p>
+<table>
+<thead>
+<tr>
+<th align="center">id</th>
+<th align="center">role_name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">1</td>
+<td align="center">ADMIN</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">USER</td>
+</tr>
+</tbody>
+</table>
+<p>sys_user_role：</p>
+<table>
+<thead>
+<tr>
+<th align="center">u_id</th>
+<th align="center">r_id</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">1</td>
+<td align="center">1</td>
+</tr>
+<tr>
+<td align="center">1</td>
+<td align="center">2</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">2</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>管理员拥有用户和管理员两种角色，而用户仅仅拥有用户的角色</p>
+</blockquote>
+<p>jpa 表示如下：</p>
+<p>User:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Entity</span>
+<span class="nd">@Data</span>
+<span class="nd">@Table</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">&#34;sys_user&#34;</span><span class="o">)</span>
+<span class="nd">@EqualsAndHashCode</span><span class="o">(</span><span class="n">exclude</span> <span class="o">=</span> <span class="o">{</span><span class="s">&#34;roles&#34;</span><span class="o">})</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">User</span> <span class="o">{</span>
+
+    <span class="nd">@Id</span>
+    <span class="nd">@GeneratedValue</span><span class="o">(</span><span class="n">strategy</span> <span class="o">=</span> <span class="n">GenerationType</span><span class="o">.</span><span class="na">IDENTITY</span><span class="o">)</span>
+    <span class="nd">@Column</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">&#34;id&#34;</span><span class="o">)</span>
+    <span class="kd">private</span> <span class="n">Long</span> <span class="n">id</span><span class="o">;</span>
+
+    <span class="nd">@Column</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">&#34;username&#34;</span><span class="o">)</span>
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">username</span><span class="o">;</span>
+
+    <span class="nd">@Column</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">&#34;password&#34;</span><span class="o">)</span>
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">password</span><span class="o">;</span>
+    
+    <span class="nd">@Column</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">&#34;enabled&#34;</span><span class="o">)</span>
+    <span class="kd">private</span> <span class="kt">boolean</span> <span class="n">enabled</span><span class="o">;</span>
+
+    <span class="nd">@Column</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">&#34;last_password_reset_date&#34;</span><span class="o">)</span>
+    <span class="nd">@Temporal</span><span class="o">(</span><span class="n">TemporalType</span><span class="o">.</span><span class="na">TIMESTAMP</span><span class="o">)</span>
+    <span class="kd">private</span> <span class="n">Date</span> <span class="n">lastPasswordResetDate</span><span class="o">;</span>
+
+    <span class="nd">@ManyToMany</span><span class="o">(</span><span class="n">cascade</span> <span class="o">=</span> <span class="o">{</span><span class="n">CascadeType</span><span class="o">.</span><span class="na">ALL</span><span class="o">},</span> <span class="n">fetch</span> <span class="o">=</span> <span class="n">FetchType</span><span class="o">.</span><span class="na">EAGER</span><span class="o">)</span>
+    <span class="nd">@JoinTable</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">&#34;sys_user_role&#34;</span><span class="o">,</span>
+            <span class="n">joinColumns</span> <span class="o">=</span> <span class="o">{</span><span class="nd">@JoinColumn</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">&#34;u_id&#34;</span><span class="o">,</span> <span class="n">referencedColumnName</span> <span class="o">=</span> <span class="s">&#34;id&#34;</span><span class="o">)},</span>
+            <span class="n">inverseJoinColumns</span> <span class="o">=</span> <span class="o">{</span><span class="nd">@JoinColumn</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">&#34;r_id&#34;</span><span class="o">,</span> <span class="n">referencedColumnName</span> <span class="o">=</span> <span class="s">&#34;id&#34;</span><span class="o">)})</span>
+    <span class="kd">private</span> <span class="n">Set</span><span class="o">&lt;</span><span class="n">Role</span><span class="o">&gt;</span> <span class="n">roles</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashSet</span><span class="o">&lt;&gt;();</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="32-applicationyml配置文件与pomxml">3.2 application.yml配置文件与pom.xml</h2>
+<p>application.yml</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="c"># 接下来需要注入到spring内的自定义数据如下</span><span class="w">
+</span><span class="w"></span><span class="k">jwt</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="k">secret</span><span class="p">:</span><span class="w"> </span>sgh_secret<span class="w">
+</span><span class="w">  </span><span class="k">expiration</span><span class="p">:</span><span class="w"> </span><span class="m">7200</span><span class="w">
+</span><span class="w">  </span><span class="k">header</span><span class="p">:</span><span class="w"> </span>Authorization<span class="w">
+</span><span class="w">  </span><span class="k">authentication</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="k">path</span><span class="p">:</span><span class="w"> </span>/auth<span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><p>导入坐标</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="c">&lt;!-- Spring Security--&gt;</span>
+<span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>org.springframework.boot<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>spring-boot-starter-security<span class="nt">&lt;/artifactId&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
+<span class="c">&lt;!--jwt--&gt;</span>
+<span class="nt">&lt;dependency&gt;</span>
+	<span class="nt">&lt;groupId&gt;</span>io.jsonwebtoken<span class="nt">&lt;/groupId&gt;</span>
+	<span class="nt">&lt;artifactId&gt;</span>jjwt<span class="nt">&lt;/artifactId&gt;</span>
+	<span class="nt">&lt;version&gt;</span>0.9.1<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="34-实现spring-security接口">3.4 实现Spring Security接口</h2>
+<p>Spring Security 需要我们实现几个东西，第一个是 <code>UserDetails</code> ，这个接口中规定了用户的几个必须要有的方法。所以我们创建一个 <code>JwtUser</code> 类来实现这个接口。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Data</span>
+<span class="nd">@AllArgsConstructor</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">JwtUser</span> <span class="kd">implements</span> <span class="n">UserDetails</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="n">Long</span> <span class="n">id</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">username</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">password</span><span class="o">;</span>
+    <span class="cm">/**
+</span><span class="cm">     * 用户的角色列表
+</span><span class="cm">     */</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="n">Collection</span><span class="o">&lt;?</span> <span class="kd">extends</span> <span class="n">GrantedAuthority</span><span class="o">&gt;</span> <span class="n">authorities</span><span class="o">;</span>
+    <span class="cm">/**
+</span><span class="cm">     * 用户是否激活
+</span><span class="cm">     */</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="kt">boolean</span> <span class="n">enabled</span><span class="o">;</span>
+    <span class="cm">/**
+</span><span class="cm">     * 最后修改密码的日期
+</span><span class="cm">     */</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="n">Date</span> <span class="n">lastPasswordResetDate</span><span class="o">;</span>
+
+    <span class="cm">/**
+</span><span class="cm">     * 账户是否未过期
+</span><span class="cm">     *
+</span><span class="cm">     * @return true
+</span><span class="cm">     */</span>
+    <span class="nd">@JsonIgnore</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">isAccountNonExpired</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="cm">/**
+</span><span class="cm">     * 账号是否未锁定
+</span><span class="cm">     *
+</span><span class="cm">     * @return true
+</span><span class="cm">     */</span>
+    <span class="nd">@JsonIgnore</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">isAccountNonLocked</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="cm">/**
+</span><span class="cm">     * 密码是否未过期
+</span><span class="cm">     *
+</span><span class="cm">     * @return true
+</span><span class="cm">     */</span>
+    <span class="nd">@JsonIgnore</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">isCredentialsNonExpired</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>创建一个 <code>JwtUserFactory</code> 来处理由 User 转化为 JwtUser</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">JwtUserFactory</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="n">JwtUser</span> <span class="nf">create</span><span class="o">(</span><span class="n">User</span> <span class="n">user</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="n">JwtUser</span><span class="o">(</span>
+                <span class="n">user</span><span class="o">.</span><span class="na">getId</span><span class="o">(),</span>
+                <span class="n">user</span><span class="o">.</span><span class="na">getUsername</span><span class="o">(),</span>
+                <span class="n">user</span><span class="o">.</span><span class="na">getPassword</span><span class="o">(),</span>
+                <span class="n">mapToGrantedAuthorities</span><span class="o">(</span><span class="n">user</span><span class="o">.</span><span class="na">getRoles</span><span class="o">()),</span>
+                <span class="n">user</span><span class="o">.</span><span class="na">isEnabled</span><span class="o">(),</span>
+                <span class="n">user</span><span class="o">.</span><span class="na">getLastPasswordResetDate</span><span class="o">()</span>
+        <span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">private</span> <span class="kd">static</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">GrantedAuthority</span><span class="o">&gt;</span> <span class="nf">mapToGrantedAuthorities</span><span class="o">(</span><span class="n">Set</span><span class="o">&lt;</span><span class="n">Role</span><span class="o">&gt;</span> <span class="n">roles</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">roles</span><span class="o">.</span><span class="na">stream</span><span class="o">()</span>
+                <span class="o">.</span><span class="na">map</span><span class="o">(</span><span class="n">role</span> <span class="o">-&gt;</span> <span class="k">new</span> <span class="n">SimpleGrantedAuthority</span><span class="o">(</span><span class="n">role</span><span class="o">.</span><span class="na">getRoleName</span><span class="o">()))</span>
+                <span class="o">.</span><span class="na">collect</span><span class="o">(</span><span class="n">Collectors</span><span class="o">.</span><span class="na">toList</span><span class="o">());</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+</code></pre></td></tr></table>
+</div>
+</div><p>第二个要实现的是 <code>UserDetailsService</code>，这个接口只定义了一个方法 <code>loadUserByUsername</code>，顾名思义，就是提供一种从用户名可以查到用户并返回的方法。注意，不一定是数据库哦，文本文件、xml文件等等都可能成为数据源，这也是为什么Spring提供这样一个接口的原因：保证你可以采用灵活的数据源。接下来我们建立一个 <code>JwtUserDetailsServiceImpl</code> 来实现这个接口。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Service</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">JwtUserDetailsServiceImpl</span> <span class="kd">implements</span> <span class="n">UserDetailsService</span> <span class="o">{</span>
+
+    <span class="nd">@Resource</span>
+    <span class="kd">private</span> <span class="n">UserRepository</span> <span class="n">userRepository</span><span class="o">;</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="n">UserDetails</span> <span class="nf">loadUserByUsername</span><span class="o">(</span><span class="n">String</span> <span class="n">username</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">UsernameNotFoundException</span> <span class="o">{</span>
+        <span class="n">User</span> <span class="n">user</span> <span class="o">=</span> <span class="n">userRepository</span><span class="o">.</span><span class="na">findByUserName</span><span class="o">(</span><span class="n">username</span><span class="o">);</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">user</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="n">UsernameNotFoundException</span><span class="o">(</span><span class="n">String</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="s">&#34;No user found with username &#39;%s&#39;.&#34;</span><span class="o">,</span> <span class="n">username</span><span class="o">));</span>
+        <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+            <span class="k">return</span> <span class="n">JwtUserFactory</span><span class="o">.</span><span class="na">create</span><span class="o">(</span><span class="n">user</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>为了让 Spring 可以知道我们想怎样控制安全性，我们还需要建立一个安全配置类 <code>WebSecurityConfig</code> 继承自 <code>WebSecurityConfigurerAdapter</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
+</span><span class="lnt">73
+</span><span class="lnt">74
+</span><span class="lnt">75
+</span><span class="lnt">76
+</span><span class="lnt">77
+</span><span class="lnt">78
+</span><span class="lnt">79
+</span><span class="lnt">80
+</span><span class="lnt">81
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Configuration</span>
+<span class="nd">@EnableWebSecurity</span>
+<span class="nd">@EnableGlobalMethodSecurity</span><span class="o">(</span><span class="n">prePostEnabled</span> <span class="o">=</span> <span class="kc">true</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">WebSecurityConfig</span> <span class="kd">extends</span> <span class="n">WebSecurityConfigurerAdapter</span> <span class="o">{</span>
+    <span class="cm">/**
+</span><span class="cm">     * Spring会自动寻找同样类型的具体类注入，这里就是JwtUserDetailsServiceImpl了
+</span><span class="cm">     */</span>
+    <span class="nd">@Resource</span>
+    <span class="kd">private</span> <span class="n">UserDetailsService</span> <span class="n">userDetailsService</span><span class="o">;</span>
+
+    <span class="nd">@Autowired</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">configureAuthentication</span><span class="o">(</span><span class="n">AuthenticationManagerBuilder</span> <span class="n">auth</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+        <span class="n">auth</span>
+                <span class="c1">// 设置UserDetailsService
+</span><span class="c1"></span>                <span class="o">.</span><span class="na">userDetailsService</span><span class="o">(</span><span class="n">userDetailsService</span><span class="o">)</span>
+                <span class="c1">// 使用BCrypt进行密码的hash
+</span><span class="c1"></span>                <span class="o">.</span><span class="na">passwordEncoder</span><span class="o">(</span><span class="n">passwordEncoder</span><span class="o">());</span>
+    <span class="o">}</span>
+
+    <span class="cm">/**
+</span><span class="cm">     * 装载BCrypt密码编码器
+</span><span class="cm">     */</span>
+    <span class="nd">@Bean</span>
+    <span class="kd">public</span> <span class="n">PasswordEncoder</span> <span class="nf">passwordEncoder</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="n">BCryptPasswordEncoder</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Bean</span>
+    <span class="n">GrantedAuthorityDefaults</span> <span class="nf">grantedAuthorityDefaults</span><span class="o">()</span> <span class="o">{</span>
+        <span class="c1">// Remove the ROLE_ prefix
+</span><span class="c1"></span>        <span class="k">return</span> <span class="k">new</span> <span class="n">GrantedAuthorityDefaults</span><span class="o">(</span><span class="s">&#34;&#34;</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">configure</span><span class="o">(</span><span class="n">HttpSecurity</span> <span class="n">httpSecurity</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+        <span class="n">httpSecurity</span>
+                <span class="c1">// 由于使用的是JWT，我们这里不需要csrf
+</span><span class="c1"></span>                <span class="o">.</span><span class="na">csrf</span><span class="o">().</span><span class="na">disable</span><span class="o">()</span>
+                <span class="c1">// 基于token，所以不需要session
+</span><span class="c1"></span>                <span class="o">.</span><span class="na">sessionManagement</span><span class="o">().</span><span class="na">sessionCreationPolicy</span><span class="o">(</span><span class="n">SessionCreationPolicy</span><span class="o">.</span><span class="na">STATELESS</span><span class="o">).</span><span class="na">and</span><span class="o">()</span>
+                <span class="o">.</span><span class="na">authorizeRequests</span><span class="o">()</span>
+                <span class="c1">//.antMatchers(HttpMethod.OPTIONS, &#34;/**&#34;).permitAll()
+</span><span class="c1"></span>                <span class="c1">// 允许对于网站静态资源的无授权访问
+</span><span class="c1"></span>                <span class="o">.</span><span class="na">antMatchers</span><span class="o">(</span>
+                        <span class="n">HttpMethod</span><span class="o">.</span><span class="na">GET</span><span class="o">,</span>
+                        <span class="s">&#34;/&#34;</span><span class="o">,</span>
+                        <span class="s">&#34;/*.html&#34;</span><span class="o">,</span>
+                        <span class="s">&#34;/favicon.ico&#34;</span><span class="o">,</span>
+                        <span class="s">&#34;/**/*.html&#34;</span><span class="o">,</span>
+                        <span class="s">&#34;/**/*.css&#34;</span><span class="o">,</span>
+                        <span class="s">&#34;/**/*.js&#34;</span>
+                <span class="o">).</span><span class="na">permitAll</span><span class="o">()</span>
+                <span class="c1">// 对于获取token的rest api要允许匿名访问
+</span><span class="c1"></span>                <span class="o">.</span><span class="na">antMatchers</span><span class="o">(</span><span class="s">&#34;/auth/**&#34;</span><span class="o">).</span><span class="na">permitAll</span><span class="o">()</span>
+                <span class="c1">// 除上面外的所有请求全部需要鉴权认证
+</span><span class="c1"></span>                <span class="o">.</span><span class="na">anyRequest</span><span class="o">().</span><span class="na">authenticated</span><span class="o">();</span>
+        <span class="c1">// 禁用缓存
+</span><span class="c1"></span>        <span class="n">httpSecurity</span><span class="o">.</span><span class="na">headers</span><span class="o">().</span><span class="na">cacheControl</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">configure</span><span class="o">(</span><span class="n">WebSecurity</span> <span class="n">web</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+        <span class="c1">// 过滤器会忽略下面的路径
+</span><span class="c1"></span>        <span class="n">web</span>
+                <span class="o">.</span><span class="na">ignoring</span><span class="o">()</span>
+                <span class="o">.</span><span class="na">antMatchers</span><span class="o">(</span>
+                        <span class="n">HttpMethod</span><span class="o">.</span><span class="na">POST</span><span class="o">,</span>
+                        <span class="s">&#34;/auth/**&#34;</span>
+                <span class="o">).</span><span class="na">and</span><span class="o">()</span>
+                <span class="o">.</span><span class="na">ignoring</span><span class="o">()</span>
+                <span class="o">.</span><span class="na">antMatchers</span><span class="o">(</span>
+                        <span class="n">HttpMethod</span><span class="o">.</span><span class="na">GET</span><span class="o">,</span>
+                        <span class="s">&#34;/&#34;</span><span class="o">,</span>
+                        <span class="s">&#34;/*.html&#34;</span><span class="o">,</span>
+                        <span class="s">&#34;/favicon.ico&#34;</span><span class="o">,</span>
+                        <span class="s">&#34;/**/*.html&#34;</span><span class="o">,</span>
+                        <span class="s">&#34;/**/*.css&#34;</span><span class="o">,</span>
+                        <span class="s">&#34;/**/*.js&#34;</span>
+                <span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>至此，对 Spring Security 的前期准备算是完成了，接下来进行 JWT 与 Spring Security 的整合。</p>
+<h1 id="4-jwt整合spring-security">4. JWT整合Spring Security</h1>
+<h2 id="41-jwttokenutil">4.1 JwtTokenUtil</h2>
+<p>先写一个 <code>JwtTokenUtil</code> 工具类，来处理 JWT 的常见问题，可以直接使用，只需自己修改下 <code>secret</code> 和 <code>expiration</code> 即可</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
+</span><span class="lnt">73
+</span><span class="lnt">74
+</span><span class="lnt">75
+</span><span class="lnt">76
+</span><span class="lnt">77
+</span><span class="lnt">78
+</span><span class="lnt">79
+</span><span class="lnt">80
+</span><span class="lnt">81
+</span><span class="lnt">82
+</span><span class="lnt">83
+</span><span class="lnt">84
+</span><span class="lnt">85
+</span><span class="lnt">86
+</span><span class="lnt">87
+</span><span class="lnt">88
+</span><span class="lnt">89
+</span><span class="lnt">90
+</span><span class="lnt">91
+</span><span class="lnt">92
+</span><span class="lnt">93
+</span><span class="lnt">94
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Component</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">JwtTokenUtil</span> <span class="kd">implements</span> <span class="n">Serializable</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">long</span> <span class="n">serialVersionUID</span> <span class="o">=</span> <span class="n">1L</span><span class="o">;</span>
+
+    <span class="nd">@Value</span><span class="o">(</span><span class="s">&#34;${jwt.secret}&#34;</span><span class="o">)</span>
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">secret</span><span class="o">;</span>
+
+    <span class="nd">@Value</span><span class="o">(</span><span class="s">&#34;${jwt.expiration}&#34;</span><span class="o">)</span>
+    <span class="kd">private</span> <span class="n">Long</span> <span class="n">expiration</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">generateToken</span><span class="o">(</span><span class="n">UserDetails</span> <span class="n">userDetails</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Object</span><span class="o">&gt;</span> <span class="n">claims</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;&gt;(</span><span class="n">10</span><span class="o">);</span>
+        <span class="k">return</span> <span class="n">doGenerateToken</span><span class="o">(</span><span class="n">claims</span><span class="o">,</span> <span class="n">userDetails</span><span class="o">.</span><span class="na">getUsername</span><span class="o">());</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">validateToken</span><span class="o">(</span><span class="n">String</span> <span class="n">token</span><span class="o">,</span> <span class="n">UserDetails</span> <span class="n">userDetails</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">JwtUser</span> <span class="n">user</span> <span class="o">=</span> <span class="o">(</span><span class="n">JwtUser</span><span class="o">)</span> <span class="n">userDetails</span><span class="o">;</span>
+        <span class="kd">final</span> <span class="n">String</span> <span class="n">username</span> <span class="o">=</span> <span class="n">getUsernameFromToken</span><span class="o">(</span><span class="n">token</span><span class="o">);</span>
+        <span class="kd">final</span> <span class="n">Date</span> <span class="n">created</span> <span class="o">=</span> <span class="n">getIssuedAtDateFromToken</span><span class="o">(</span><span class="n">token</span><span class="o">);</span>
+        <span class="k">return</span> <span class="o">(</span>
+                <span class="n">username</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">user</span><span class="o">.</span><span class="na">getUsername</span><span class="o">())</span>
+                        <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">isTokenExpired</span><span class="o">(</span><span class="n">token</span><span class="o">)</span>
+                        <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">isCreatedBeforeLastPasswordReset</span><span class="o">(</span><span class="n">created</span><span class="o">,</span> <span class="n">user</span><span class="o">.</span><span class="na">getLastPasswordResetDate</span><span class="o">())</span>
+        <span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">private</span> <span class="n">Boolean</span> <span class="nf">isTokenExpired</span><span class="o">(</span><span class="n">String</span> <span class="n">token</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">final</span> <span class="n">Date</span> <span class="n">expiration</span> <span class="o">=</span> <span class="n">getExpirationDateFromToken</span><span class="o">(</span><span class="n">token</span><span class="o">);</span>
+        <span class="k">return</span> <span class="n">expiration</span><span class="o">.</span><span class="na">before</span><span class="o">(</span><span class="k">new</span> <span class="n">Date</span><span class="o">());</span>
+    <span class="o">}</span>
+
+    <span class="kd">private</span> <span class="n">Boolean</span> <span class="nf">isCreatedBeforeLastPasswordReset</span><span class="o">(</span><span class="n">Date</span> <span class="n">created</span><span class="o">,</span> <span class="n">Date</span> <span class="n">lastPasswordReset</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="o">(</span><span class="n">lastPasswordReset</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="n">created</span><span class="o">.</span><span class="na">before</span><span class="o">(</span><span class="n">lastPasswordReset</span><span class="o">));</span>
+    <span class="o">}</span>
+
+    <span class="kd">private</span> <span class="n">String</span> <span class="nf">doGenerateToken</span><span class="o">(</span><span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Object</span><span class="o">&gt;</span> <span class="n">claims</span><span class="o">,</span> <span class="n">String</span> <span class="n">subject</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">final</span> <span class="n">Date</span> <span class="n">createdDate</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Date</span><span class="o">();</span>
+        <span class="kd">final</span> <span class="n">Date</span> <span class="n">expirationDate</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Date</span><span class="o">(</span><span class="n">createdDate</span><span class="o">.</span><span class="na">getTime</span><span class="o">()</span> <span class="o">+</span> <span class="n">expiration</span> <span class="o">*</span> <span class="n">1000</span><span class="o">);</span>
+        <span class="k">return</span> <span class="n">Jwts</span><span class="o">.</span><span class="na">builder</span><span class="o">()</span>
+                <span class="o">.</span><span class="na">setClaims</span><span class="o">(</span><span class="n">claims</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">setSubject</span><span class="o">(</span><span class="n">subject</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">setIssuedAt</span><span class="o">(</span><span class="n">createdDate</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">setExpiration</span><span class="o">(</span><span class="n">expirationDate</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">signWith</span><span class="o">(</span><span class="n">SignatureAlgorithm</span><span class="o">.</span><span class="na">HS512</span><span class="o">,</span> <span class="n">secret</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">compact</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="kd">private</span> <span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">T</span> <span class="nf">getClaimFromToken</span><span class="o">(</span><span class="n">String</span> <span class="n">token</span><span class="o">,</span> <span class="n">Function</span><span class="o">&lt;</span><span class="n">Claims</span><span class="o">,</span> <span class="n">T</span><span class="o">&gt;</span> <span class="n">claimsResolver</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">final</span> <span class="n">Claims</span> <span class="n">claims</span> <span class="o">=</span> <span class="n">getAllClaimsFromToken</span><span class="o">(</span><span class="n">token</span><span class="o">);</span>
+        <span class="k">return</span> <span class="n">claimsResolver</span><span class="o">.</span><span class="na">apply</span><span class="o">(</span><span class="n">claims</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">private</span> <span class="n">Claims</span> <span class="nf">getAllClaimsFromToken</span><span class="o">(</span><span class="n">String</span> <span class="n">token</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">Jwts</span><span class="o">.</span><span class="na">parser</span><span class="o">()</span>
+                <span class="o">.</span><span class="na">setSigningKey</span><span class="o">(</span><span class="n">secret</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">parseClaimsJws</span><span class="o">(</span><span class="n">token</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">getBody</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="kd">private</span> <span class="n">String</span> <span class="nf">getUsernameFromToken</span><span class="o">(</span><span class="n">String</span> <span class="n">token</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">getClaimFromToken</span><span class="o">(</span><span class="n">token</span><span class="o">,</span> <span class="n">Claims</span><span class="o">::</span><span class="n">getSubject</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">private</span> <span class="n">Date</span> <span class="nf">getIssuedAtDateFromToken</span><span class="o">(</span><span class="n">String</span> <span class="n">token</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">getClaimFromToken</span><span class="o">(</span><span class="n">token</span><span class="o">,</span> <span class="n">Claims</span><span class="o">::</span><span class="n">getIssuedAt</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">private</span> <span class="n">Date</span> <span class="nf">getExpirationDateFromToken</span><span class="o">(</span><span class="n">String</span> <span class="n">token</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">getClaimFromToken</span><span class="o">(</span><span class="n">token</span><span class="o">,</span> <span class="n">Claims</span><span class="o">::</span><span class="n">getExpiration</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">private</span> <span class="n">Boolean</span> <span class="nf">ignoreTokenExpiration</span><span class="o">(</span><span class="n">String</span> <span class="n">token</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// here you specify tokens, for that the expiration is ignored
+</span><span class="c1"></span>        <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="n">Boolean</span> <span class="nf">canTokenBeRefreshed</span><span class="o">(</span><span class="n">String</span> <span class="n">token</span><span class="o">,</span> <span class="n">Date</span> <span class="n">lastPasswordReset</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">final</span> <span class="n">Date</span> <span class="n">created</span> <span class="o">=</span> <span class="n">getIssuedAtDateFromToken</span><span class="o">(</span><span class="n">token</span><span class="o">);</span>
+        <span class="k">return</span> <span class="o">!</span><span class="n">isCreatedBeforeLastPasswordReset</span><span class="o">(</span><span class="n">created</span><span class="o">,</span> <span class="n">lastPasswordReset</span><span class="o">)</span>
+                <span class="o">&amp;&amp;</span> <span class="o">(!</span><span class="n">isTokenExpired</span><span class="o">(</span><span class="n">token</span><span class="o">)</span> <span class="o">||</span> <span class="n">ignoreTokenExpiration</span><span class="o">(</span><span class="n">token</span><span class="o">));</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">refreshToken</span><span class="o">(</span><span class="n">String</span> <span class="n">token</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">final</span> <span class="n">Date</span> <span class="n">createdDate</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Date</span><span class="o">();</span>
+        <span class="kd">final</span> <span class="n">Date</span> <span class="n">expirationDate</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Date</span><span class="o">(</span><span class="n">createdDate</span><span class="o">.</span><span class="na">getTime</span><span class="o">()</span> <span class="o">+</span> <span class="n">expiration</span> <span class="o">*</span> <span class="n">1000</span><span class="o">);</span>
+        <span class="kd">final</span> <span class="n">Claims</span> <span class="n">claims</span> <span class="o">=</span> <span class="n">getAllClaimsFromToken</span><span class="o">(</span><span class="n">token</span><span class="o">);</span>
+        <span class="n">claims</span><span class="o">.</span><span class="na">setIssuedAt</span><span class="o">(</span><span class="n">createdDate</span><span class="o">);</span>
+        <span class="n">claims</span><span class="o">.</span><span class="na">setExpiration</span><span class="o">(</span><span class="n">expirationDate</span><span class="o">);</span>
+        <span class="k">return</span> <span class="n">Jwts</span><span class="o">.</span><span class="na">builder</span><span class="o">()</span>
+                <span class="o">.</span><span class="na">setClaims</span><span class="o">(</span><span class="n">claims</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">signWith</span><span class="o">(</span><span class="n">SignatureAlgorithm</span><span class="o">.</span><span class="na">HS512</span><span class="o">,</span> <span class="n">secret</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">compact</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="42-jwtauthorizationtokenfilter">4.2 JwtAuthorizationTokenFilter</h2>
+<p>要想要 JWT 在 Spring 中工作，需要新建一个 <code>JwtAuthorizationTokenFilter</code> ，并把它配置在 <code>WebSecurityConfig</code> 中。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Component</span>
+<span class="nd">@Slf4j</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">JwtAuthorizationTokenFilter</span> <span class="kd">extends</span> <span class="n">OncePerRequestFilter</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">HEADER</span> <span class="o">=</span> <span class="s">&#34;Bearer &#34;</span><span class="o">;</span>
+
+    <span class="nd">@Resource</span>
+    <span class="kd">private</span> <span class="n">UserDetailsService</span> <span class="n">userDetailsService</span><span class="o">;</span>
+
+    <span class="nd">@Resource</span>
+    <span class="kd">private</span> <span class="n">JwtTokenUtil</span> <span class="n">jwtTokenUtil</span><span class="o">;</span>
+
+    <span class="nd">@Value</span><span class="o">(</span><span class="s">&#34;${jwt.header}&#34;</span><span class="o">)</span>
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">tokenHeader</span><span class="o">;</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">doFilterInternal</span><span class="o">(</span><span class="n">HttpServletRequest</span> <span class="n">request</span><span class="o">,</span> <span class="n">HttpServletResponse</span> <span class="n">response</span><span class="o">,</span> <span class="n">FilterChain</span> <span class="n">chain</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">ServletException</span><span class="o">,</span> <span class="n">IOException</span> <span class="o">{</span>
+        <span class="n">log</span><span class="o">.</span><span class="na">debug</span><span class="o">(</span><span class="s">&#34;processing authentication for &#39;{}&#39;&#34;</span><span class="o">,</span> <span class="n">request</span><span class="o">.</span><span class="na">getRequestURL</span><span class="o">());</span>
+        <span class="kd">final</span> <span class="n">String</span> <span class="n">requestHeader</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="na">getHeader</span><span class="o">(</span><span class="k">this</span><span class="o">.</span><span class="na">tokenHeader</span><span class="o">);</span>
+        <span class="n">String</span> <span class="n">username</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+        <span class="n">String</span> <span class="n">authToken</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">requestHeader</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="n">requestHeader</span><span class="o">.</span><span class="na">startsWith</span><span class="o">(</span><span class="n">HEADER</span><span class="o">))</span> <span class="o">{</span>
+            <span class="n">authToken</span> <span class="o">=</span> <span class="n">requestHeader</span><span class="o">.</span><span class="na">substring</span><span class="o">(</span><span class="n">HEADER</span><span class="o">.</span><span class="na">length</span><span class="o">());</span>
+            <span class="k">try</span> <span class="o">{</span>
+                <span class="n">username</span> <span class="o">=</span> <span class="n">jwtTokenUtil</span><span class="o">.</span><span class="na">getUsernameFromToken</span><span class="o">(</span><span class="n">authToken</span><span class="o">);</span>
+            <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">IllegalArgumentException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">log</span><span class="o">.</span><span class="na">error</span><span class="o">(</span><span class="s">&#34;the token is expired and not valid anymore&#34;</span><span class="o">,</span> <span class="n">e</span><span class="o">);</span>
+            <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">ExpiredJwtException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">log</span><span class="o">.</span><span class="na">warn</span><span class="o">(</span><span class="s">&#34;the token is expired and not valid anymore&#34;</span><span class="o">,</span> <span class="n">e</span><span class="o">);</span>
+            <span class="o">}</span>
+        <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+            <span class="n">log</span><span class="o">.</span><span class="na">warn</span><span class="o">(</span><span class="s">&#34;couldn&#39;t find bearer string, will ignore the header&#34;</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="n">log</span><span class="o">.</span><span class="na">debug</span><span class="o">(</span><span class="s">&#34;checking authentication for user &#39;{}&#39;&#34;</span><span class="o">,</span> <span class="n">username</span><span class="o">);</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">username</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="n">SecurityContextHolder</span><span class="o">.</span><span class="na">getContext</span><span class="o">().</span><span class="na">getAuthentication</span><span class="o">()</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">log</span><span class="o">.</span><span class="na">debug</span><span class="o">(</span><span class="s">&#34;security context was null, so authorizing user&#34;</span><span class="o">);</span>
+
+            <span class="c1">// It is not compelling necessary to load the use details from the database. You could also store the information
+</span><span class="c1"></span>            <span class="c1">// in the token and read it from it. It&#39;s up to you ;)
+</span><span class="c1"></span>            <span class="n">UserDetails</span> <span class="n">userDetails</span><span class="o">;</span>
+            <span class="k">try</span> <span class="o">{</span>
+                <span class="n">userDetails</span> <span class="o">=</span> <span class="n">userDetailsService</span><span class="o">.</span><span class="na">loadUserByUsername</span><span class="o">(</span><span class="n">username</span><span class="o">);</span>
+            <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">UsernameNotFoundException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">response</span><span class="o">.</span><span class="na">sendError</span><span class="o">(</span><span class="n">HttpServletResponse</span><span class="o">.</span><span class="na">SC_UNAUTHORIZED</span><span class="o">,</span> <span class="n">e</span><span class="o">.</span><span class="na">getMessage</span><span class="o">());</span>
+                <span class="k">return</span><span class="o">;</span>
+            <span class="o">}</span>
+
+            <span class="c1">// For simple validation it is completely sufficient to just check the token integrity. You don&#39;t have to call
+</span><span class="c1"></span>            <span class="c1">// the database compellingly. Again it&#39;s up to you ;)
+</span><span class="c1"></span>            <span class="k">if</span> <span class="o">(</span><span class="n">jwtTokenUtil</span><span class="o">.</span><span class="na">validateToken</span><span class="o">(</span><span class="n">authToken</span><span class="o">,</span> <span class="n">userDetails</span><span class="o">))</span> <span class="o">{</span>
+                <span class="n">UsernamePasswordAuthenticationToken</span> <span class="n">authentication</span> <span class="o">=</span> <span class="k">new</span> <span class="n">UsernamePasswordAuthenticationToken</span><span class="o">(</span><span class="n">userDetails</span><span class="o">,</span> <span class="kc">null</span><span class="o">,</span> <span class="n">userDetails</span><span class="o">.</span><span class="na">getAuthorities</span><span class="o">());</span>
+                <span class="n">authentication</span><span class="o">.</span><span class="na">setDetails</span><span class="o">(</span><span class="k">new</span> <span class="n">WebAuthenticationDetailsSource</span><span class="o">().</span><span class="na">buildDetails</span><span class="o">(</span><span class="n">request</span><span class="o">));</span>
+                <span class="n">log</span><span class="o">.</span><span class="na">info</span><span class="o">(</span><span class="s">&#34;authorized user &#39;{}&#39;, setting security context&#34;</span><span class="o">,</span> <span class="n">username</span><span class="o">);</span>
+                <span class="n">SecurityContextHolder</span><span class="o">.</span><span class="na">getContext</span><span class="o">().</span><span class="na">setAuthentication</span><span class="o">(</span><span class="n">authentication</span><span class="o">);</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        <span class="n">chain</span><span class="o">.</span><span class="na">doFilter</span><span class="o">(</span><span class="n">request</span><span class="o">,</span> <span class="n">response</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>如果我们足够相信 token 中的数据，也就是我们足够相信签名 token 的 secret 的机制足够好，这种情况下，我们可以不用再查询数据库，而直接采用 token 中的数据。本例中，我们还是通过 Spring Security 的 <code>@UserDetailsService</code> 进行了数据查询，但简单验证的话，你可以采用直接验证 token 是否合法来避免昂贵的数据查询。</p>
+<h2 id="43-websecurityconfig">4.3 WebSecurityConfig</h2>
+<p>接下来，在 <code>WebSecurityConfig</code> 中注入这个 filter，并且配置到 <code>HttpSecurity</code>中，这里的 <code>WebSecurityConfig</code> 忽略所有之前的配置</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">WebSecurityConfig</span> <span class="kd">extends</span> <span class="n">WebSecurityConfigurerAdapter</span> <span class="o">{</span>
+    <span class="nd">@Bean</span>
+    <span class="kd">public</span> <span class="n">JwtAuthorizationTokenFilter</span> <span class="nf">jwtAuthorizationTokenFilterBean</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="n">JwtAuthorizationTokenFilter</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">configure</span><span class="o">(</span><span class="n">HttpSecurity</span> <span class="n">httpSecurity</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+        <span class="n">httpSecurity</span>
+                <span class="o">.</span><span class="na">addFilterBefore</span><span class="o">(</span><span class="n">jwtAuthorizationTokenFilterBean</span><span class="o">(),</span> <span class="n">UsernamePasswordAuthenticationFilter</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+</code></pre></td></tr></table>
+</div>
+</div><p>至此，除了登录的所有的接口都在 Spring Security 的保护下，下面进行我们的测试</p>
+<h1 id="5-测试">5. 测试</h1>
+<p>之前在编写 <code>WebSecurityConfig</code> 配置文件的时候，预留了一个路径作为用户登录来使用，代码段如下</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="c1">// 对于获取token的rest api要允许匿名访问
+</span><span class="c1"></span><span class="o">.</span><span class="na">antMatchers</span><span class="o">(</span><span class="s">&#34;/auth/**&#34;</span><span class="o">).</span><span class="na">permitAll</span><span class="o">()</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>这段代码指定了在路径 <code>/auth</code> 下的资源可以不用认证就能被访问，登录接口理所应该放在该路径下</p>
+<p>新建一个 <code>AuthController</code> 来完成用户登录认证操作</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@RequestMapping</span><span class="o">(</span><span class="n">value</span> <span class="o">=</span> <span class="s">&#34;auth&#34;</span><span class="o">)</span>
+<span class="nd">@RestController</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">AuthController</span> <span class="o">{</span>
+
+    <span class="nd">@Resource</span>
+    <span class="kd">private</span> <span class="n">JwtTokenUtil</span> <span class="n">jwtTokenUtil</span><span class="o">;</span>
+
+    <span class="nd">@Resource</span>
+    <span class="kd">private</span> <span class="n">UserDetailsService</span> <span class="n">userDetailsService</span><span class="o">;</span>
+
+    <span class="nd">@RequestMapping</span><span class="o">(</span><span class="n">value</span> <span class="o">=</span> <span class="s">&#34;${jwt.authentication.path}&#34;</span><span class="o">,</span> <span class="n">method</span> <span class="o">=</span> <span class="n">RequestMethod</span><span class="o">.</span><span class="na">POST</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="n">ResponseEntity</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="nf">createAuthenticationToken</span><span class="o">(</span><span class="nd">@RequestBody</span> <span class="n">JwtAuthenticationRequest</span> <span class="n">authenticationRequest</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">AuthenticationException</span> <span class="o">{</span>
+        <span class="kd">final</span> <span class="n">UserDetails</span> <span class="n">userDetails</span> <span class="o">=</span> <span class="n">userDetailsService</span><span class="o">.</span><span class="na">loadUserByUsername</span><span class="o">(</span><span class="n">authenticationRequest</span><span class="o">.</span><span class="na">getUsername</span><span class="o">());</span>
+        <span class="k">if</span> <span class="o">(!</span><span class="n">userDetails</span><span class="o">.</span><span class="na">getPassword</span><span class="o">().</span><span class="na">equals</span><span class="o">(</span><span class="n">authenticationRequest</span><span class="o">.</span><span class="na">getPassword</span><span class="o">()))</span> <span class="o">{</span>
+            <span class="k">return</span> <span class="n">ResponseEntity</span><span class="o">.</span><span class="na">status</span><span class="o">(</span><span class="n">HttpStatus</span><span class="o">.</span><span class="na">UNAUTHORIZED</span><span class="o">).</span><span class="na">body</span><span class="o">(</span><span class="s">&#34;Bad credentials&#34;</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="c1">// Reload password post-security so we can generate the token
+</span><span class="c1"></span>        <span class="kd">final</span> <span class="n">String</span> <span class="n">token</span> <span class="o">=</span> <span class="n">jwtTokenUtil</span><span class="o">.</span><span class="na">generateToken</span><span class="o">(</span><span class="n">userDetails</span><span class="o">);</span>
+        <span class="c1">// Return the token
+</span><span class="c1"></span>        <span class="k">return</span> <span class="n">ResponseEntity</span><span class="o">.</span><span class="na">ok</span><span class="o">(</span><span class="n">token</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+</code></pre></td></tr></table>
+</div>
+</div><p>我们利用 <code>PostMan</code> 软件来测试</p>
+<p><img src="https://raw.githubusercontent.com/ShangguanHong/PictureBed/master/1565789061567.png" alt="1565789061567"></p>
+<p>登录接口测试完毕之后，接下来我们要规定一下哪些资源需要什么样的角色可以访问了。</p>
+<p>编写一个 <code>TestController</code> 来测试</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@RestController</span>
+<span class="nd">@RequestMapping</span><span class="o">(</span><span class="s">&#34;api&#34;</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">TestController</span> <span class="o">{</span>
+
+    <span class="nd">@PreAuthorize</span><span class="o">(</span><span class="s">&#34;hasAnyRole(&#39;ADMIN&#39;)&#34;</span><span class="o">)</span>
+    <span class="nd">@GetMapping</span><span class="o">(</span><span class="s">&#34;/admin&#34;</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">adminTest</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="s">&#34;管理员可以访问&#34;</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@PreAuthorize</span><span class="o">(</span><span class="s">&#34;hasAnyRole(&#39;USER&#39;, &#39;ADMIN&#39;)&#34;</span><span class="o">)</span>
+    <span class="nd">@GetMapping</span><span class="o">(</span><span class="s">&#34;/user&#34;</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">userTest</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="s">&#34;普通用户可以访问&#34;</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p><code>@PreAuthorize(&quot;hasAnyRole('ADMIN')&quot;)</code> 表示这个资源只能被拥有 <code>ADMIN</code> 角色的用户访问</p>
+<p><code>@PreAuthorize(&quot;hasAnyRole('USER', 'ADMIN')&quot;)</code> 表示这个资源可以被拥有 <code>ADMIN</code> 与 <code>USER</code> 角色的用户访问</p>
+</blockquote>
+<p>现在访问这些接口时，就需要在请求上加上 <strong>Authorization</strong> , 其值为 &ldquo;Bearer &quot; + token (注意Bearer后有一个空格)</p>
+<p>访问 <code>localhost:8080/api/admin</code></p>
+<p><img src="https://raw.githubusercontent.com/ShangguanHong/PictureBed/master/1565789368582.png" alt="1565789368582"></p>
+<p>访问 <code>localhost:8080/api/user</code></p>
+<p><img src="https://raw.githubusercontent.com/ShangguanHong/PictureBed/master/1565789679394.png" alt="1565789679394"></p>
+<p>可以看到拥有 <code>ADMIN</code> 权限的可以访问这两个接口</p>
+<p>现在来测试普通用户</p>
+<p>首先获取普通用户的 token</p>
+<p><img src="https://raw.githubusercontent.com/ShangguanHong/PictureBed/master/1565789764887.png" alt="1565789764887"></p>
+<p>访问 <code>localhost:8080/api/user</code></p>
+<p><img src="https://raw.githubusercontent.com/ShangguanHong/PictureBed/master/1565789799175.png" alt="1565789799175"></p>
+<p>访问 <code>localhost:8080/api/admin</code></p>
+<p><img src="https://raw.githubusercontent.com/ShangguanHong/PictureBed/master/1565789823554.png" alt="1565789823554"></p>
+<p>可以看到普通用户访问 <code>localhost:8080/api/user</code> 时被拒绝了。</p>
+<p>demo地址：https://github.com/ShangguanHong/SpringBootDemo/tree/master/springboot-jpa</p>
+<h1 id="6-参考资料">6. 参考资料</h1>
+<ol>
+<li><a href="https://www.jianshu.com/p/6307c89fe3fa">重拾后端之Spring Boot（四）：使用 JWT 和 Spring Security 保护 REST API</a></li>
+<li><a href="https://github.com/szerhusenBC/jwt-spring-security-demo/blob/master/src/main/java/org/zerhusen/model/security/Authority.java">https://github.com/szerhusenBC/jwt-spring-security-demo/blob/master/src/main/java/org/zerhusen/model/security/Authority.java</a></li>
+</ol>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">ShangguanHong</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2019-08-14
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/spring-boot/">Spring Boot</a>
+          <a href="/tags/jwt/">JWT</a>
+          <a href="/tags/spring-security/">Spring Security</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/2019/08/14/java%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7%E7%B1%BB%E4%B9%8Bstringutils%E7%B1%BB/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Java常用工具类之StringUtils类</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/2019/08/08/%E4%BA%86%E8%A7%A3json-web-token-jwt/">
+            <span class="next-text nav-default">了解JSON Web Token(JWT)</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+  <div id="vcomments"></div>
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+  <script type="text/javascript">
+    new Valine({
+        el: '#vcomments' ,
+        appId: 'X0gLmyOh1himl7jHPYcpKKop-gzGzoHsz',
+        appKey: 'hoYFzkrMqrD9SyRNpkiNf0LH',
+        notify:  false ,
+        verify:  false ,
+        avatar:'mm',
+        placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊!',
+        visitor:  false 
+    });
+  </script>
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:www.sgh1450280694@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/ShangguanHong" class="iconfont icon-github" title="github"></a>
+      <a href="https://weibo.com/5590338381" class="iconfont icon-weibo" title="weibo"></a>
+      <a href="https://space.bilibili.com/105190849" class="iconfont icon-bilibili" title="bilibili"></a>
+  <a href="https://shangguanhong.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2019 - 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">ShangguanHong</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

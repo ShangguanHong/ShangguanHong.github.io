@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>lombok的常用注解 - ShangguanHong</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="ShangguanHong" /><meta name="description" content="Lombok介绍 官网介绍： Project Lombok is a java library that automatically plugs into your editor and build tools, spicing up your java. Never write another getter or equals method again, with one annotation your class has a fully featured builder, Automate your logging variables, and much more. 翻译：Lombok 项目是一" /><meta name="keywords" content="go, golang, hugo" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.67.1 with theme even" />
+
+
+<link rel="canonical" href="https://shangguanhong.github.io/2019/10/31/lombok%E7%9A%84%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="lombok的常用注解" />
+<meta property="og:description" content="Lombok介绍 官网介绍： Project Lombok is a java library that automatically plugs into your editor and build tools, spicing up your java. Never write another getter or equals method again, with one annotation your class has a fully featured builder, Automate your logging variables, and much more. 翻译：Lombok 项目是一" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://shangguanhong.github.io/2019/10/31/lombok%E7%9A%84%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3/" />
+<meta property="article:published_time" content="2019-10-31T10:17:12+00:00" />
+<meta property="article:modified_time" content="2019-10-31T10:17:12+00:00" />
+<meta itemprop="name" content="lombok的常用注解">
+<meta itemprop="description" content="Lombok介绍 官网介绍： Project Lombok is a java library that automatically plugs into your editor and build tools, spicing up your java. Never write another getter or equals method again, with one annotation your class has a fully featured builder, Automate your logging variables, and much more. 翻译：Lombok 项目是一">
+<meta itemprop="datePublished" content="2019-10-31T10:17:12&#43;00:00" />
+<meta itemprop="dateModified" content="2019-10-31T10:17:12&#43;00:00" />
+<meta itemprop="wordCount" content="1142">
+
+
+
+<meta itemprop="keywords" content="lombok," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="lombok的常用注解"/>
+<meta name="twitter:description" content="Lombok介绍 官网介绍： Project Lombok is a java library that automatically plugs into your editor and build tools, spicing up your java. Never write another getter or equals method again, with one annotation your class has a fully featured builder, Automate your logging variables, and much more. 翻译：Lombok 项目是一"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">赏我一个好梦如旧</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">赏我一个好梦如旧</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">lombok的常用注解</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2019-10-31 </span>
+        <div class="post-category">
+            <a href="/categories/lombok/"> lombok </a>
+            </div>
+          <span class="more-meta"> 约 1142 字 </span>
+          <span class="more-meta"> 预计阅读 3 分钟 </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#gettersetter">@Getter/@Setter</a></li>
+    <li><a href="#tostring">@ToString</a></li>
+    <li><a href="#equalandhashcode">@EqualAndHashCode</a></li>
+    <li><a href="#data">@Data</a></li>
+    <li><a href="#noargsconstructorrequiredargsconstructorallargsconstructor">@NoArgsConstructor/@RequiredArgsConstructor/@AllArgsConstructor</a></li>
+    <li><a href="#nonnull">@NonNull</a></li>
+    <li><a href="#cleanup">@Cleanup</a></li>
+    <li><a href="#builder">@Builder</a></li>
+    <li><a href="#sneakythrows">@SneakyThrows</a></li>
+    <li><a href="#synchronized">@Synchronized</a></li>
+    <li><a href="#with">@With</a></li>
+    <li><a href="#log">@Log</a></li>
+    <li><a href="#var">var</a></li>
+    <li><a href="#val">val</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <h1 id="lombok介绍">Lombok介绍</h1>
+<p><a href="https://projectlombok.org/">官网</a>介绍：</p>
+<blockquote>
+<p>Project Lombok is a java library that automatically plugs into your editor and build tools, spicing up your java.
+Never write another getter or equals method again, with one annotation your class has a fully featured builder, Automate your logging variables, and much more.</p>
+</blockquote>
+<p>翻译：Lombok 项目是一个 Java 库，它会自动插入您的编辑器和构建工具中，从而使您的 Java 更加生动有趣。
+永远不要再写另一个 getter 或 equals 方法，带有一个注释的您的类有一个功能全面的生成器，自动化您的日志记录变量等等。</p>
+<p>简而言之就是：使用Lombok可以简化开发， 提高效率。</p>
+<h1 id="lombok安装">Lombok安装</h1>
+<p>导入maven依赖</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;dependencies&gt;</span>
+	<span class="nt">&lt;dependency&gt;</span>
+		<span class="nt">&lt;groupId&gt;</span>org.projectlombok<span class="nt">&lt;/groupId&gt;</span>
+		<span class="nt">&lt;artifactId&gt;</span>lombok<span class="nt">&lt;/artifactId&gt;</span>
+		<span class="nt">&lt;version&gt;</span>1.18.10<span class="nt">&lt;/version&gt;</span>
+		<span class="nt">&lt;scope&gt;</span>provided<span class="nt">&lt;/scope&gt;</span>
+	<span class="nt">&lt;/dependency&gt;</span>
+<span class="nt">&lt;/dependencies&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>注意</strong>：由于 Lombok 是在编译时期才生成代码，因此需要在 IDE 上安装对应的插件避免 IDE 报错。</p>
+<p>IDEA 上安装插件的流程是：</p>
+<ul>
+<li>Go to <code>File &gt; Settings &gt; Plugins</code></li>
+<li>Click on <code>Browse repositories...</code></li>
+<li>Search for <code>Lombok Plugin</code></li>
+<li>Click on <code>Install plugin</code></li>
+<li>Restart IntelliJ IDEA</li>
+</ul>
+<p>eclipse 上安装请自行百度解决。</p>
+<h1 id="lombok常用注解">Lombok常用注解</h1>
+<h2 id="gettersetter">@Getter/@Setter</h2>
+<p>Never write <code>public int getFoo() {return foo;}</code> again.</p>
+<p>注解在类上或者字段上，为字段生成对应的 get/set 方法</p>
+<h2 id="tostring">@ToString</h2>
+<p>No need to start a debugger to see your fields: Just let lombok generate a <code>toString</code> for you!</p>
+<p>注解在类上，为类提供 toString() 方法，可以使用 exclude 排除不需要添加的字段和依赖</p>
+<h2 id="equalandhashcode">@EqualAndHashCode</h2>
+<p>Equality made easy: Generates <code>hashCode</code> and <code>equals</code> implementations from the fields of your object..</p>
+<p>注解在类上，为类提供 equal() 和 hashCode() 方法，可以使用 exclude 排除不需要添加的字段和依赖</p>
+<h2 id="data">@Data</h2>
+<p>All together now: A shortcut for <code>@ToString</code>, <code>@EqualsAndHashCode</code>, <code>@Getter</code> on all fields, and <code>@Setter</code> on all non-final fields, and <code>@RequiredArgsConstructor</code>!</p>
+<p>注解在类上，与同时使用以下的注解的效果是一样的：</p>
+<ul>
+<li><strong>@ToString</strong></li>
+<li><strong>@Getter</strong></li>
+<li><strong>@Setter</strong></li>
+<li><strong>@RequiredArgsConstructor</strong></li>
+<li><strong>@EqualsAndHashCode</strong></li>
+</ul>
+<h2 id="noargsconstructorrequiredargsconstructorallargsconstructor">@NoArgsConstructor/@RequiredArgsConstructor/@AllArgsConstructor</h2>
+<p>Constructors made to order: Generates constructors that take no arguments, one argument per final / non-nullfield, or one argument for every field.</p>
+<ol>
+<li>@NoArgsConstructor 注解为类生成一个无参的构造函数</li>
+<li>@AllArgsConstructor 注解为类生成一个包含全部成员的构造函数</li>
+<li>@RequiredArgsConstructor 注解为类提供一个必须初始化的成员的构造函数，如 final、static等</li>
+</ol>
+<h2 id="nonnull">@NonNull</h2>
+<p>or: How I learned to stop worrying and love the NullPointerException.</p>
+<p>注解在字段或者方法的参数前，自动生成非空校验</p>
+<h2 id="cleanup">@Cleanup</h2>
+<p>Automatic resource management: Call your <code>close()</code> methods safely with no hassle.</p>
+<p><code>@Cleanup</code> 注解用于自动管理资源，用在局部变量之前，在当前变量范围内即将执行完毕退出之前会自动清理资源，自动生成 <code>try-finally</code> 这样的代码来关闭流。</p>
+<p>如： <strong>@Cleanup</strong> InputStream in = <strong>new</strong> FileInputStream(&quot;&hellip;&quot;);        <strong>@Cleanup</strong> OutputStream out = <strong>new</strong> FileOutputStream(&quot;&hellip;.&quot;);</p>
+<h2 id="builder">@Builder</h2>
+<p>&hellip; and Bob&rsquo;s your uncle: No-hassle fancy-pants APIs for object creation!</p>
+<p>注解在类上，为该类提供一个构造者模式</p>
+<h2 id="sneakythrows">@SneakyThrows</h2>
+<p>To boldly throw checked exceptions where no one has thrown them before!</p>
+<p>注解在方法上，相当于使用 try/catch 捕获异常</p>
+<h2 id="synchronized">@Synchronized</h2>
+<p><code>synchronized</code> done right: Don&rsquo;t expose your locks.</p>
+<p>注解在方法上，相当于对该方法加了 Synchronized 同步锁</p>
+<h2 id="with">@With</h2>
+<p>Immutable &lsquo;setters&rsquo; - methods that create a clone but with one changed field.</p>
+<p>注解在字段上，自动生成一个 <code>withFieldName(newValue)</code> 的方法，该方法会基于 newValue 调用相应构造函数，创建一个新的实例。</p>
+<h2 id="log">@Log</h2>
+<p>Captain&rsquo;s Log, stardate 24435.7: &ldquo;What was that line again?&rdquo;</p>
+<p>注解在类上，为类提供一个属性名为 log 的日志对象</p>
+<p>具体日志类型可以选择，类型如下</p>
+<p><img src="https://raw.githubusercontent.com/ShangguanHong/PictureBed/master/image-20191031123715834.png" alt="image-20191031123715834"></p>
+<h2 id="var">var</h2>
+<p>Mutably! Hassle-free local variables.</p>
+<p>var 用在局部变量前面， Lombok 在编译时还会自动进行类型推断。</p>
+<h2 id="val">val</h2>
+<p>Finally! Hassle-free final local variables.</p>
+<p>val 用在局部变量前面，相当于将变量声明为 final， Lombok 在编译时还会自动进行类型推断。</p>
+<h1 id="注意事项">注意事项</h1>
+<ol>
+<li>
+<p>在类需要序列化、反序列化时详细控制字段时（例如：Jackson json序列化）；</p>
+</li>
+<li>
+<p>使用 Lombok 能够省去手动创建 setter 和 getter 方法，但是也降低了源代码文件的可读性和完整性，降低了源代码阅读的舒适度；</p>
+</li>
+<li>
+<p>使用 @Slf4j 还是 @Log4j 看项目使用的日志框架；</p>
+</li>
+<li>
+<p>选择适合的地方使用 Lombok，例如 POJO 是一个好地方，因为它很单纯</p>
+</li>
+<li>
+<p>更多具体内容请以 <a href="https://projectlombok.org/features/all">官方标准说明</a> 为主</p>
+</li>
+</ol>
+<h1 id="参考资料">参考资料</h1>
+<ol>
+<li><a href="https://juejin.im/post/5db9a6a65188251d5e7560bf#heading-44">https://juejin.im/post/5db9a6a65188251d5e7560bf#heading-44</a></li>
+</ol>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">ShangguanHong</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2019-10-31
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/lombok/">lombok</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/2019/11/21/windows%E4%B8%8A%E5%AE%89%E8%A3%85wsl/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">windows上安装WSL</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/2019/10/14/%E5%8D%81%E5%A4%A7%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E6%80%BB%E7%BB%93/">
+            <span class="next-text nav-default">十大排序算法总结</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+  <div id="vcomments"></div>
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+  <script type="text/javascript">
+    new Valine({
+        el: '#vcomments' ,
+        appId: 'X0gLmyOh1himl7jHPYcpKKop-gzGzoHsz',
+        appKey: 'hoYFzkrMqrD9SyRNpkiNf0LH',
+        notify:  false ,
+        verify:  false ,
+        avatar:'mm',
+        placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊!',
+        visitor:  false 
+    });
+  </script>
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:www.sgh1450280694@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/ShangguanHong" class="iconfont icon-github" title="github"></a>
+      <a href="https://weibo.com/5590338381" class="iconfont icon-weibo" title="weibo"></a>
+      <a href="https://space.bilibili.com/105190849" class="iconfont icon-bilibili" title="bilibili"></a>
+  <a href="https://shangguanhong.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2019 - 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">ShangguanHong</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

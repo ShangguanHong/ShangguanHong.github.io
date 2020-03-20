@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Go学习笔记 on ShangguanHong</title>
+    <link>https://shangguanhong.github.io/categories/go%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</link>
+    <description>Recent content in Go学习笔记 on ShangguanHong</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 02 Mar 2020 19:29:51 +0000</lastBuildDate>
+    
+	<atom:link href="https://shangguanhong.github.io/categories/go%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>gorm的使用</title>
+      <link>https://shangguanhong.github.io/2020/03/02/gorm%E7%9A%84%E4%BD%BF%E7%94%A8/</link>
+      <pubDate>Mon, 02 Mar 2020 19:29:51 +0000</pubDate>
+      
+      <guid>https://shangguanhong.github.io/2020/03/02/gorm%E7%9A%84%E4%BD%BF%E7%94%A8/</guid>
+      <description>原文地址：Go orm框架gorm学习 之前学习过原生的Go连接MYSQL的方法，使用Go自带的&amp;quot;database/sql&amp;quot;</description>
+    </item>
+    
+    <item>
+      <title>Go连接MySQL</title>
+      <link>https://shangguanhong.github.io/2020/03/02/go%E8%BF%9E%E6%8E%A5mysql/</link>
+      <pubDate>Mon, 02 Mar 2020 19:14:23 +0000</pubDate>
+      
+      <guid>https://shangguanhong.github.io/2020/03/02/go%E8%BF%9E%E6%8E%A5mysql/</guid>
+      <description>原文地址：Go连接MYSQL Go原生提供了连接数据库操作的支持，在用 Golang进行开发的时候，如果需要在和数据库交互，则可以使用datab</description>
+    </item>
+    
+    <item>
+      <title>go的pprof使用</title>
+      <link>https://shangguanhong.github.io/2020/02/26/go%E7%9A%84pprof%E4%BD%BF%E7%94%A8/</link>
+      <pubDate>Wed, 26 Feb 2020 22:01:46 +0000</pubDate>
+      
+      <guid>https://shangguanhong.github.io/2020/02/26/go%E7%9A%84pprof%E4%BD%BF%E7%94%A8/</guid>
+      <description>原文地址：Golang 大杀器之性能剖析 PProf 前言 写了几吨代码，实现了几百个接口。功能测试也通过了，终于成功的部署上线了 结果，性能不佳，什么鬼？😭</description>
+    </item>
+    
+    <item>
+      <title>golang环境配置</title>
+      <link>https://shangguanhong.github.io/2020/02/09/golang%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</link>
+      <pubDate>Sun, 09 Feb 2020 19:26:33 +0000</pubDate>
+      
+      <guid>https://shangguanhong.github.io/2020/02/09/golang%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</guid>
+      <description>Windows 去golang官方下载页面下载最新的安装程序 进行安装，安装过程中需要记住go的安装目录，默认为 C:\Go\ 增加 GOROOT 变量(如果没有的话)，值为第二步的时</description>
+    </item>
+    
+    <item>
+      <title>Golang的sync.RWMutex与sync.Mutex</title>
+      <link>https://shangguanhong.github.io/2019/12/26/golang%E7%9A%84sync.rwmutex%E4%B8%8Esync.mutex/</link>
+      <pubDate>Thu, 26 Dec 2019 20:46:29 +0000</pubDate>
+      
+      <guid>https://shangguanhong.github.io/2019/12/26/golang%E7%9A%84sync.rwmutex%E4%B8%8Esync.mutex/</guid>
+      <description>介绍 Golang 中的 sync 包中实现了两种锁，一种是 Mutex(互斥锁)，另一种是RWMutex(读写锁)，其中 RWMutex 是基于 Mutex 实现的 Mutex Mutex 是互斥锁，Lock() 是</description>
+    </item>
+    
+    <item>
+      <title>Golang的sync.Once</title>
+      <link>https://shangguanhong.github.io/2019/12/22/golang%E7%9A%84sync.once/</link>
+      <pubDate>Sun, 22 Dec 2019 22:39:57 +0000</pubDate>
+      
+      <guid>https://shangguanhong.github.io/2019/12/22/golang%E7%9A%84sync.once/</guid>
+      <description>使用 sync.Once 可以控制函数只能被调用一次，不能多次重复调用。 例如如下代码： 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 package main import ( &amp;#34;fmt&amp;#34; &amp;#34;sync&amp;#34; ) func main() { once := sync.Once{} n := 10 for i :=</description>
+    </item>
+    
+    <item>
+      <title>Golang的sync.WaitGroup</title>
+      <link>https://shangguanhong.github.io/2019/12/22/golang%E7%9A%84sync.waitgroup/</link>
+      <pubDate>Sun, 22 Dec 2019 10:37:28 +0000</pubDate>
+      
+      <guid>https://shangguanhong.github.io/2019/12/22/golang%E7%9A%84sync.waitgroup/</guid>
+      <description>使用 假设我们需要在主函数中调用协程打印数据， 很容易我们能想写出下面的代码 1 2 3 4 5 6 7 8 9 10 package main import &amp;#34;fmt&amp;#34; func main() { n := 100 for i := 0; i &amp;lt; n; i++ { go fmt.Println(&amp;#34;Hello World!&amp;#34;) } }</description>
+    </item>
+    
+  </channel>
+</rss>

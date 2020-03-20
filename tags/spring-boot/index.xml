@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Spring Boot on ShangguanHong</title>
+    <link>https://shangguanhong.github.io/tags/spring-boot/</link>
+    <description>Recent content in Spring Boot on ShangguanHong</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Thu, 19 Sep 2019 21:55:45 +0000</lastBuildDate>
+    
+	<atom:link href="https://shangguanhong.github.io/tags/spring-boot/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Spring Cache整合Redis</title>
+      <link>https://shangguanhong.github.io/2019/09/19/spring-cache%E6%95%B4%E5%90%88redis/</link>
+      <pubDate>Thu, 19 Sep 2019 21:55:45 +0000</pubDate>
+      
+      <guid>https://shangguanhong.github.io/2019/09/19/spring-cache%E6%95%B4%E5%90%88redis/</guid>
+      <description>前言 缓存现在已经成为了互联网必不可少的利器，合理的利用缓存不仅能大大的提升网站的访问速度，还能够降低数据库的访问压力。 在上一篇文章中，介绍了</description>
+    </item>
+    
+    <item>
+      <title>Spring Boot整合Redis</title>
+      <link>https://shangguanhong.github.io/2019/09/10/spring-boot%E6%95%B4%E5%90%88redis/</link>
+      <pubDate>Tue, 10 Sep 2019 16:51:20 +0000</pubDate>
+      
+      <guid>https://shangguanhong.github.io/2019/09/10/spring-boot%E6%95%B4%E5%90%88redis/</guid>
+      <description>Redis简介 Redis 是完全开元免费的，遵守BSD协议，是一个高性能的 key-value 数据库。 Redis 与其他 key - value 缓存产品有以下三个特点： Redis 支持数据的持久化，可以将内</description>
+    </item>
+    
+    <item>
+      <title>Spring Boot中CommandLineRunner的使用</title>
+      <link>https://shangguanhong.github.io/2019/08/29/spring-boot%E4%B8%ADcommandlinerunner%E7%9A%84%E4%BD%BF%E7%94%A8/</link>
+      <pubDate>Thu, 29 Aug 2019 21:24:02 +0000</pubDate>
+      
+      <guid>https://shangguanhong.github.io/2019/08/29/spring-boot%E4%B8%ADcommandlinerunner%E7%9A%84%E4%BD%BF%E7%94%A8/</guid>
+      <description>前言 在项目中经常会遇到需要在项目启动之前做一些初始化数据的操作，例如初始化线程池、初始化一些脚本等等。但是往往这些操作又需要在 Spring Beans 加载完成之</description>
+    </item>
+    
+    <item>
+      <title>Spring Boot整合Shiro</title>
+      <link>https://shangguanhong.github.io/2019/08/20/spring-boot%E6%95%B4%E5%90%88shiro/</link>
+      <pubDate>Tue, 20 Aug 2019 20:11:28 +0000</pubDate>
+      
+      <guid>https://shangguanhong.github.io/2019/08/20/spring-boot%E6%95%B4%E5%90%88shiro/</guid>
+      <description>1. 前言 在 Java 领域一般有 Spring Security、Apache Shiro 等安全框架，之前写了一篇关于 JWT整合Spring Security 的文章，里面介绍了使用 Spring Boot + JWT + Spring</description>
+    </item>
+    
+    <item>
+      <title>JWT整合Spring Security</title>
+      <link>https://shangguanhong.github.io/2019/08/14/jwt%E6%95%B4%E5%90%88spring-security/</link>
+      <pubDate>Wed, 14 Aug 2019 10:56:07 +0000</pubDate>
+      
+      <guid>https://shangguanhong.github.io/2019/08/14/jwt%E6%95%B4%E5%90%88spring-security/</guid>
+      <description>1. 前言 之前介绍了一下 JWT ,在最后提到了 JWT 本身没啥难度，但安全整体是一个比较复杂的事情，JWT 只不过提供了一种基于 token 的请求验证机制。但我们的用户</description>
+    </item>
+    
+    <item>
+      <title>了解JSON Web Token(JWT)</title>
+      <link>https://shangguanhong.github.io/2019/08/08/%E4%BA%86%E8%A7%A3json-web-token-jwt/</link>
+      <pubDate>Thu, 08 Aug 2019 22:04:06 +0000</pubDate>
+      
+      <guid>https://shangguanhong.github.io/2019/08/08/%E4%BA%86%E8%A7%A3json-web-token-jwt/</guid>
+      <description>&lt;h1 id=&#34;1-前言&#34;&gt;1. 前言&lt;/h1&gt;
+&lt;p&gt;互联网服务离不开用户认证，一般流程是下面这样。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;1、用户向服务器发送用户名和密码。&lt;/p&gt;
+&lt;p&gt;2、服务器验证通过后，在当前对话（session）里面保存相关数据，比如用户角色、登录时间等等。&lt;/p&gt;
+&lt;p&gt;3、服务器向用户返回一个 session_id，写入用户的 Cookie。&lt;/p&gt;
+&lt;p&gt;4、用户随后的每一次请求，都会通过 Cookie，将 session_id 传回服务器。&lt;/p&gt;
+&lt;p&gt;5、服务器收到 session_id，找到前期保存的数据，由此得知用户的身份。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;这种模式的问题在于，扩展性（scaling）不好。单机当然没有问题，如果是服务器集群，或者是跨域的服务导向架构，就要求 session 数据共享，每台服务器都能够读取 session。&lt;/p&gt;
+&lt;p&gt;举例来说，A 网站和 B 网站是同一家公司的关联服务。现在要求，用户只要在其中一个网站登录，再访问另一个网站就会自动登录，请问怎么实现？&lt;/p&gt;
+&lt;p&gt;一种解决方案是 session 数据持久化，写入数据库或别的持久层。各种服务收到请求后，都向持久层请求数据。这种方案的优点是架构清晰，缺点是工程量比较大。另外，持久层万一挂了，就会单点失败。&lt;/p&gt;
+&lt;p&gt;另一种方案是服务器索性不保存 session 数据了，所有数据都保存在客户端，每次请求都发回服务器。JWT 就是这种方案的一个代表。&lt;/p&gt;
+&lt;p&gt;下面介绍 JWT 的使用。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Spring Boot中配置Slf4j&#43;logback日志框架</title>
+      <link>https://shangguanhong.github.io/2019/07/31/spring-boot%E4%B8%AD%E9%85%8D%E7%BD%AElogback/</link>
+      <pubDate>Wed, 31 Jul 2019 23:50:50 +0000</pubDate>
+      
+      <guid>https://shangguanhong.github.io/2019/07/31/spring-boot%E4%B8%AD%E9%85%8D%E7%BD%AElogback/</guid>
+      <description>1. 前言 Slf4j的全称是 Simple Loging Facade For Java(Java简单日志门面)，它仅仅是一个为Java程序提供日志输出的统一接口，并不是一个具体的日志实现</description>
+    </item>
+    
+    <item>
+      <title>Java实体映射工具MapStruct的使用</title>
+      <link>https://shangguanhong.github.io/2019/07/17/java%E5%AE%9E%E4%BD%93%E6%98%A0%E5%B0%84%E5%B7%A5%E5%85%B7mapstruct%E7%9A%84%E4%BD%BF%E7%94%A8/</link>
+      <pubDate>Wed, 17 Jul 2019 19:49:06 +0000</pubDate>
+      
+      <guid>https://shangguanhong.github.io/2019/07/17/java%E5%AE%9E%E4%BD%93%E6%98%A0%E5%B0%84%E5%B7%A5%E5%85%B7mapstruct%E7%9A%84%E4%BD%BF%E7%94%A8/</guid>
+      <description>1. 前言 官网地址：http://mapstruct.org/ MapStruct 是一个代码生成器，简化了不同的 Java Bean 之间映射的处理，所谓的映射指的就是从一个实体变</description>
+    </item>
+    
+    <item>
+      <title>Spring Boot整合Swagger2</title>
+      <link>https://shangguanhong.github.io/2019/07/16/spring-boot%E6%95%B4%E5%90%88swagger2/</link>
+      <pubDate>Tue, 16 Jul 2019 16:15:21 +0000</pubDate>
+      
+      <guid>https://shangguanhong.github.io/2019/07/16/spring-boot%E6%95%B4%E5%90%88swagger2/</guid>
+      <description>1. 前言 ​ 现如今，前后端分离已经逐渐成为互联网项目一种标准的开发方式，前端与后端交给不同的人员开发，但是项目开发中的沟通成本也随之升高，这部分</description>
+    </item>
+    
+    <item>
+      <title>利用POI操纵Excel</title>
+      <link>https://shangguanhong.github.io/2019/07/14/%E5%88%A9%E7%94%A8poi%E6%93%8D%E7%BA%B5excel/</link>
+      <pubDate>Sun, 14 Jul 2019 18:26:41 +0000</pubDate>
+      
+      <guid>https://shangguanhong.github.io/2019/07/14/%E5%88%A9%E7%94%A8poi%E6%93%8D%E7%BA%B5excel/</guid>
+      <description>1. 前言 POI 是常用的解析 Excel 文件的工具库，Excel 文件有两种格式(.xls和.xlsx)，POI 都支持解析。解析 Excel 文件的流程为读取工作簿(Wor</description>
+    </item>
+    
+    <item>
+      <title>Spring Boot整合Spring Data Jpa</title>
+      <link>https://shangguanhong.github.io/2019/07/08/spring-boot%E6%95%B4%E5%90%88springdatajpa/</link>
+      <pubDate>Mon, 08 Jul 2019 14:14:55 +0000</pubDate>
+      
+      <guid>https://shangguanhong.github.io/2019/07/08/spring-boot%E6%95%B4%E5%90%88springdatajpa/</guid>
+      <description>1. 前言 之前的文章中写到了如何使用 Spring Boot 整合 mybatis(传送门: Spring-Boot整合MyBatis)，今天学习一下如何使用 Spring Boot 整合 Spring Data</description>
+    </item>
+    
+    <item>
+      <title>Spring Boot实现热部署</title>
+      <link>https://shangguanhong.github.io/2019/07/07/spring-boot%E5%AE%9E%E7%8E%B0%E7%83%AD%E9%83%A8%E7%BD%B2/</link>
+      <pubDate>Sun, 07 Jul 2019 17:18:15 +0000</pubDate>
+      
+      <guid>https://shangguanhong.github.io/2019/07/07/spring-boot%E5%AE%9E%E7%8E%B0%E7%83%AD%E9%83%A8%E7%BD%B2/</guid>
+      <description>1. 前言 我们在开发中反复修改类、页面等资源，每次修改后都是需要重新启动服务才能使得修改生效，这是非常麻烦的，浪费了大量的时间。我们能够在修改代</description>
+    </item>
+    
+    <item>
+      <title>Spring Boot整合MyBatis</title>
+      <link>https://shangguanhong.github.io/2019/06/03/spring-boot%E6%95%B4%E5%90%88mybatis/</link>
+      <pubDate>Mon, 03 Jun 2019 09:38:28 +0000</pubDate>
+      
+      <guid>https://shangguanhong.github.io/2019/06/03/spring-boot%E6%95%B4%E5%90%88mybatis/</guid>
+      <description>1. 前言 本文介绍如何将mybatis整合进Spring Boot, 并且使用mybatis-generator插件自动根据数据库生成一些基本的代码。 本文用</description>
+    </item>
+    
+    <item>
+      <title>Spring Boot配置文件</title>
+      <link>https://shangguanhong.github.io/2019/05/31/spring-boot%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/</link>
+      <pubDate>Fri, 31 May 2019 10:40:42 +0000</pubDate>
+      
+      <guid>https://shangguanhong.github.io/2019/05/31/spring-boot%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/</guid>
+      <description>&lt;h1 id=&#34;1-启动spring-boot项目&#34;&gt;1. 启动Spring Boot项目&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;第一种方法是使用IDE(集成开发环境)，例如IDEA、Eclipse等，我这里使用的是IDEA，所以我只需点击右上角的Run按钮即可&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/ShangguanHong/PictureBed/master/1559271612805.png&#34; alt=&#34;1559271612805&#34;&gt;&lt;/p&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;使用maven命令行启动。在项目根目录下运行 &lt;code&gt;mvn spring-boot:run&lt;/code&gt;即可&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;注意:使用mvn命令请确保电脑上安装了maven并且配置了maven环境变量，可以输入 &lt;code&gt;mvn --version&lt;/code&gt; 查看是否 安装（成功安装如下图），若没安装自行百度，按照教程一步一步完成即可&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/ShangguanHong/PictureBed/master/1559271875750.png&#34; alt=&#34;1559271875750&#34;&gt;&lt;/p&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;使用jar文件启动。在项目根目录下运行命令 &lt;code&gt;mvn clean install&lt;/code&gt; (clean表示清空之前编译的文件，install表示打包项目文件成为jar文件)&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/ShangguanHong/PictureBed/master/1559272084746.png&#34; alt=&#34;1559272084746&#34;&gt;&lt;/p&gt;
+&lt;p&gt;出现 &lt;code&gt;BUILD SUCCESS&lt;/code&gt; 表示创建jar成功，之后可以在项目根目录下的target目录下查看到对应的jar文件&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/ShangguanHong/PictureBed/master/1559272191102.png&#34; alt=&#34;1559272191102&#34;&gt;&lt;/p&gt;
+&lt;p&gt;然后执行 &lt;code&gt;java -jar demo-0.0.1-SNAPSHOT.jar&lt;/code&gt; 运行该文件即可。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id=&#34;2-编写配置文件&#34;&gt;2. 编写配置文件&lt;/h1&gt;</description>
+    </item>
+    
+    <item>
+      <title>Spring Boot新建项目</title>
+      <link>https://shangguanhong.github.io/2019/05/30/spring-boot%E6%96%B0%E5%BB%BA%E9%A1%B9%E7%9B%AE/</link>
+      <pubDate>Thu, 30 May 2019 18:39:55 +0000</pubDate>
+      
+      <guid>https://shangguanhong.github.io/2019/05/30/spring-boot%E6%96%B0%E5%BB%BA%E9%A1%B9%E7%9B%AE/</guid>
+      <description>1. 前言 Spring Boot是由Pivotal团队提供的全新框架，其设计目的是用来简化新Spring应用的初始搭建以及开发过程。该框架使用了特定的方式来</description>
+    </item>
+    
+  </channel>
+</rss>

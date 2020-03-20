@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Windows上使用docker遇到的问题(持续更新...) - ShangguanHong</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="ShangguanHong" /><meta name="description" content="这里记录了一些在windows系统上使用docker的时候遇到的一些问题，并给出最终解决方法。
+" /><meta name="keywords" content="go, golang, hugo" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.67.1 with theme even" />
+
+
+<link rel="canonical" href="https://shangguanhong.github.io/2019/11/21/windows%E4%B8%8A%E4%BD%BF%E7%94%A8docker%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="Windows上使用docker遇到的问题(持续更新...)" />
+<meta property="og:description" content="这里记录了一些在windows系统上使用docker的时候遇到的一些问题，并给出最终解决方法。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://shangguanhong.github.io/2019/11/21/windows%E4%B8%8A%E4%BD%BF%E7%94%A8docker%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/" />
+<meta property="article:published_time" content="2019-11-21T22:21:50+00:00" />
+<meta property="article:modified_time" content="2019-11-21T22:21:50+00:00" />
+<meta itemprop="name" content="Windows上使用docker遇到的问题(持续更新...)">
+<meta itemprop="description" content="这里记录了一些在windows系统上使用docker的时候遇到的一些问题，并给出最终解决方法。">
+<meta itemprop="datePublished" content="2019-11-21T22:21:50&#43;00:00" />
+<meta itemprop="dateModified" content="2019-11-21T22:21:50&#43;00:00" />
+<meta itemprop="wordCount" content="905">
+
+
+
+<meta itemprop="keywords" content="docker," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Windows上使用docker遇到的问题(持续更新...)"/>
+<meta name="twitter:description" content="这里记录了一些在windows系统上使用docker的时候遇到的一些问题，并给出最终解决方法。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">赏我一个好梦如旧</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">赏我一个好梦如旧</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Windows上使用docker遇到的问题(持续更新...)</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2019-11-21 </span>
+        <div class="post-category">
+            <a href="/categories/docker%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"> Docker学习笔记 </a>
+            </div>
+          <span class="more-meta"> 约 905 字 </span>
+          <span class="more-meta"> 预计阅读 2 分钟 </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#使用docker_host">使用DOCKER_HOST</a></li>
+    <li><a href="#使用wls2">使用WLS2</a>
+      <ul>
+        <li><a href="#介绍">介绍</a></li>
+        <li><a href="#要求">要求</a></li>
+        <li><a href="#安装">安装</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <p>这里记录了一些在windows系统上使用docker的时候遇到的一些问题，并给出最终解决方法。</p>
+<h1 id="在wsl中使用docker">在WSL中使用docker</h1>
+<h2 id="使用docker_host">使用DOCKER_HOST</h2>
+<p><a href="https://www.cnblogs.com/xiaoliangge/p/9134585.html">在Linux的Windows子系统上(WSL)使用Docker（Ubuntu）</a></p>
+<h2 id="使用wls2">使用WLS2</h2>
+<h3 id="介绍">介绍</h3>
+<p>WSL 2是Windows中Linux子系统的新版本，以便在Windows上运行ELF64 Linux二进制文件。它使用了真正的Linux内核的新架构，改变了Linux二进制文件与Windows和计算机硬件的交互方式，但仍提供与WSL 1（当前广泛使用的版本）相同的用户体验。WSL 2提供了更快的文件系统性能和完整的系统调用兼容性，使你可以运行更多像Docker这样的应用程序。</p>
+<h3 id="要求">要求</h3>
+<p>Windows系统版本要大于等于 18917 ，可以在 “运行”里面输入 <code>winver</code> 查看当前Windows系统版本</p>
+<p><img src="https://raw.githubusercontent.com/ShangguanHong/PictureBed/master/image-20191123103554851.png" alt="image-20191123103554851"></p>
+<h3 id="安装">安装</h3>
+<ol>
+<li>
+<p><strong>管理员身份</strong> 运行 Windows PowerShell，输入 <code>Enable-WindowsOptionalFeature -Online -FeatureName VirtualMachinePlatform</code></p>
+<p><img src="https://raw.githubusercontent.com/ShangguanHong/PictureBed/master/image-20191123103818134.png" alt="image-20191123103818134"></p>
+</li>
+</ol>
+<p>​			按需求看是否需要重启，我这里是因为之前已经安装过了所以不需要，如果是第一次安装的需要重启电脑</p>
+<ol start="2">
+<li>
+<p>将 WSL 的默认版本设置为2，输入 <code>wsl --set-default-version 2</code></p>
+<p><img src="https://raw.githubusercontent.com/ShangguanHong/PictureBed/master/image-20191123104352863.png" alt="image-20191123104352863"></p>
+</li>
+<li>
+<p>如果之前没安装过 Linux 子系统的直接去安装默认就已经使用WSL2了，如果之前安装过了请接着看如何调整</p>
+</li>
+<li>
+<p>查看所有已经安装的子系统于其正在使用的wsl版本，输入 <code>wsl -l -v</code></p>
+<p>​	<img src="https://raw.githubusercontent.com/ShangguanHong/PictureBed/master/image-20191123104804372.png" alt="image-20191123104804372"></p>
+</li>
+<li>
+<p>我这里是已经做过了转换所以版本已经是2了，如果显示是1的，输入 <code>wsl  --set-version Ubuntu-18.04 2</code> 等待转换即可</p>
+</li>
+<li>
+<p>完成转换之后，就可以进入子系统里面安装并且使用docker了</p>
+</li>
+</ol>
+<h1 id="wsl内修改docker源">WSL内修改docker源</h1>
+<p>针对Docker客户端版本大于 1.10.0 的用户</p>
+<p>您可以通过修改daemon配置文件/etc/docker/daemon.json来使用加速器</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">sudo mkdir -p /etc/docker
+sudo tee /etc/docker/daemon.json <span class="s">&lt;&lt;-&#39;EOF&#39;
+</span><span class="s">{
+</span><span class="s">  &#34;registry-mirrors&#34;: [&#34;你的加速地址&#34;]
+</span><span class="s">}
+</span><span class="s">EOF</span>
+sudo systemctl daemon-reload
+sudo systemctl restart docker
+</code></pre></td></tr></table>
+</div>
+</div><p>然而当执行到 <code>sudo systemctl daemon-reload</code> 的时候系统会报错，提示 <code>System has not been booted with systemd as init system (PID 1). Can't operate.)</code></p>
+<p>将下面指令更改为 <code>sudo service docker restart</code>，使用 <code>docker info</code>，查看Docker信息发现镜像源已经被更改成需要的了，因此上面那句报错忽略即可，具体报错原因目前不清楚，可能和WSL的运行机制有关系吧。</p>
+<h1 id="开启了虚拟化后启动docker依旧报错">开启了虚拟化后启动docker依旧报错</h1>
+<p><strong>在管理员模式下的命令提示符中输入：bcdedit /set hypervisorlaunchtype Auto，然后重启电脑，完美解决</strong>。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">
+</code></pre></td></tr></table>
+</div>
+</div>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">ShangguanHong</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2019-11-21
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/docker/">docker</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/2019/12/19/github%E4%BD%BF%E7%94%A8travis-ci/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">github使用Travis CI</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/2019/11/21/linux%E7%BE%8E%E5%8C%96/">
+            <span class="next-text nav-default">Linux美化</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+  <div id="vcomments"></div>
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+  <script type="text/javascript">
+    new Valine({
+        el: '#vcomments' ,
+        appId: 'X0gLmyOh1himl7jHPYcpKKop-gzGzoHsz',
+        appKey: 'hoYFzkrMqrD9SyRNpkiNf0LH',
+        notify:  false ,
+        verify:  false ,
+        avatar:'mm',
+        placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊!',
+        visitor:  false 
+    });
+  </script>
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:www.sgh1450280694@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/ShangguanHong" class="iconfont icon-github" title="github"></a>
+      <a href="https://weibo.com/5590338381" class="iconfont icon-weibo" title="weibo"></a>
+      <a href="https://space.bilibili.com/105190849" class="iconfont icon-bilibili" title="bilibili"></a>
+  <a href="https://shangguanhong.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2019 - 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">ShangguanHong</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

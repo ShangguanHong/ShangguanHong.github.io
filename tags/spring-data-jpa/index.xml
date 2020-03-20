@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Spring Data Jpa on ShangguanHong</title>
+    <link>https://shangguanhong.github.io/tags/spring-data-jpa/</link>
+    <description>Recent content in Spring Data Jpa on ShangguanHong</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 22 Jul 2019 16:28:17 +0000</lastBuildDate>
+    
+	<atom:link href="https://shangguanhong.github.io/tags/spring-data-jpa/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>JPA使用Specification动态查询</title>
+      <link>https://shangguanhong.github.io/2019/07/22/jpa%E4%BD%BF%E7%94%A8specification%E5%8A%A8%E6%80%81%E6%9F%A5%E8%AF%A2/</link>
+      <pubDate>Mon, 22 Jul 2019 16:28:17 +0000</pubDate>
+      
+      <guid>https://shangguanhong.github.io/2019/07/22/jpa%E4%BD%BF%E7%94%A8specification%E5%8A%A8%E6%80%81%E6%9F%A5%E8%AF%A2/</guid>
+      <description>1. 前言 有时我们在查询某个实体的时候，给定的条件是不固定，这个时候就需要动态构建相应的查询语句，在 Spring Data JPA 中可以通过继承 JpaSpecificationExecutor 接口来实现动态查询。相</description>
+    </item>
+    
+    <item>
+      <title>JPA中的CascadeType(级联操作)解析</title>
+      <link>https://shangguanhong.github.io/2019/07/19/jpa%E4%B8%AD%E7%9A%84cascadetype-%E7%BA%A7%E8%81%94%E6%93%8D%E4%BD%9C-%E8%A7%A3%E6%9E%90/</link>
+      <pubDate>Fri, 19 Jul 2019 12:27:11 +0000</pubDate>
+      
+      <guid>https://shangguanhong.github.io/2019/07/19/jpa%E4%B8%AD%E7%9A%84cascadetype-%E7%BA%A7%E8%81%94%E6%93%8D%E4%BD%9C-%E8%A7%A3%E6%9E%90/</guid>
+      <description>1. Cascade介绍 ​ Cascade(级联)在编写触发器时经常用到，触发器的作用是当 主控表信息改变时，用来保证其关联表中数据同步更新。若对触</description>
+    </item>
+    
+    <item>
+      <title>Spring Boot整合Spring Data Jpa</title>
+      <link>https://shangguanhong.github.io/2019/07/08/spring-boot%E6%95%B4%E5%90%88springdatajpa/</link>
+      <pubDate>Mon, 08 Jul 2019 14:14:55 +0000</pubDate>
+      
+      <guid>https://shangguanhong.github.io/2019/07/08/spring-boot%E6%95%B4%E5%90%88springdatajpa/</guid>
+      <description>1. 前言 之前的文章中写到了如何使用 Spring Boot 整合 mybatis(传送门: Spring-Boot整合MyBatis)，今天学习一下如何使用 Spring Boot 整合 Spring Data</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,557 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on ShangguanHong</title>
+    <link>https://shangguanhong.github.io/post/</link>
+    <description>Recent content in Posts on ShangguanHong</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Fri, 20 Mar 2020 10:09:17 +0800</lastBuildDate>
+    
+	<atom:link href="https://shangguanhong.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Typora上的emoji表情</title>
+      <link>https://shangguanhong.github.io/2020/03/20/typora%E4%B8%8A%E7%9A%84emoji%E8%A1%A8%E6%83%85/</link>
+      <pubDate>Fri, 20 Mar 2020 10:09:17 +0800</pubDate>
+      
+      <guid>https://shangguanhong.github.io/2020/03/20/typora%E4%B8%8A%E7%9A%84emoji%E8%A1%A8%E6%83%85/</guid>
+      <description>原文地址 People 😄 😄 😆 😆 😊 😊 😃 😃 ☺️ ☺ 😏 😏 😍 😍 😘 😘 😚 😚 😳 😳 😌 😌 😆 😆 😁 😄 😉 😉 😜 😜 😝 😝 😀 😀 😗 😗 😙 😙 😛 😛 😴 😴 😟 😟 😦 😦 😧 😧 😮 😮 😬 😬 😕 😕 😯 😯 😑 😑 😒 😒 😅 😅 😓 😓</description>
+    </item>
+    
+    <item>
+      <title>理解OAuth2</title>
+      <link>https://shangguanhong.github.io/2020/03/05/%E7%90%86%E8%A7%A3oauth2/</link>
+      <pubDate>Thu, 05 Mar 2020 19:35:38 +0000</pubDate>
+      
+      <guid>https://shangguanhong.github.io/2020/03/05/%E7%90%86%E8%A7%A3oauth2/</guid>
+      <description>原文地址：理解OAuth 2.0 OAuth是一个关于授权（authorization）的开放网络标准，在全世界得到广泛应用，目前的版本是2.0版。</description>
+    </item>
+    
+    <item>
+      <title>gorm的使用</title>
+      <link>https://shangguanhong.github.io/2020/03/02/gorm%E7%9A%84%E4%BD%BF%E7%94%A8/</link>
+      <pubDate>Mon, 02 Mar 2020 19:29:51 +0000</pubDate>
+      
+      <guid>https://shangguanhong.github.io/2020/03/02/gorm%E7%9A%84%E4%BD%BF%E7%94%A8/</guid>
+      <description>原文地址：Go orm框架gorm学习 之前学习过原生的Go连接MYSQL的方法，使用Go自带的&amp;quot;database/sql&amp;quot;</description>
+    </item>
+    
+    <item>
+      <title>Go连接MySQL</title>
+      <link>https://shangguanhong.github.io/2020/03/02/go%E8%BF%9E%E6%8E%A5mysql/</link>
+      <pubDate>Mon, 02 Mar 2020 19:14:23 +0000</pubDate>
+      
+      <guid>https://shangguanhong.github.io/2020/03/02/go%E8%BF%9E%E6%8E%A5mysql/</guid>
+      <description>原文地址：Go连接MYSQL Go原生提供了连接数据库操作的支持，在用 Golang进行开发的时候，如果需要在和数据库交互，则可以使用datab</description>
+    </item>
+    
+    <item>
+      <title>go的pprof使用</title>
+      <link>https://shangguanhong.github.io/2020/02/26/go%E7%9A%84pprof%E4%BD%BF%E7%94%A8/</link>
+      <pubDate>Wed, 26 Feb 2020 22:01:46 +0000</pubDate>
+      
+      <guid>https://shangguanhong.github.io/2020/02/26/go%E7%9A%84pprof%E4%BD%BF%E7%94%A8/</guid>
+      <description>原文地址：Golang 大杀器之性能剖析 PProf 前言 写了几吨代码，实现了几百个接口。功能测试也通过了，终于成功的部署上线了 结果，性能不佳，什么鬼？😭</description>
+    </item>
+    
+    <item>
+      <title>Ubuntu18.04更换国内源</title>
+      <link>https://shangguanhong.github.io/2020/02/16/ubuntu18.04%E6%9B%B4%E6%8D%A2%E5%9B%BD%E5%86%85%E6%BA%90/</link>
+      <pubDate>Sun, 16 Feb 2020 21:06:13 +0000</pubDate>
+      
+      <guid>https://shangguanhong.github.io/2020/02/16/ubuntu18.04%E6%9B%B4%E6%8D%A2%E5%9B%BD%E5%86%85%E6%BA%90/</guid>
+      <description>备份源文件，以防止操作失误后无法还原文件 1 sudo cp /etc/apt/sources.list /ect/apt/sources.list.backup 打开 /etc/apt/sources.list 文件 1 sudo vim /ect/apt/sources.list 将源文件里的内容全部注释或者全部删除，然后写入以下内容 阿里云源 1 2 3 4 5</description>
+    </item>
+    
+    <item>
+      <title>golang环境配置</title>
+      <link>https://shangguanhong.github.io/2020/02/09/golang%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</link>
+      <pubDate>Sun, 09 Feb 2020 19:26:33 +0000</pubDate>
+      
+      <guid>https://shangguanhong.github.io/2020/02/09/golang%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</guid>
+      <description>Windows 去golang官方下载页面下载最新的安装程序 进行安装，安装过程中需要记住go的安装目录，默认为 C:\Go\ 增加 GOROOT 变量(如果没有的话)，值为第二步的时</description>
+    </item>
+    
+    <item>
+      <title>Golang的sync.RWMutex与sync.Mutex</title>
+      <link>https://shangguanhong.github.io/2019/12/26/golang%E7%9A%84sync.rwmutex%E4%B8%8Esync.mutex/</link>
+      <pubDate>Thu, 26 Dec 2019 20:46:29 +0000</pubDate>
+      
+      <guid>https://shangguanhong.github.io/2019/12/26/golang%E7%9A%84sync.rwmutex%E4%B8%8Esync.mutex/</guid>
+      <description>介绍 Golang 中的 sync 包中实现了两种锁，一种是 Mutex(互斥锁)，另一种是RWMutex(读写锁)，其中 RWMutex 是基于 Mutex 实现的 Mutex Mutex 是互斥锁，Lock() 是</description>
+    </item>
+    
+    <item>
+      <title>Golang的sync.Once</title>
+      <link>https://shangguanhong.github.io/2019/12/22/golang%E7%9A%84sync.once/</link>
+      <pubDate>Sun, 22 Dec 2019 22:39:57 +0000</pubDate>
+      
+      <guid>https://shangguanhong.github.io/2019/12/22/golang%E7%9A%84sync.once/</guid>
+      <description>使用 sync.Once 可以控制函数只能被调用一次，不能多次重复调用。 例如如下代码： 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 package main import ( &amp;#34;fmt&amp;#34; &amp;#34;sync&amp;#34; ) func main() { once := sync.Once{} n := 10 for i :=</description>
+    </item>
+    
+    <item>
+      <title>Golang的sync.WaitGroup</title>
+      <link>https://shangguanhong.github.io/2019/12/22/golang%E7%9A%84sync.waitgroup/</link>
+      <pubDate>Sun, 22 Dec 2019 10:37:28 +0000</pubDate>
+      
+      <guid>https://shangguanhong.github.io/2019/12/22/golang%E7%9A%84sync.waitgroup/</guid>
+      <description>使用 假设我们需要在主函数中调用协程打印数据， 很容易我们能想写出下面的代码 1 2 3 4 5 6 7 8 9 10 package main import &amp;#34;fmt&amp;#34; func main() { n := 100 for i := 0; i &amp;lt; n; i++ { go fmt.Println(&amp;#34;Hello World!&amp;#34;) } }</description>
+    </item>
+    
+    <item>
+      <title>github使用Travis CI</title>
+      <link>https://shangguanhong.github.io/2019/12/19/github%E4%BD%BF%E7%94%A8travis-ci/</link>
+      <pubDate>Thu, 19 Dec 2019 20:39:10 +0000</pubDate>
+      
+      <guid>https://shangguanhong.github.io/2019/12/19/github%E4%BD%BF%E7%94%A8travis-ci/</guid>
+      <description>前言 使用 hexo + gitPages 搭建个人博客的都知道，每当要发表一篇博文的时候，都需要手动使用 hexo g 生成静态网页，然后再通过 hexo d 命令将静态文件推送到 GitHub</description>
+    </item>
+    
+    <item>
+      <title>Windows上使用docker遇到的问题(持续更新...)</title>
+      <link>https://shangguanhong.github.io/2019/11/21/windows%E4%B8%8A%E4%BD%BF%E7%94%A8docker%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/</link>
+      <pubDate>Thu, 21 Nov 2019 22:21:50 +0000</pubDate>
+      
+      <guid>https://shangguanhong.github.io/2019/11/21/windows%E4%B8%8A%E4%BD%BF%E7%94%A8docker%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/</guid>
+      <description>&lt;p&gt;这里记录了一些在windows系统上使用docker的时候遇到的一些问题，并给出最终解决方法。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Linux美化</title>
+      <link>https://shangguanhong.github.io/2019/11/21/linux%E7%BE%8E%E5%8C%96/</link>
+      <pubDate>Thu, 21 Nov 2019 21:11:12 +0000</pubDate>
+      
+      <guid>https://shangguanhong.github.io/2019/11/21/linux%E7%BE%8E%E5%8C%96/</guid>
+      <description>记录每次安装Linux系统必完成的流程，方便以后的开发 zsh 1 2 3 4 5 6 # ubuntu $ sudo apt-get install zsh # contos $ sudo yum install zsh -y # arch $ sudo pacman -S zsh on-my-zsh 安装 通过在线脚本安装 1 sh -c</description>
+    </item>
+    
+    <item>
+      <title>windows上安装WSL</title>
+      <link>https://shangguanhong.github.io/2019/11/21/windows%E4%B8%8A%E5%AE%89%E8%A3%85wsl/</link>
+      <pubDate>Thu, 21 Nov 2019 20:12:53 +0000</pubDate>
+      
+      <guid>https://shangguanhong.github.io/2019/11/21/windows%E4%B8%8A%E5%AE%89%E8%A3%85wsl/</guid>
+      <description>介绍 Windows Subsystem for Linux（简称WSL）是一个为在Windows 10上能够原生运行Linux二进制可执行文件（ELF格式）的兼容层。 意思就是一个能</description>
+    </item>
+    
+    <item>
+      <title>lombok的常用注解</title>
+      <link>https://shangguanhong.github.io/2019/10/31/lombok%E7%9A%84%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3/</link>
+      <pubDate>Thu, 31 Oct 2019 10:17:12 +0000</pubDate>
+      
+      <guid>https://shangguanhong.github.io/2019/10/31/lombok%E7%9A%84%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3/</guid>
+      <description>Lombok介绍 官网介绍： Project Lombok is a java library that automatically plugs into your editor and build tools, spicing up your java. Never write another getter or equals method again, with one annotation your class has a fully featured builder, Automate your logging variables, and much more. 翻译：Lombok 项目是一</description>
+    </item>
+    
+    <item>
+      <title>十大排序算法总结</title>
+      <link>https://shangguanhong.github.io/2019/10/14/%E5%8D%81%E5%A4%A7%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E6%80%BB%E7%BB%93/</link>
+      <pubDate>Mon, 14 Oct 2019 08:59:57 +0000</pubDate>
+      
+      <guid>https://shangguanhong.github.io/2019/10/14/%E5%8D%81%E5%A4%A7%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E6%80%BB%E7%BB%93/</guid>
+      <description>最近在准备面试, 看到一篇公众号总结的排序算法十分详细 面试常问的十个排序算法都在这里了（含JAVA代码实现） , 因此在这里记录下. 本文将采取文字</description>
+    </item>
+    
+    <item>
+      <title>设计模式之单例模式</title>
+      <link>https://shangguanhong.github.io/2019/10/11/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/</link>
+      <pubDate>Fri, 11 Oct 2019 13:56:28 +0000</pubDate>
+      
+      <guid>https://shangguanhong.github.io/2019/10/11/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/</guid>
+      <description>概念 单例模式是指一个类只有一个实例对象, 且该类能自行创建这个实例的一种模式. 该模式的特点为: 单例类只有一个实例对象 该单例对象必须由单例类自行</description>
+    </item>
+    
+    <item>
+      <title>Spring Cache整合Redis</title>
+      <link>https://shangguanhong.github.io/2019/09/19/spring-cache%E6%95%B4%E5%90%88redis/</link>
+      <pubDate>Thu, 19 Sep 2019 21:55:45 +0000</pubDate>
+      
+      <guid>https://shangguanhong.github.io/2019/09/19/spring-cache%E6%95%B4%E5%90%88redis/</guid>
+      <description>前言 缓存现在已经成为了互联网必不可少的利器，合理的利用缓存不仅能大大的提升网站的访问速度，还能够降低数据库的访问压力。 在上一篇文章中，介绍了</description>
+    </item>
+    
+    <item>
+      <title>Spring Boot整合Redis</title>
+      <link>https://shangguanhong.github.io/2019/09/10/spring-boot%E6%95%B4%E5%90%88redis/</link>
+      <pubDate>Tue, 10 Sep 2019 16:51:20 +0000</pubDate>
+      
+      <guid>https://shangguanhong.github.io/2019/09/10/spring-boot%E6%95%B4%E5%90%88redis/</guid>
+      <description>Redis简介 Redis 是完全开元免费的，遵守BSD协议，是一个高性能的 key-value 数据库。 Redis 与其他 key - value 缓存产品有以下三个特点： Redis 支持数据的持久化，可以将内</description>
+    </item>
+    
+    <item>
+      <title>在java中调用python脚本</title>
+      <link>https://shangguanhong.github.io/2019/09/09/%E5%A6%82%E4%BD%95%E5%9C%A8java%E4%B8%AD%E8%B0%83%E7%94%A8python%E8%84%9A%E6%9C%AC/</link>
+      <pubDate>Mon, 09 Sep 2019 14:34:16 +0000</pubDate>
+      
+      <guid>https://shangguanhong.github.io/2019/09/09/%E5%A6%82%E4%BD%95%E5%9C%A8java%E4%B8%AD%E8%B0%83%E7%94%A8python%E8%84%9A%E6%9C%AC/</guid>
+      <description>1. 前言 最近的项目中遇到了一个问题，我的后台管理系统是使用 Java 语言来开发的，然后有一个模块需要调用使用 Python 写的一个脚本，为此查了许多资料，在这里记</description>
+    </item>
+    
+    <item>
+      <title>manjaro安装完后需要做的事</title>
+      <link>https://shangguanhong.github.io/2019/09/01/manjaro%E5%AE%89%E8%A3%85%E5%AE%8C%E5%90%8E%E9%9C%80%E8%A6%81%E5%81%9A%E7%9A%84%E4%BA%8B/</link>
+      <pubDate>Sun, 01 Sep 2019 19:57:19 +0000</pubDate>
+      
+      <guid>https://shangguanhong.github.io/2019/09/01/manjaro%E5%AE%89%E8%A3%85%E5%AE%8C%E5%90%8E%E9%9C%80%E8%A6%81%E5%81%9A%E7%9A%84%E4%BA%8B/</guid>
+      <description>前言 之前在朋友的推荐下放弃了以前使用的 Ubuntu，使用了 manjaro 作为我日常使用的 Linux，用了一段时间之后发现这个 Linux 发行版是真的香，以致于我换</description>
+    </item>
+    
+    <item>
+      <title>Spring Boot中CommandLineRunner的使用</title>
+      <link>https://shangguanhong.github.io/2019/08/29/spring-boot%E4%B8%ADcommandlinerunner%E7%9A%84%E4%BD%BF%E7%94%A8/</link>
+      <pubDate>Thu, 29 Aug 2019 21:24:02 +0000</pubDate>
+      
+      <guid>https://shangguanhong.github.io/2019/08/29/spring-boot%E4%B8%ADcommandlinerunner%E7%9A%84%E4%BD%BF%E7%94%A8/</guid>
+      <description>前言 在项目中经常会遇到需要在项目启动之前做一些初始化数据的操作，例如初始化线程池、初始化一些脚本等等。但是往往这些操作又需要在 Spring Beans 加载完成之</description>
+    </item>
+    
+    <item>
+      <title>Shiro的多Realm配置</title>
+      <link>https://shangguanhong.github.io/2019/08/23/shiro%E7%9A%84%E5%A4%9Arealm%E9%85%8D%E7%BD%AE/</link>
+      <pubDate>Fri, 23 Aug 2019 20:35:19 +0000</pubDate>
+      
+      <guid>https://shangguanhong.github.io/2019/08/23/shiro%E7%9A%84%E5%A4%9Arealm%E9%85%8D%E7%BD%AE/</guid>
+      <description>前言 之前写了一篇 Spring Boot整合Shiro，如果不了解 Shiro 的建议先去阅读之前的文章，因为这篇是在它的基础上进行的拓展，需要您具备一定的 Shiro 知识。 之</description>
+    </item>
+    
+    <item>
+      <title>Spring Boot整合Shiro</title>
+      <link>https://shangguanhong.github.io/2019/08/20/spring-boot%E6%95%B4%E5%90%88shiro/</link>
+      <pubDate>Tue, 20 Aug 2019 20:11:28 +0000</pubDate>
+      
+      <guid>https://shangguanhong.github.io/2019/08/20/spring-boot%E6%95%B4%E5%90%88shiro/</guid>
+      <description>1. 前言 在 Java 领域一般有 Spring Security、Apache Shiro 等安全框架，之前写了一篇关于 JWT整合Spring Security 的文章，里面介绍了使用 Spring Boot + JWT + Spring</description>
+    </item>
+    
+    <item>
+      <title>gulp优化hexo方法</title>
+      <link>https://shangguanhong.github.io/2019/08/18/gulp%E4%BC%98%E5%8C%96hexo%E6%96%B9%E6%B3%95/</link>
+      <pubDate>Sun, 18 Aug 2019 00:45:17 +0000</pubDate>
+      
+      <guid>https://shangguanhong.github.io/2019/08/18/gulp%E4%BC%98%E5%8C%96hexo%E6%96%B9%E6%B3%95/</guid>
+      <description>本文转载自：gulp优化hexo方法 gulp 通过对站点使用的静态资源进行压缩，来优化网站的访问速度。 首先安装 gulp 以及所需要的模块： 1 npm install gulp -g 1 npm install gulp-htmlclean</description>
+    </item>
+    
+    <item>
+      <title>如何在Java8中处理日期和时间</title>
+      <link>https://shangguanhong.github.io/2019/08/15/%E5%A6%82%E4%BD%95%E5%9C%A8java8%E4%B8%AD%E5%A4%84%E7%90%86%E6%97%A5%E6%9C%9F%E5%92%8C%E6%97%B6%E9%97%B4/</link>
+      <pubDate>Thu, 15 Aug 2019 22:11:56 +0000</pubDate>
+      
+      <guid>https://shangguanhong.github.io/2019/08/15/%E5%A6%82%E4%BD%95%E5%9C%A8java8%E4%B8%AD%E5%A4%84%E7%90%86%E6%97%A5%E6%9C%9F%E5%92%8C%E6%97%B6%E9%97%B4/</guid>
+      <description>&lt;h1 id=&#34;1-前言&#34;&gt;1. 前言&lt;/h1&gt;
+&lt;p&gt;在 Java 8 之前处理日期时间的 &lt;code&gt;API&lt;/code&gt; 存在着一些诸如非线程安全、设计差、时区处理麻烦等问题，为了解决这一系列的问题，Java 8 推出了全新的日期时间 &lt;code&gt;API&lt;/code&gt; 供使用，包路径为 &lt;code&gt;java.time&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;其中最常使用的为下面的几个类&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;Instant&lt;/code&gt;：瞬时实例&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;LocalDate&lt;/code&gt;：本地日期，不包含具体时间&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;LocalTime&lt;/code&gt;：本地时间，不包含日期&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;LocalDateTime&lt;/code&gt;：组合了日期和时间，但不包含时差和时区信息。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ZonedDateTime&lt;/code&gt;：最完整的日期时间，包含时区和相对&lt;code&gt;UTC&lt;/code&gt;或格林威治的时差。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;下面将举出具体例子来详细介绍&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Java常用工具类之StringUtils类</title>
+      <link>https://shangguanhong.github.io/2019/08/14/java%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7%E7%B1%BB%E4%B9%8Bstringutils%E7%B1%BB/</link>
+      <pubDate>Wed, 14 Aug 2019 22:45:28 +0000</pubDate>
+      
+      <guid>https://shangguanhong.github.io/2019/08/14/java%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7%E7%B1%BB%E4%B9%8Bstringutils%E7%B1%BB/</guid>
+      <description>原文链接：https://blog.csdn.net/diypp2012/article/details/82971716 该工具类是用于操作</description>
+    </item>
+    
+    <item>
+      <title>JWT整合Spring Security</title>
+      <link>https://shangguanhong.github.io/2019/08/14/jwt%E6%95%B4%E5%90%88spring-security/</link>
+      <pubDate>Wed, 14 Aug 2019 10:56:07 +0000</pubDate>
+      
+      <guid>https://shangguanhong.github.io/2019/08/14/jwt%E6%95%B4%E5%90%88spring-security/</guid>
+      <description>1. 前言 之前介绍了一下 JWT ,在最后提到了 JWT 本身没啥难度，但安全整体是一个比较复杂的事情，JWT 只不过提供了一种基于 token 的请求验证机制。但我们的用户</description>
+    </item>
+    
+    <item>
+      <title>了解JSON Web Token(JWT)</title>
+      <link>https://shangguanhong.github.io/2019/08/08/%E4%BA%86%E8%A7%A3json-web-token-jwt/</link>
+      <pubDate>Thu, 08 Aug 2019 22:04:06 +0000</pubDate>
+      
+      <guid>https://shangguanhong.github.io/2019/08/08/%E4%BA%86%E8%A7%A3json-web-token-jwt/</guid>
+      <description>&lt;h1 id=&#34;1-前言&#34;&gt;1. 前言&lt;/h1&gt;
+&lt;p&gt;互联网服务离不开用户认证，一般流程是下面这样。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;1、用户向服务器发送用户名和密码。&lt;/p&gt;
+&lt;p&gt;2、服务器验证通过后，在当前对话（session）里面保存相关数据，比如用户角色、登录时间等等。&lt;/p&gt;
+&lt;p&gt;3、服务器向用户返回一个 session_id，写入用户的 Cookie。&lt;/p&gt;
+&lt;p&gt;4、用户随后的每一次请求，都会通过 Cookie，将 session_id 传回服务器。&lt;/p&gt;
+&lt;p&gt;5、服务器收到 session_id，找到前期保存的数据，由此得知用户的身份。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;这种模式的问题在于，扩展性（scaling）不好。单机当然没有问题，如果是服务器集群，或者是跨域的服务导向架构，就要求 session 数据共享，每台服务器都能够读取 session。&lt;/p&gt;
+&lt;p&gt;举例来说，A 网站和 B 网站是同一家公司的关联服务。现在要求，用户只要在其中一个网站登录，再访问另一个网站就会自动登录，请问怎么实现？&lt;/p&gt;
+&lt;p&gt;一种解决方案是 session 数据持久化，写入数据库或别的持久层。各种服务收到请求后，都向持久层请求数据。这种方案的优点是架构清晰，缺点是工程量比较大。另外，持久层万一挂了，就会单点失败。&lt;/p&gt;
+&lt;p&gt;另一种方案是服务器索性不保存 session 数据了，所有数据都保存在客户端，每次请求都发回服务器。JWT 就是这种方案的一个代表。&lt;/p&gt;
+&lt;p&gt;下面介绍 JWT 的使用。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Maven更换阿里镜像</title>
+      <link>https://shangguanhong.github.io/2019/08/07/maven%E6%9B%B4%E6%8D%A2%E9%98%BF%E9%87%8C%E9%95%9C%E5%83%8F/</link>
+      <pubDate>Wed, 07 Aug 2019 19:12:57 +0000</pubDate>
+      
+      <guid>https://shangguanhong.github.io/2019/08/07/maven%E6%9B%B4%E6%8D%A2%E9%98%BF%E9%87%8C%E9%95%9C%E5%83%8F/</guid>
+      <description>1. 前言 Maven 默认的中央仓库速度慢，可以考虑换成阿里的镜像。修改方式主要有两种，全局修改和针对当前项目的修改。 2. 全局修改 2.1 Windows Windows 下 maven 的 .m2 文件夹地址在</description>
+    </item>
+    
+    <item>
+      <title>Spring Boot中配置Slf4j&#43;logback日志框架</title>
+      <link>https://shangguanhong.github.io/2019/07/31/spring-boot%E4%B8%AD%E9%85%8D%E7%BD%AElogback/</link>
+      <pubDate>Wed, 31 Jul 2019 23:50:50 +0000</pubDate>
+      
+      <guid>https://shangguanhong.github.io/2019/07/31/spring-boot%E4%B8%AD%E9%85%8D%E7%BD%AElogback/</guid>
+      <description>1. 前言 Slf4j的全称是 Simple Loging Facade For Java(Java简单日志门面)，它仅仅是一个为Java程序提供日志输出的统一接口，并不是一个具体的日志实现</description>
+    </item>
+    
+    <item>
+      <title>Ubuntu 18.04.2 安装redis</title>
+      <link>https://shangguanhong.github.io/2019/07/28/ubuntu-18-04-2-%E5%AE%89%E8%A3%85redis/</link>
+      <pubDate>Sun, 28 Jul 2019 22:49:37 +0000</pubDate>
+      
+      <guid>https://shangguanhong.github.io/2019/07/28/ubuntu-18-04-2-%E5%AE%89%E8%A3%85redis/</guid>
+      <description>1. 前言 Redis 是目前业界使用最广泛的内存数据存储。相比 Memcached，Redis 支持更丰富的数据结构，例如 hashes, lists, sets 等，同时支持数据持久化。除此之</description>
+    </item>
+    
+    <item>
+      <title>JPA使用Specification动态查询</title>
+      <link>https://shangguanhong.github.io/2019/07/22/jpa%E4%BD%BF%E7%94%A8specification%E5%8A%A8%E6%80%81%E6%9F%A5%E8%AF%A2/</link>
+      <pubDate>Mon, 22 Jul 2019 16:28:17 +0000</pubDate>
+      
+      <guid>https://shangguanhong.github.io/2019/07/22/jpa%E4%BD%BF%E7%94%A8specification%E5%8A%A8%E6%80%81%E6%9F%A5%E8%AF%A2/</guid>
+      <description>1. 前言 有时我们在查询某个实体的时候，给定的条件是不固定，这个时候就需要动态构建相应的查询语句，在 Spring Data JPA 中可以通过继承 JpaSpecificationExecutor 接口来实现动态查询。相</description>
+    </item>
+    
+    <item>
+      <title>JPA中的CascadeType(级联操作)解析</title>
+      <link>https://shangguanhong.github.io/2019/07/19/jpa%E4%B8%AD%E7%9A%84cascadetype-%E7%BA%A7%E8%81%94%E6%93%8D%E4%BD%9C-%E8%A7%A3%E6%9E%90/</link>
+      <pubDate>Fri, 19 Jul 2019 12:27:11 +0000</pubDate>
+      
+      <guid>https://shangguanhong.github.io/2019/07/19/jpa%E4%B8%AD%E7%9A%84cascadetype-%E7%BA%A7%E8%81%94%E6%93%8D%E4%BD%9C-%E8%A7%A3%E6%9E%90/</guid>
+      <description>1. Cascade介绍 ​ Cascade(级联)在编写触发器时经常用到，触发器的作用是当 主控表信息改变时，用来保证其关联表中数据同步更新。若对触</description>
+    </item>
+    
+    <item>
+      <title>JPA踩坑记录</title>
+      <link>https://shangguanhong.github.io/2019/07/19/jpa%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95/</link>
+      <pubDate>Fri, 19 Jul 2019 10:22:40 +0000</pubDate>
+      
+      <guid>https://shangguanhong.github.io/2019/07/19/jpa%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95/</guid>
+      <description>以下是本人使用 JPA 的时候遇到的坑，记录一下 在使用的时候,能使用单向关联就尽量不要用双向关联,如果使用双向关联，请记得一定要在非主控端加上 @JsonIgnore 等让</description>
+    </item>
+    
+    <item>
+      <title>Java中的对象术语(PO/POJO/VO/BO/DAO/DTO)</title>
+      <link>https://shangguanhong.github.io/2019/07/17/java%E4%B8%AD%E7%9A%84%E5%AF%B9%E8%B1%A1%E6%9C%AF%E8%AF%AD-po-pojo-vo-bo-dao-dto/</link>
+      <pubDate>Wed, 17 Jul 2019 20:09:34 +0000</pubDate>
+      
+      <guid>https://shangguanhong.github.io/2019/07/17/java%E4%B8%AD%E7%9A%84%E5%AF%B9%E8%B1%A1%E6%9C%AF%E8%AF%AD-po-pojo-vo-bo-dao-dto/</guid>
+      <description>本文转载自 Java中的对象术语(PO/POJO/VO/BO/DAO/DTO) 1. PO(persistant object) : 持久对象 理解为dao层中接收和返回的java bean，也</description>
+    </item>
+    
+    <item>
+      <title>Java实体映射工具MapStruct的使用</title>
+      <link>https://shangguanhong.github.io/2019/07/17/java%E5%AE%9E%E4%BD%93%E6%98%A0%E5%B0%84%E5%B7%A5%E5%85%B7mapstruct%E7%9A%84%E4%BD%BF%E7%94%A8/</link>
+      <pubDate>Wed, 17 Jul 2019 19:49:06 +0000</pubDate>
+      
+      <guid>https://shangguanhong.github.io/2019/07/17/java%E5%AE%9E%E4%BD%93%E6%98%A0%E5%B0%84%E5%B7%A5%E5%85%B7mapstruct%E7%9A%84%E4%BD%BF%E7%94%A8/</guid>
+      <description>1. 前言 官网地址：http://mapstruct.org/ MapStruct 是一个代码生成器，简化了不同的 Java Bean 之间映射的处理，所谓的映射指的就是从一个实体变</description>
+    </item>
+    
+    <item>
+      <title>Spring Boot整合Swagger2</title>
+      <link>https://shangguanhong.github.io/2019/07/16/spring-boot%E6%95%B4%E5%90%88swagger2/</link>
+      <pubDate>Tue, 16 Jul 2019 16:15:21 +0000</pubDate>
+      
+      <guid>https://shangguanhong.github.io/2019/07/16/spring-boot%E6%95%B4%E5%90%88swagger2/</guid>
+      <description>1. 前言 ​ 现如今，前后端分离已经逐渐成为互联网项目一种标准的开发方式，前端与后端交给不同的人员开发，但是项目开发中的沟通成本也随之升高，这部分</description>
+    </item>
+    
+    <item>
+      <title>利用POI操纵Excel</title>
+      <link>https://shangguanhong.github.io/2019/07/14/%E5%88%A9%E7%94%A8poi%E6%93%8D%E7%BA%B5excel/</link>
+      <pubDate>Sun, 14 Jul 2019 18:26:41 +0000</pubDate>
+      
+      <guid>https://shangguanhong.github.io/2019/07/14/%E5%88%A9%E7%94%A8poi%E6%93%8D%E7%BA%B5excel/</guid>
+      <description>1. 前言 POI 是常用的解析 Excel 文件的工具库，Excel 文件有两种格式(.xls和.xlsx)，POI 都支持解析。解析 Excel 文件的流程为读取工作簿(Wor</description>
+    </item>
+    
+    <item>
+      <title>Spring Boot整合Spring Data Jpa</title>
+      <link>https://shangguanhong.github.io/2019/07/08/spring-boot%E6%95%B4%E5%90%88springdatajpa/</link>
+      <pubDate>Mon, 08 Jul 2019 14:14:55 +0000</pubDate>
+      
+      <guid>https://shangguanhong.github.io/2019/07/08/spring-boot%E6%95%B4%E5%90%88springdatajpa/</guid>
+      <description>1. 前言 之前的文章中写到了如何使用 Spring Boot 整合 mybatis(传送门: Spring-Boot整合MyBatis)，今天学习一下如何使用 Spring Boot 整合 Spring Data</description>
+    </item>
+    
+    <item>
+      <title>Spring Boot实现热部署</title>
+      <link>https://shangguanhong.github.io/2019/07/07/spring-boot%E5%AE%9E%E7%8E%B0%E7%83%AD%E9%83%A8%E7%BD%B2/</link>
+      <pubDate>Sun, 07 Jul 2019 17:18:15 +0000</pubDate>
+      
+      <guid>https://shangguanhong.github.io/2019/07/07/spring-boot%E5%AE%9E%E7%8E%B0%E7%83%AD%E9%83%A8%E7%BD%B2/</guid>
+      <description>1. 前言 我们在开发中反复修改类、页面等资源，每次修改后都是需要重新启动服务才能使得修改生效，这是非常麻烦的，浪费了大量的时间。我们能够在修改代</description>
+    </item>
+    
+    <item>
+      <title>通过github分支备份Hexo源文件</title>
+      <link>https://shangguanhong.github.io/2019/06/26/%E9%80%9A%E8%BF%87github%E5%88%86%E6%94%AF%E5%A4%87%E4%BB%BDhexo%E6%BA%90%E6%96%87%E4%BB%B6/</link>
+      <pubDate>Wed, 26 Jun 2019 13:08:15 +0000</pubDate>
+      
+      <guid>https://shangguanhong.github.io/2019/06/26/%E9%80%9A%E8%BF%87github%E5%88%86%E6%94%AF%E5%A4%87%E4%BB%BDhexo%E6%BA%90%E6%96%87%E4%BB%B6/</guid>
+      <description>1. 前言 利用hexo搭建博后（还不懂的朋友可以看这篇文章 [利用GithubPages + Hexo搭建自己的博客](https://shanggu</description>
+    </item>
+    
+    <item>
+      <title>Mybatis中枚举的处理</title>
+      <link>https://shangguanhong.github.io/2019/06/20/mybatis%E4%B8%AD%E6%9E%9A%E4%B8%BE%E7%9A%84%E5%A4%84%E7%90%86/</link>
+      <pubDate>Thu, 20 Jun 2019 16:25:07 +0000</pubDate>
+      
+      <guid>https://shangguanhong.github.io/2019/06/20/mybatis%E4%B8%AD%E6%9E%9A%E4%B8%BE%E7%9A%84%E5%A4%84%E7%90%86/</guid>
+      <description>1. 前言 在数据库设计中，有的字段需要用字符串来标识，拿用户角色role来说比如0代表管理员，1代表普通用户。在Java里面定义这样的字段为 枚举</description>
+    </item>
+    
+    <item>
+      <title>解决Redis重启后密码失效问题</title>
+      <link>https://shangguanhong.github.io/2019/06/04/%E8%A7%A3%E5%86%B3redis%E9%87%8D%E5%90%AF%E5%90%8E%E5%AF%86%E7%A0%81%E5%A4%B1%E6%95%88%E9%97%AE%E9%A2%98/</link>
+      <pubDate>Tue, 04 Jun 2019 21:48:22 +0000</pubDate>
+      
+      <guid>https://shangguanhong.github.io/2019/06/04/%E8%A7%A3%E5%86%B3redis%E9%87%8D%E5%90%AF%E5%90%8E%E5%AF%86%E7%A0%81%E5%A4%B1%E6%95%88%E9%97%AE%E9%A2%98/</guid>
+      <description>1. 前言 在用命令行设置了密码之后，下次启动redis的时候密码又没了，这是因为 config set requirepass password 这种设置只是临时的，当服务器重启后，密码就会失效。 真正的</description>
+    </item>
+    
+    <item>
+      <title>Windows下安装Redis</title>
+      <link>https://shangguanhong.github.io/2019/06/04/windows%E4%B8%8B%E5%AE%89%E8%A3%85redis/</link>
+      <pubDate>Tue, 04 Jun 2019 21:45:14 +0000</pubDate>
+      
+      <guid>https://shangguanhong.github.io/2019/06/04/windows%E4%B8%8B%E5%AE%89%E8%A3%85redis/</guid>
+      <description>1. 下载 **下载地址：**https://github.com/MSOpenTech/redis/releases。 Redis 支持 32 位和 64 位。这个需要</description>
+    </item>
+    
+    <item>
+      <title>Win10下安装MySQL8.0.16</title>
+      <link>https://shangguanhong.github.io/2019/06/04/win10%E4%B8%8B%E5%AE%89%E8%A3%85mysql8-0-16/</link>
+      <pubDate>Tue, 04 Jun 2019 00:15:32 +0000</pubDate>
+      
+      <guid>https://shangguanhong.github.io/2019/06/04/win10%E4%B8%8B%E5%AE%89%E8%A3%85mysql8-0-16/</guid>
+      <description>&lt;ol&gt;
+&lt;li&gt;首先去 &lt;a href=&#34;https://dev.mysql.com/downloads/mysql/&#34;&gt;MySQL官网&lt;/a&gt; ，拉到最底下，下载最新版MySQL安装包&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/ShangguanHong/PictureBed/master/1559578686937.png&#34; alt=&#34;1559578686937&#34;&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Spring Boot整合MyBatis</title>
+      <link>https://shangguanhong.github.io/2019/06/03/spring-boot%E6%95%B4%E5%90%88mybatis/</link>
+      <pubDate>Mon, 03 Jun 2019 09:38:28 +0000</pubDate>
+      
+      <guid>https://shangguanhong.github.io/2019/06/03/spring-boot%E6%95%B4%E5%90%88mybatis/</guid>
+      <description>1. 前言 本文介绍如何将mybatis整合进Spring Boot, 并且使用mybatis-generator插件自动根据数据库生成一些基本的代码。 本文用</description>
+    </item>
+    
+    <item>
+      <title>Spring Boot配置文件</title>
+      <link>https://shangguanhong.github.io/2019/05/31/spring-boot%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/</link>
+      <pubDate>Fri, 31 May 2019 10:40:42 +0000</pubDate>
+      
+      <guid>https://shangguanhong.github.io/2019/05/31/spring-boot%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/</guid>
+      <description>&lt;h1 id=&#34;1-启动spring-boot项目&#34;&gt;1. 启动Spring Boot项目&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;第一种方法是使用IDE(集成开发环境)，例如IDEA、Eclipse等，我这里使用的是IDEA，所以我只需点击右上角的Run按钮即可&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/ShangguanHong/PictureBed/master/1559271612805.png&#34; alt=&#34;1559271612805&#34;&gt;&lt;/p&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;使用maven命令行启动。在项目根目录下运行 &lt;code&gt;mvn spring-boot:run&lt;/code&gt;即可&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;注意:使用mvn命令请确保电脑上安装了maven并且配置了maven环境变量，可以输入 &lt;code&gt;mvn --version&lt;/code&gt; 查看是否 安装（成功安装如下图），若没安装自行百度，按照教程一步一步完成即可&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/ShangguanHong/PictureBed/master/1559271875750.png&#34; alt=&#34;1559271875750&#34;&gt;&lt;/p&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;使用jar文件启动。在项目根目录下运行命令 &lt;code&gt;mvn clean install&lt;/code&gt; (clean表示清空之前编译的文件，install表示打包项目文件成为jar文件)&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/ShangguanHong/PictureBed/master/1559272084746.png&#34; alt=&#34;1559272084746&#34;&gt;&lt;/p&gt;
+&lt;p&gt;出现 &lt;code&gt;BUILD SUCCESS&lt;/code&gt; 表示创建jar成功，之后可以在项目根目录下的target目录下查看到对应的jar文件&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/ShangguanHong/PictureBed/master/1559272191102.png&#34; alt=&#34;1559272191102&#34;&gt;&lt;/p&gt;
+&lt;p&gt;然后执行 &lt;code&gt;java -jar demo-0.0.1-SNAPSHOT.jar&lt;/code&gt; 运行该文件即可。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id=&#34;2-编写配置文件&#34;&gt;2. 编写配置文件&lt;/h1&gt;</description>
+    </item>
+    
+    <item>
+      <title>Hexo上传图片</title>
+      <link>https://shangguanhong.github.io/2019/05/30/hexo%E4%B8%8A%E4%BC%A0%E5%9B%BE%E7%89%87/</link>
+      <pubDate>Thu, 30 May 2019 21:27:06 +0000</pubDate>
+      
+      <guid>https://shangguanhong.github.io/2019/05/30/hexo%E4%B8%8A%E4%BC%A0%E5%9B%BE%E7%89%87/</guid>
+      <description>修改 站点配置文件_config.yml 里的 post_asset_folder: false 为 post_asset_folder: true 当设置了 post_asset_folder 为 true 后，用 hexo new &amp;quot;new page&amp;quot; 生成新的博客时，Hexo会自动建立一个同名的文件夹，当文章用</description>
+    </item>
+    
+    <item>
+      <title>Spring Boot新建项目</title>
+      <link>https://shangguanhong.github.io/2019/05/30/spring-boot%E6%96%B0%E5%BB%BA%E9%A1%B9%E7%9B%AE/</link>
+      <pubDate>Thu, 30 May 2019 18:39:55 +0000</pubDate>
+      
+      <guid>https://shangguanhong.github.io/2019/05/30/spring-boot%E6%96%B0%E5%BB%BA%E9%A1%B9%E7%9B%AE/</guid>
+      <description>1. 前言 Spring Boot是由Pivotal团队提供的全新框架，其设计目的是用来简化新Spring应用的初始搭建以及开发过程。该框架使用了特定的方式来</description>
+    </item>
+    
+    <item>
+      <title>Hexo的NexT主题详细配置过程</title>
+      <link>https://shangguanhong.github.io/2019/05/29/hexo%E7%9A%84next%E4%B8%BB%E9%A2%98%E8%AF%A6%E7%BB%86%E9%85%8D%E7%BD%AE%E8%BF%87%E7%A8%8B/</link>
+      <pubDate>Wed, 29 May 2019 16:18:40 +0000</pubDate>
+      
+      <guid>https://shangguanhong.github.io/2019/05/29/hexo%E7%9A%84next%E4%B8%BB%E9%A2%98%E8%AF%A6%E7%BB%86%E9%85%8D%E7%BD%AE%E8%BF%87%E7%A8%8B/</guid>
+      <description>1. 前言 之前的 利用GithubPages + Hexo搭建自己的博客 中，已经拥有了一个自己的博客，但是它是非常的简陋的，所以这里将介绍 Hexo 中最热门的</description>
+    </item>
+    
+    <item>
+      <title>hexo常用命令</title>
+      <link>https://shangguanhong.github.io/2019/05/29/hexo%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</link>
+      <pubDate>Wed, 29 May 2019 12:38:52 +0000</pubDate>
+      
+      <guid>https://shangguanhong.github.io/2019/05/29/hexo%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</guid>
+      <description>1. Hexo 1 2 3 $ npm install hexp -g #安装 $ npm update hexo -g #升级 $ hexo init #初始化 2. 简写 1 2 3 4 5 $ hexo n &amp;#34;title&amp;#34; == $ hexo new &amp;#34;title&amp;#34; # 新建博客文章 $ hexo p == $ hexo publish #新建草稿draft $</description>
+    </item>
+    
+    <item>
+      <title>利用GithubPages &#43; Hexo搭建自己的博客</title>
+      <link>https://shangguanhong.github.io/2019/05/28/githubpages-hexo%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E5%8D%9A%E5%AE%A2/</link>
+      <pubDate>Tue, 28 May 2019 20:48:13 +0000</pubDate>
+      
+      <guid>https://shangguanhong.github.io/2019/05/28/githubpages-hexo%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E5%8D%9A%E5%AE%A2/</guid>
+      <description>1. 部署本地博客 安装Node.js, 参考 https://www.runoob.com/nodejs/nodejs-install-setup.html 安装Git, 参考 https://www.runoob.com/git/git-install-setup.html 安装Hexo：右键选择Git Bash，输入命令 npm install -g hexo-cli , 安装完成后，输入 hexo -v 查看是</description>
+    </item>
+    
+    <item>
+      <title>基于Linux Kernel 2.6 的源码, 分析其进程模型</title>
+      <link>https://shangguanhong.github.io/2019/05/28/%E5%9F%BA%E4%BA%8Elinux-kernel-2-6-%E7%9A%84%E6%BA%90%E7%A0%81-%E5%88%86%E6%9E%90%E5%85%B6%E8%BF%9B%E7%A8%8B%E6%A8%A1%E5%9E%8B/</link>
+      <pubDate>Tue, 28 May 2019 15:10:02 +0000</pubDate>
+      
+      <guid>https://shangguanhong.github.io/2019/05/28/%E5%9F%BA%E4%BA%8Elinux-kernel-2-6-%E7%9A%84%E6%BA%90%E7%A0%81-%E5%88%86%E6%9E%90%E5%85%B6%E8%BF%9B%E7%A8%8B%E6%A8%A1%E5%9E%8B/</guid>
+      <description>1. 简介 本文的内容是基于Linux Kernel 2.6 的源码, 深入分析其进程模型, 主要分析的内容如下: 什么是进程(进程的概念) 操作系统是如何组织进程的 进程状态</description>
+    </item>
+    
+    <item>
+      <title>phpstudy中升级mysql</title>
+      <link>https://shangguanhong.github.io/2019/05/28/phpstudy%E4%B8%AD%E5%8D%87%E7%BA%A7mysql/</link>
+      <pubDate>Tue, 28 May 2019 14:45:56 +0000</pubDate>
+      
+      <guid>https://shangguanhong.github.io/2019/05/28/phpstudy%E4%B8%AD%E5%8D%87%E7%BA%A7mysql/</guid>
+      <description>1. 正文 从官网下载对应平台最新的 MySQL 解压缩版 http://www.mysql.com/downloads/ 解压缩下载的文件，复制到phpStudy的MySQL文件夹下，我是把文件夹清空后复制过去的； 将..</description>
+    </item>
+    
+  </channel>
+</rss>

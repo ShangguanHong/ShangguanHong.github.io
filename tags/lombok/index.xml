@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>lombok on ShangguanHong</title>
+    <link>https://shangguanhong.github.io/tags/lombok/</link>
+    <description>Recent content in lombok on ShangguanHong</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Thu, 31 Oct 2019 10:17:12 +0000</lastBuildDate>
+    
+	<atom:link href="https://shangguanhong.github.io/tags/lombok/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>lombok的常用注解</title>
+      <link>https://shangguanhong.github.io/2019/10/31/lombok%E7%9A%84%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3/</link>
+      <pubDate>Thu, 31 Oct 2019 10:17:12 +0000</pubDate>
+      
+      <guid>https://shangguanhong.github.io/2019/10/31/lombok%E7%9A%84%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3/</guid>
+      <description>Lombok介绍 官网介绍： Project Lombok is a java library that automatically plugs into your editor and build tools, spicing up your java. Never write another getter or equals method again, with one annotation your class has a fully featured builder, Automate your logging variables, and much more. 翻译：Lombok 项目是一</description>
+    </item>
+    
+  </channel>
+</rss>

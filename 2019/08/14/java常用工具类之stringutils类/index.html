@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Java常用工具类之StringUtils类 - ShangguanHong</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="ShangguanHong" /><meta name="description" content="原文链接：https://blog.csdn.net/diypp2012/article/details/82971716 该工具类是用于操作" /><meta name="keywords" content="go, golang, hugo" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.67.1 with theme even" />
+
+
+<link rel="canonical" href="https://shangguanhong.github.io/2019/08/14/java%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7%E7%B1%BB%E4%B9%8Bstringutils%E7%B1%BB/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="Java常用工具类之StringUtils类" />
+<meta property="og:description" content="原文链接：https://blog.csdn.net/diypp2012/article/details/82971716 该工具类是用于操作" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://shangguanhong.github.io/2019/08/14/java%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7%E7%B1%BB%E4%B9%8Bstringutils%E7%B1%BB/" />
+<meta property="article:published_time" content="2019-08-14T22:45:28+00:00" />
+<meta property="article:modified_time" content="2019-08-14T22:45:28+00:00" />
+<meta itemprop="name" content="Java常用工具类之StringUtils类">
+<meta itemprop="description" content="原文链接：https://blog.csdn.net/diypp2012/article/details/82971716 该工具类是用于操作">
+<meta itemprop="datePublished" content="2019-08-14T22:45:28&#43;00:00" />
+<meta itemprop="dateModified" content="2019-08-14T22:45:28&#43;00:00" />
+<meta itemprop="wordCount" content="1442">
+
+
+
+<meta itemprop="keywords" content="java," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Java常用工具类之StringUtils类"/>
+<meta name="twitter:description" content="原文链接：https://blog.csdn.net/diypp2012/article/details/82971716 该工具类是用于操作"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">赏我一个好梦如旧</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">赏我一个好梦如旧</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Java常用工具类之StringUtils类</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2019-08-14 </span>
+        <div class="post-category">
+            <a href="/categories/java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"> Java学习笔记 </a>
+            </div>
+          <span class="more-meta"> 约 1442 字 </span>
+          <span class="more-meta"> 预计阅读 3 分钟 </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents"></nav>
+  </div>
+</div>
+    <div class="post-content">
+      <p>原文链接：https://blog.csdn.net/diypp2012/article/details/82971716</p>
+<p>该工具类是用于操作 Java.lang.String 类的。
+StringUtils 类与 String 类的区别在于：此类是 null 安全的，即如果输入参数 String 为 null，则不会抛出NullPointerException 异常，代码更健壮。
+以函数 isEmpty 为例子：
+存在字符串stringTest， 若该字符串为空，返回 true</p>
+<p>1.使用String类判断方法为：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="k">if</span> <span class="o">(</span><span class="kc">null</span> <span class="o">!=</span> <span class="n">stringTest</span><span class="o">)</span> <span class="o">{</span>
+	<span class="k">if</span> <span class="o">(</span><span class="n">stringTest</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span> <span class="o">{</span>
+		<span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+	<span class="o">}</span>
+<span class="o">}</span> <span class="k">else</span><span class="err">｛</span>
+	<span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+<span class="err">｝</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>该方法需要先进行非空判断，已避免空指针。</p>
+<p>2.使用StringUtils的判断方法为：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="k">if</span> <span class="o">(</span><span class="n">StringUtils</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">(</span><span class="n">stringTest</span><span class="o">))</span> <span class="o">{</span>
+	<span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>查看 StringUtils 的源码可知：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">static</span> <span class="kt">boolean</span> <span class="nf">isEmpty</span><span class="o">(</span><span class="n">String</span> <span class="n">str</span><span class="o">)</span> <span class="o">{</span>
+	<span class="k">return</span> <span class="o">(</span><span class="n">str</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">||</span> <span class="o">(</span><span class="n">str</span><span class="o">.</span><span class="na">length</span><span class="o">()</span> <span class="o">==</span> <span class="n">0</span><span class="o">);</span>
+ <span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>其相关的操作已经处理好。再查看常见操作trim 函数的源码如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">static</span> <span class="n">String</span> <span class="nf">trim</span> <span class="o">(</span><span class="n">String</span> <span class="n">str</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="n">str</span> <span class="o">==</span> <span class="kc">null</span> <span class="o">?</span> <span class="kc">null</span> <span class="o">:</span> <span class="n">str</span><span class="o">.</span><span class="na">trim</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>因此可知，使用StringUtils类比原始的String类更加健壮，避免空指针。
+常见方法如下</p>
+<h1 id="1-判断函数">1. 判断函数</h1>
+<ol>
+<li>
+<p>判断是否为空
+<code>StringUtils.isEmpty(String str)</code></p>
+</li>
+<li>
+<p>判断是否非空
+<code>StringUtils.isNotEmpty(String str)</code></p>
+</li>
+<li>
+<p>判断空白
+<code>StringUtils.isBlank(String str)</code></p>
+</li>
+<li>
+<p>判断非空白
+<code>StringUtils.isNotBlank(String str)</code></p>
+</li>
+<li>
+<p>判断是否存在空白(数组)
+<code>StringUtils.isAnyBlank(CharSequence… css)</code></p>
+</li>
+<li>
+<p>判断是否存在空(数组)
+<code>StringUtils.isAnyEmpty(CharSequence… css)</code></p>
+</li>
+<li>
+<p>判断不存在空白(数组)
+<code>StringUtils.isNoneBlank(CharSequence… css)</code></p>
+</li>
+<li>
+<p>判断不存在空(数组)
+<code>StringUtils.isNoneEmpty(CharSequence… css)</code></p>
+</li>
+<li>
+<p>判断是否空白</p>
+<p><code>StringUtils.isWhitespace(CharSequence cs)</code></p>
+</li>
+</ol>
+<h1 id="2-大小写函数">2. 大小写函数</h1>
+<ol>
+<li>首字母大写
+<code>StringUtils.capitalize(String str)</code></li>
+<li>首字母小写
+<code>StringUtils.uncapitalize(String str)</code></li>
+<li>全部大写
+<code>StringUtils.upperCase(String str)</code></li>
+<li>全部小写
+<code>StringUtils.lowerCase(String str)</code></li>
+<li>大小写互相转化
+<code>StringUtils.swapCase(String str)</code></li>
+<li>判断是否全大写
+<code>StringUtils.isAllUpperCase(CharSequence cs)</code></li>
+<li>判断是否全小写
+<code>StringUtils.isAllLowerCase(CharSequence cs)</code></li>
+</ol>
+<h1 id="3-删除函数">3. 删除函数</h1>
+<ol>
+<li>
+<p>从字符串中删除某字符
+<code>StringUtils.remove(String str, char remove)</code></p>
+</li>
+<li>
+<p>从字符串中删除字符串
+<code>StringUtils.remove(String str, String remove)</code></p>
+</li>
+<li>
+<p>删除结尾匹配的字符串
+<code>StringUtils.removeEnd(String str, String remove)</code></p>
+</li>
+<li>
+<p>删除结尾匹配的字符串，忽略大小写，返回String：
+<code>StringUtils.removeEndIgnoreCase(String str, String remove)</code></p>
+</li>
+<li>
+<p>正则表达式删除字符串
+<code>StringUtils.removePattern(String source, String regex)</code></p>
+</li>
+<li>
+<p>删除开头匹配的字符串
+<code>StringUtils.removeStart(String str, String remove)</code></p>
+</li>
+<li>
+<p>删除开头匹配的字符串，忽略大小写</p>
+<p><code>StringUtils.removeStartIgnoreCase(String str, String remove)</code></p>
+</li>
+<li>
+<p>删除所有空格，包括中间
+<code>StringUtils.deleteWhitespace(String str)</code></p>
+</li>
+</ol>
+<h1 id="4-字符替换函数">4. 字符替换函数</h1>
+<ol>
+<li>
+<p>用 replacement 替换 searchString 字符串
+max 表示替换个数，默认全替换，为 -1，可不填。0表示不换。其他表示从头开始替换 n 个</p>
+<p><code>StringUtils.replace(String text, String searchString, String replacement, int max)</code></p>
+</li>
+<li>
+<p>仅替换一个，从头开始
+<code>StringUtils.replaceOnce(String text, String searchString, String replacement)</code></p>
+</li>
+<li>
+<p>多个替换, searchList 与 replacementList 需一一对应
+<code>StringUtils.replaceEach(String text, String[] searchList, String[] replacementList)</code></p>
+</li>
+<li>
+<p>多个循环替换,searchList 与 replacementList 需一一对应</p>
+<p><code>StringUtils.replaceEachRepeatedly(String text, String[] searchList, String[] replacementList)</code></p>
+</li>
+<li>
+<p>替换 start 到 end 的字符，返回String：
+<code>StringUtils.overlay(String str, String overlay, int start, int end)</code></p>
+</li>
+</ol>
+<h1 id="5-拆分合并函数">5. 拆分合并函数</h1>
+<ol>
+<li>
+<p>特定符号分割字符串，默认为空格，可不填
+<code>StringUtils.split(String str)</code></p>
+</li>
+<li>
+<p>特定符合分割字符串为长度为 n 的字符数组，n为 0，表示全拆</p>
+<p><code>StringUtils.split(String str, String separatorChars, int n)</code></p>
+</li>
+<li>
+<p>合并函数，数组合并为字符串
+<code>StringUtils.join(byte[] array,char separator)</code></p>
+</li>
+<li>
+<p>合并函数，separator 为合并字符，当为null时，表示简单合并，亦可不填；startIndex和endIndex表示合并数组该下标间的字符，使用separator字符，亦可不填，表示全合并
+<code>StringUtils.join(Object[] array,char separator,int startIndex,int endIndex)</code></p>
+</li>
+</ol>
+<h1 id="6-截取函数">6. 截取函数</h1>
+<ol>
+<li>截取字符串
+<code>StringUtils.substring(String str,int start)</code></li>
+<li>从某字符后字符开始截取
+<code>StringUtils.substringAfter(String str,String separator)</code></li>
+<li>截取至最后一处该字符出现
+<code>StringUtils.substringBeforeLast(String str,String separator)</code></li>
+<li>从第一次该字符出现后截取
+<code>StringUtils.substringAfterLast(String str,String separator)</code></li>
+<li>截取某字符中间的子字符串
+<code>StringUtils.substringBetween(String str,String tag)</code></li>
+</ol>
+<h1 id="7-删除空白函数">7. 删除空白函数</h1>
+<ol>
+<li>删除空格
+<code>StringUtils.trim(String str)</code></li>
+<li>转换空格为empty
+<code>StringUtils.trimToEmpty(String str)</code></li>
+<li>转换空格为 null
+<code>StringUtils.trimToNull(String str)</code></li>
+<li>删除所有空格，包括字符串中间空格
+<code>StringUtils.deleteWhitespace(String str)</code></li>
+</ol>
+<h1 id="8-判断是否相等函数">8. 判断是否相等函数</h1>
+<ol>
+<li>判断是否相等
+<code>StringUtils.equals(CharSequence cs1,CharSequence cs2)</code></li>
+<li>判断是否相等，忽略大小写
+<code>StringUtils.equalsIgnoreCase(CharSequence cs1,CharSequence cs2)</code></li>
+</ol>
+<h1 id="9-是否包含函数">9. 是否包含函数</h1>
+<ol>
+<li>
+<p>判断第一个参数字符串，是否都出现在参数2中
+<code>StringUtils.containsOnly(CharSequence cs,char… valid)</code></p>
+</li>
+<li>
+<p>判断字符串中所有字符，都不在参数2中
+<code>StringUtils.containsNone(CharSequence cs,char… searchChars)</code></p>
+</li>
+<li>
+<p>判断字符串是否以第二个参数开始
+<code>StringUtils.startsWith(CharSequence str,CharSequ～ence prefix)</code></p>
+</li>
+<li>
+<p>判断字符串是否以第二个参数开始，忽略大小写</p>
+<p><code>StringUtils.startsWithIgnoreCase(CharSequence str,CharSequence prefix)</code></p>
+</li>
+</ol>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">ShangguanHong</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2019-08-14
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/java/">java</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/2019/08/15/%E5%A6%82%E4%BD%95%E5%9C%A8java8%E4%B8%AD%E5%A4%84%E7%90%86%E6%97%A5%E6%9C%9F%E5%92%8C%E6%97%B6%E9%97%B4/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">如何在Java8中处理日期和时间</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/2019/08/14/jwt%E6%95%B4%E5%90%88spring-security/">
+            <span class="next-text nav-default">JWT整合Spring Security</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+  <div id="vcomments"></div>
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+  <script type="text/javascript">
+    new Valine({
+        el: '#vcomments' ,
+        appId: 'X0gLmyOh1himl7jHPYcpKKop-gzGzoHsz',
+        appKey: 'hoYFzkrMqrD9SyRNpkiNf0LH',
+        notify:  false ,
+        verify:  false ,
+        avatar:'mm',
+        placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊!',
+        visitor:  false 
+    });
+  </script>
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:www.sgh1450280694@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/ShangguanHong" class="iconfont icon-github" title="github"></a>
+      <a href="https://weibo.com/5590338381" class="iconfont icon-weibo" title="weibo"></a>
+      <a href="https://space.bilibili.com/105190849" class="iconfont icon-bilibili" title="bilibili"></a>
+  <a href="https://shangguanhong.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2019 - 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">ShangguanHong</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

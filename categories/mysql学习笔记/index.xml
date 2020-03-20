@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>MySQL学习笔记 on ShangguanHong</title>
+    <link>https://shangguanhong.github.io/categories/mysql%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</link>
+    <description>Recent content in MySQL学习笔记 on ShangguanHong</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Tue, 04 Jun 2019 00:15:32 +0000</lastBuildDate>
+    
+	<atom:link href="https://shangguanhong.github.io/categories/mysql%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Win10下安装MySQL8.0.16</title>
+      <link>https://shangguanhong.github.io/2019/06/04/win10%E4%B8%8B%E5%AE%89%E8%A3%85mysql8-0-16/</link>
+      <pubDate>Tue, 04 Jun 2019 00:15:32 +0000</pubDate>
+      
+      <guid>https://shangguanhong.github.io/2019/06/04/win10%E4%B8%8B%E5%AE%89%E8%A3%85mysql8-0-16/</guid>
+      <description>&lt;ol&gt;
+&lt;li&gt;首先去 &lt;a href=&#34;https://dev.mysql.com/downloads/mysql/&#34;&gt;MySQL官网&lt;/a&gt; ，拉到最底下，下载最新版MySQL安装包&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/ShangguanHong/PictureBed/master/1559578686937.png&#34; alt=&#34;1559578686937&#34;&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>phpstudy中升级mysql</title>
+      <link>https://shangguanhong.github.io/2019/05/28/phpstudy%E4%B8%AD%E5%8D%87%E7%BA%A7mysql/</link>
+      <pubDate>Tue, 28 May 2019 14:45:56 +0000</pubDate>
+      
+      <guid>https://shangguanhong.github.io/2019/05/28/phpstudy%E4%B8%AD%E5%8D%87%E7%BA%A7mysql/</guid>
+      <description>1. 正文 从官网下载对应平台最新的 MySQL 解压缩版 http://www.mysql.com/downloads/ 解压缩下载的文件，复制到phpStudy的MySQL文件夹下，我是把文件夹清空后复制过去的； 将..</description>
+    </item>
+    
+  </channel>
+</rss>

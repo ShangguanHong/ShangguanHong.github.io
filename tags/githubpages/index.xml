@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>GithubPages on ShangguanHong</title>
+    <link>https://shangguanhong.github.io/tags/githubpages/</link>
+    <description>Recent content in GithubPages on ShangguanHong</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Tue, 28 May 2019 20:48:13 +0000</lastBuildDate>
+    
+	<atom:link href="https://shangguanhong.github.io/tags/githubpages/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>利用GithubPages &#43; Hexo搭建自己的博客</title>
+      <link>https://shangguanhong.github.io/2019/05/28/githubpages-hexo%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E5%8D%9A%E5%AE%A2/</link>
+      <pubDate>Tue, 28 May 2019 20:48:13 +0000</pubDate>
+      
+      <guid>https://shangguanhong.github.io/2019/05/28/githubpages-hexo%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E5%8D%9A%E5%AE%A2/</guid>
+      <description>1. 部署本地博客 安装Node.js, 参考 https://www.runoob.com/nodejs/nodejs-install-setup.html 安装Git, 参考 https://www.runoob.com/git/git-install-setup.html 安装Hexo：右键选择Git Bash，输入命令 npm install -g hexo-cli , 安装完成后，输入 hexo -v 查看是</description>
+    </item>
+    
+  </channel>
+</rss>

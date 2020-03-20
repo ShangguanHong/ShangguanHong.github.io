@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ubuntu on ShangguanHong</title>
+    <link>https://shangguanhong.github.io/tags/ubuntu/</link>
+    <description>Recent content in ubuntu on ShangguanHong</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 16 Feb 2020 21:06:13 +0000</lastBuildDate>
+    
+	<atom:link href="https://shangguanhong.github.io/tags/ubuntu/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Ubuntu18.04更换国内源</title>
+      <link>https://shangguanhong.github.io/2020/02/16/ubuntu18.04%E6%9B%B4%E6%8D%A2%E5%9B%BD%E5%86%85%E6%BA%90/</link>
+      <pubDate>Sun, 16 Feb 2020 21:06:13 +0000</pubDate>
+      
+      <guid>https://shangguanhong.github.io/2020/02/16/ubuntu18.04%E6%9B%B4%E6%8D%A2%E5%9B%BD%E5%86%85%E6%BA%90/</guid>
+      <description>备份源文件，以防止操作失误后无法还原文件 1 sudo cp /etc/apt/sources.list /ect/apt/sources.list.backup 打开 /etc/apt/sources.list 文件 1 sudo vim /ect/apt/sources.list 将源文件里的内容全部注释或者全部删除，然后写入以下内容 阿里云源 1 2 3 4 5</description>
+    </item>
+    
+  </channel>
+</rss>

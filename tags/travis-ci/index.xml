@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Travis CI on ShangguanHong</title>
+    <link>https://shangguanhong.github.io/tags/travis-ci/</link>
+    <description>Recent content in Travis CI on ShangguanHong</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Thu, 19 Dec 2019 20:39:10 +0000</lastBuildDate>
+    
+	<atom:link href="https://shangguanhong.github.io/tags/travis-ci/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>github使用Travis CI</title>
+      <link>https://shangguanhong.github.io/2019/12/19/github%E4%BD%BF%E7%94%A8travis-ci/</link>
+      <pubDate>Thu, 19 Dec 2019 20:39:10 +0000</pubDate>
+      
+      <guid>https://shangguanhong.github.io/2019/12/19/github%E4%BD%BF%E7%94%A8travis-ci/</guid>
+      <description>前言 使用 hexo + gitPages 搭建个人博客的都知道，每当要发表一篇博文的时候，都需要手动使用 hexo g 生成静态网页，然后再通过 hexo d 命令将静态文件推送到 GitHub</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,7 +1,7 @@
 language: go
 
 go:
-  - "1.18"  # 指定Golang 1.14
+  - "1.18"  # 指定Golang 1.18
 
 branches:
   only:
@@ -27,7 +27,7 @@ install:
   - commit_msg=$(git log -n1 --pretty=format:"%s")
 
 script:
-  - hugo
+  - hugo -D
 
 deploy:
   provider: pages # 重要，指定这是一份github pages的部署配置

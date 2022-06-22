@@ -23,7 +23,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.67.1 with theme even" />
+<meta name="generator" content="Hugo 0.101.0 with theme even" />
 
 
 <link rel="canonical" href="https://shangguanhong.github.io/2019/07/28/ubuntu-18-04-2-%E5%AE%89%E8%A3%85redis/" />
@@ -34,24 +34,22 @@
 <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
 
 
-<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+
+<link href="/sass/main.min.b5a744db6de49a86cadafb3b70f555ab443f83c307a483402259e94726b045ff.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
 <meta property="og:title" content="Ubuntu 18.04.2 安装redis" />
 <meta property="og:description" content="1. 前言 Redis 是目前业界使用最广泛的内存数据存储。相比 Memcached，Redis 支持更丰富的数据结构，例如 hashes, lists, sets 等，同时支持数据持久化。除此之" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://shangguanhong.github.io/2019/07/28/ubuntu-18-04-2-%E5%AE%89%E8%A3%85redis/" />
+<meta property="og:url" content="https://shangguanhong.github.io/2019/07/28/ubuntu-18-04-2-%E5%AE%89%E8%A3%85redis/" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2019-07-28T22:49:37+00:00" />
 <meta property="article:modified_time" content="2019-07-28T22:49:37+00:00" />
+
 <meta itemprop="name" content="Ubuntu 18.04.2 安装redis">
-<meta itemprop="description" content="1. 前言 Redis 是目前业界使用最广泛的内存数据存储。相比 Memcached，Redis 支持更丰富的数据结构，例如 hashes, lists, sets 等，同时支持数据持久化。除此之">
-<meta itemprop="datePublished" content="2019-07-28T22:49:37&#43;00:00" />
-<meta itemprop="dateModified" content="2019-07-28T22:49:37&#43;00:00" />
+<meta itemprop="description" content="1. 前言 Redis 是目前业界使用最广泛的内存数据存储。相比 Memcached，Redis 支持更丰富的数据结构，例如 hashes, lists, sets 等，同时支持数据持久化。除此之"><meta itemprop="datePublished" content="2019-07-28T22:49:37+00:00" />
+<meta itemprop="dateModified" content="2019-07-28T22:49:37+00:00" />
 <meta itemprop="wordCount" content="912">
-
-
-
 <meta itemprop="keywords" content="Redis," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Ubuntu 18.04.2 安装redis"/>
 <meta name="twitter:description" content="1. 前言 Redis 是目前业界使用最广泛的内存数据存储。相比 Memcached，Redis 支持更丰富的数据结构，例如 hashes, lists, sets 等，同时支持数据持久化。除此之"/>
@@ -89,12 +87,21 @@
         <li class="mobile-menu-item">Categories</li>
       </a>
   </ul>
+
+  
+
+
 </nav>
+
   <div class="container" id="mobile-panel">
     <header id="header" class="header">
         <div class="logo-wrapper">
   <a href="/" class="logo">赏我一个好梦如旧</a>
 </div>
+
+
+
+
 
 <nav class="site-navbar">
   <ul id="menu" class="menu">
@@ -109,6 +116,7 @@
       </li>
   </ul>
 </nav>
+
     </header>
 
     <main id="main" class="main">
@@ -149,24 +157,24 @@
 <h2 id="21-安装-redis-服务器端">2.1 安装 Redis 服务器端</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">$ sudo apt-get update
-$ sudo apt-get install redis-server
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">$ sudo apt-get update
+</span></span><span class="line"><span class="cl">$ sudo apt-get install redis-server
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>安装完 redis-server 后，redis-server 服务会自动开启，我们查看 redis-server 信息</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">$ ps -aux<span class="p">|</span>grep redis
-redis    <span class="m">29179</span>  0.1  0.3  <span class="m">51664</span>  <span class="m">3856</span> ?        Ssl  14:59   0:00 /usr/bin/redis-server 127.0.0.1:6379
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">$ ps -aux<span class="p">|</span>grep redis
+</span></span><span class="line"><span class="cl">redis    <span class="m">29179</span>  0.1  0.3  <span class="m">51664</span>  <span class="m">3856</span> ?        Ssl  14:59   0:00 /usr/bin/redis-server 127.0.0.1:6379
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>可以看到 redis-server 服务已经开启，已经监听了本机的 6379 端口号</p>
 <h2 id="22-通过命令行客户端访问-redis">2.2 通过命令行客户端访问 Redis</h2>
@@ -174,22 +182,22 @@ redis    <span class="m">29179</span>  0.1  0.3  <span class="m">51664</span>  <
 <p>在本机输入 redis-cli 命令就可以启动，客户端程序访问 Redis 服务器。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">$ redis-cli
-127.0.0.1:6379&gt; ping
-PONG
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">$ redis-cli
+</span></span><span class="line"><span class="cl">127.0.0.1:6379&gt; ping
+</span></span><span class="line"><span class="cl">PONG
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>当我们输入了 ping，能出现 PONG 就说明 redis 已经成功安装。</p>
 <h1 id="3-配置">3. 配置</h1>
 <p>redis 的配置文件位置为 <code>/etc/redis/redis.conf</code> ，下面例举几个重要配置</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -214,46 +222,46 @@ PONG
 </span><span class="lnt">23
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># 配置能访问该redis服务的ip，注释即为允许所有ip访问（这里我注释掉了）</span>
-<span class="c1"># bind 127.0.0.1 ::1</span>
-<span class="c1"># redis服务端口号，默认即为6379</span>
-port <span class="m">6379</span>
-<span class="c1"># 是否在后台执行，yes：后台运行；no：不是后台运行</span>
-daemonize yes
-<span class="c1"># 数据库的数量，默认使用的数据库是DB 0。可以通过”SELECT “命令选择一个db</span>
-databases <span class="m">16</span>
-<span class="c1"># 把数据库存到磁盘上:</span> 
-<span class="c1"># save &lt;seconds&gt; &lt;changes&gt;</span> 
-<span class="c1"># 会在指定秒数和数据变化次数之后把数据库写到磁盘上。</span> 
-# 
-<span class="c1"># 下面的例子将会进行把数据写入磁盘的操作:</span> 
-<span class="c1"># 900秒（15分钟）之后，且至少1次变更</span> 
-<span class="c1"># 300秒（5分钟）之后，且至少10次变更</span> 
-<span class="c1"># 60秒之后，且至少10000次变更</span> 
-# 
-<span class="c1"># 注意：你要想不写磁盘的话就把所有 &#34;save&#34; 设置注释掉就行了</span>
-save <span class="m">900</span> <span class="m">1</span> 
-save <span class="m">300</span> <span class="m">10</span> 
-save <span class="m">60</span> <span class="m">10000</span>
-<span class="c1"># 登录redis服务时的认证密码，默认为foobared（这里我更改为了123456）</span>
-requirepass <span class="m">123456</span> 
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="c1"># 配置能访问该redis服务的ip，注释即为允许所有ip访问（这里我注释掉了）</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># bind 127.0.0.1 ::1</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># redis服务端口号，默认即为6379</span>
+</span></span><span class="line"><span class="cl">port <span class="m">6379</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 是否在后台执行，yes：后台运行；no：不是后台运行</span>
+</span></span><span class="line"><span class="cl">daemonize yes
+</span></span><span class="line"><span class="cl"><span class="c1"># 数据库的数量，默认使用的数据库是DB 0。可以通过”SELECT “命令选择一个db</span>
+</span></span><span class="line"><span class="cl">databases <span class="m">16</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 把数据库存到磁盘上: </span>
+</span></span><span class="line"><span class="cl"><span class="c1"># save &lt;seconds&gt; &lt;changes&gt; </span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 会在指定秒数和数据变化次数之后把数据库写到磁盘上。 </span>
+</span></span><span class="line"><span class="cl"><span class="c1"># </span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 下面的例子将会进行把数据写入磁盘的操作: </span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 900秒（15分钟）之后，且至少1次变更 </span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 300秒（5分钟）之后，且至少10次变更 </span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 60秒之后，且至少10000次变更 </span>
+</span></span><span class="line"><span class="cl"><span class="c1"># </span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 注意：你要想不写磁盘的话就把所有 &#34;save&#34; 设置注释掉就行了</span>
+</span></span><span class="line"><span class="cl">save <span class="m">900</span> <span class="m">1</span> 
+</span></span><span class="line"><span class="cl">save <span class="m">300</span> <span class="m">10</span> 
+</span></span><span class="line"><span class="cl">save <span class="m">60</span> <span class="m">10000</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 登录redis服务时的认证密码，默认为foobared（这里我更改为了123456）</span>
+</span></span><span class="line"><span class="cl">requirepass <span class="m">123456</span> 
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>修改完配置文件后，重启 redis 服务</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">$ sudo /etc/init.d/redis-server restart
-<span class="o">[</span> ok <span class="o">]</span> Restarting redis-server <span class="o">(</span>via systemctl<span class="o">)</span>: redis-server.service.
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">$ sudo /etc/init.d/redis-server restart
+</span></span><span class="line"><span class="cl"><span class="o">[</span> ok <span class="o">]</span> Restarting redis-server <span class="o">(</span>via systemctl<span class="o">)</span>: redis-server.service.
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>此时再通过 redis-cli 登录 redis 服务就需要指定登录密码</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -266,27 +274,27 @@ requirepass <span class="m">123456</span>
 </span><span class="lnt">11
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">$ redis-cli -a <span class="m">123456</span>
-127.0.0.1:6379&gt; ping
-PONG
-<span class="c1"># 未认证登录</span>
-$ redis-cli
-127.0.0.1:6379&gt; ping
-<span class="o">(</span>error<span class="o">)</span> NOAUTH Authentication required.
-127.0.0.1:6379&gt; auth <span class="m">123456</span>
-OK
-127.0.0.1:6379&gt; ping
-PONG
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">$ redis-cli -a <span class="m">123456</span>
+</span></span><span class="line"><span class="cl">127.0.0.1:6379&gt; ping
+</span></span><span class="line"><span class="cl">PONG
+</span></span><span class="line"><span class="cl"><span class="c1"># 未认证登录</span>
+</span></span><span class="line"><span class="cl">$ redis-cli
+</span></span><span class="line"><span class="cl">127.0.0.1:6379&gt; ping
+</span></span><span class="line"><span class="cl"><span class="o">(</span>error<span class="o">)</span> NOAUTH Authentication required.
+</span></span><span class="line"><span class="cl">127.0.0.1:6379&gt; auth <span class="m">123456</span>
+</span></span><span class="line"><span class="cl">OK
+</span></span><span class="line"><span class="cl">127.0.0.1:6379&gt; ping
+</span></span><span class="line"><span class="cl">PONG
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>同时我们也可以远程访问该 redis 服务</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">redis-cli -h yourhost -a <span class="m">123456</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">redis-cli -h yourhost -a <span class="m">123456</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>将 <code>yourhost</code> 更改为启动 redis 服务的机器的 ip 地址，即可远程访问 redis 服务</p>
 <h1 id="4-参考资料">4. 参考资料</h1>
@@ -381,13 +389,10 @@ PONG
   <span class="copyright-year">
     &copy; 
     2019 - 
-    2020
-    <span class="heart">
-      <i class="iconfont icon-heart"></i>
-    </span>
-    <span class="author">ShangguanHong</span>
+    2022<span class="heart"><i class="iconfont icon-heart"></i></span><span>ShangguanHong</span>
   </span>
 </div>
+
     </footer>
 
     <div class="back-to-top" id="back-to-top">
@@ -398,7 +403,10 @@ PONG
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
-<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script>
 
 
 

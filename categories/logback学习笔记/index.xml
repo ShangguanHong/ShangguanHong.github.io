@@ -6,11 +6,7 @@
     <description>Recent content in Logback学习笔记 on ShangguanHong</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 31 Jul 2019 23:50:50 +0000</lastBuildDate>
-    
-	<atom:link href="https://shangguanhong.github.io/categories/logback%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Wed, 31 Jul 2019 23:50:50 +0000</lastBuildDate><atom:link href="https://shangguanhong.github.io/categories/logback%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Spring Boot中配置Slf4j&#43;logback日志框架</title>
       <link>https://shangguanhong.github.io/2019/07/31/spring-boot%E4%B8%AD%E9%85%8D%E7%BD%AElogback/</link>

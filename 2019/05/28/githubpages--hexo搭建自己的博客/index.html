@@ -23,10 +23,10 @@
 
 
 
-<meta name="generator" content="Hugo 0.67.1 with theme even" />
+<meta name="generator" content="Hugo 0.101.0 with theme even" />
 
 
-<link rel="canonical" href="https://shangguanhong.github.io/2019/05/28/githubpages-hexo%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E5%8D%9A%E5%AE%A2/" />
+<link rel="canonical" href="https://shangguanhong.github.io/2019/05/28/githubpages--hexo%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E5%8D%9A%E5%AE%A2/" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -34,24 +34,22 @@
 <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
 
 
-<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+
+<link href="/sass/main.min.b5a744db6de49a86cadafb3b70f555ab443f83c307a483402259e94726b045ff.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
 <meta property="og:title" content="利用GithubPages &#43; Hexo搭建自己的博客" />
 <meta property="og:description" content="1. 部署本地博客 安装Node.js, 参考 https://www.runoob.com/nodejs/nodejs-install-setup.html 安装Git, 参考 https://www.runoob.com/git/git-install-setup.html 安装Hexo：右键选择Git Bash，输入命令 npm install -g hexo-cli , 安装完成后，输入 hexo -v 查看是" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://shangguanhong.github.io/2019/05/28/githubpages-hexo%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E5%8D%9A%E5%AE%A2/" />
+<meta property="og:url" content="https://shangguanhong.github.io/2019/05/28/githubpages--hexo%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E5%8D%9A%E5%AE%A2/" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2019-05-28T20:48:13+00:00" />
 <meta property="article:modified_time" content="2019-05-28T20:48:13+00:00" />
+
 <meta itemprop="name" content="利用GithubPages &#43; Hexo搭建自己的博客">
-<meta itemprop="description" content="1. 部署本地博客 安装Node.js, 参考 https://www.runoob.com/nodejs/nodejs-install-setup.html 安装Git, 参考 https://www.runoob.com/git/git-install-setup.html 安装Hexo：右键选择Git Bash，输入命令 npm install -g hexo-cli , 安装完成后，输入 hexo -v 查看是">
-<meta itemprop="datePublished" content="2019-05-28T20:48:13&#43;00:00" />
-<meta itemprop="dateModified" content="2019-05-28T20:48:13&#43;00:00" />
+<meta itemprop="description" content="1. 部署本地博客 安装Node.js, 参考 https://www.runoob.com/nodejs/nodejs-install-setup.html 安装Git, 参考 https://www.runoob.com/git/git-install-setup.html 安装Hexo：右键选择Git Bash，输入命令 npm install -g hexo-cli , 安装完成后，输入 hexo -v 查看是"><meta itemprop="datePublished" content="2019-05-28T20:48:13+00:00" />
+<meta itemprop="dateModified" content="2019-05-28T20:48:13+00:00" />
 <meta itemprop="wordCount" content="822">
-
-
-
 <meta itemprop="keywords" content="GithubPages,hexo," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="利用GithubPages &#43; Hexo搭建自己的博客"/>
 <meta name="twitter:description" content="1. 部署本地博客 安装Node.js, 参考 https://www.runoob.com/nodejs/nodejs-install-setup.html 安装Git, 参考 https://www.runoob.com/git/git-install-setup.html 安装Hexo：右键选择Git Bash，输入命令 npm install -g hexo-cli , 安装完成后，输入 hexo -v 查看是"/>
@@ -89,12 +87,21 @@
         <li class="mobile-menu-item">Categories</li>
       </a>
   </ul>
+
+  
+
+
 </nav>
+
   <div class="container" id="mobile-panel">
     <header id="header" class="header">
         <div class="logo-wrapper">
   <a href="/" class="logo">赏我一个好梦如旧</a>
 </div>
+
+
+
+
 
 <nav class="site-navbar">
   <ul id="menu" class="menu">
@@ -109,6 +116,7 @@
       </li>
   </ul>
 </nav>
+
     </header>
 
     <main id="main" class="main">
@@ -162,13 +170,13 @@
 </ol>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">hexo init
-npm install
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl">hexo init
+</span></span><span class="line"><span class="cl">npm install
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>​		成功运行后，站点目录下会产生新文件和目录</p>
 <ol start="5">
@@ -197,7 +205,7 @@ npm install
 <p>5.2 修改站点目录下的_config.yml文件</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -205,13 +213,13 @@ npm install
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback"># Deployment
-## Docs: https://hexo.io/docs/deployment.html
-deploy:
-  type: git
-  repo: git@github.com:&lt;github账号名称&gt;/&lt;github账号名称&gt;.github.io.git
-  branch: master
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"># Deployment
+</span></span><span class="line"><span class="cl">## Docs: https://hexo.io/docs/deployment.html
+</span></span><span class="line"><span class="cl">deploy:
+</span></span><span class="line"><span class="cl">  type: git
+</span></span><span class="line"><span class="cl">  repo: git@github.com:&lt;github账号名称&gt;/&lt;github账号名称&gt;.github.io.git
+</span></span><span class="line"><span class="cl">  branch: master
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>5.3 输入命令 <code>hexo g &amp;&amp; hexo d</code> 将本地Hexo博客推送到GithubPages</p>
 </li>
@@ -308,13 +316,10 @@ deploy:
   <span class="copyright-year">
     &copy; 
     2019 - 
-    2020
-    <span class="heart">
-      <i class="iconfont icon-heart"></i>
-    </span>
-    <span class="author">ShangguanHong</span>
+    2022<span class="heart"><i class="iconfont icon-heart"></i></span><span>ShangguanHong</span>
   </span>
 </div>
+
     </footer>
 
     <div class="back-to-top" id="back-to-top">
@@ -325,7 +330,10 @@ deploy:
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
-<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script>
 
 
 

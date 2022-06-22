@@ -6,11 +6,7 @@
     <description>Recent content in wsl on ShangguanHong</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 21 Nov 2019 20:12:53 +0000</lastBuildDate>
-    
-	<atom:link href="https://shangguanhong.github.io/tags/wsl/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Thu, 21 Nov 2019 20:12:53 +0000</lastBuildDate><atom:link href="https://shangguanhong.github.io/tags/wsl/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>windows上安装WSL</title>
       <link>https://shangguanhong.github.io/2019/11/21/windows%E4%B8%8A%E5%AE%89%E8%A3%85wsl/</link>

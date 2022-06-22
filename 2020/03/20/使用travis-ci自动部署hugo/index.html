@@ -23,7 +23,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.67.1 with theme even" />
+<meta name="generator" content="Hugo 0.101.0 with theme even" />
 
 
 <link rel="canonical" href="https://shangguanhong.github.io/2020/03/20/%E4%BD%BF%E7%94%A8travis-ci%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2hugo/" />
@@ -34,24 +34,22 @@
 <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
 
 
-<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+
+<link href="/sass/main.min.b5a744db6de49a86cadafb3b70f555ab443f83c307a483402259e94726b045ff.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
 <meta property="og:title" content="使用Travis CI自动部署hugo" />
 <meta property="og:description" content="之前写过了一篇使用 Travis CI 自动部署hexo的文章(传送门)，最近从hexo迁移到了hugo，那自然也是要使用一下自动部署工具来自动部署，操作基本" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://shangguanhong.github.io/2020/03/20/%E4%BD%BF%E7%94%A8travis-ci%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2hugo/" />
+<meta property="og:url" content="https://shangguanhong.github.io/2020/03/20/%E4%BD%BF%E7%94%A8travis-ci%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2hugo/" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2020-03-20T13:24:09+08:00" />
 <meta property="article:modified_time" content="2020-03-20T13:24:09+08:00" />
+
 <meta itemprop="name" content="使用Travis CI自动部署hugo">
-<meta itemprop="description" content="之前写过了一篇使用 Travis CI 自动部署hexo的文章(传送门)，最近从hexo迁移到了hugo，那自然也是要使用一下自动部署工具来自动部署，操作基本">
-<meta itemprop="datePublished" content="2020-03-20T13:24:09&#43;08:00" />
-<meta itemprop="dateModified" content="2020-03-20T13:24:09&#43;08:00" />
-<meta itemprop="wordCount" content="705">
-
-
-
+<meta itemprop="description" content="之前写过了一篇使用 Travis CI 自动部署hexo的文章(传送门)，最近从hexo迁移到了hugo，那自然也是要使用一下自动部署工具来自动部署，操作基本"><meta itemprop="datePublished" content="2020-03-20T13:24:09+08:00" />
+<meta itemprop="dateModified" content="2020-03-20T13:24:09+08:00" />
+<meta itemprop="wordCount" content="622">
 <meta itemprop="keywords" content="Travis CI,hugo," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="使用Travis CI自动部署hugo"/>
 <meta name="twitter:description" content="之前写过了一篇使用 Travis CI 自动部署hexo的文章(传送门)，最近从hexo迁移到了hugo，那自然也是要使用一下自动部署工具来自动部署，操作基本"/>
@@ -89,12 +87,21 @@
         <li class="mobile-menu-item">Categories</li>
       </a>
   </ul>
+
+  
+
+
 </nav>
+
   <div class="container" id="mobile-panel">
     <header id="header" class="header">
         <div class="logo-wrapper">
   <a href="/" class="logo">赏我一个好梦如旧</a>
 </div>
+
+
+
+
 
 <nav class="site-navbar">
   <ul id="menu" class="menu">
@@ -109,6 +116,7 @@
       </li>
   </ul>
 </nav>
+
     </header>
 
     <main id="main" class="main">
@@ -124,7 +132,7 @@
         <div class="post-category">
             <a href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/"> 工具使用 </a>
             </div>
-          <span class="more-meta"> 约 705 字 </span>
+          <span class="more-meta"> 约 622 字 </span>
           <span class="more-meta"> 预计阅读 2 分钟 </span>
         
       </div>
@@ -147,7 +155,7 @@
 <p>具体看如下配置</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -195,53 +203,53 @@
 </span><span class="lnt">46
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="k">language</span><span class="p">:</span><span class="w"> </span>go<span class="w">
-</span><span class="w">
-</span><span class="w"></span><span class="k">go</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span>- <span class="s2">&#34;1.14&#34;</span><span class="w">  </span><span class="c"># 指定Golang 1.14</span><span class="w">
-</span><span class="w">
-</span><span class="w"></span><span class="k">branches</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="k">only</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span>- hugo<span class="w">  </span><span class="c"># 设置自动化部署的源码分支</span><span class="w">
-</span><span class="w">
-</span><span class="w"></span><span class="c"># 设置环境变量</span><span class="w">
-</span><span class="w"></span><span class="k">env</span><span class="p">:</span><span class="w">
-</span><span class="w"> </span><span class="k">global</span><span class="p">:</span><span class="w">
-</span><span class="w"> </span><span class="c"># 使用的hugo版本</span><span class="w">
-</span><span class="w">  </span>- <span class="k">version</span><span class="p">:</span><span class="w"> </span><span class="m">0.67.1</span><span class="w">
-</span><span class="w">  </span><span class="c"># ***.github.io url</span><span class="w">
-</span><span class="w">  </span>- <span class="k">GH_REF</span><span class="p">:</span><span class="w"> </span>github.com/ShangguanHong/ShangguanHong.github.io/<span class="w">
-</span><span class="w">
-</span><span class="w"></span><span class="k">before_install</span><span class="p">:</span><span class="w">
-</span><span class="w"></span>- export<span class="w"> </span>TZ=<span class="s1">&#39;Asia/Shanghai&#39;</span><span class="w">  </span><span class="c"># 设置时区</span><span class="w">
-</span><span class="w">
-</span><span class="w"></span><span class="c"># 安装依赖组件</span><span class="w">
-</span><span class="w"></span><span class="k">install</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span>- wget<span class="w"> </span>https<span class="p">:</span>//github.com/gohugoio/hugo/releases/download/v${version}/hugo_${version}_Linux-64bit.tar.gz<span class="w">
-</span><span class="w">  </span>- tar<span class="w"> </span>-xzvf<span class="w"> </span>hugo_${version}_Linux-64bit.tar.gz<span class="w">
-</span><span class="w">  </span>- chmod<span class="w"> </span>+x<span class="w"> </span>hugo<span class="w">
-</span><span class="w">  </span>- export<span class="w"> </span>PATH=$PATH<span class="p">:</span>$PWD<span class="w">
-</span><span class="w">  </span>- hugo<span class="w"> </span>version<span class="w">
-</span><span class="w">  </span><span class="c"># 安装使用的主题，记得放在 themes 目录下</span><span class="w">
-</span><span class="w">  </span>- git<span class="w"> </span>clone<span class="w"> </span>https<span class="p">:</span>//github.com/olOwOlo/hugo-theme-even.git<span class="w"> </span>themes/even<span class="w">
-</span><span class="w">  </span>- git<span class="w"> </span>log<span class="w"> </span>-p<span class="w"> </span>-<span class="m">2</span><span class="w"> </span>|<span class="w"> </span>cat<span class="w">
-</span><span class="w">  </span>- commit_msg=$(git<span class="w"> </span>log<span class="w"> </span>-n1<span class="w"> </span>--pretty=format<span class="p">:</span><span class="s2">&#34;%s&#34;</span>)<span class="w">
-</span><span class="w">
-</span><span class="w"></span><span class="k">script</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span>- hugo<span class="w">
-</span><span class="w">
-</span><span class="w"></span><span class="c"># 部署的配置在这里</span><span class="w">
-</span><span class="w"></span><span class="k">deploy</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="k">provider</span><span class="p">:</span><span class="w"> </span>pages<span class="w"> </span><span class="c"># 重要，指定这是一份github pages的部署配置</span><span class="w">
-</span><span class="w">  </span><span class="k">skip-cleanup</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="c"># 重要，不能省略</span><span class="w">
-</span><span class="w">  </span><span class="k">local-dir</span><span class="p">:</span><span class="w"> </span>public<span class="w"> </span><span class="c"># 静态站点文件所在目录</span><span class="w">
-</span><span class="w">  </span><span class="k">target-branch</span><span class="p">:</span><span class="w"> </span>master<span class="w"> </span><span class="c"># 要将静态站点文件发布到哪个分支</span><span class="w">
-</span><span class="w">  </span><span class="k">github-token</span><span class="p">:</span><span class="w"> </span>$GH_TOKEN<span class="w"> </span><span class="c"># 重要，$GITHUB_TOKEN是变量，需要在GitHub上申请、再到配置到Travis</span><span class="w">
-</span><span class="w">  </span><span class="c"># fqdn:  # 如果是自定义域名，此处要填</span><span class="w">
-</span><span class="w">  </span><span class="k">keep-history</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="c"># 是否保持target-branch分支的提交记录</span><span class="w">
-</span><span class="w">  </span><span class="k">on</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span><span class="k">branch</span><span class="p">:</span><span class="w"> </span>hugo<span class="w"> </span><span class="c"># 博客源码的分支</span><span class="w">
-</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">language</span><span class="p">:</span><span class="w"> </span><span class="l">go</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">go</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="s2">&#34;1.14&#34;</span><span class="w">  </span><span class="c"># 指定Golang 1.14</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">branches</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">only</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="l">hugo </span><span class="w"> </span><span class="c"># 设置自动化部署的源码分支</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c"># 设置环境变量</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">env</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="nt">global</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="c"># 使用的hugo版本</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="m">0.67.1</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="c"># ***.github.io url</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="nt">GH_REF</span><span class="p">:</span><span class="w"> </span><span class="l">github.com/ShangguanHong/ShangguanHong.github.io/</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">before_install</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span>- <span class="l">export TZ=&#39;Asia/Shanghai&#39; </span><span class="w"> </span><span class="c"># 设置时区</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c"># 安装依赖组件</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">install</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="l">wget https://github.com/gohugoio/hugo/releases/download/v${version}/hugo_${version}_Linux-64bit.tar.gz</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="l">tar -xzvf hugo_${version}_Linux-64bit.tar.gz</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="l">chmod +x hugo</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="l">export PATH=$PATH:$PWD</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="l">hugo version</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="c"># 安装使用的主题，记得放在 themes 目录下</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="l">git clone https://github.com/olOwOlo/hugo-theme-even.git themes/even</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="l">git log -p -2 | cat</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="l">commit_msg=$(git log -n1 --pretty=format:&#34;%s&#34;)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">script</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="l">hugo</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c"># 部署的配置在这里</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">deploy</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">provider</span><span class="p">:</span><span class="w"> </span><span class="l">pages</span><span class="w"> </span><span class="c"># 重要，指定这是一份github pages的部署配置</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">skip-cleanup</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="c"># 重要，不能省略</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">local-dir</span><span class="p">:</span><span class="w"> </span><span class="l">public</span><span class="w"> </span><span class="c"># 静态站点文件所在目录</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">target-branch</span><span class="p">:</span><span class="w"> </span><span class="l">master</span><span class="w"> </span><span class="c"># 要将静态站点文件发布到哪个分支</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">github-token</span><span class="p">:</span><span class="w"> </span><span class="l">$GH_TOKEN</span><span class="w"> </span><span class="c"># 重要，$GITHUB_TOKEN是变量，需要在GitHub上申请、再到配置到Travis</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="c"># fqdn:  # 如果是自定义域名，此处要填</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">keep-history</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="c"># 是否保持target-branch分支的提交记录</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">on</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">branch</span><span class="p">:</span><span class="w"> </span><span class="l">hugo</span><span class="w"> </span><span class="c"># 博客源码的分支</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>最后将 <code>.travis.yml</code> 文件一起上传到github的hugo分支上，即可做到自动部署网页到master分支。</p>
 
@@ -333,13 +341,10 @@
   <span class="copyright-year">
     &copy; 
     2019 - 
-    2020
-    <span class="heart">
-      <i class="iconfont icon-heart"></i>
-    </span>
-    <span class="author">ShangguanHong</span>
+    2022<span class="heart"><i class="iconfont icon-heart"></i></span><span>ShangguanHong</span>
   </span>
 </div>
+
     </footer>
 
     <div class="back-to-top" id="back-to-top">
@@ -350,7 +355,10 @@
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
-<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script>
 
 
 

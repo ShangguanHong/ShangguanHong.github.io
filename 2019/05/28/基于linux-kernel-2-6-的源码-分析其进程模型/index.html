@@ -23,7 +23,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.67.1 with theme even" />
+<meta name="generator" content="Hugo 0.101.0 with theme even" />
 
 
 <link rel="canonical" href="https://shangguanhong.github.io/2019/05/28/%E5%9F%BA%E4%BA%8Elinux-kernel-2-6-%E7%9A%84%E6%BA%90%E7%A0%81-%E5%88%86%E6%9E%90%E5%85%B6%E8%BF%9B%E7%A8%8B%E6%A8%A1%E5%9E%8B/" />
@@ -34,24 +34,22 @@
 <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
 
 
-<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+
+<link href="/sass/main.min.b5a744db6de49a86cadafb3b70f555ab443f83c307a483402259e94726b045ff.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
 <meta property="og:title" content="基于Linux Kernel 2.6 的源码, 分析其进程模型" />
 <meta property="og:description" content="1. 简介 本文的内容是基于Linux Kernel 2.6 的源码, 深入分析其进程模型, 主要分析的内容如下: 什么是进程(进程的概念) 操作系统是如何组织进程的 进程状态" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://shangguanhong.github.io/2019/05/28/%E5%9F%BA%E4%BA%8Elinux-kernel-2-6-%E7%9A%84%E6%BA%90%E7%A0%81-%E5%88%86%E6%9E%90%E5%85%B6%E8%BF%9B%E7%A8%8B%E6%A8%A1%E5%9E%8B/" />
+<meta property="og:url" content="https://shangguanhong.github.io/2019/05/28/%E5%9F%BA%E4%BA%8Elinux-kernel-2-6-%E7%9A%84%E6%BA%90%E7%A0%81-%E5%88%86%E6%9E%90%E5%85%B6%E8%BF%9B%E7%A8%8B%E6%A8%A1%E5%9E%8B/" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2019-05-28T15:10:02+00:00" />
 <meta property="article:modified_time" content="2019-05-28T15:10:02+00:00" />
+
 <meta itemprop="name" content="基于Linux Kernel 2.6 的源码, 分析其进程模型">
-<meta itemprop="description" content="1. 简介 本文的内容是基于Linux Kernel 2.6 的源码, 深入分析其进程模型, 主要分析的内容如下: 什么是进程(进程的概念) 操作系统是如何组织进程的 进程状态">
-<meta itemprop="datePublished" content="2019-05-28T15:10:02&#43;00:00" />
-<meta itemprop="dateModified" content="2019-05-28T15:10:02&#43;00:00" />
-<meta itemprop="wordCount" content="5562">
-
-
-
+<meta itemprop="description" content="1. 简介 本文的内容是基于Linux Kernel 2.6 的源码, 深入分析其进程模型, 主要分析的内容如下: 什么是进程(进程的概念) 操作系统是如何组织进程的 进程状态"><meta itemprop="datePublished" content="2019-05-28T15:10:02+00:00" />
+<meta itemprop="dateModified" content="2019-05-28T15:10:02+00:00" />
+<meta itemprop="wordCount" content="5585">
 <meta itemprop="keywords" content="linux," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="基于Linux Kernel 2.6 的源码, 分析其进程模型"/>
 <meta name="twitter:description" content="1. 简介 本文的内容是基于Linux Kernel 2.6 的源码, 深入分析其进程模型, 主要分析的内容如下: 什么是进程(进程的概念) 操作系统是如何组织进程的 进程状态"/>
@@ -89,12 +87,21 @@
         <li class="mobile-menu-item">Categories</li>
       </a>
   </ul>
+
+  
+
+
 </nav>
+
   <div class="container" id="mobile-panel">
     <header id="header" class="header">
         <div class="logo-wrapper">
   <a href="/" class="logo">赏我一个好梦如旧</a>
 </div>
+
+
+
+
 
 <nav class="site-navbar">
   <ul id="menu" class="menu">
@@ -109,6 +116,7 @@
       </li>
   </ul>
 </nav>
+
     </header>
 
     <main id="main" class="main">
@@ -124,7 +132,7 @@
         <div class="post-category">
             <a href="/categories/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"> Linux学习笔记 </a>
             </div>
-          <span class="more-meta"> 约 5562 字 </span>
+          <span class="more-meta"> 约 5585 字 </span>
           <span class="more-meta"> 预计阅读 12 分钟 </span>
         
       </div>
@@ -202,11 +210,11 @@
 <p>在<code>task_struct</code>结构体中, 定义进程的状态语句为</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-c" data-lang="c"><span class="k">volatile</span> <span class="kt">long</span> <span class="n">state</span><span class="p">;</span>	<span class="cm">/* -1 unrunnable, 0 runnable, &gt;0 stopped */</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="k">volatile</span> <span class="kt">long</span> <span class="n">state</span><span class="p">;</span>	<span class="cm">/* -1 unrunnable, 0 runnable, &gt;0 stopped */</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p><code>valatile</code>关键字的作用是确保本条指令不会因编译器的优化而省略, 且要求每次直接读值, 这样保证了对进程实时访问的稳定性。
 进程在<code>/linux/include/linux/sched.h </code> 头文件中我们可以找到<code>state</code>的可能取值如下</p>
@@ -238,38 +246,38 @@ define TASK_DEAD		128</p>
 <table>
 <thead>
 <tr>
-<th align="left">状态</th>
-<th align="left">描述</th>
+<th style="text-align:left">状态</th>
+<th style="text-align:left">描述</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">0(TASK_RUNNING)</td>
-<td align="left">进程处于正在运行或者准备运行的状态中</td>
+<td style="text-align:left">0(TASK_RUNNING)</td>
+<td style="text-align:left">进程处于正在运行或者准备运行的状态中</td>
 </tr>
 <tr>
-<td align="left">1(TASK_INTERRUPTIBLE)</td>
-<td align="left">进程处于可中断睡眠状态, 可通过信号唤醒</td>
+<td style="text-align:left">1(TASK_INTERRUPTIBLE)</td>
+<td style="text-align:left">进程处于可中断睡眠状态, 可通过信号唤醒</td>
 </tr>
 <tr>
-<td align="left">2(TASK_UNINTERRUPTIBLE)</td>
-<td align="left">进程处于不可中断睡眠状态, 不可通过信号进行唤醒</td>
+<td style="text-align:left">2(TASK_UNINTERRUPTIBLE)</td>
+<td style="text-align:left">进程处于不可中断睡眠状态, 不可通过信号进行唤醒</td>
 </tr>
 <tr>
-<td align="left">4( TASK_STOPPED)</td>
-<td align="left">进程被停止执行</td>
+<td style="text-align:left">4( TASK_STOPPED)</td>
+<td style="text-align:left">进程被停止执行</td>
 </tr>
 <tr>
-<td align="left">8( TASK_TRACED)</td>
-<td align="left">进程被监视</td>
+<td style="text-align:left">8( TASK_TRACED)</td>
+<td style="text-align:left">进程被监视</td>
 </tr>
 <tr>
-<td align="left">16( EXIT_ZOMBIE)</td>
-<td align="left">僵尸状态进程, 表示进程被终止, 但是其父程序还未获取其被终止的信息。</td>
+<td style="text-align:left">16( EXIT_ZOMBIE)</td>
+<td style="text-align:left">僵尸状态进程, 表示进程被终止, 但是其父程序还未获取其被终止的信息。</td>
 </tr>
 <tr>
-<td align="left">32(EXIT_DEAD)</td>
-<td align="left">进程死亡, 此状态为进程的最终状态</td>
+<td style="text-align:left">32(EXIT_DEAD)</td>
+<td style="text-align:left">进程死亡, 此状态为进程的最终状态</td>
 </tr>
 </tbody>
 </table>
@@ -277,7 +285,7 @@ define TASK_DEAD		128</p>
 <h2 id="32-进程标识符pid">3.2 进程标识符(PID)</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -286,14 +294,14 @@ define TASK_DEAD		128</p>
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-c" data-lang="c"><span class="n">pid_t</span> <span class="n">pid</span><span class="p">;</span> <span class="cm">/*进程的唯一表示*/</span>
-<span class="n">pid_t</span> <span class="n">tgid</span><span class="p">;</span> <span class="cm">/*进程组的标识符*/</span><span class="err">```</span>
-<span class="o">&gt;</span> <span class="o">**</span><span class="err">在</span><span class="n">Linux系统中</span><span class="err">，一个线程组中的所有线程使用和该线程组的领头线程（该组中的第一个轻量级进程）相同的</span><span class="n">PID</span><span class="err">，并被存放在</span><span class="n">tgid成员中</span><span class="err">。只有线程组的领头线程的</span><span class="n">pid成员才会被设置为与tgid相同的值</span><span class="err">。注意，</span><span class="n">getpid</span><span class="p">()</span><span class="err">系统调用返回的是当前进程的</span><span class="n">tgid值而不是pid值</span><span class="err">。（线程是程序运行的最小单位，进程是程序运行的基本单位。）</span><span class="o">**</span>
-
-<span class="cp">## 3.3 进程的标记(FLAGS)
-</span><span class="cp"></span><span class="err">​```</span><span class="n">C</span>
-<span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">flags</span><span class="p">;</span>	<span class="cm">/* per process flags, defined below */</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="n">pid_t</span> <span class="n">pid</span><span class="p">;</span> <span class="cm">/*进程的唯一表示*/</span>
+</span></span><span class="line"><span class="cl"><span class="n">pid_t</span> <span class="n">tgid</span><span class="p">;</span> <span class="cm">/*进程组的标识符*/</span><span class="err">```</span>
+</span></span><span class="line"><span class="cl"><span class="o">&gt;</span> <span class="o">**</span><span class="err">在</span><span class="n">Linux系统中</span><span class="err">，一个线程组中的所有线程使用和该线程组的领头线程（该组中的第一个轻量级进程）相同的</span><span class="n">PID</span><span class="err">，并被存放在</span><span class="n">tgid成员中</span><span class="err">。只有线程组的领头线程的</span><span class="n">pid成员才会被设置为与tgid相同的值</span><span class="err">。注意，</span><span class="n">getpid</span><span class="p">()</span><span class="err">系统调用返回的是当前进程的</span><span class="n">tgid值而不是pid值</span><span class="err">。（线程是程序运行的最小单位，进程是程序运行的基本单位。）</span><span class="o">**</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="cp">## 3.3 进程的标记(FLAGS)
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="err">​```</span><span class="n">C</span>
+</span></span><span class="line"><span class="cl"><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">flags</span><span class="p">;</span>	<span class="cm">/* per process flags, defined below */</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><blockquote>
 <p>反应进程状态的信息，但不是运行状态，用于内核识别进程当前的状态，以备下一步操作</p>
@@ -301,7 +309,7 @@ define TASK_DEAD		128</p>
 </blockquote>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -332,41 +340,41 @@ define TASK_DEAD		128</p>
 </span><span class="lnt">29
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-C" data-lang="C"><span class="cm">/*
-</span><span class="cm"> * Per process flags
-</span><span class="cm"> */</span>
-<span class="cp">#define PF_ALIGNWARN	0x00000001	</span><span class="cm">/* Print alignment warning msgs */</span><span class="cp">
-</span><span class="cp"></span>					<span class="cm">/* Not implemented yet, only for 486*/</span>
-<span class="cp">#define PF_STARTING	0x00000002	</span><span class="cm">/* being created */</span><span class="cp">
-</span><span class="cp">#define PF_EXITING	0x00000004	</span><span class="cm">/* getting shut down */</span><span class="cp">
-</span><span class="cp">#define PF_EXITPIDONE	0x00000008	</span><span class="cm">/* pi exit done on shut down */</span><span class="cp">
-</span><span class="cp">#define PF_FORKNOEXEC	0x00000040	</span><span class="cm">/* forked but didn&#39;t exec */</span><span class="cp">
-</span><span class="cp">#define PF_SUPERPRIV	0x00000100	</span><span class="cm">/* used super-user privileges */</span><span class="cp">
-</span><span class="cp">#define PF_DUMPCORE	0x00000200	</span><span class="cm">/* dumped core */</span><span class="cp">
-</span><span class="cp">#define PF_SIGNALED	0x00000400	</span><span class="cm">/* killed by a signal */</span><span class="cp">
-</span><span class="cp">#define PF_MEMALLOC	0x00000800	</span><span class="cm">/* Allocating memory */</span><span class="cp">
-</span><span class="cp">#define PF_FLUSHER	0x00001000	</span><span class="cm">/* responsible for disk writeback */</span><span class="cp">
-</span><span class="cp">#define PF_USED_MATH	0x00002000	</span><span class="cm">/* if unset the fpu must be initialized before use */</span><span class="cp">
-</span><span class="cp">#define PF_NOFREEZE	0x00008000	</span><span class="cm">/* this thread should not be frozen */</span><span class="cp">
-</span><span class="cp">#define PF_FROZEN	0x00010000	</span><span class="cm">/* frozen for system suspend */</span><span class="cp">
-</span><span class="cp">#define PF_FSTRANS	0x00020000	</span><span class="cm">/* inside a filesystem transaction */</span><span class="cp">
-</span><span class="cp">#define PF_KSWAPD	0x00040000	</span><span class="cm">/* I am kswapd */</span><span class="cp">
-</span><span class="cp">#define PF_SWAPOFF	0x00080000	</span><span class="cm">/* I am in swapoff */</span><span class="cp">
-</span><span class="cp">#define PF_LESS_THROTTLE 0x00100000	</span><span class="cm">/* Throttle me less: I clean memory */</span><span class="cp">
-</span><span class="cp">#define PF_BORROWED_MM	0x00200000	</span><span class="cm">/* I am a kthread doing use_mm */</span><span class="cp">
-</span><span class="cp">#define PF_RANDOMIZE	0x00400000	</span><span class="cm">/* randomize virtual address space */</span><span class="cp">
-</span><span class="cp">#define PF_SWAPWRITE	0x00800000	</span><span class="cm">/* Allowed to write to swap */</span><span class="cp">
-</span><span class="cp">#define PF_SPREAD_PAGE	0x01000000	</span><span class="cm">/* Spread page cache over cpuset */</span><span class="cp">
-</span><span class="cp">#define PF_SPREAD_SLAB	0x02000000	</span><span class="cm">/* Spread some slab caches over cpuset */</span><span class="cp">
-</span><span class="cp">#define PF_MEMPOLICY	0x10000000	</span><span class="cm">/* Non-default NUMA mempolicy */</span><span class="cp">
-</span><span class="cp">#define PF_MUTEX_TESTER	0x20000000	</span><span class="cm">/* Thread belongs to the rt mutex tester */</span><span class="cp">
-</span><span class="cp">#define PF_FREEZER_SKIP	0x40000000	</span><span class="cm">/* Freezer should not count it as freezeable */</span><span class="cp">
-</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="line"><span class="cl"><span class="cm">/*
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * Per process flags
+</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span>
+</span></span><span class="line"><span class="cl"><span class="cp">#define PF_ALIGNWARN	0x00000001	</span><span class="cm">/* Print alignment warning msgs */</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>					<span class="cm">/* Not implemented yet, only for 486*/</span>
+</span></span><span class="line"><span class="cl"><span class="cp">#define PF_STARTING	0x00000002	</span><span class="cm">/* being created */</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#define PF_EXITING	0x00000004	</span><span class="cm">/* getting shut down */</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#define PF_EXITPIDONE	0x00000008	</span><span class="cm">/* pi exit done on shut down */</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#define PF_FORKNOEXEC	0x00000040	</span><span class="cm">/* forked but didn&#39;t exec */</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#define PF_SUPERPRIV	0x00000100	</span><span class="cm">/* used super-user privileges */</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#define PF_DUMPCORE	0x00000200	</span><span class="cm">/* dumped core */</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#define PF_SIGNALED	0x00000400	</span><span class="cm">/* killed by a signal */</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#define PF_MEMALLOC	0x00000800	</span><span class="cm">/* Allocating memory */</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#define PF_FLUSHER	0x00001000	</span><span class="cm">/* responsible for disk writeback */</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#define PF_USED_MATH	0x00002000	</span><span class="cm">/* if unset the fpu must be initialized before use */</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#define PF_NOFREEZE	0x00008000	</span><span class="cm">/* this thread should not be frozen */</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#define PF_FROZEN	0x00010000	</span><span class="cm">/* frozen for system suspend */</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#define PF_FSTRANS	0x00020000	</span><span class="cm">/* inside a filesystem transaction */</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#define PF_KSWAPD	0x00040000	</span><span class="cm">/* I am kswapd */</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#define PF_SWAPOFF	0x00080000	</span><span class="cm">/* I am in swapoff */</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#define PF_LESS_THROTTLE 0x00100000	</span><span class="cm">/* Throttle me less: I clean memory */</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#define PF_BORROWED_MM	0x00200000	</span><span class="cm">/* I am a kthread doing use_mm */</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#define PF_RANDOMIZE	0x00400000	</span><span class="cm">/* randomize virtual address space */</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#define PF_SWAPWRITE	0x00800000	</span><span class="cm">/* Allowed to write to swap */</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#define PF_SPREAD_PAGE	0x01000000	</span><span class="cm">/* Spread page cache over cpuset */</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#define PF_SPREAD_SLAB	0x02000000	</span><span class="cm">/* Spread some slab caches over cpuset */</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#define PF_MEMPOLICY	0x10000000	</span><span class="cm">/* Non-default NUMA mempolicy */</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#define PF_MUTEX_TESTER	0x20000000	</span><span class="cm">/* Thread belongs to the rt mutex tester */</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#define PF_FREEZER_SKIP	0x40000000	</span><span class="cm">/* Freezer should not count it as freezeable */</span><span class="cp">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="34-进程之间的关系">3.4 进程之间的关系</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -382,21 +390,21 @@ define TASK_DEAD		128</p>
 </span><span class="lnt">14
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-c" data-lang="c"><span class="cm">/* 
-</span><span class="cm"> * pointers to (original) parent process, youngest child, younger sibling,
-</span><span class="cm"> * older sibling, respectively.  (p-&gt;father can be replaced with 
-</span><span class="cm"> * p-&gt;parent-&gt;pid)
-</span><span class="cm"> */</span>
-<span class="k">struct</span> <span class="n">task_struct</span> <span class="o">*</span><span class="n">real_parent</span><span class="p">;</span> <span class="cm">/* real parent process (when being debugged) */</span>
-<span class="k">struct</span> <span class="n">task_struct</span> <span class="o">*</span><span class="n">parent</span><span class="p">;</span>	<span class="cm">/* parent process */</span>
-<span class="cm">/*
-</span><span class="cm"> * children/sibling forms the list of my children plus the
-</span><span class="cm"> * tasks I&#39;m ptracing.
-</span><span class="cm"> */</span>
-<span class="k">struct</span> <span class="n">list_head</span> <span class="n">children</span><span class="p">;</span>	<span class="cm">/* list of my children */</span>
-<span class="k">struct</span> <span class="n">list_head</span> <span class="n">sibling</span><span class="p">;</span>	<span class="cm">/* linkage in my parent&#39;s children list */</span>
-<span class="k">struct</span> <span class="n">task_struct</span> <span class="o">*</span><span class="n">group_leader</span><span class="p">;</span>	<span class="cm">/* threadgroup leader */</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cm">/* 
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * pointers to (original) parent process, youngest child, younger sibling,
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * older sibling, respectively.  (p-&gt;father can be replaced with 
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * p-&gt;parent-&gt;pid)
+</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span>
+</span></span><span class="line"><span class="cl"><span class="k">struct</span> <span class="n">task_struct</span> <span class="o">*</span><span class="n">real_parent</span><span class="p">;</span> <span class="cm">/* real parent process (when being debugged) */</span>
+</span></span><span class="line"><span class="cl"><span class="k">struct</span> <span class="n">task_struct</span> <span class="o">*</span><span class="n">parent</span><span class="p">;</span>	<span class="cm">/* parent process */</span>
+</span></span><span class="line"><span class="cl"><span class="cm">/*
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * children/sibling forms the list of my children plus the
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * tasks I&#39;m ptracing.
+</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span>
+</span></span><span class="line"><span class="cl"><span class="k">struct</span> <span class="n">list_head</span> <span class="n">children</span><span class="p">;</span>	<span class="cm">/* list of my children */</span>
+</span></span><span class="line"><span class="cl"><span class="k">struct</span> <span class="n">list_head</span> <span class="n">sibling</span><span class="p">;</span>	<span class="cm">/* linkage in my parent&#39;s children list */</span>
+</span></span><span class="line"><span class="cl"><span class="k">struct</span> <span class="n">task_struct</span> <span class="o">*</span><span class="n">group_leader</span><span class="p">;</span>	<span class="cm">/* threadgroup leader */</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><blockquote>
 <p><strong>在Linux系统中，所有进程之间都有着直接或间接地联系，每个进程都有其父进程，也可能有零个或多个子进程。拥有同一父进程的所有进程具有兄弟关系。</strong></p>
@@ -406,7 +414,7 @@ define TASK_DEAD		128</p>
 <h3 id="351-优先级">3.5.1 优先级</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -416,20 +424,20 @@ define TASK_DEAD		128</p>
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-C" data-lang="C">	<span class="kt">int</span> <span class="n">prio</span><span class="p">,</span> <span class="n">static_prio</span><span class="p">,</span> <span class="n">normal_prio</span><span class="p">;</span>
-	<span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">rt_priority</span><span class="p">;</span>
-<span class="cm">/*
-</span><span class="cm">	prio: 用于保存动态优先级
-</span><span class="cm">	static_prio: 用于保存静态优先级, 可以通过nice系统调用来修改
-</span><span class="cm">	normal_prio: 它的值取决于静态优先级和调度策略
-</span><span class="cm">	priort_priority: 用于保存实时优先级
-</span><span class="cm">*/</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="line"><span class="cl">	<span class="kt">int</span> <span class="n">prio</span><span class="p">,</span> <span class="n">static_prio</span><span class="p">,</span> <span class="n">normal_prio</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">rt_priority</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="cm">/*
+</span></span></span><span class="line"><span class="cl"><span class="cm">	prio: 用于保存动态优先级
+</span></span></span><span class="line"><span class="cl"><span class="cm">	static_prio: 用于保存静态优先级, 可以通过nice系统调用来修改
+</span></span></span><span class="line"><span class="cl"><span class="cm">	normal_prio: 它的值取决于静态优先级和调度策略
+</span></span></span><span class="line"><span class="cl"><span class="cm">	priort_priority: 用于保存实时优先级
+</span></span></span><span class="line"><span class="cl"><span class="cm">*/</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="352-调度策略">3.5.2 调度策略</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -437,18 +445,18 @@ define TASK_DEAD		128</p>
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-C" data-lang="C"><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">policy</span><span class="p">;</span>
-<span class="n">cpumask_t</span> <span class="n">cpus_allowed</span><span class="p">;</span>
-<span class="cm">/*
-</span><span class="cm">	policy: 表示进程的调度策略
-</span><span class="cm">	cpus_allowed: 用于控制进程可以在哪个处理器上运行
-</span><span class="cm">*/</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="line"><span class="cl"><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">policy</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="n">cpumask_t</span> <span class="n">cpus_allowed</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="cm">/*
+</span></span></span><span class="line"><span class="cl"><span class="cm">	policy: 表示进程的调度策略
+</span></span></span><span class="line"><span class="cl"><span class="cm">	cpus_allowed: 用于控制进程可以在哪个处理器上运行
+</span></span></span><span class="line"><span class="cl"><span class="cm">*/</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p><code>policy</code>表示进程调度策略, 目前主要有以下五种策略</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -458,49 +466,49 @@ define TASK_DEAD		128</p>
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-c" data-lang="c"><span class="cm">/*
-</span><span class="cm"> * Scheduling policies
-</span><span class="cm"> */</span>
-<span class="cp">#define SCHED_NORMAL	0 </span><span class="c1">//按优先级进行调度
-</span><span class="c1"></span><span class="cp">#define SCHED_FIFO	    1 </span><span class="c1">//先进先出的调度算法
-</span><span class="c1"></span><span class="cp">#define SCHED_RR	   	2 </span><span class="c1">//时间片轮转的调度算法
-</span><span class="c1"></span><span class="cp">#define SCHED_BATCH		3 </span><span class="c1">//用于非交互的处理机消耗型的进程
-</span><span class="c1"></span><span class="cp">#define SCHED_IDLE        5</span><span class="c1">//系统负载很低时的调度算法 
-</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cm">/*
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * Scheduling policies
+</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span>
+</span></span><span class="line"><span class="cl"><span class="cp">#define SCHED_NORMAL	0 </span><span class="c1">//按优先级进行调度
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="cp">#define SCHED_FIFO	    1 </span><span class="c1">//先进先出的调度算法
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="cp">#define SCHED_RR	   	2 </span><span class="c1">//时间片轮转的调度算法
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="cp">#define SCHED_BATCH		3 </span><span class="c1">//用于非交互的处理机消耗型的进程
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="cp">#define SCHED_IDLE        5</span><span class="c1">//系统负载很低时的调度算法 
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><blockquote>
 <table>
 <thead>
 <tr>
-<th align="left">字段</th>
-<th align="left">描述</th>
+<th style="text-align:left">字段</th>
+<th style="text-align:left">描述</th>
 <th>所在调度器类</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">SCHED_NORMAL</td>
-<td align="left">（也叫SCHED_OTHER）用于普通进程，通过CFS调度器实现。SCHED_BATCH用于非交互的处理器消耗型进程。SCHED_IDLE是在系统负载很低时使用</td>
+<td style="text-align:left">SCHED_NORMAL</td>
+<td style="text-align:left">（也叫SCHED_OTHER）用于普通进程，通过CFS调度器实现。SCHED_BATCH用于非交互的处理器消耗型进程。SCHED_IDLE是在系统负载很低时使用</td>
 <td>CFS</td>
 </tr>
 <tr>
-<td align="left">SCHED_FIFO</td>
-<td align="left">先入先出调度算法（实时调度策略），相同优先级的任务先到先服务，高优先级的任务可以抢占低优先级的任务</td>
+<td style="text-align:left">SCHED_FIFO</td>
+<td style="text-align:left">先入先出调度算法（实时调度策略），相同优先级的任务先到先服务，高优先级的任务可以抢占低优先级的任务</td>
 <td>RT</td>
 </tr>
 <tr>
-<td align="left">SCHED_RR</td>
-<td align="left">轮流调度算法（实时调度策略），后 者提供 Roound-Robin 语义，采用时间片，相同优先级的任务当用完时间片会被放到队列尾部，以保证公平性，同样，高优先级的任务可以抢占低优先级的任务。不同要求的实时任务可以根据需要用sched_setscheduler()API 设置策略</td>
+<td style="text-align:left">SCHED_RR</td>
+<td style="text-align:left">轮流调度算法（实时调度策略），后 者提供 Roound-Robin 语义，采用时间片，相同优先级的任务当用完时间片会被放到队列尾部，以保证公平性，同样，高优先级的任务可以抢占低优先级的任务。不同要求的实时任务可以根据需要用sched_setscheduler()API 设置策略</td>
 <td>RT</td>
 </tr>
 <tr>
-<td align="left">SCHED_BATCH</td>
-<td align="left">SCHED_NORMAL普通进程策略的分化版本。采用分时策略，根据动态优先级(可用nice()API设置），分配 CPU 运算资源。注意：这类进程比上述两类实时进程优先级低，换言之，在有实时进程存在时，实时进程优先调度。但针对吞吐量优化</td>
+<td style="text-align:left">SCHED_BATCH</td>
+<td style="text-align:left">SCHED_NORMAL普通进程策略的分化版本。采用分时策略，根据动态优先级(可用nice()API设置），分配 CPU 运算资源。注意：这类进程比上述两类实时进程优先级低，换言之，在有实时进程存在时，实时进程优先调度。但针对吞吐量优化</td>
 <td>CFS</td>
 </tr>
 <tr>
-<td align="left">SCHED_IDLE</td>
-<td align="left">优先级最低，在系统空闲时才跑这类进程(如利用闲散计算机资源跑地外文明搜索，蛋白质结构分析等任务，是此调度策略的适用者）</td>
+<td style="text-align:left">SCHED_IDLE</td>
+<td style="text-align:left">优先级最低，在系统空闲时才跑这类进程(如利用闲散计算机资源跑地外文明搜索，蛋白质结构分析等任务，是此调度策略的适用者）</td>
 <td>CFS</td>
 </tr>
 </tbody>
@@ -510,7 +518,7 @@ define TASK_DEAD		128</p>
 <p>进程都拥有自己的资源，这些资源指的就是进程的地址空间，每个进程都有着自己的地址空间，在task_struct中，有关进程地址空间的定义如下：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -519,14 +527,14 @@ define TASK_DEAD		128</p>
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-c" data-lang="c"><span class="k">struct</span> <span class="n">mm_struct</span> <span class="o">*</span><span class="n">mm</span><span class="p">,</span> <span class="o">*</span><span class="n">active_mm</span><span class="p">;</span>
-
-<span class="cm">/*
-</span><span class="cm">	mm: 进程所拥有的用户空间内存描述符，内核线程无的mm为NULL
-</span><span class="cm">	active_mm: active_mm指向进程运行时所使用的内存描述符， 对于普通进程而言，这两个指针变量的值相同。但是内核线程kernel thread是没有进程地址空间的，所以内核线程的tsk-&gt;mm域是空（NULL）。但是内核必须知道用户空间包含了什么，因此它的active_mm成员被初始化为前一个运行进程的active_mm值。
-</span><span class="cm">	
-</span><span class="cm">*/</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="k">struct</span> <span class="n">mm_struct</span> <span class="o">*</span><span class="n">mm</span><span class="p">,</span> <span class="o">*</span><span class="n">active_mm</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="cm">/*
+</span></span></span><span class="line"><span class="cl"><span class="cm">	mm: 进程所拥有的用户空间内存描述符，内核线程无的mm为NULL
+</span></span></span><span class="line"><span class="cl"><span class="cm">	active_mm: active_mm指向进程运行时所使用的内存描述符， 对于普通进程而言，这两个指针变量的值相同。但是内核线程kernel thread是没有进程地址空间的，所以内核线程的tsk-&gt;mm域是空（NULL）。但是内核必须知道用户空间包含了什么，因此它的active_mm成员被初始化为前一个运行进程的active_mm值。
+</span></span></span><span class="line"><span class="cl"><span class="cm">	
+</span></span></span><span class="line"><span class="cl"><span class="cm">*/</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><blockquote>
 <p><strong>如果当前内核线程被调度之前运行的也是另外一个内核线程时候，那么其mm和avtive_mm都是NULL</strong>
@@ -544,7 +552,7 @@ define TASK_DEAD		128</p>
 在<code>/kernel/sched.c</code>文件下,  可运行队列被定义为<code>struct rq</code>,  每一个CPU都会拥有一个<code>struct rq</code>, 它主要被用来存储一些基本的用于调度的信息, 包括及时调度和CFS调度。在Linux kernel 2.6中, <code>struct rq</code>是一个非常重要的数据结构, 接下来我们介绍一下它的部分重要字段:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -564,32 +572,32 @@ define TASK_DEAD		128</p>
 </span><span class="lnt">18
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-C" data-lang="C">							<span class="cm">/*   选取出部分字段做注释   */</span>
-    <span class="c1">//runqueue的自旋锁，当对runqueue进行操作的时候，需要对其加锁。由于每个CPU都有一个runqueue，这样会大大减少竞争的机会
-</span><span class="c1"></span>    <span class="n">spinlock_t</span> <span class="n">lock</span><span class="p">;</span> 
-    
-    <span class="c1">// 此变量是用来记录active array中最早用完时间片的时间
-</span><span class="c1"></span>	<span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">expired_timestamp</span><span class="p">;</span> 
-    
-    <span class="c1">//记录该CPU上就绪进程总数，是active array和expired array进程总数和
-</span><span class="c1"></span>	<span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">nr_running</span><span class="p">;</span> 
-    
-    <span class="c1">// 记录该CPU运行以来发生的进程切换次数
-</span><span class="c1"></span>	<span class="kt">unsigned</span> <span class="kt">long</span> <span class="kt">long</span> <span class="n">nr_switches</span><span class="p">;</span> 
-    
-    <span class="c1">// 记录该CPU不可中断状态进程的个数
-</span><span class="c1"></span>	<span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">nr_uninterruptible</span><span class="p">;</span> 
-    
-    <span class="c1">// 这部分是rq的最最最重要的部分, 我将在下面仔细分析它们
-</span><span class="c1"></span>    <span class="k">struct</span> <span class="n">prio_array</span> <span class="o">*</span><span class="n">active</span><span class="p">,</span> <span class="o">*</span><span class="n">expired</span><span class="p">,</span> <span class="n">arrays</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="line"><span class="cl">							<span class="cm">/*   选取出部分字段做注释   */</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//runqueue的自旋锁，当对runqueue进行操作的时候，需要对其加锁。由于每个CPU都有一个runqueue，这样会大大减少竞争的机会
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">spinlock_t</span> <span class="n">lock</span><span class="p">;</span> 
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1">// 此变量是用来记录active array中最早用完时间片的时间
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">expired_timestamp</span><span class="p">;</span> 
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1">//记录该CPU上就绪进程总数，是active array和expired array进程总数和
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">nr_running</span><span class="p">;</span> 
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1">// 记录该CPU运行以来发生的进程切换次数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="kt">unsigned</span> <span class="kt">long</span> <span class="kt">long</span> <span class="n">nr_switches</span><span class="p">;</span> 
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1">// 记录该CPU不可中断状态进程的个数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">nr_uninterruptible</span><span class="p">;</span> 
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1">// 这部分是rq的最最最重要的部分, 我将在下面仔细分析它们
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">struct</span> <span class="n">prio_array</span> <span class="o">*</span><span class="n">active</span><span class="p">,</span> <span class="o">*</span><span class="n">expired</span><span class="p">,</span> <span class="n">arrays</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>###5.1.2  优先级数组(prio_array)
 Linux kernel 2.6版本中, 在rq中多加了两个按优先级排序的数组<code>active array </code>和<code>expired array</code> 。
 这两个队列的结构是<code>struct prio_array </code>, 它被定义在<code>/kernel/sched.c </code>中, 其数据结构为:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -598,14 +606,14 @@ Linux kernel 2.6版本中, 在rq中多加了两个按优先级排序的数组<co
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-C" data-lang="C"><span class="k">struct</span> <span class="n">prio_array</span> <span class="p">{</span>
-	<span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">nr_active</span><span class="p">;</span> <span class="c1">// 
-</span><span class="c1"></span>	<span class="n">DECLARE_BITMAP</span><span class="p">(</span><span class="n">bitmap</span><span class="p">,</span> <span class="n">MAX_PRIO</span><span class="o">+</span><span class="mi">1</span><span class="p">);</span> <span class="cm">/* include 1 bit for delimiter */</span>
-    <span class="cm">/*开辟MAX_PRIO + 1个bit的空间, 当某一个优先级的task正处于TASK_RUNNING状态时, 其优先级对应的二进制位将会被标记为1, 因此当你需要找此时需要运行的最高的优先级时, 只需要找到bitmap的哪一位被标记为1了即可*/</span>
-    
-	<span class="k">struct</span> <span class="n">list_head</span> <span class="n">queue</span><span class="p">[</span><span class="n">MAX_PRIO</span><span class="p">];</span> <span class="c1">// 每一个优先级都有一个list头
-</span><span class="c1"></span><span class="p">};</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="line"><span class="cl"><span class="k">struct</span> <span class="n">prio_array</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">nr_active</span><span class="p">;</span> <span class="c1">// 
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">DECLARE_BITMAP</span><span class="p">(</span><span class="n">bitmap</span><span class="p">,</span> <span class="n">MAX_PRIO</span><span class="o">+</span><span class="mi">1</span><span class="p">);</span> <span class="cm">/* include 1 bit for delimiter */</span>
+</span></span><span class="line"><span class="cl">    <span class="cm">/*开辟MAX_PRIO + 1个bit的空间, 当某一个优先级的task正处于TASK_RUNNING状态时, 其优先级对应的二进制位将会被标记为1, 因此当你需要找此时需要运行的最高的优先级时, 只需要找到bitmap的哪一位被标记为1了即可*/</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">	<span class="k">struct</span> <span class="n">list_head</span> <span class="n">queue</span><span class="p">[</span><span class="n">MAX_PRIO</span><span class="p">];</span> <span class="c1">// 每一个优先级都有一个list头
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">};</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p><code>Active array</code>表示的是CPU选择执行的运行进程队列, 在这个队列里的进程都有时间片剩余, <code>*active</code>指针总是指向它。
 <code>Expired array</code>则是用来存放在<code>Active array</code>中使用完时间片的进程, *expired指针总是指向它。
@@ -623,7 +631,7 @@ O(1)调度算法每次都是选取在active array数组中且优先级最高的�
 该过程定义在<code>schedule</code>函数中, 主要代码如下:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -637,19 +645,19 @@ O(1)调度算法每次都是选取在active array数组中且优先级最高的�
 </span><span class="lnt">12
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-C" data-lang="C"><span class="k">struct</span> <span class="n">task_struct</span> <span class="o">*</span><span class="n">prev</span><span class="p">,</span> <span class="o">*</span><span class="n">next</span><span class="p">;</span>
-<span class="k">struct</span> <span class="n">list_head</span> <span class="o">*</span><span class="n">queue</span><span class="p">;</span>
-<span class="k">struct</span> <span class="n">prio_array</span> <span class="o">*</span><span class="n">array</span><span class="p">;</span>
-<span class="kt">int</span> <span class="n">idx</span><span class="p">;</span>
-
-<span class="n">prev</span> <span class="o">=</span> <span class="n">current</span><span class="p">;</span>
-<span class="n">array</span> <span class="o">=</span> <span class="n">rq</span><span class="o">-&gt;</span><span class="n">active</span><span class="p">;</span>
-<span class="n">idx</span> <span class="o">=</span> <span class="n">sehed_find_first_bit</span><span class="p">(</span><span class="n">array</span><span class="o">-&gt;</span><span class="n">bitmap</span><span class="p">);</span> <span class="c1">//找到位图中第一个不为0的位的序号
-</span><span class="c1"></span><span class="n">queue</span> <span class="o">=</span> <span class="n">array</span><span class="o">-&gt;</span><span class="n">queue</span> <span class="o">+</span> <span class="n">idx</span><span class="p">;</span> <span class="c1">//得到对应的队列链表头
-</span><span class="c1"></span><span class="n">next</span> <span class="o">=</span> <span class="n">list_entry</span><span class="p">(</span><span class="n">queue</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">,</span> <span class="k">struct</span> <span class="n">task_struct</span><span class="p">,</span> <span class="n">run_list</span><span class="p">);</span> <span class="c1">//得到进程描述符
-</span><span class="c1"></span><span class="k">if</span> <span class="p">(</span><span class="n">prev</span> <span class="o">!=</span> <span class="n">next</span><span class="p">)</span> <span class="c1">//如果选出的进程和当前进程不是同一个,则交换上下文
-</span><span class="c1"></span>    <span class="n">context_switch</span><span class="p">();</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="line"><span class="cl"><span class="k">struct</span> <span class="n">task_struct</span> <span class="o">*</span><span class="n">prev</span><span class="p">,</span> <span class="o">*</span><span class="n">next</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">struct</span> <span class="n">list_head</span> <span class="o">*</span><span class="n">queue</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">struct</span> <span class="n">prio_array</span> <span class="o">*</span><span class="n">array</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">idx</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">prev</span> <span class="o">=</span> <span class="n">current</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="n">array</span> <span class="o">=</span> <span class="n">rq</span><span class="o">-&gt;</span><span class="n">active</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="n">idx</span> <span class="o">=</span> <span class="n">sehed_find_first_bit</span><span class="p">(</span><span class="n">array</span><span class="o">-&gt;</span><span class="n">bitmap</span><span class="p">);</span> <span class="c1">//找到位图中第一个不为0的位的序号
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">queue</span> <span class="o">=</span> <span class="n">array</span><span class="o">-&gt;</span><span class="n">queue</span> <span class="o">+</span> <span class="n">idx</span><span class="p">;</span> <span class="c1">//得到对应的队列链表头
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">next</span> <span class="o">=</span> <span class="n">list_entry</span><span class="p">(</span><span class="n">queue</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">,</span> <span class="k">struct</span> <span class="n">task_struct</span><span class="p">,</span> <span class="n">run_list</span><span class="p">);</span> <span class="c1">//得到进程描述符
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">if</span> <span class="p">(</span><span class="n">prev</span> <span class="o">!=</span> <span class="n">next</span><span class="p">)</span> <span class="c1">//如果选出的进程和当前进程不是同一个,则交换上下文
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">context_switch</span><span class="p">();</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h1 id="6-对该操作系统进程模型的看法">6. 对该操作系统进程模型的看法</h1>
 <p>该算法模型解决了在Linux kernel 2.4下找寻优先级最高的进程时(时间复杂度为O(n)), 花费时间过多的问题, 并且能够在O(1)的时间复杂度内实现其功能, 可以说是已经非常的优秀了, 但是此算法仍然存在着一些不足之处, 比如当系统中交互式进程过多时( 如桌面系统),此时系统运行的就不太理想, 希望今后能够有更多的大佬们可以改善此算法, 精益求精。</p>
@@ -688,7 +696,7 @@ O(1)调度算法每次都是选取在active array数组中且优先级最高的�
           <a href="/tags/linux/">linux</a>
           </div>
       <nav class="post-nav">
-        <a class="prev" href="/2019/05/28/githubpages-hexo%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E5%8D%9A%E5%AE%A2/">
+        <a class="prev" href="/2019/05/28/githubpages--hexo%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E5%8D%9A%E5%AE%A2/">
             <i class="iconfont icon-left"></i>
             <span class="prev-text nav-default">利用GithubPages &#43; Hexo搭建自己的博客</span>
             <span class="prev-text nav-mobile">上一篇</span>
@@ -750,13 +758,10 @@ O(1)调度算法每次都是选取在active array数组中且优先级最高的�
   <span class="copyright-year">
     &copy; 
     2019 - 
-    2020
-    <span class="heart">
-      <i class="iconfont icon-heart"></i>
-    </span>
-    <span class="author">ShangguanHong</span>
+    2022<span class="heart"><i class="iconfont icon-heart"></i></span><span>ShangguanHong</span>
   </span>
 </div>
+
     </footer>
 
     <div class="back-to-top" id="back-to-top">
@@ -767,7 +772,10 @@ O(1)调度算法每次都是选取在active array数组中且优先级最高的�
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
-<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script>
 
 
 

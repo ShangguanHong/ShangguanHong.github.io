@@ -16,18 +16,18 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="ShangguanHong" /><meta name="description" content="1. 启动Spring Boot项目  第一种方法是使用IDE(集成开发环境)，例如IDEA、Eclipse等，我这里使用的是IDEA，所以我只需点击右上角的Run按钮即可  使用maven命令行启动。在项目根目录下运行 mvn spring-boot:run即可   注意:使用mvn命令请确保电脑上安装了maven并且配置了maven环境变量，可以输入 mvn --version 查看是否 安装（成功安装如下图），若没安装自行百度，按照教程一步一步完成即可
-  使用jar文件启动。在项目根目录下运行命令 mvn clean install (clean表示清空之前编译的文件，install表示打包项目文件成为jar文件)
+<meta name="author" content="ShangguanHong" /><meta name="description" content="1. 启动Spring Boot项目 第一种方法是使用IDE(集成开发环境)，例如IDEA、Eclipse等，我这里使用的是IDEA，所以我只需点击右上角的Run按钮即可 使用maven命令行启动。在项目根目录下运行 mvn spring-boot:run即可 注意:使用mvn命令请确保电脑上安装了maven并且配置了maven环境变量，可以输入 mvn --version 查看是否 安装（成功安装如下图），若没安装自行百度，按照教程一步一步完成即可
+使用jar文件启动。在项目根目录下运行命令 mvn clean install (clean表示清空之前编译的文件，install表示打包项目文件成为jar文件)
 出现 BUILD SUCCESS 表示创建jar成功，之后可以在项目根目录下的target目录下查看到对应的jar文件
 然后执行 java -jar demo-0.0.1-SNAPSHOT.jar 运行该文件即可。
-  2. 编写配置文件" /><meta name="keywords" content="go, golang, hugo" />
+2. 编写配置文件" /><meta name="keywords" content="go, golang, hugo" />
 
 
 
 
 
 
-<meta name="generator" content="Hugo 0.67.1 with theme even" />
+<meta name="generator" content="Hugo 0.101.0 with theme even" />
 
 
 <link rel="canonical" href="https://shangguanhong.github.io/2019/05/31/spring-boot%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/" />
@@ -38,7 +38,8 @@
 <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
 
 
-<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+
+<link href="/sass/main.min.b5a744db6de49a86cadafb3b70f555ab443f83c307a483402259e94726b045ff.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
@@ -66,9 +67,10 @@
 
 2. 编写配置文件" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://shangguanhong.github.io/2019/05/31/spring-boot%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/" />
+<meta property="og:url" content="https://shangguanhong.github.io/2019/05/31/spring-boot%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2019-05-31T10:40:42+00:00" />
 <meta property="article:modified_time" content="2019-05-31T10:40:42+00:00" />
+
 <meta itemprop="name" content="Spring Boot配置文件">
 <meta itemprop="description" content="1. 启动Spring Boot项目
 
@@ -91,13 +93,9 @@
 然后执行 java -jar demo-0.0.1-SNAPSHOT.jar 运行该文件即可。
 
 
-2. 编写配置文件">
-<meta itemprop="datePublished" content="2019-05-31T10:40:42&#43;00:00" />
-<meta itemprop="dateModified" content="2019-05-31T10:40:42&#43;00:00" />
-<meta itemprop="wordCount" content="1386">
-
-
-
+2. 编写配置文件"><meta itemprop="datePublished" content="2019-05-31T10:40:42+00:00" />
+<meta itemprop="dateModified" content="2019-05-31T10:40:42+00:00" />
+<meta itemprop="wordCount" content="1407">
 <meta itemprop="keywords" content="Spring Boot," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Spring Boot配置文件"/>
 <meta name="twitter:description" content="1. 启动Spring Boot项目
@@ -156,12 +154,21 @@
         <li class="mobile-menu-item">Categories</li>
       </a>
   </ul>
+
+  
+
+
 </nav>
+
   <div class="container" id="mobile-panel">
     <header id="header" class="header">
         <div class="logo-wrapper">
   <a href="/" class="logo">赏我一个好梦如旧</a>
 </div>
+
+
+
+
 
 <nav class="site-navbar">
   <ul id="menu" class="menu">
@@ -176,6 +183,7 @@
       </li>
   </ul>
 </nav>
+
     </header>
 
     <main id="main" class="main">
@@ -191,7 +199,7 @@
         <div class="post-category">
             <a href="/categories/springboot%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"> SpringBoot学习笔记 </a>
             </div>
-          <span class="more-meta"> 约 1386 字 </span>
+          <span class="more-meta"> 约 1407 字 </span>
           <span class="more-meta"> 预计阅读 3 分钟 </span>
         
       </div>
@@ -241,13 +249,13 @@
 </ol>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">server.port=8081
-server.servlet.context-path=/demo
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">server.port=8081
+</span></span><span class="line"><span class="cl">server.servlet.context-path=/demo
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>​	第一句 <code>server.port=8081</code> ，表示修改服务端口号为8081（默认8080）</p>
 <p>​	第二句 <code>server.servlet.context-path</code> ，表示修改了根访问路径为/demo（默认为/），因此我们如果要访问之前的页面 <a href="http://localhost:8080/helloworld">http://localhost:8080/helloworld</a> 应该改成 <a href="http://localhost:8081/demo/helloworld">http://localhost:8081/demo/helloworld</a></p>
@@ -256,17 +264,17 @@ server.servlet.context-path=/demo
 </ol>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-yml" data-lang="yml"><span class="k">server</span><span class="p">:</span><span class="w"> 
-</span><span class="w">  </span><span class="k">port</span><span class="p">:</span><span class="w"> </span><span class="m">8081</span><span class="w">
-</span><span class="w">  </span><span class="k">servlet</span><span class="p">:</span><span class="w"> 
-</span><span class="w">    </span><span class="k">context-path</span><span class="p">:</span><span class="w"> </span>/demo<span class="w">
-</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-yml" data-lang="yml"><span class="line"><span class="cl"><span class="nt">server</span><span class="p">:</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="m">8081</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">servlet</span><span class="p">:</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">context-path</span><span class="p">:</span><span class="w"> </span><span class="l">/demo</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>​	作用与上述配置文件一致。 <strong>注意：使用yml格式的时候冒号后面需要有空格</strong></p>
 <ol start="4">
@@ -277,45 +285,45 @@ server.servlet.context-path=/demo
 </ol>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-yml" data-lang="yml"><span class="k">server</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="k">port</span><span class="p">:</span><span class="w"> </span><span class="m">8081</span><span class="w">
-</span><span class="w">  </span><span class="k">servlet</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span><span class="k">context-path</span><span class="p">:</span><span class="w"> </span>/dev<span class="w">
-</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-yml" data-lang="yml"><span class="line"><span class="cl"><span class="nt">server</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="m">8081</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">servlet</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">context-path</span><span class="p">:</span><span class="w"> </span><span class="l">/dev</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>​	application-pro.yml内容如下</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-yml" data-lang="yml"><span class="k">server</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="k">port</span><span class="p">:</span><span class="w"> </span><span class="m">8082</span><span class="w">
-</span><span class="w">  </span><span class="k">servlet</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span><span class="k">context-path</span><span class="p">:</span><span class="w"> </span>/pro<span class="w">
-</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-yml" data-lang="yml"><span class="line"><span class="cl"><span class="nt">server</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="m">8082</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">servlet</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">context-path</span><span class="p">:</span><span class="w"> </span><span class="l">/pro</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>​	先测试dev环境，修改application.yml内容如下</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-yml" data-lang="yml"><span class="k">spring</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="k">profiles</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span><span class="k">active</span><span class="p">:</span><span class="w"> </span>dev<span class="w">
-</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-yml" data-lang="yml"><span class="line"><span class="cl"><span class="nt">spring</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">profiles</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">active</span><span class="p">:</span><span class="w"> </span><span class="l">dev</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>​	运行项目，看到项目输出信息如下</p>
 <p><img src="https://raw.githubusercontent.com/ShangguanHong/PictureBed/master/1559277909574.png" alt="1559277909574"></p>
@@ -324,15 +332,15 @@ server.servlet.context-path=/demo
 <p>​	接下来测试pro环境，修改application.yml内容如下</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-yml" data-lang="yml"><span class="k">spring</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="k">profiles</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span><span class="k">active</span><span class="p">:</span><span class="w"> </span>pro<span class="w">
-</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-yml" data-lang="yml"><span class="line"><span class="cl"><span class="nt">spring</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">profiles</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">active</span><span class="p">:</span><span class="w"> </span><span class="l">pro</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>​	运行项目，看到项目输出如下信息</p>
 <p><img src="https://raw.githubusercontent.com/ShangguanHong/PictureBed/master/1559278053418.png" alt="1559278053418"></p>
@@ -364,7 +372,7 @@ server.servlet.context-path=/demo
 </ol>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -386,27 +394,27 @@ server.servlet.context-path=/demo
 </span><span class="lnt">20
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="nn">com.example.demo</span><span class="o">;</span>
-
-<span class="kn">import</span> <span class="nn">org.springframework.boot.context.properties.ConfigurationProperties</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">org.springframework.stereotype.Component</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">lombok.Data</span><span class="o">;</span>
-
-<span class="cm">/**
-</span><span class="cm"> * @Author sgh
-</span><span class="cm"> * @Date 2019/5/31 13:25
-</span><span class="cm"> * @Description: No Description
-</span><span class="cm"> */</span>
-
-<span class="nd">@Data</span> <span class="c1">// 减少不必要的代码，详情参看 https://blog.csdn.net/qq_37433657/article/details/83275051
-</span><span class="c1"></span><span class="nd">@Component</span> <span class="c1">// 把普通pojo实例化到spring容器中
-</span><span class="c1"></span><span class="nd">@ConfigurationProperties</span><span class="o">(</span><span class="n">prefix</span> <span class="o">=</span> <span class="s">&#34;user&#34;</span><span class="o">)</span> <span class="c1">// 将配置文件中前缀为user封装成对象
-</span><span class="c1"></span>
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">User</span> <span class="o">{</span>
-    <span class="kd">private</span> <span class="n">String</span> <span class="n">username</span><span class="o">;</span>
-    <span class="kd">private</span> <span class="n">Integer</span> <span class="n">age</span><span class="o">;</span>
-<span class="o">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kn">package</span> <span class="nn">com.example.demo</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">org.springframework.boot.context.properties.ConfigurationProperties</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">org.springframework.stereotype.Component</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">lombok.Data</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * @Author sgh
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * @Date 2019/5/31 13:25
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * @Description: No Description
+</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nd">@Data</span> <span class="c1">// 减少不必要的代码，详情参看 https://blog.csdn.net/qq_37433657/article/details/83275051
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nd">@Component</span> <span class="c1">// 把普通pojo实例化到spring容器中
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nd">@ConfigurationProperties</span><span class="o">(</span><span class="n">prefix</span> <span class="o">=</span> <span class="s">&#34;user&#34;</span><span class="o">)</span> <span class="c1">// 将配置文件中前缀为user封装成对象
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">User</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">String</span> <span class="n">username</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">Integer</span> <span class="n">age</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><ol start="3">
 <li>在application-dev.yml中添加如下字段</li>
@@ -417,7 +425,7 @@ server.servlet.context-path=/demo
 </ol>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -425,13 +433,13 @@ server.servlet.context-path=/demo
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Autowired</span> <span class="c1">// 自动注入
-</span><span class="c1"></span><span class="kd">private</span> <span class="n">User</span> <span class="n">user</span><span class="o">;</span>
-<span class="nd">@RequestMapping</span><span class="o">(</span><span class="n">value</span> <span class="o">=</span> <span class="s">&#34;/test1&#34;</span><span class="o">,</span> <span class="n">method</span> <span class="o">=</span> <span class="n">RequestMethod</span><span class="o">.</span><span class="na">GET</span><span class="o">)</span>
-<span class="kd">public</span> <span class="n">User</span> <span class="nf">Test1</span><span class="o">()</span> <span class="o">{</span>
-    <span class="k">return</span> <span class="n">user</span><span class="o">;</span>
-<span class="o">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="nd">@Autowired</span> <span class="c1">// 自动注入
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">private</span> <span class="n">User</span> <span class="n">user</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="nd">@RequestMapping</span><span class="o">(</span><span class="n">value</span> <span class="o">=</span> <span class="s">&#34;/test1&#34;</span><span class="o">,</span> <span class="n">method</span> <span class="o">=</span> <span class="n">RequestMethod</span><span class="o">.</span><span class="na">GET</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="n">User</span> <span class="nf">Test1</span><span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">user</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><ol start="5">
 <li>浏览器输入<a href="http://localhost:8081/dev/test1">http://localhost:8081/dev/test1</a> 可以看到对应的数据成功读取</li>
@@ -528,13 +536,10 @@ server.servlet.context-path=/demo
   <span class="copyright-year">
     &copy; 
     2019 - 
-    2020
-    <span class="heart">
-      <i class="iconfont icon-heart"></i>
-    </span>
-    <span class="author">ShangguanHong</span>
+    2022<span class="heart"><i class="iconfont icon-heart"></i></span><span>ShangguanHong</span>
   </span>
 </div>
+
     </footer>
 
     <div class="back-to-top" id="back-to-top">
@@ -545,7 +550,10 @@ server.servlet.context-path=/demo
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
-<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script>
 
 
 

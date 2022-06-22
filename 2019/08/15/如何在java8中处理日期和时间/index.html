@@ -18,7 +18,7 @@
 
 <meta name="author" content="ShangguanHong" /><meta name="description" content="1. 前言 在 Java 8 之前处理日期时间的 API 存在着一些诸如非线程安全、设计差、时区处理麻烦等问题，为了解决这一系列的问题，Java 8 推出了全新的日期时间 API 供使用，包路径为 java.time
 其中最常使用的为下面的几个类
- Instant：瞬时实例 LocalDate：本地日期，不包含具体时间 LocalTime：本地时间，不包含日期 LocalDateTime：组合了日期和时间，但不包含时差和时区信息。 ZonedDateTime：最完整的日期时间，包含时区和相对UTC或格林威治的时差。  下面将举出具体例子来详细介绍
+Instant：瞬时实例 LocalDate：本地日期，不包含具体时间 LocalTime：本地时间，不包含日期 LocalDateTime：组合了日期和时间，但不包含时差和时区信息。 ZonedDateTime：最完整的日期时间，包含时区和相对UTC或格林威治的时差。 下面将举出具体例子来详细介绍
 " /><meta name="keywords" content="go, golang, hugo" />
 
 
@@ -26,7 +26,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.67.1 with theme even" />
+<meta name="generator" content="Hugo 0.101.0 with theme even" />
 
 
 <link rel="canonical" href="https://shangguanhong.github.io/2019/08/15/%E5%A6%82%E4%BD%95%E5%9C%A8java8%E4%B8%AD%E5%A4%84%E7%90%86%E6%97%A5%E6%9C%9F%E5%92%8C%E6%97%B6%E9%97%B4/" />
@@ -37,7 +37,8 @@
 <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
 
 
-<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+
+<link href="/sass/main.min.b5a744db6de49a86cadafb3b70f555ab443f83c307a483402259e94726b045ff.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
@@ -54,9 +55,10 @@ ZonedDateTime：最完整的日期时间，包含时区和相对UTC或格林威�
 
 下面将举出具体例子来详细介绍" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://shangguanhong.github.io/2019/08/15/%E5%A6%82%E4%BD%95%E5%9C%A8java8%E4%B8%AD%E5%A4%84%E7%90%86%E6%97%A5%E6%9C%9F%E5%92%8C%E6%97%B6%E9%97%B4/" />
+<meta property="og:url" content="https://shangguanhong.github.io/2019/08/15/%E5%A6%82%E4%BD%95%E5%9C%A8java8%E4%B8%AD%E5%A4%84%E7%90%86%E6%97%A5%E6%9C%9F%E5%92%8C%E6%97%B6%E9%97%B4/" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2019-08-15T22:11:56+00:00" />
 <meta property="article:modified_time" content="2019-08-15T22:11:56+00:00" />
+
 <meta itemprop="name" content="如何在Java8中处理日期和时间">
 <meta itemprop="description" content="1. 前言
 在 Java 8 之前处理日期时间的 API 存在着一些诸如非线程安全、设计差、时区处理麻烦等问题，为了解决这一系列的问题，Java 8 推出了全新的日期时间 API 供使用，包路径为 java.time
@@ -68,13 +70,9 @@ LocalTime：本地时间，不包含日期
 LocalDateTime：组合了日期和时间，但不包含时差和时区信息。
 ZonedDateTime：最完整的日期时间，包含时区和相对UTC或格林威治的时差。
 
-下面将举出具体例子来详细介绍">
-<meta itemprop="datePublished" content="2019-08-15T22:11:56&#43;00:00" />
-<meta itemprop="dateModified" content="2019-08-15T22:11:56&#43;00:00" />
-<meta itemprop="wordCount" content="3399">
-
-
-
+下面将举出具体例子来详细介绍"><meta itemprop="datePublished" content="2019-08-15T22:11:56+00:00" />
+<meta itemprop="dateModified" content="2019-08-15T22:11:56+00:00" />
+<meta itemprop="wordCount" content="3398">
 <meta itemprop="keywords" content="java," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="如何在Java8中处理日期和时间"/>
 <meta name="twitter:description" content="1. 前言
@@ -122,12 +120,21 @@ ZonedDateTime：最完整的日期时间，包含时区和相对UTC或格林威�
         <li class="mobile-menu-item">Categories</li>
       </a>
   </ul>
+
+  
+
+
 </nav>
+
   <div class="container" id="mobile-panel">
     <header id="header" class="header">
         <div class="logo-wrapper">
   <a href="/" class="logo">赏我一个好梦如旧</a>
 </div>
+
+
+
+
 
 <nav class="site-navbar">
   <ul id="menu" class="menu">
@@ -142,6 +149,7 @@ ZonedDateTime：最完整的日期时间，包含时区和相对UTC或格林威�
       </li>
   </ul>
 </nav>
+
     </header>
 
     <main id="main" class="main">
@@ -157,7 +165,7 @@ ZonedDateTime：最完整的日期时间，包含时区和相对UTC或格林威�
         <div class="post-category">
             <a href="/categories/java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"> Java学习笔记 </a>
             </div>
-          <span class="more-meta"> 约 3399 字 </span>
+          <span class="more-meta"> 约 3398 字 </span>
           <span class="more-meta"> 预计阅读 7 分钟 </span>
         
       </div>
@@ -209,18 +217,18 @@ ZonedDateTime：最完整的日期时间，包含时区和相对UTC或格林威�
 <p>Java 8 中的 <code>LocalDate</code> 用于表示当天日期。和 <code>java.util.Date</code> 不同，它只有日期，不包含时间。当你仅需要表示日期时就用这个类。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">LocalDate</span> <span class="n">now</span> <span class="o">=</span> <span class="n">LocalDate</span><span class="o">.</span><span class="na">now</span><span class="o">();</span> <span class="c1">// 2019-08-15
-</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">LocalDate</span> <span class="n">now</span> <span class="o">=</span> <span class="n">LocalDate</span><span class="o">.</span><span class="na">now</span><span class="o">();</span> <span class="c1">// 2019-08-15
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>上面的代码创建了当天的日期，不含时间信息。打印出的日期格式非常友好，不像老的 Date 类打印出一堆没有格式化的信息。</p>
 <h2 id="2-获取年月日信息">2. 获取年、月、日信息</h2>
 <p><code>LocalDate</code> 类提供了获取年、月、日的快捷方法，其实例还包含很多其它的日期属性。通过调用这些方法就可以很方便的得到需要的日期信息，不用像以前一样需要依赖 <code>java.util.Calendar</code> 类了</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -229,51 +237,51 @@ ZonedDateTime：最完整的日期时间，包含时区和相对UTC或格林威�
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">LocalDate</span> <span class="n">now</span> <span class="o">=</span> <span class="n">LocalDate</span><span class="o">.</span><span class="na">now</span><span class="o">();</span> <span class="c1">// 2019-08-15
-</span><span class="c1">// 获取年份 2019
-</span><span class="c1"></span><span class="kt">int</span> <span class="n">year</span> <span class="o">=</span> <span class="n">now</span><span class="o">.</span><span class="na">getYear</span><span class="o">();</span>
-<span class="c1">// 获取月份 8
-</span><span class="c1"></span><span class="kt">int</span> <span class="n">monthValue</span> <span class="o">=</span> <span class="n">now</span><span class="o">.</span><span class="na">getMonthValue</span><span class="o">();</span>
-<span class="c1">// 从月份中获取天数 15
-</span><span class="c1"></span><span class="kt">int</span> <span class="n">dayOfMonth</span> <span class="o">=</span> <span class="n">now</span><span class="o">.</span><span class="na">getDayOfMonth</span><span class="o">();</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">LocalDate</span> <span class="n">now</span> <span class="o">=</span> <span class="n">LocalDate</span><span class="o">.</span><span class="na">now</span><span class="o">();</span> <span class="c1">// 2019-08-15
+</span></span></span><span class="line"><span class="cl"><span class="c1">// 获取年份 2019
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">int</span> <span class="n">year</span> <span class="o">=</span> <span class="n">now</span><span class="o">.</span><span class="na">getYear</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 获取月份 8
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">int</span> <span class="n">monthValue</span> <span class="o">=</span> <span class="n">now</span><span class="o">.</span><span class="na">getMonthValue</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 从月份中获取天数 15
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">int</span> <span class="n">dayOfMonth</span> <span class="o">=</span> <span class="n">now</span><span class="o">.</span><span class="na">getDayOfMonth</span><span class="o">();</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="3-处理特定日期">3. 处理特定日期</h2>
 <p>在第一个例子里，我们通过静态工厂方法 now() 非常容易地创建了当天日期，另外还可以调用另一个静态工厂方法 <code>LocalDate.of()</code> 创建任意日期， 该方法需要传入年、月、日做参数，返回对应的 <code>LocalDate</code> 实例。这个方法的好处是没再犯老 <code>API</code> 的设计错误，比如年度起始于 1900，月份是从 0 开始等等。日期所见即所得，就像下面这个例子表示了 8 月 15 日，没有任何隐藏机关。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">LocalDate</span> <span class="n">date</span> <span class="o">=</span> <span class="n">LocalDate</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="n">2019</span><span class="o">,</span> <span class="n">8</span><span class="o">,</span> <span class="n">15</span><span class="o">);</span>
-<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">date</span><span class="o">);</span> <span class="c1">// 2019-08-15
-</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">LocalDate</span> <span class="n">date</span> <span class="o">=</span> <span class="n">LocalDate</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="n">2019</span><span class="o">,</span> <span class="n">8</span><span class="o">,</span> <span class="n">15</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">date</span><span class="o">);</span> <span class="c1">// 2019-08-15
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>可以看到创建的日期完全符合预期，与写入的 2018 年 6 月 20 日完全一致。</p>
 <h2 id="4-判断两个日期是否相等">4. 判断两个日期是否相等</h2>
 <p>现实生活中有一类时间处理就是判断两个日期是否相等。你常常会检查今天是不是个特殊的日子，比如生日、纪念日或非交易日。这时就需要把指定的日期与某个特定日期做比较，例如判断这一天是否是假期。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">LocalDate</span> <span class="n">now</span> <span class="o">=</span> <span class="n">LocalDate</span><span class="o">.</span><span class="na">now</span><span class="o">();</span>
-<span class="n">LocalDate</span> <span class="n">date</span> <span class="o">=</span> <span class="n">LocalDate</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="n">2019</span><span class="o">,</span> <span class="n">8</span><span class="o">,</span> <span class="n">15</span><span class="o">);</span>
-<span class="k">if</span> <span class="o">(</span><span class="n">date</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">now</span><span class="o">))</span> <span class="o">{</span>
-	<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;同一天&#34;</span><span class="o">);</span>
-<span class="o">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">LocalDate</span> <span class="n">now</span> <span class="o">=</span> <span class="n">LocalDate</span><span class="o">.</span><span class="na">now</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl"><span class="n">LocalDate</span> <span class="n">date</span> <span class="o">=</span> <span class="n">LocalDate</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="n">2019</span><span class="o">,</span> <span class="n">8</span><span class="o">,</span> <span class="n">15</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="o">(</span><span class="n">date</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">now</span><span class="o">))</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">	<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;同一天&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="5-检查周期性事件">5. 检查周期性事件</h2>
 <p>Java 中另一个日期时间的处理就是检查类似每月账单、结婚纪念日、<code>EMI</code>日或保险缴费日这些周期性事件。如果你在电子商务网站工作，那么一定会有一个模块用来在圣诞节、感恩节这种节日时向客户发送问候邮件。Java 中如何检查这些节日或其它周期性事件呢？答案就是 <code>MonthDay</code> 类。这个类组合了月份和日，去掉了年，这意味着你可以用它判断每年都会发生事件。和这个类相似的还有一个 <code>YearMonth</code> 类。这些类也都是不可变并且线程安全的值类型。下面我们通过 <code>MonthDay</code> 来检查周期性事件：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -286,73 +294,71 @@ ZonedDateTime：最完整的日期时间，包含时区和相对UTC或格林威�
 </span><span class="lnt">11
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">LocalDate</span> <span class="n">now</span> <span class="o">=</span> <span class="n">LocalDate</span><span class="o">.</span><span class="na">now</span><span class="o">();</span>
-<span class="n">LocalDate</span> <span class="n">dateOfBirth</span> <span class="o">=</span> <span class="n">LocalDate</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="n">2019</span><span class="o">,</span> <span class="n">8</span><span class="o">,</span> <span class="n">15</span><span class="o">);</span>
-<span class="c1">// 根据月份和日期创建 YearMonth
-</span><span class="c1"></span><span class="n">MonthDay</span> <span class="n">birthday</span> <span class="o">=</span> <span class="n">MonthDay</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="n">dateOfBirth</span><span class="o">.</span><span class="na">getMonth</span><span class="o">(),</span> <span class="n">dateOfBirth</span><span class="o">.</span><span class="na">getDayOfMonth</span><span class="o">());</span>
-<span class="c1">// 直接从一个 LocalDate 实例创建 YearMonth
-</span><span class="c1"></span><span class="n">MonthDay</span> <span class="n">currentMonthDay</span> <span class="o">=</span> <span class="n">MonthDay</span><span class="o">.</span><span class="na">from</span><span class="o">(</span><span class="n">now</span><span class="o">);</span>
-<span class="k">if</span> <span class="o">(</span><span class="n">currentMonthDay</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">birthday</span><span class="o">))</span> <span class="o">{</span>
-	<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;Happy Birthday&#34;</span><span class="o">);</span>
-<span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
-	<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;Sorry, today is not your birthday&#34;</span><span class="o">);</span>
-<span class="o">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">LocalDate</span> <span class="n">now</span> <span class="o">=</span> <span class="n">LocalDate</span><span class="o">.</span><span class="na">now</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl"><span class="n">LocalDate</span> <span class="n">dateOfBirth</span> <span class="o">=</span> <span class="n">LocalDate</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="n">2019</span><span class="o">,</span> <span class="n">8</span><span class="o">,</span> <span class="n">15</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 根据月份和日期创建 YearMonth
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">MonthDay</span> <span class="n">birthday</span> <span class="o">=</span> <span class="n">MonthDay</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="n">dateOfBirth</span><span class="o">.</span><span class="na">getMonth</span><span class="o">(),</span> <span class="n">dateOfBirth</span><span class="o">.</span><span class="na">getDayOfMonth</span><span class="o">());</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 直接从一个 LocalDate 实例创建 YearMonth
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">MonthDay</span> <span class="n">currentMonthDay</span> <span class="o">=</span> <span class="n">MonthDay</span><span class="o">.</span><span class="na">from</span><span class="o">(</span><span class="n">now</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="o">(</span><span class="n">currentMonthDay</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">birthday</span><span class="o">))</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">	<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;Happy Birthday&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">	<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;Sorry, today is not your birthday&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="6-获取当前时间">6. 获取当前时间</h2>
 <p>与 Java 8 获取日期的例子很像，获取时间使用的是 <code>LocalTime</code> 类，一个只有时间没有日期的 <code>LocalDate</code> 近亲。可以调用静态工厂方法 now() 来获取当前时间。默认的格式是 <code>hh:mm:ss:nnn</code>。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">LocalTime</span> <span class="n">localTime</span> <span class="o">=</span> <span class="n">LocalTime</span><span class="o">.</span><span class="na">now</span><span class="o">();</span> 
-<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">localTime</span><span class="o">);</span> <span class="c1">// 22:58:04.238
-</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">LocalTime</span> <span class="n">localTime</span> <span class="o">=</span> <span class="n">LocalTime</span><span class="o">.</span><span class="na">now</span><span class="o">();</span> 
+</span></span><span class="line"><span class="cl"><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">localTime</span><span class="o">);</span> <span class="c1">// 22:58:04.238
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>可以看到当前时间就只包含时间信息，没有日期。</p>
 <h2 id="7-在现有的时间上增加小时">7. 在现有的时间上增加小时</h2>
 <p>通过增加小时、分、秒来计算将来的时间很常见。Java 8 除了不变类型和线程安全的好处之外，还提供了更好的 <code>plusHours()</code> 方法替换 add()，并且是兼容的。注意，这些方法返回一个全新的 <code>LocalTime</code> 实例，由于其不可变性，返回后一定要用变量赋值。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">LocalTime</span> <span class="n">localTime</span> <span class="o">=</span> <span class="n">LocalTime</span><span class="o">.</span><span class="na">now</span><span class="o">();</span>
-<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">localTime</span><span class="o">);</span> <span class="c1">// 23:00:25.913
-</span><span class="c1"></span><span class="n">LocalTime</span> <span class="n">localTime1</span> <span class="o">=</span> <span class="n">localTime</span><span class="o">.</span><span class="na">plusHours</span><span class="o">(</span><span class="n">2</span><span class="o">);</span><span class="c1">//增加2小时
-</span><span class="c1"></span><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">localTime1</span><span class="o">);</span> <span class="c1">// 01:00:25.913
-</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">LocalTime</span> <span class="n">localTime</span> <span class="o">=</span> <span class="n">LocalTime</span><span class="o">.</span><span class="na">now</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl"><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">localTime</span><span class="o">);</span> <span class="c1">// 23:00:25.913
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">LocalTime</span> <span class="n">localTime1</span> <span class="o">=</span> <span class="n">localTime</span><span class="o">.</span><span class="na">plusHours</span><span class="o">(</span><span class="n">2</span><span class="o">);</span><span class="c1">//增加2小时
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">localTime1</span><span class="o">);</span> <span class="c1">// 01:00:25.913
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>可以看到，新的时间在当前时间 <code>23:00:25.913</code> 的基础上增加了 2 个小时。</p>
 <h2 id="8-计算一周后的日期">8. 计算一周后的日期</h2>
 <p>和上个例子计算两小时以后的时间类似，这个例子会计算一周后的日期。<code>LocalDate</code> 日期不包含时间信息，它的 plus() 方法用来增加天、周、月，<code>ChronoUnit</code> 类声明了这些时间单位。由于 <code>LocalDate</code> 也是不变类型，返回后一定要用变量赋值。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
-</span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">LocalDate</span> <span class="n">now</span> <span class="o">=</span> <span class="n">LocalDate</span><span class="o">.</span><span class="na">now</span><span class="o">();</span>
-<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">now</span><span class="o">);</span> <span class="c1">// 2019-08-15
-</span><span class="c1"></span><span class="n">LocalDate</span> <span class="n">plusDate</span> <span class="o">=</span> <span class="n">now</span><span class="o">.</span><span class="na">plus</span><span class="o">(</span><span class="n">1</span><span class="o">,</span> <span class="n">ChronoUnit</span><span class="o">.</span><span class="na">WEEKS</span><span class="o">);</span>
-<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">plusDate</span><span class="o">);</span> <span class="c1">// 2019-08-22
-</span><span class="c1"></span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">LocalDate</span> <span class="n">now</span> <span class="o">=</span> <span class="n">LocalDate</span><span class="o">.</span><span class="na">now</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl"><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">now</span><span class="o">);</span> <span class="c1">// 2019-08-15
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">LocalDate</span> <span class="n">plusDate</span> <span class="o">=</span> <span class="n">now</span><span class="o">.</span><span class="na">plus</span><span class="o">(</span><span class="n">1</span><span class="o">,</span> <span class="n">ChronoUnit</span><span class="o">.</span><span class="na">WEEKS</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">plusDate</span><span class="o">);</span> <span class="c1">// 2019-08-22
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>可以看到新日期离当天日期是 7 天，也就是一周。你可以用同样的方法增加 1 个月、1 年、1 小时、1 分钟甚至一个世纪，更多选项可以查看 Java 8 <code>API</code> 中的 <code>ChronoUnit</code> 类。</p>
 <h2 id="9-计算一年前或一年后的日期">9. 计算一年前或一年后的日期</h2>
 <p>继续上面的例子，上个例子中我们通过 <code>LocalDate</code> 的 plus() 方法增加天数、周数或月数，这个例子我们利用 minus() 方法计算一年前的日期。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -360,35 +366,35 @@ ZonedDateTime：最完整的日期时间，包含时区和相对UTC或格林威�
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">LocalDate</span> <span class="n">now</span> <span class="o">=</span> <span class="n">LocalDate</span><span class="o">.</span><span class="na">now</span><span class="o">();</span>
-<span class="n">LocalDate</span> <span class="n">minusDate</span> <span class="o">=</span> <span class="n">now</span><span class="o">.</span><span class="na">minus</span><span class="o">(</span><span class="n">1</span><span class="o">,</span> <span class="n">ChronoUnit</span><span class="o">.</span><span class="na">YEARS</span><span class="o">);</span>
-<span class="n">LocalDate</span> <span class="n">plusDate1</span> <span class="o">=</span> <span class="n">now</span><span class="o">.</span><span class="na">plus</span><span class="o">(</span><span class="n">1</span><span class="o">,</span> <span class="n">ChronoUnit</span><span class="o">.</span><span class="na">YEARS</span><span class="o">);</span>
-<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">now</span><span class="o">);</span> <span class="c1">// 2019-08-15
-</span><span class="c1"></span><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">minusDate</span><span class="o">);</span> <span class="c1">// 2018-08-15
-</span><span class="c1"></span><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">plusDate1</span><span class="o">);</span> <span class="c1">// 2020-08-15
-</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">LocalDate</span> <span class="n">now</span> <span class="o">=</span> <span class="n">LocalDate</span><span class="o">.</span><span class="na">now</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl"><span class="n">LocalDate</span> <span class="n">minusDate</span> <span class="o">=</span> <span class="n">now</span><span class="o">.</span><span class="na">minus</span><span class="o">(</span><span class="n">1</span><span class="o">,</span> <span class="n">ChronoUnit</span><span class="o">.</span><span class="na">YEARS</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">LocalDate</span> <span class="n">plusDate1</span> <span class="o">=</span> <span class="n">now</span><span class="o">.</span><span class="na">plus</span><span class="o">(</span><span class="n">1</span><span class="o">,</span> <span class="n">ChronoUnit</span><span class="o">.</span><span class="na">YEARS</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">now</span><span class="o">);</span> <span class="c1">// 2019-08-15
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">minusDate</span><span class="o">);</span> <span class="c1">// 2018-08-15
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">plusDate1</span><span class="o">);</span> <span class="c1">// 2020-08-15
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="10-clock-时钟类">10. Clock 时钟类</h2>
 <p>Java 8 增加了一个 Clock 时钟类用于获取当时的时间戳，或当前时区下的日期时间信息。以前用到 <code>System.currentTimeInMillis()</code> 和 <code>TimeZone.getDefault()</code> 的地方都可用 Clock 替换。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">Clock</span><span class="o">.</span><span class="na">systemUTC</span><span class="o">().</span><span class="na">millis</span><span class="o">());</span> <span class="c1">// 1565881666099
-</span><span class="c1"></span><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">());</span> <span class="c1">// 1565881666099
-</span><span class="c1"></span><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">Clock</span><span class="o">.</span><span class="na">systemUTC</span><span class="o">());</span> <span class="c1">// SystemClock[Z]
-</span><span class="c1"></span><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">Clock</span><span class="o">.</span><span class="na">systemDefaultZone</span><span class="o">());</span> <span class="c1">// SystemClock[Asia/Shanghai]
-</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">Clock</span><span class="o">.</span><span class="na">systemUTC</span><span class="o">().</span><span class="na">millis</span><span class="o">());</span> <span class="c1">// 1565881666099
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">());</span> <span class="c1">// 1565881666099
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">Clock</span><span class="o">.</span><span class="na">systemUTC</span><span class="o">());</span> <span class="c1">// SystemClock[Z]
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">Clock</span><span class="o">.</span><span class="na">systemDefaultZone</span><span class="o">());</span> <span class="c1">// SystemClock[Asia/Shanghai]
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="11-判断日期是早于还是晚于另一个日期">11. 判断日期是早于还是晚于另一个日期</h2>
 <p>另一个工作中常见的操作就是如何判断给定的一个日期是大于某天还是小于某天？在 Java 8 中，<code>LocalDate</code> 类有两类方法 <code>isBefore()</code> 和 <code>isAfter()</code> 用于比较日期。调用 <code>isBefore()</code> 方法时，如果给定日期小于当前日期则返回 true。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -398,151 +404,151 @@ ZonedDateTime：最完整的日期时间，包含时区和相对UTC或格林威�
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">LocalDate</span> <span class="n">tomorrow</span> <span class="o">=</span> <span class="n">LocalDate</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="n">2019</span><span class="o">,</span> <span class="n">8</span><span class="o">,</span> <span class="n">15</span><span class="o">);</span>
-<span class="k">if</span> <span class="o">(</span><span class="n">tomorrow</span><span class="o">.</span><span class="na">isAfter</span><span class="o">(</span><span class="n">now</span><span class="o">))</span> <span class="o">{</span>
-	<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;Tomorrow comes after today&#34;</span><span class="o">);</span>
-<span class="o">}</span>
-<span class="n">LocalDate</span> <span class="n">yesterday</span> <span class="o">=</span> <span class="n">now</span><span class="o">.</span><span class="na">minus</span><span class="o">(</span><span class="n">1</span><span class="o">,</span> <span class="n">ChronoUnit</span><span class="o">.</span><span class="na">DAYS</span><span class="o">);</span>
-<span class="k">if</span> <span class="o">(</span><span class="n">yesterday</span><span class="o">.</span><span class="na">isBefore</span><span class="o">(</span><span class="n">now</span><span class="o">))</span> <span class="o">{</span>
-	<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;Yesterday is day before today&#34;</span><span class="o">);</span>
-<span class="o">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">LocalDate</span> <span class="n">tomorrow</span> <span class="o">=</span> <span class="n">LocalDate</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="n">2019</span><span class="o">,</span> <span class="n">8</span><span class="o">,</span> <span class="n">15</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="o">(</span><span class="n">tomorrow</span><span class="o">.</span><span class="na">isAfter</span><span class="o">(</span><span class="n">now</span><span class="o">))</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">	<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;Tomorrow comes after today&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="n">LocalDate</span> <span class="n">yesterday</span> <span class="o">=</span> <span class="n">now</span><span class="o">.</span><span class="na">minus</span><span class="o">(</span><span class="n">1</span><span class="o">,</span> <span class="n">ChronoUnit</span><span class="o">.</span><span class="na">DAYS</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="o">(</span><span class="n">yesterday</span><span class="o">.</span><span class="na">isBefore</span><span class="o">(</span><span class="n">now</span><span class="o">))</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">	<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;Yesterday is day before today&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>在 Java 8 中比较日期非常方便，不需要使用额外的 Calendar 类来做这些基础工作了。</p>
 <h2 id="12-处理时区">12. 处理时区</h2>
 <p>Java 8 不仅分离了日期和时间，也把时区分离出来了。现在有一系列单独的类如 <code>ZoneId</code> 来处理特定时区，<code>ZoneDateTime</code> 类来表示某时区下的时间。这在 Java 8 以前都是 <code>GregorianCalendar</code> 类来做的。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">ZoneId</span> <span class="n">america</span> <span class="o">=</span> <span class="n">ZoneId</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="s">&#34;America/New_York&#34;</span><span class="o">);</span>
-<span class="n">LocalDateTime</span> <span class="n">localDateAndTime</span> <span class="o">=</span> <span class="n">LocalDateTime</span><span class="o">.</span><span class="na">now</span><span class="o">();</span>
-<span class="n">ZonedDateTime</span> <span class="n">dateAndTimeInNewYork</span>  <span class="o">=</span> <span class="n">ZonedDateTime</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="n">localDateAndTime</span><span class="o">,</span> <span class="n">america</span><span class="o">);</span>
-<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">dateAndTimeInNewYork</span><span class="o">);</span> 
-<span class="c1">// 2019-08-15T23:16:35.572-04:00[America/New_York]
-</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">ZoneId</span> <span class="n">america</span> <span class="o">=</span> <span class="n">ZoneId</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="s">&#34;America/New_York&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">LocalDateTime</span> <span class="n">localDateAndTime</span> <span class="o">=</span> <span class="n">LocalDateTime</span><span class="o">.</span><span class="na">now</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl"><span class="n">ZonedDateTime</span> <span class="n">dateAndTimeInNewYork</span>  <span class="o">=</span> <span class="n">ZonedDateTime</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="n">localDateAndTime</span><span class="o">,</span> <span class="n">america</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">dateAndTimeInNewYork</span><span class="o">);</span> 
+</span></span><span class="line"><span class="cl"><span class="c1">// 2019-08-15T23:16:35.572-04:00[America/New_York]
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="13-表示固定年月">13. 表示固定年月</h2>
 <p>与 <code>MonthDay</code> 检查重复事件的例子相似，<code>YearMonth</code> 是另一个组合类，用于表示信用卡到期日、FD 到期日、期货期权到期日等。还可以用这个类得到 当月共有多少天，<code>YearMonth</code> 实例的 <code>lengthOfMonth()</code> 方法可以返回当月的天数，在判断 2 月有 28 天还是 29 天时非常有用。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">&#34;Days in month year %s: %d%n&#34;</span><span class="o">,</span> <span class="n">yearMonth</span><span class="o">,</span> <span class="n">yearMonth</span><span class="o">.</span><span class="na">lengthOfMonth</span><span class="o">());</span> 
-<span class="c1">// Days in month year 2019-08: 31
-</span><span class="c1"></span><span class="n">YearMonth</span> <span class="n">creditCardExpiry</span> <span class="o">=</span> <span class="n">YearMonth</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="n">2020</span><span class="o">,</span> <span class="n">Month</span><span class="o">.</span><span class="na">FEBRUARY</span><span class="o">);</span>
-<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">&#34;Your credit card expires on %s %n&#34;</span><span class="o">,</span> <span class="n">creditCardExpiry</span><span class="o">);</span> 
-<span class="c1">// Your credit card expires on 2020-02 
-</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">&#34;Days in month year %s: %d%n&#34;</span><span class="o">,</span> <span class="n">yearMonth</span><span class="o">,</span> <span class="n">yearMonth</span><span class="o">.</span><span class="na">lengthOfMonth</span><span class="o">());</span> 
+</span></span><span class="line"><span class="cl"><span class="c1">// Days in month year 2019-08: 31
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">YearMonth</span> <span class="n">creditCardExpiry</span> <span class="o">=</span> <span class="n">YearMonth</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="n">2020</span><span class="o">,</span> <span class="n">Month</span><span class="o">.</span><span class="na">FEBRUARY</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">&#34;Your credit card expires on %s %n&#34;</span><span class="o">,</span> <span class="n">creditCardExpiry</span><span class="o">);</span> 
+</span></span><span class="line"><span class="cl"><span class="c1">// Your credit card expires on 2020-02 
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="14-检查闰年">14. 检查闰年</h2>
 <p><code>LocalDate</code> 类有一个很实用的方法 <code>isLeapYear()</code> 判断该实例是否是一个闰年。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">LocalDate</span> <span class="n">localDate</span> <span class="o">=</span> <span class="n">LocalDate</span><span class="o">.</span><span class="na">now</span><span class="o">();</span>
-<span class="k">if</span> <span class="o">(</span><span class="n">localDate</span><span class="o">.</span><span class="na">isLeapYear</span><span class="o">())</span> <span class="o">{</span>
-	<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;is leap year&#34;</span><span class="o">);</span>
-<span class="o">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">LocalDate</span> <span class="n">localDate</span> <span class="o">=</span> <span class="n">LocalDate</span><span class="o">.</span><span class="na">now</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="o">(</span><span class="n">localDate</span><span class="o">.</span><span class="na">isLeapYear</span><span class="o">())</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">	<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;is leap year&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="15-计算两个日期之间的天数和月数">15. 计算两个日期之间的天数和月数</h2>
 <p>有一个常见日期操作是计算两个日期之间的天数、周数或月数。在 Java 8 中可以用 <code>java.time.Period</code> 类来做计算。下面这个例子中，我们计算了当天和将来某一天之间的月数。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">LocalDate</span> <span class="n">date</span> <span class="o">=</span> <span class="n">LocalDate</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="n">2020</span><span class="o">,</span> <span class="n">Month</span><span class="o">.</span><span class="na">MARCH</span><span class="o">,</span> <span class="n">20</span><span class="o">);</span>
-<span class="n">Period</span> <span class="n">period</span> <span class="o">=</span> <span class="n">Period</span><span class="o">.</span><span class="na">between</span><span class="o">(</span><span class="n">now</span><span class="o">,</span> <span class="n">date</span><span class="o">);</span>
-<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;离下个时间还有&#34;</span> <span class="o">+</span> <span class="n">period</span><span class="o">.</span><span class="na">getMonths</span><span class="o">()</span> <span class="o">+</span> <span class="s">&#34; 个月&#34;</span><span class="o">);</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">LocalDate</span> <span class="n">date</span> <span class="o">=</span> <span class="n">LocalDate</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="n">2020</span><span class="o">,</span> <span class="n">Month</span><span class="o">.</span><span class="na">MARCH</span><span class="o">,</span> <span class="n">20</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">Period</span> <span class="n">period</span> <span class="o">=</span> <span class="n">Period</span><span class="o">.</span><span class="na">between</span><span class="o">(</span><span class="n">now</span><span class="o">,</span> <span class="n">date</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;离下个时间还有&#34;</span> <span class="o">+</span> <span class="n">period</span><span class="o">.</span><span class="na">getMonths</span><span class="o">()</span> <span class="o">+</span> <span class="s">&#34; 个月&#34;</span><span class="o">);</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="16-包含时差信息的日期和时间">16. 包含时差信息的日期和时间</h2>
 <p>在 Java 8 中，<code>ZoneOffset</code> 类用来表示时区，举例来说印度与 <code>GMT</code> 或 <code>UTC</code> 标准时区相差 <code>+05:30</code>，可以通过 <code>ZoneOffset.of()</code> 静态方法来获取对应的时区。一旦得到了时差就可以通过传入 <code>LocalDateTime</code> 和 <code>ZoneOffset</code> 来创建一个 <code>OffSetDateTime</code> 对象。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">LocalDateTime</span> <span class="n">datetime</span> <span class="o">=</span> <span class="n">LocalDateTime</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="n">2019</span><span class="o">,</span> <span class="n">8</span><span class="o">,</span> <span class="n">15</span><span class="o">,</span> <span class="n">23</span><span class="o">,</span> <span class="n">30</span><span class="o">);</span>
-<span class="n">ZoneOffset</span> <span class="n">offset</span> <span class="o">=</span> <span class="n">ZoneOffset</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="s">&#34;+05:30&#34;</span><span class="o">);</span>
-<span class="n">OffsetDateTime</span> <span class="n">date</span> <span class="o">=</span> <span class="n">OffsetDateTime</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="n">datetime</span><span class="o">,</span> <span class="n">offset</span><span class="o">);</span>  
-<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;Date and Time with timezone offset in Java : &#34;</span> <span class="o">+</span> <span class="n">date</span><span class="o">);</span>
-<span class="c1">// Date and Time with timezone offset in Java : 2019-08-15T23:30+05:30
-</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">LocalDateTime</span> <span class="n">datetime</span> <span class="o">=</span> <span class="n">LocalDateTime</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="n">2019</span><span class="o">,</span> <span class="n">8</span><span class="o">,</span> <span class="n">15</span><span class="o">,</span> <span class="n">23</span><span class="o">,</span> <span class="n">30</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">ZoneOffset</span> <span class="n">offset</span> <span class="o">=</span> <span class="n">ZoneOffset</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="s">&#34;+05:30&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">OffsetDateTime</span> <span class="n">date</span> <span class="o">=</span> <span class="n">OffsetDateTime</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="n">datetime</span><span class="o">,</span> <span class="n">offset</span><span class="o">);</span>  
+</span></span><span class="line"><span class="cl"><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;Date and Time with timezone offset in Java : &#34;</span> <span class="o">+</span> <span class="n">date</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// Date and Time with timezone offset in Java : 2019-08-15T23:30+05:30
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="17-获取当前的时间戳">17. 获取当前的时间戳</h2>
 <p>如果你还记得 Java 8 以前是如何获得当前时间戳，那么现在你终于解脱了。<code>Instant</code> 类有一个静态工厂方法 <code>now()</code> 会返回当前的时间戳，如下所示：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">Instant</span> <span class="n">timestamp</span> <span class="o">=</span> <span class="n">Instant</span><span class="o">.</span><span class="na">now</span><span class="o">();</span>
-<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">timestamp</span><span class="o">);</span> <span class="c1">// 2019-08-15T15:30:01.555Z
-</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">Instant</span> <span class="n">timestamp</span> <span class="o">=</span> <span class="n">Instant</span><span class="o">.</span><span class="na">now</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl"><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">timestamp</span><span class="o">);</span> <span class="c1">// 2019-08-15T15:30:01.555Z
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>时间戳信息里同时包含了日期和时间，这和 <code>java.util.Date</code> 很像。实际上 Instant 类确实等同于 Java 8 之前的 Date类，你可以使用 Date 类和 Instant 类各自的转换方法互相转换，例如：<code>Date.from(Instant)</code> 将 Instant 转换成 <code>java.util.Date</code>，<code>Date.toInstant()</code> 则是将 Date 类转换成 Instant 类。</p>
 <h2 id="18-使用预定义的格式化工具去解析或格式化日期">18. 使用预定义的格式化工具去解析或格式化日期</h2>
 <p>在 Java 8 以前的世界里，日期和时间的格式化非常诡异，唯一的帮助类 <code>SimpleDateFormat</code> 也是非线程安全的，而且用作局部变量解析和格式化日期时显得很笨重。幸好线程局部变量能使它在多线程环境中变得可用，不过这都是过去时了。Java 8 引入了全新的日期时间格式工具，线程安全而且使用方便。它自带了一些常用的内置格式化工具。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">LocalDate</span> <span class="n">date</span> <span class="o">=</span> <span class="n">LocalDate</span><span class="o">.</span><span class="na">parse</span><span class="o">(</span><span class="s">&#34;2019-08-15&#34;</span><span class="o">);</span>
-<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">date</span><span class="o">);</span> <span class="c1">// 2019-08-15
-</span><span class="c1"></span><span class="n">LocalTime</span> <span class="n">time</span> <span class="o">=</span> <span class="n">LocalTime</span><span class="o">.</span><span class="na">parse</span><span class="o">(</span><span class="s">&#34;23:45:20&#34;</span><span class="o">);</span>
-<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">time</span><span class="o">);</span> <span class="c1">// 23:45:20
-</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">LocalDate</span> <span class="n">date</span> <span class="o">=</span> <span class="n">LocalDate</span><span class="o">.</span><span class="na">parse</span><span class="o">(</span><span class="s">&#34;2019-08-15&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">date</span><span class="o">);</span> <span class="c1">// 2019-08-15
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">LocalTime</span> <span class="n">time</span> <span class="o">=</span> <span class="n">LocalTime</span><span class="o">.</span><span class="na">parse</span><span class="o">(</span><span class="s">&#34;23:45:20&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">time</span><span class="o">);</span> <span class="c1">// 23:45:20
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="19-使用自定义格式化工具解析日期">19. 使用自定义格式化工具解析日期</h2>
 <p>尽管内置格式化工具很好用，有时还是需要定义特定的日期格式。可以调用 <code>DateTimeFormatter</code> 的 <code>ofPattern()</code> 静态方法并传入任意格式返回其实例，格式中的字符和以前代表的一样，M 代表月，m 代表分。如果格式不规范会抛出 <code>DateTimeParseException</code> 异常，不过如果只是把 M 写成 m 这种逻辑错误是不会抛异常的。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">DateTimeFormatter</span> <span class="n">pattern</span> <span class="o">=</span> <span class="n">DateTimeFormatter</span><span class="o">.</span><span class="na">ofPattern</span><span class="o">(</span><span class="s">&#34;yyyy MM dd&#34;</span><span class="o">);</span>
-<span class="n">String</span> <span class="n">s</span> <span class="o">=</span> <span class="s">&#34;2019 08 15&#34;</span><span class="o">;</span>
-<span class="n">LocalDate</span> <span class="n">localDate</span> <span class="o">=</span> <span class="n">LocalDate</span><span class="o">.</span><span class="na">parse</span><span class="o">(</span><span class="n">s</span><span class="o">,</span> <span class="n">pattern</span><span class="o">);</span>
-<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">localDate</span><span class="o">);</span> <span class="c1">// 2019-08-15
-</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">DateTimeFormatter</span> <span class="n">pattern</span> <span class="o">=</span> <span class="n">DateTimeFormatter</span><span class="o">.</span><span class="na">ofPattern</span><span class="o">(</span><span class="s">&#34;yyyy MM dd&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">String</span> <span class="n">s</span> <span class="o">=</span> <span class="s">&#34;2019 08 15&#34;</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="n">LocalDate</span> <span class="n">localDate</span> <span class="o">=</span> <span class="n">LocalDate</span><span class="o">.</span><span class="na">parse</span><span class="o">(</span><span class="n">s</span><span class="o">,</span> <span class="n">pattern</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">localDate</span><span class="o">);</span> <span class="c1">// 2019-08-15
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="20-把日期转换成字符串">20. 把日期转换成字符串</h2>
 <p>上两个主要是从字符串解析日期。现在我们反过来，把 <code>LocalDateTime</code> 日期实例转换成特定格式的字符串。这是迄今为止 Java 日期转字符串最为简单的方式了。下面的例子将返回一个代表日期的格式化字符串。和前面类似，还是需要创建 <code>DateTimeFormatter</code> 实例并传入格式，但这回调用的是 format() 方法，而非 parse() 方法。这个方法会把传入的日期转化成指定格式的字符串。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -554,17 +560,17 @@ ZonedDateTime：最完整的日期时间，包含时区和相对UTC或格林威�
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">LocalDateTime</span> <span class="n">arrivalDate</span> <span class="o">=</span> <span class="n">LocalDateTime</span><span class="o">.</span><span class="na">now</span><span class="o">();</span>
-	<span class="k">try</span> <span class="o">{</span>
-		<span class="n">DateTimeFormatter</span> <span class="n">format</span> <span class="o">=</span> <span class="n">DateTimeFormatter</span><span class="o">.</span><span class="na">ofPattern</span><span class="o">(</span><span class="s">&#34;yyyy MM dd  hh:mm:ss&#34;</span><span class="o">);</span>
-		<span class="n">String</span> <span class="n">landing</span> <span class="o">=</span> <span class="n">arrivalDate</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="n">format</span><span class="o">);</span>
-		<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">&#34;Arriving at :  %s %n&#34;</span><span class="o">,</span> <span class="n">landing</span><span class="o">);</span>
-        <span class="c1">// Arriving at :  2019 08 15  11:36:37 
-</span><span class="c1"></span>	<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">DateTimeException</span> <span class="n">ex</span><span class="o">)</span> <span class="o">{</span>
-		<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">&#34;%s can&#39;t be formatted!%n&#34;</span><span class="o">,</span> <span class="n">arrivalDate</span><span class="o">);</span>
-		<span class="n">ex</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
-	<span class="o">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">LocalDateTime</span> <span class="n">arrivalDate</span> <span class="o">=</span> <span class="n">LocalDateTime</span><span class="o">.</span><span class="na">now</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">	<span class="k">try</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">		<span class="n">DateTimeFormatter</span> <span class="n">format</span> <span class="o">=</span> <span class="n">DateTimeFormatter</span><span class="o">.</span><span class="na">ofPattern</span><span class="o">(</span><span class="s">&#34;yyyy MM dd  hh:mm:ss&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">		<span class="n">String</span> <span class="n">landing</span> <span class="o">=</span> <span class="n">arrivalDate</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="n">format</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">		<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">&#34;Arriving at :  %s %n&#34;</span><span class="o">,</span> <span class="n">landing</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// Arriving at :  2019 08 15  11:36:37 
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">DateTimeException</span> <span class="n">ex</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">		<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">&#34;%s can&#39;t be formatted!%n&#34;</span><span class="o">,</span> <span class="n">arrivalDate</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">		<span class="n">ex</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">	<span class="o">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h1 id="参考资料">参考资料</h1>
 <ol>
@@ -657,13 +663,10 @@ ZonedDateTime：最完整的日期时间，包含时区和相对UTC或格林威�
   <span class="copyright-year">
     &copy; 
     2019 - 
-    2020
-    <span class="heart">
-      <i class="iconfont icon-heart"></i>
-    </span>
-    <span class="author">ShangguanHong</span>
+    2022<span class="heart"><i class="iconfont icon-heart"></i></span><span>ShangguanHong</span>
   </span>
 </div>
+
     </footer>
 
     <div class="back-to-top" id="back-to-top">
@@ -674,7 +677,10 @@ ZonedDateTime：最完整的日期时间，包含时区和相对UTC或格林威�
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
-<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script>
 
 
 

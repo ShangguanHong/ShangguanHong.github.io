@@ -23,7 +23,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.67.1 with theme even" />
+<meta name="generator" content="Hugo 0.101.0 with theme even" />
 
 
 <link rel="canonical" href="https://shangguanhong.github.io/" />
@@ -36,7 +36,8 @@
 <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
 
 
-<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+
+<link href="/sass/main.min.b5a744db6de49a86cadafb3b70f555ab443f83c307a483402259e94726b045ff.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
@@ -44,7 +45,7 @@
 <meta property="og:description" content="golang后端研发工程师" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://shangguanhong.github.io/" />
-<meta property="og:updated_time" content="2020-03-20T22:26:01+08:00" />
+
 <meta itemprop="name" content="ShangguanHong">
 <meta itemprop="description" content="golang后端研发工程师"><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="ShangguanHong"/>
@@ -83,12 +84,21 @@
         <li class="mobile-menu-item">Categories</li>
       </a>
   </ul>
+
+  
+
+
 </nav>
+
   <div class="container" id="mobile-panel">
     <header id="header" class="header">
         <div class="logo-wrapper">
   <a href="/" class="logo">赏我一个好梦如旧</a>
 </div>
+
+
+
+
 
 <nav class="site-navbar">
   <ul id="menu" class="menu">
@@ -103,12 +113,36 @@
       </li>
   </ul>
 </nav>
+
     </header>
 
     <main id="main" class="main">
       <div class="content-wrapper">
         <div id="content" class="content">
           <section id="posts" class="posts">
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/2019/12/26/golang%E7%9A%84sync.rwmutex%E4%B8%8Esync.mutex/">Golang的sync.RWMutex与sync.Mutex</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2019-12-26 </span>
+      <div class="post-category">
+          <a href="/categories/go%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"> Go学习笔记 </a>
+          </div>
+        <span class="more-meta"> 约 994 字 </span>
+        <span class="more-meta"> 预计阅读 2 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      介绍 Golang 中的 sync 包中实现了两种锁，一种是 Mutex(互斥锁)，另一种是RWMutex(读写锁)，其中 RWMutex 是基于 Mutex 实现的 Mutex Mutex 是互斥锁，Lock() 是
+    </div>
+    <div class="read-more">
+      <a href="/2019/12/26/golang%E7%9A%84sync.rwmutex%E4%B8%8Esync.mutex/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
     <article class="post">
   <header class="post-header">
     <h1 class="post-title"><a class="post-link" href="/2019/12/22/golang%E7%9A%84sync.once/">Golang的sync.Once</a></h1>
@@ -163,7 +197,7 @@
       <div class="post-category">
           <a href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/"> 工具使用 </a>
           </div>
-        <span class="more-meta"> 约 1413 字 </span>
+        <span class="more-meta"> 约 1417 字 </span>
         <span class="more-meta"> 预计阅读 3 分钟 </span>
     </div>
   </header>
@@ -186,7 +220,7 @@
       <div class="post-category">
           <a href="/categories/docker%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"> Docker学习笔记 </a>
           </div>
-        <span class="more-meta"> 约 905 字 </span>
+        <span class="more-meta"> 约 904 字 </span>
         <span class="more-meta"> 预计阅读 2 分钟 </span>
     </div>
   </header>
@@ -278,7 +312,7 @@
       <div class="post-category">
           <a href="/categories/java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"> Java学习笔记 </a>
           </div>
-        <span class="more-meta"> 约 5239 字 </span>
+        <span class="more-meta"> 约 5238 字 </span>
         <span class="more-meta"> 预计阅读 11 分钟 </span>
     </div>
   </header>
@@ -312,30 +346,6 @@
     </div>
     <div class="read-more">
       <a href="/2019/10/11/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/2019/09/19/spring-cache%E6%95%B4%E5%90%88redis/">Spring Cache整合Redis</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2019-09-19 </span>
-      <div class="post-category">
-          <a href="/categories/springboot%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"> SpringBoot学习笔记 </a>
-          <a href="/categories/redis%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"> Redis学习笔记 </a>
-          </div>
-        <span class="more-meta"> 约 1693 字 </span>
-        <span class="more-meta"> 预计阅读 4 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      前言 缓存现在已经成为了互联网必不可少的利器，合理的利用缓存不仅能大大的提升网站的访问速度，还能够降低数据库的访问压力。 在上一篇文章中，介绍了
-    </div>
-    <div class="read-more">
-      <a href="/2019/09/19/spring-cache%E6%95%B4%E5%90%88redis/" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>
@@ -382,13 +392,10 @@
   <span class="copyright-year">
     &copy; 
     2019 - 
-    2020
-    <span class="heart">
-      <i class="iconfont icon-heart"></i>
-    </span>
-    <span class="author">ShangguanHong</span>
+    2022<span class="heart"><i class="iconfont icon-heart"></i></span><span>ShangguanHong</span>
   </span>
 </div>
+
     </footer>
 
     <div class="back-to-top" id="back-to-top">
@@ -399,7 +406,10 @@
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
-<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script>
 
 
 

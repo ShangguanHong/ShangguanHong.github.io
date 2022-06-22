@@ -23,7 +23,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.67.1 with theme even" />
+<meta name="generator" content="Hugo 0.101.0 with theme even" />
 
 
 <link rel="canonical" href="https://shangguanhong.github.io/2020/02/26/go%E7%9A%84pprof%E4%BD%BF%E7%94%A8/" />
@@ -34,24 +34,22 @@
 <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
 
 
-<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+
+<link href="/sass/main.min.b5a744db6de49a86cadafb3b70f555ab443f83c307a483402259e94726b045ff.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
 <meta property="og:title" content="go的pprof使用" />
 <meta property="og:description" content="原文地址：Golang 大杀器之性能剖析 PProf 前言 写了几吨代码，实现了几百个接口。功能测试也通过了，终于成功的部署上线了 结果，性能不佳，什么鬼？😭" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://shangguanhong.github.io/2020/02/26/go%E7%9A%84pprof%E4%BD%BF%E7%94%A8/" />
+<meta property="og:url" content="https://shangguanhong.github.io/2020/02/26/go%E7%9A%84pprof%E4%BD%BF%E7%94%A8/" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2020-02-26T22:01:46+00:00" />
 <meta property="article:modified_time" content="2020-02-26T22:01:46+00:00" />
+
 <meta itemprop="name" content="go的pprof使用">
-<meta itemprop="description" content="原文地址：Golang 大杀器之性能剖析 PProf 前言 写了几吨代码，实现了几百个接口。功能测试也通过了，终于成功的部署上线了 结果，性能不佳，什么鬼？😭">
-<meta itemprop="datePublished" content="2020-02-26T22:01:46&#43;00:00" />
-<meta itemprop="dateModified" content="2020-02-26T22:01:46&#43;00:00" />
+<meta itemprop="description" content="原文地址：Golang 大杀器之性能剖析 PProf 前言 写了几吨代码，实现了几百个接口。功能测试也通过了，终于成功的部署上线了 结果，性能不佳，什么鬼？😭"><meta itemprop="datePublished" content="2020-02-26T22:01:46+00:00" />
+<meta itemprop="dateModified" content="2020-02-26T22:01:46+00:00" />
 <meta itemprop="wordCount" content="2583">
-
-
-
 <meta itemprop="keywords" content="golang," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="go的pprof使用"/>
 <meta name="twitter:description" content="原文地址：Golang 大杀器之性能剖析 PProf 前言 写了几吨代码，实现了几百个接口。功能测试也通过了，终于成功的部署上线了 结果，性能不佳，什么鬼？😭"/>
@@ -89,12 +87,21 @@
         <li class="mobile-menu-item">Categories</li>
       </a>
   </ul>
+
+  
+
+
 </nav>
+
   <div class="container" id="mobile-panel">
     <header id="header" class="header">
         <div class="logo-wrapper">
   <a href="/" class="logo">赏我一个好梦如旧</a>
 </div>
+
+
+
+
 
 <nav class="site-navbar">
   <ul id="menu" class="menu">
@@ -109,6 +116,7 @@
       </li>
   </ul>
 </nav>
+
     </header>
 
     <main id="main" class="main">
@@ -186,7 +194,7 @@
 <p>demo.go文件内容：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -213,32 +221,32 @@
 </span><span class="lnt">25
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-go" data-lang="go"><span class="kn">package</span> <span class="nx">main</span>
-
-<span class="kn">import</span> <span class="p">(</span>
-    <span class="s">&#34;log&#34;</span>
-    <span class="s">&#34;net/http&#34;</span>
-    <span class="nx">_</span> <span class="s">&#34;net/http/pprof&#34;</span>
-<span class="p">)</span>
-
-<span class="kd">var</span> <span class="nx">datas</span> <span class="p">[]</span><span class="kt">string</span>
-
-<span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="k">go</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
-        <span class="k">for</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nf">Add</span><span class="p">(</span><span class="s">&#34;Hello World!&#34;</span><span class="p">))</span>
-        <span class="p">}</span>
-    <span class="p">}()</span>
-    <span class="nx">http</span><span class="p">.</span><span class="nf">ListenAndServe</span><span class="p">(</span><span class="s">&#34;0.0.0.0:6060&#34;</span><span class="p">,</span> <span class="kc">nil</span><span class="p">)</span>
-<span class="p">}</span>
-
-<span class="kd">func</span> <span class="nf">Add</span><span class="p">(</span><span class="nx">str</span> <span class="kt">string</span><span class="p">)</span> <span class="kt">string</span> <span class="p">{</span>
-    <span class="nx">data</span> <span class="o">:=</span> <span class="p">[]</span><span class="nb">byte</span><span class="p">(</span><span class="nx">str</span><span class="p">)</span>
-    <span class="nx">sData</span> <span class="o">:=</span> <span class="nb">string</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span>
-    <span class="nx">datas</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">datas</span><span class="p">,</span> <span class="nx">sData</span><span class="p">)</span>
-    <span class="k">return</span> <span class="nx">sData</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;log&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;net/http&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">_</span> <span class="s">&#34;net/http/pprof&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">datas</span> <span class="p">[]</span><span class="kt">string</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">go</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">log</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nf">Add</span><span class="p">(</span><span class="s">&#34;Hello World!&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}()</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">http</span><span class="p">.</span><span class="nf">ListenAndServe</span><span class="p">(</span><span class="s">&#34;0.0.0.0:6060&#34;</span><span class="p">,</span> <span class="kc">nil</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">Add</span><span class="p">(</span><span class="nx">str</span> <span class="kt">string</span><span class="p">)</span> <span class="kt">string</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">data</span> <span class="o">:=</span> <span class="p">[]</span><span class="nb">byte</span><span class="p">(</span><span class="nx">str</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">sData</span> <span class="o">:=</span> <span class="nb">string</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">datas</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">datas</span><span class="p">,</span> <span class="nx">sData</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="nx">sData</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>运行这个文件，你的 HTTP 服务会多出 /debug/pprof 的 endpoint 可用于观察应用程序的情况</p>
 <h2 id="分析">分析</h2>
@@ -246,7 +254,7 @@
 <p>查看当前总览：访问 <code>http://127.0.0.1:6060/debug/pprof/</code></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -273,32 +281,32 @@
 </span><span class="lnt">25
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">/debug/pprof/
-
-Types of profiles available:
-Count	Profile
-26	allocs
-0	block
-0	cmdline
-4	goroutine
-26	heap
-0	mutex
-0	profile
-8	threadcreate
-0	trace
-full goroutine stack dump
-Profile Descriptions:
-
-allocs: A sampling of all past memory allocations
-block: Stack traces that led to blocking on synchronization primitives
-cmdline: The command line invocation of the current program
-goroutine: Stack traces of all current goroutines
-heap: A sampling of memory allocations of live objects. You can specify the gc GET parameter to run GC before taking the heap sample.
-mutex: Stack traces of holders of contended mutexes
-profile: CPU profile. You can specify the duration in the seconds GET parameter. After you get the profile file, use the go tool pprof command to investigate the profile.
-threadcreate: Stack traces that led to the creation of new OS threads
-trace: A trace of execution of the current program. You can specify the duration in the seconds GET parameter. After you get the trace file, use the go tool trace command to investigate the trace.
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">/debug/pprof/
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Types of profiles available:
+</span></span><span class="line"><span class="cl">Count	Profile
+</span></span><span class="line"><span class="cl">26	allocs
+</span></span><span class="line"><span class="cl">0	block
+</span></span><span class="line"><span class="cl">0	cmdline
+</span></span><span class="line"><span class="cl">4	goroutine
+</span></span><span class="line"><span class="cl">26	heap
+</span></span><span class="line"><span class="cl">0	mutex
+</span></span><span class="line"><span class="cl">0	profile
+</span></span><span class="line"><span class="cl">8	threadcreate
+</span></span><span class="line"><span class="cl">0	trace
+</span></span><span class="line"><span class="cl">full goroutine stack dump
+</span></span><span class="line"><span class="cl">Profile Descriptions:
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">allocs: A sampling of all past memory allocations
+</span></span><span class="line"><span class="cl">block: Stack traces that led to blocking on synchronization primitives
+</span></span><span class="line"><span class="cl">cmdline: The command line invocation of the current program
+</span></span><span class="line"><span class="cl">goroutine: Stack traces of all current goroutines
+</span></span><span class="line"><span class="cl">heap: A sampling of memory allocations of live objects. You can specify the gc GET parameter to run GC before taking the heap sample.
+</span></span><span class="line"><span class="cl">mutex: Stack traces of holders of contended mutexes
+</span></span><span class="line"><span class="cl">profile: CPU profile. You can specify the duration in the seconds GET parameter. After you get the profile file, use the go tool pprof command to investigate the profile.
+</span></span><span class="line"><span class="cl">threadcreate: Stack traces that led to the creation of new OS threads
+</span></span><span class="line"><span class="cl">trace: A trace of execution of the current program. You can specify the duration in the seconds GET parameter. After you get the trace file, use the go tool trace command to investigate the trace.
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>这个页面有许多子页面，咱们继续深究下去，看看可以得到什么？</p>
 <ul>
@@ -313,7 +321,7 @@ trace: A trace of execution of the current program. You can specify the duration
 <p>（1）go tool pprof http://localhost:6060/debug/pprof/profile?seconds=60</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -323,20 +331,20 @@ trace: A trace of execution of the current program. You can specify the duration
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">$ go tool pprof http://localhost:6060/debug/pprof/profile?seconds<span class="o">=</span><span class="m">60</span>
-Fetching profile over HTTP from http://localhost:6060/debug/pprof/profile?seconds<span class="o">=</span><span class="m">60</span>
-Saved profile in C:<span class="se">\U</span>sers<span class="se">\f</span>ate<span class="se">\p</span>prof<span class="se">\p</span>prof.samples.cpu.001.pb.gz
-Type: cpu
-Time: Feb 26, <span class="m">2020</span> at 10:15pm <span class="o">(</span>CST<span class="o">)</span>
-Duration: 1mins, Total <span class="nv">samples</span> <span class="o">=</span> 1.06mins <span class="o">(</span>106.05%<span class="o">)</span>
-Entering interactive mode <span class="o">(</span><span class="nb">type</span> <span class="s2">&#34;help&#34;</span> <span class="k">for</span> commands, <span class="s2">&#34;o&#34;</span> <span class="k">for</span> options<span class="o">)</span>
-<span class="o">(</span>pprof<span class="o">)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">$ go tool pprof http://localhost:6060/debug/pprof/profile?seconds<span class="o">=</span><span class="m">60</span>
+</span></span><span class="line"><span class="cl">Fetching profile over HTTP from http://localhost:6060/debug/pprof/profile?seconds<span class="o">=</span><span class="m">60</span>
+</span></span><span class="line"><span class="cl">Saved profile in C:<span class="se">\U</span>sers<span class="se">\f</span>ate<span class="se">\p</span>prof<span class="se">\p</span>prof.samples.cpu.001.pb.gz
+</span></span><span class="line"><span class="cl">Type: cpu
+</span></span><span class="line"><span class="cl">Time: Feb 26, <span class="m">2020</span> at 10:15pm <span class="o">(</span>CST<span class="o">)</span>
+</span></span><span class="line"><span class="cl">Duration: 1mins, Total <span class="nv">samples</span> <span class="o">=</span> 1.06mins <span class="o">(</span>106.05%<span class="o">)</span>
+</span></span><span class="line"><span class="cl">Entering interactive mode <span class="o">(</span><span class="nb">type</span> <span class="s2">&#34;help&#34;</span> <span class="k">for</span> commands, <span class="s2">&#34;o&#34;</span> <span class="k">for</span> options<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="o">(</span>pprof<span class="o">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>执行该命令后，需等待 60 秒（可调整 seconds 的值），pprof 会进行 CPU Profiling。结束后将默认进入 pprof 的交互式命令模式，可以对分析的结果进行查看或导出。具体可执行 <code>pprof help</code> 查看命令说明</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -353,22 +361,22 @@ Entering interactive mode <span class="o">(</span><span class="nb">type</span> <
 </span><span class="lnt">15
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="o">(</span>pprof<span class="o">)</span> top
-Showing nodes accounting <span class="k">for</span> 50.42s, 79.02% of 63.81s total
-Dropped <span class="m">154</span> nodes <span class="o">(</span>cum &lt;<span class="o">=</span> 0.32s<span class="o">)</span>
-Showing top <span class="m">10</span> nodes out of <span class="m">52</span>
-      flat  flat%   sum%        cum   cum%
-    41.54s 65.10% 65.10%     42.19s 66.12%  runtime.cgocall
-     1.42s  2.23% 67.32%      1.78s  2.79%  log.itoa
-     1.39s  2.18% 69.50%      3.26s  5.11%  runtime.mallocgc
-     1.21s  1.90% 71.40%      1.21s  1.90%  runtime.memmove
-     1.05s  1.65% 73.04%      3.73s  5.85%  runtime.scanobject
-     0.98s  1.54% 74.58%      1.52s  2.38%  runtime.findObject
-     0.78s  1.22% 75.80%      3.96s  6.21%  log.<span class="o">(</span>*Logger<span class="o">)</span>.formatHeader
-     0.74s  1.16% 76.96%     51.16s 80.18%  log.<span class="o">(</span>*Logger<span class="o">)</span>.Output
-     0.73s  1.14% 78.11%      1.24s  1.94%  runtime.greyobject
-     0.58s  0.91% 79.02%     45.08s 70.65%  internal/poll.<span class="o">(</span>*FD<span class="o">)</span>.Write
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="o">(</span>pprof<span class="o">)</span> top
+</span></span><span class="line"><span class="cl">Showing nodes accounting <span class="k">for</span> 50.42s, 79.02% of 63.81s total
+</span></span><span class="line"><span class="cl">Dropped <span class="m">154</span> nodes <span class="o">(</span>cum &lt;<span class="o">=</span> 0.32s<span class="o">)</span>
+</span></span><span class="line"><span class="cl">Showing top <span class="m">10</span> nodes out of <span class="m">52</span>
+</span></span><span class="line"><span class="cl">      flat  flat%   sum%        cum   cum%
+</span></span><span class="line"><span class="cl">    41.54s 65.10% 65.10%     42.19s 66.12%  runtime.cgocall
+</span></span><span class="line"><span class="cl">     1.42s  2.23% 67.32%      1.78s  2.79%  log.itoa
+</span></span><span class="line"><span class="cl">     1.39s  2.18% 69.50%      3.26s  5.11%  runtime.mallocgc
+</span></span><span class="line"><span class="cl">     1.21s  1.90% 71.40%      1.21s  1.90%  runtime.memmove
+</span></span><span class="line"><span class="cl">     1.05s  1.65% 73.04%      3.73s  5.85%  runtime.scanobject
+</span></span><span class="line"><span class="cl">     0.98s  1.54% 74.58%      1.52s  2.38%  runtime.findObject
+</span></span><span class="line"><span class="cl">     0.78s  1.22% 75.80%      3.96s  6.21%  log.<span class="o">(</span>*Logger<span class="o">)</span>.formatHeader
+</span></span><span class="line"><span class="cl">     0.74s  1.16% 76.96%     51.16s 80.18%  log.<span class="o">(</span>*Logger<span class="o">)</span>.Output
+</span></span><span class="line"><span class="cl">     0.73s  1.14% 78.11%      1.24s  1.94%  runtime.greyobject
+</span></span><span class="line"><span class="cl">     0.58s  0.91% 79.02%     45.08s 70.65%  internal/poll.<span class="o">(</span>*FD<span class="o">)</span>.Write
+</span></span></code></pre></td></tr></table>
 </div>
 </div><ul>
 <li>flat：给定函数上运行耗时</li>
@@ -381,7 +389,7 @@ Showing top <span class="m">10</span> nodes out of <span class="m">52</span>
 <p>（2）go tool pprof http://localhost:6060/debug/pprof/heap</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -394,18 +402,18 @@ Showing top <span class="m">10</span> nodes out of <span class="m">52</span>
 </span><span class="lnt">11
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">$ go tool pprof http://localhost:6060/debug/pprof/heap
-Fetching profile over HTTP from http://localhost:6060/debug/pprof/heap
-Saved profile in C:\Users\fate\pprof\pprof.alloc_objects.alloc_space.inuse_objects.inuse_space.002.pb.gz
-Type: inuse_space
-Time: Feb 26, 2020 at 10:17pm (CST)
-Entering interactive mode (type &#34;help&#34; for commands, &#34;o&#34; for options)
-(pprof) top
-Showing nodes accounting for 734.09MB, 100% of 734.09MB total
-      flat  flat%   sum%        cum   cum%
-  734.09MB   100%   100%   734.09MB   100%  main.Add (inline)
-         0     0%   100%   734.09MB   100%  main.main.func1
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">$ go tool pprof http://localhost:6060/debug/pprof/heap
+</span></span><span class="line"><span class="cl">Fetching profile over HTTP from http://localhost:6060/debug/pprof/heap
+</span></span><span class="line"><span class="cl">Saved profile in C:\Users\fate\pprof\pprof.alloc_objects.alloc_space.inuse_objects.inuse_space.002.pb.gz
+</span></span><span class="line"><span class="cl">Type: inuse_space
+</span></span><span class="line"><span class="cl">Time: Feb 26, 2020 at 10:17pm (CST)
+</span></span><span class="line"><span class="cl">Entering interactive mode (type &#34;help&#34; for commands, &#34;o&#34; for options)
+</span></span><span class="line"><span class="cl">(pprof) top
+</span></span><span class="line"><span class="cl">Showing nodes accounting for 734.09MB, 100% of 734.09MB total
+</span></span><span class="line"><span class="cl">      flat  flat%   sum%        cum   cum%
+</span></span><span class="line"><span class="cl">  734.09MB   100%   100%   734.09MB   100%  main.Add (inline)
+</span></span><span class="line"><span class="cl">         0     0%   100%   734.09MB   100%  main.main.func1
+</span></span></code></pre></td></tr></table>
 </div>
 </div><ul>
 <li>-inuse_space：分析应用程序的常驻内存占用情况</li>
@@ -419,7 +427,7 @@ Showing nodes accounting for 734.09MB, 100% of 734.09MB total
 <p>（1）新建 demo_test.go，文件内容：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -439,30 +447,30 @@ Showing nodes accounting for 734.09MB, 100% of 734.09MB total
 </span><span class="lnt">18
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-go" data-lang="go"><span class="kn">package</span> <span class="nx">main</span>
-
-<span class="kn">import</span> <span class="s">&#34;testing&#34;</span>
-
-<span class="kd">const</span> <span class="nx">url</span> <span class="p">=</span> <span class="s">&#34;Hello World!&#34;</span>
-
-<span class="kd">func</span> <span class="nf">TestAdd</span><span class="p">(</span><span class="nx">t</span> <span class="o">*</span><span class="nx">testing</span><span class="p">.</span><span class="nx">T</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">s</span> <span class="o">:=</span> <span class="nf">Add</span><span class="p">(</span><span class="nx">url</span><span class="p">)</span>
-    <span class="k">if</span> <span class="nx">s</span> <span class="o">==</span> <span class="s">&#34;&#34;</span> <span class="p">{</span>
-        <span class="nx">t</span><span class="p">.</span><span class="nf">Errorf</span><span class="p">(</span><span class="s">&#34;Test.Add error!&#34;</span><span class="p">)</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-
-<span class="kd">func</span> <span class="nf">BenchmarkAdd</span><span class="p">(</span><span class="nx">b</span> <span class="o">*</span><span class="nx">testing</span><span class="p">.</span><span class="nx">B</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="nx">b</span><span class="p">.</span><span class="nx">N</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
-        <span class="nf">Add</span><span class="p">(</span><span class="nx">url</span><span class="p">)</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="s">&#34;testing&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">const</span> <span class="nx">url</span> <span class="p">=</span> <span class="s">&#34;Hello World!&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">TestAdd</span><span class="p">(</span><span class="nx">t</span> <span class="o">*</span><span class="nx">testing</span><span class="p">.</span><span class="nx">T</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">s</span> <span class="o">:=</span> <span class="nf">Add</span><span class="p">(</span><span class="nx">url</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nx">s</span> <span class="o">==</span> <span class="s">&#34;&#34;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">t</span><span class="p">.</span><span class="nf">Errorf</span><span class="p">(</span><span class="s">&#34;Test.Add error!&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">BenchmarkAdd</span><span class="p">(</span><span class="nx">b</span> <span class="o">*</span><span class="nx">testing</span><span class="p">.</span><span class="nx">B</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="nx">b</span><span class="p">.</span><span class="nx">N</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">Add</span><span class="p">(</span><span class="nx">url</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>（2）执行测试用例</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -471,36 +479,36 @@ Showing nodes accounting for 734.09MB, 100% of 734.09MB total
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-go" data-lang="go"><span class="err">$</span> <span class="k">go</span> <span class="nx">test</span> <span class="nx">bench</span><span class="p">=.</span> <span class="o">-</span><span class="nx">cpuprofile</span><span class="p">=</span><span class="nx">cpu</span><span class="p">.</span><span class="nx">prof</span>
-<span class="nx">goos</span><span class="p">:</span> <span class="nx">windows</span>
-<span class="nx">goarch</span><span class="p">:</span> <span class="nx">amd64</span>
-<span class="nx">pkg</span><span class="p">:</span> <span class="nx">demo</span><span class="o">/</span><span class="nx">gammar</span>
-<span class="nx">BenchmarkAdd</span><span class="o">-</span><span class="mi">4</span>           <span class="mi">5002905</span>               <span class="mi">228</span> <span class="nx">ns</span><span class="o">/</span><span class="nx">op</span>
-<span class="nx">PASS</span>
-<span class="nx">ok</span>      <span class="nx">demo</span><span class="o">/</span><span class="nx">gammar</span>     <span class="mf">2.478</span><span class="nx">s</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="err">$</span> <span class="k">go</span> <span class="nx">test</span> <span class="nx">bench</span><span class="p">=.</span> <span class="o">-</span><span class="nx">cpuprofile</span><span class="p">=</span><span class="nx">cpu</span><span class="p">.</span><span class="nx">prof</span>
+</span></span><span class="line"><span class="cl"><span class="nx">goos</span><span class="p">:</span> <span class="nx">windows</span>
+</span></span><span class="line"><span class="cl"><span class="nx">goarch</span><span class="p">:</span> <span class="nx">amd64</span>
+</span></span><span class="line"><span class="cl"><span class="nx">pkg</span><span class="p">:</span> <span class="nx">demo</span><span class="o">/</span><span class="nx">gammar</span>
+</span></span><span class="line"><span class="cl"><span class="nx">BenchmarkAdd</span><span class="o">-</span><span class="mi">4</span>           <span class="mi">5002905</span>               <span class="mi">228</span> <span class="nx">ns</span><span class="o">/</span><span class="nx">op</span>
+</span></span><span class="line"><span class="cl"><span class="nx">PASS</span>
+</span></span><span class="line"><span class="cl"><span class="nx">ok</span>      <span class="nx">demo</span><span class="o">/</span><span class="nx">gammar</span>     <span class="mf">2.478</span><span class="nx">s</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>-memprofile 也可以了解一下</p>
 <h4 id="启动-pprof-可视化界面">启动 PProf 可视化界面</h4>
 <p><strong>方法一：</strong></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">$ go tool pprof -http<span class="o">=</span>:8080 cpu.prof	
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">$ go tool pprof -http<span class="o">=</span>:8080 cpu.prof	
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p><strong>方法二：</strong></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">$ go tool pprof cpu.prof
-$ <span class="o">(</span>pprof<span class="o">)</span> web		
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">$ go tool pprof cpu.prof
+</span></span><span class="line"><span class="cl">$ <span class="o">(</span>pprof<span class="o">)</span> web		
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>如果出现<code>failed to execute dot. Is Graphviz installed? Error: exec: &quot;dot&quot;: executable file not found in %PATH%</code>,就是提示你要安装 <code>Graphviz</code> 了(请右拐谷歌)</p>
 <h4 id="查看-pprof-可视化界面">查看 PProf 可视化界面</h4>
@@ -520,20 +528,20 @@ $ <span class="o">(</span>pprof<span class="o">)</span> web
 <p>（1） 安装 PProf</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">$ go get -u github.com/google/pprof
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">$ go get -u github.com/google/pprof
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>（2） 启动 PProf 可视化界面:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">$ pprof -http=:8080 cpu.prof
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">$ pprof -http=:8080 cpu.prof
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>（3） 查看 PProf 可视化界面</p>
 <p>打开 PProf 的可视化界面时，你会明显发现比官方工具链的 PProf 精致一些，并且多了 Flame Graph（火焰图）</p>
@@ -630,13 +638,10 @@ $ <span class="o">(</span>pprof<span class="o">)</span> web
   <span class="copyright-year">
     &copy; 
     2019 - 
-    2020
-    <span class="heart">
-      <i class="iconfont icon-heart"></i>
-    </span>
-    <span class="author">ShangguanHong</span>
+    2022<span class="heart"><i class="iconfont icon-heart"></i></span><span>ShangguanHong</span>
   </span>
 </div>
+
     </footer>
 
     <div class="back-to-top" id="back-to-top">
@@ -647,7 +652,10 @@ $ <span class="o">(</span>pprof<span class="o">)</span> web
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
-<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script>
 
 
 

@@ -6,11 +6,7 @@
     <description>Recent content in Hexo学习笔记 on ShangguanHong</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 18 Aug 2019 00:45:17 +0000</lastBuildDate>
-    
-	<atom:link href="https://shangguanhong.github.io/categories/hexo%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sun, 18 Aug 2019 00:45:17 +0000</lastBuildDate><atom:link href="https://shangguanhong.github.io/categories/hexo%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>gulp优化hexo方法</title>
       <link>https://shangguanhong.github.io/2019/08/18/gulp%E4%BC%98%E5%8C%96hexo%E6%96%B9%E6%B3%95/</link>
@@ -58,10 +54,10 @@
     
     <item>
       <title>利用GithubPages &#43; Hexo搭建自己的博客</title>
-      <link>https://shangguanhong.github.io/2019/05/28/githubpages-hexo%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E5%8D%9A%E5%AE%A2/</link>
+      <link>https://shangguanhong.github.io/2019/05/28/githubpages--hexo%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E5%8D%9A%E5%AE%A2/</link>
       <pubDate>Tue, 28 May 2019 20:48:13 +0000</pubDate>
       
-      <guid>https://shangguanhong.github.io/2019/05/28/githubpages-hexo%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E5%8D%9A%E5%AE%A2/</guid>
+      <guid>https://shangguanhong.github.io/2019/05/28/githubpages--hexo%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E5%8D%9A%E5%AE%A2/</guid>
       <description>1. 部署本地博客 安装Node.js, 参考 https://www.runoob.com/nodejs/nodejs-install-setup.html 安装Git, 参考 https://www.runoob.com/git/git-install-setup.html 安装Hexo：右键选择Git Bash，输入命令 npm install -g hexo-cli , 安装完成后，输入 hexo -v 查看是</description>
     </item>
     

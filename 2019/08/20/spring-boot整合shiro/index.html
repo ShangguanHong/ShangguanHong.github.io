@@ -23,7 +23,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.67.1 with theme even" />
+<meta name="generator" content="Hugo 0.101.0 with theme even" />
 
 
 <link rel="canonical" href="https://shangguanhong.github.io/2019/08/20/spring-boot%E6%95%B4%E5%90%88shiro/" />
@@ -34,24 +34,22 @@
 <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
 
 
-<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+
+<link href="/sass/main.min.b5a744db6de49a86cadafb3b70f555ab443f83c307a483402259e94726b045ff.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
 <meta property="og:title" content="Spring Boot整合Shiro" />
 <meta property="og:description" content="1. 前言 在 Java 领域一般有 Spring Security、Apache Shiro 等安全框架，之前写了一篇关于 JWT整合Spring Security 的文章，里面介绍了使用 Spring Boot &#43; JWT &#43; Spring" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://shangguanhong.github.io/2019/08/20/spring-boot%E6%95%B4%E5%90%88shiro/" />
+<meta property="og:url" content="https://shangguanhong.github.io/2019/08/20/spring-boot%E6%95%B4%E5%90%88shiro/" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2019-08-20T20:11:28+00:00" />
 <meta property="article:modified_time" content="2019-08-20T20:11:28+00:00" />
+
 <meta itemprop="name" content="Spring Boot整合Shiro">
-<meta itemprop="description" content="1. 前言 在 Java 领域一般有 Spring Security、Apache Shiro 等安全框架，之前写了一篇关于 JWT整合Spring Security 的文章，里面介绍了使用 Spring Boot &#43; JWT &#43; Spring">
-<meta itemprop="datePublished" content="2019-08-20T20:11:28&#43;00:00" />
-<meta itemprop="dateModified" content="2019-08-20T20:11:28&#43;00:00" />
-<meta itemprop="wordCount" content="5759">
-
-
-
+<meta itemprop="description" content="1. 前言 在 Java 领域一般有 Spring Security、Apache Shiro 等安全框架，之前写了一篇关于 JWT整合Spring Security 的文章，里面介绍了使用 Spring Boot &#43; JWT &#43; Spring"><meta itemprop="datePublished" content="2019-08-20T20:11:28+00:00" />
+<meta itemprop="dateModified" content="2019-08-20T20:11:28+00:00" />
+<meta itemprop="wordCount" content="5780">
 <meta itemprop="keywords" content="Spring Boot,Shiro," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Spring Boot整合Shiro"/>
 <meta name="twitter:description" content="1. 前言 在 Java 领域一般有 Spring Security、Apache Shiro 等安全框架，之前写了一篇关于 JWT整合Spring Security 的文章，里面介绍了使用 Spring Boot &#43; JWT &#43; Spring"/>
@@ -89,12 +87,21 @@
         <li class="mobile-menu-item">Categories</li>
       </a>
   </ul>
+
+  
+
+
 </nav>
+
   <div class="container" id="mobile-panel">
     <header id="header" class="header">
         <div class="logo-wrapper">
   <a href="/" class="logo">赏我一个好梦如旧</a>
 </div>
+
+
+
+
 
 <nav class="site-navbar">
   <ul id="menu" class="menu">
@@ -109,6 +116,7 @@
       </li>
   </ul>
 </nav>
+
     </header>
 
     <main id="main" class="main">
@@ -125,7 +133,7 @@
             <a href="/categories/shiro%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"> Shiro学习笔记 </a>
             <a href="/categories/springboot%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"> SpringBoot学习笔记 </a>
             </div>
-          <span class="more-meta"> 约 5759 字 </span>
+          <span class="more-meta"> 约 5780 字 </span>
           <span class="more-meta"> 预计阅读 12 分钟 </span>
         
       </div>
@@ -214,7 +222,7 @@
 <h2 id="31-导入依赖">3.1 导入依赖</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -244,42 +252,42 @@
 </span><span class="lnt">28
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="c">&lt;!-- shiro核心 --&gt;</span>
-<span class="nt">&lt;dependency&gt;</span>
-	<span class="nt">&lt;groupId&gt;</span>org.apache.shiro<span class="nt">&lt;/groupId&gt;</span>
-	<span class="nt">&lt;artifactId&gt;</span>shiro-spring<span class="nt">&lt;/artifactId&gt;</span>
-	<span class="nt">&lt;version&gt;</span>1.4.0<span class="nt">&lt;/version&gt;</span>
-<span class="nt">&lt;/dependency&gt;</span>
-<span class="c">&lt;!-- lombok 简化pojo的书写 --&gt;</span>
-<span class="nt">&lt;dependency&gt;</span>
-	<span class="nt">&lt;groupId&gt;</span>org.projectlombok<span class="nt">&lt;/groupId&gt;</span>
-	<span class="nt">&lt;artifactId&gt;</span>lombok<span class="nt">&lt;/artifactId&gt;</span>
-	<span class="nt">&lt;optional&gt;</span>true<span class="nt">&lt;/optional&gt;</span>
-<span class="nt">&lt;/dependency&gt;</span>
-<span class="c">&lt;!-- thymeleaf模板引擎 --&gt;</span>
-<span class="nt">&lt;dependency&gt;</span>
-	<span class="nt">&lt;groupId&gt;</span>org.springframework.boot<span class="nt">&lt;/groupId&gt;</span>
-	<span class="nt">&lt;artifactId&gt;</span>spring-boot-starter-thymeleaf<span class="nt">&lt;/artifactId&gt;</span>
-<span class="nt">&lt;/dependency&gt;</span>
-<span class="c">&lt;!-- jpa --&gt;</span>
-<span class="nt">&lt;dependency&gt;</span>
-	<span class="nt">&lt;groupId&gt;</span>org.springframework.boot<span class="nt">&lt;/groupId&gt;</span>
-	<span class="nt">&lt;artifactId&gt;</span>spring-boot-starter-data-jpa<span class="nt">&lt;/artifactId&gt;</span>
-<span class="nt">&lt;/dependency&gt;</span>
-<span class="c">&lt;!-- mysql驱动 --&gt;</span>
-<span class="nt">&lt;dependency&gt;</span>
-	<span class="nt">&lt;groupId&gt;</span>mysql<span class="nt">&lt;/groupId&gt;</span>
-	<span class="nt">&lt;artifactId&gt;</span>mysql-connector-java<span class="nt">&lt;/artifactId&gt;</span>
-	<span class="nt">&lt;scope&gt;</span>runtime<span class="nt">&lt;/scope&gt;</span>
-<span class="nt">&lt;/dependency&gt;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="c">&lt;!-- shiro核心 --&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;dependency&gt;</span>
+</span></span><span class="line"><span class="cl">	<span class="nt">&lt;groupId&gt;</span>org.apache.shiro<span class="nt">&lt;/groupId&gt;</span>
+</span></span><span class="line"><span class="cl">	<span class="nt">&lt;artifactId&gt;</span>shiro-spring<span class="nt">&lt;/artifactId&gt;</span>
+</span></span><span class="line"><span class="cl">	<span class="nt">&lt;version&gt;</span>1.4.0<span class="nt">&lt;/version&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/dependency&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="c">&lt;!-- lombok 简化pojo的书写 --&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;dependency&gt;</span>
+</span></span><span class="line"><span class="cl">	<span class="nt">&lt;groupId&gt;</span>org.projectlombok<span class="nt">&lt;/groupId&gt;</span>
+</span></span><span class="line"><span class="cl">	<span class="nt">&lt;artifactId&gt;</span>lombok<span class="nt">&lt;/artifactId&gt;</span>
+</span></span><span class="line"><span class="cl">	<span class="nt">&lt;optional&gt;</span>true<span class="nt">&lt;/optional&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/dependency&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="c">&lt;!-- thymeleaf模板引擎 --&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;dependency&gt;</span>
+</span></span><span class="line"><span class="cl">	<span class="nt">&lt;groupId&gt;</span>org.springframework.boot<span class="nt">&lt;/groupId&gt;</span>
+</span></span><span class="line"><span class="cl">	<span class="nt">&lt;artifactId&gt;</span>spring-boot-starter-thymeleaf<span class="nt">&lt;/artifactId&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/dependency&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="c">&lt;!-- jpa --&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;dependency&gt;</span>
+</span></span><span class="line"><span class="cl">	<span class="nt">&lt;groupId&gt;</span>org.springframework.boot<span class="nt">&lt;/groupId&gt;</span>
+</span></span><span class="line"><span class="cl">	<span class="nt">&lt;artifactId&gt;</span>spring-boot-starter-data-jpa<span class="nt">&lt;/artifactId&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/dependency&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="c">&lt;!-- mysql驱动 --&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;dependency&gt;</span>
+</span></span><span class="line"><span class="cl">	<span class="nt">&lt;groupId&gt;</span>mysql<span class="nt">&lt;/groupId&gt;</span>
+</span></span><span class="line"><span class="cl">	<span class="nt">&lt;artifactId&gt;</span>mysql-connector-java<span class="nt">&lt;/artifactId&gt;</span>
+</span></span><span class="line"><span class="cl">	<span class="nt">&lt;scope&gt;</span>runtime<span class="nt">&lt;/scope&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/dependency&gt;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>上面的核心是 <code>shiro-spring</code>坐标</p>
 <h2 id="32-配置文件">3.2 配置文件</h2>
 <p><code>application.yml</code></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -296,22 +304,22 @@
 </span><span class="lnt">15
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="k">spring</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="k">datasource</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span><span class="k">url</span><span class="p">:</span><span class="w"> </span>jdbc<span class="p">:</span>mysql<span class="p">:</span>//localhost<span class="p">:</span><span class="m">3306</span>/demo<span class="w">
-</span><span class="w">    </span><span class="k">username</span><span class="p">:</span><span class="w"> </span>root<span class="w">
-</span><span class="w">    </span><span class="k">password</span><span class="p">:</span><span class="w"> </span>root<span class="w">
-</span><span class="w">    </span><span class="k">driver-class-name</span><span class="p">:</span><span class="w"> </span>com.mysql.jdbc.Driver<span class="w">
-</span><span class="w">
-</span><span class="w">  </span><span class="k">jpa</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span><span class="k">database</span><span class="p">:</span><span class="w"> </span>mysql<span class="w">
-</span><span class="w">    </span><span class="k">show-sql</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
-</span><span class="w">    </span><span class="k">hibernate</span><span class="p">:</span><span class="w">
-</span><span class="w">      </span><span class="k">ddl-auto</span><span class="p">:</span><span class="w"> </span>update<span class="w">
-</span><span class="w">    </span><span class="k">properties</span><span class="p">:</span><span class="w">
-</span><span class="w">      </span><span class="k">hibernate</span><span class="p">:</span><span class="w">
-</span><span class="w">        </span><span class="k">dialect</span><span class="p">:</span><span class="w"> </span>org.hibernate.dialect.MySQL5Dialect<span class="w">
-</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">spring</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">datasource</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l">jdbc:mysql://localhost:3306/demo</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">username</span><span class="p">:</span><span class="w"> </span><span class="l">root</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="l">root</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">driver-class-name</span><span class="p">:</span><span class="w"> </span><span class="l">com.mysql.jdbc.Driver</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">jpa</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">database</span><span class="p">:</span><span class="w"> </span><span class="l">mysql</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">show-sql</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">hibernate</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">ddl-auto</span><span class="p">:</span><span class="w"> </span><span class="l">update</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">properties</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">hibernate</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">dialect</span><span class="p">:</span><span class="w"> </span><span class="l">org.hibernate.dialect.MySQL5Dialect</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="33-测试页面">3.3 测试页面</h2>
 <p>我们新建了六个页面用来测试：</p>
@@ -326,7 +334,7 @@
 <p>除过登录页面其它都很简单，大概如下：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -338,22 +346,22 @@
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-html" data-lang="html"><span class="cp">&lt;!DOCTYPE html&gt;</span>
-<span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">&#34;en&#34;</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&#34;UTF-8&#34;</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Title<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
-<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>index<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
-<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
-<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="cp">&lt;!DOCTYPE html&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">&#34;en&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&#34;UTF-8&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Title<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>index<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p><code>login.html</code></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -374,26 +382,26 @@
 </span><span class="lnt">19
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-html" data-lang="html"><span class="cp">&lt;!DOCTYPE html&gt;</span>
-<span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">&#34;en&#34;</span> <span class="na">xmlns:th</span><span class="o">=</span><span class="s">&#34;http://www.w3.org/1999/xhtml&#34;</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&#34;UTF-8&#34;</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Login<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
-<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
-错误信息：<span class="p">&lt;</span><span class="nt">h4</span> <span class="na">th:text</span><span class="o">=</span><span class="s">&#34;${msg}&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">h4</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="nt">form</span> <span class="na">action</span><span class="o">=</span><span class="s">&#34;&#34;</span> <span class="na">method</span><span class="o">=</span><span class="s">&#34;post&#34;</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>账号：<span class="p">&lt;</span><span class="nt">label</span><span class="p">&gt;</span>
-        <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;text&#34;</span> <span class="na">name</span><span class="o">=</span><span class="s">&#34;username&#34;</span> <span class="na">value</span><span class="o">=</span><span class="s">&#34;admin&#34;</span><span class="p">/&gt;</span>
-    <span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>密码：<span class="p">&lt;</span><span class="nt">label</span><span class="p">&gt;</span>
-        <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;text&#34;</span> <span class="na">name</span><span class="o">=</span><span class="s">&#34;password&#34;</span> <span class="na">value</span><span class="o">=</span><span class="s">&#34;123456&#34;</span><span class="p">/&gt;</span>
-    <span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;submit&#34;</span> <span class="na">value</span><span class="o">=</span><span class="s">&#34;登录&#34;</span><span class="p">/&gt;&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
-<span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
-<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
-<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="cp">&lt;!DOCTYPE html&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">&#34;en&#34;</span> <span class="na">xmlns:th</span><span class="o">=</span><span class="s">&#34;http://www.w3.org/1999/xhtml&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&#34;UTF-8&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Login<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">错误信息：<span class="p">&lt;</span><span class="nt">h4</span> <span class="na">th:text</span><span class="o">=</span><span class="s">&#34;${msg}&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">h4</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">form</span> <span class="na">action</span><span class="o">=</span><span class="s">&#34;&#34;</span> <span class="na">method</span><span class="o">=</span><span class="s">&#34;post&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>账号：<span class="p">&lt;</span><span class="nt">label</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;text&#34;</span> <span class="na">name</span><span class="o">=</span><span class="s">&#34;username&#34;</span> <span class="na">value</span><span class="o">=</span><span class="s">&#34;admin&#34;</span><span class="p">/&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>密码：<span class="p">&lt;</span><span class="nt">label</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;text&#34;</span> <span class="na">name</span><span class="o">=</span><span class="s">&#34;password&#34;</span> <span class="na">value</span><span class="o">=</span><span class="s">&#34;123456&#34;</span><span class="p">/&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;submit&#34;</span> <span class="na">value</span><span class="o">=</span><span class="s">&#34;登录&#34;</span><span class="p">/&gt;&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="34-数据库内容">3.4 数据库内容</h2>
 <p>这里我们采用 <code>RBAC</code> 的权限模型来测试</p>
@@ -404,7 +412,7 @@
 <p><code>SysUser.java:</code></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -431,37 +439,37 @@
 </span><span class="lnt">25
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Data</span>
-<span class="nd">@Entity</span>
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">SysUser</span> <span class="kd">implements</span> <span class="n">Serializable</span> <span class="o">{</span>
-    
-    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">long</span> <span class="n">serialVersionUID</span> <span class="o">=</span> <span class="n">2057675669846796336L</span><span class="o">;</span>
-    
-    <span class="nd">@Id</span>
-    <span class="nd">@GeneratedValue</span><span class="o">(</span><span class="n">strategy</span> <span class="o">=</span> <span class="n">GenerationType</span><span class="o">.</span><span class="na">IDENTITY</span><span class="o">)</span>
-    <span class="kd">private</span> <span class="n">Integer</span> <span class="n">id</span><span class="o">;</span>
-
-    <span class="nd">@Column</span><span class="o">(</span><span class="n">unique</span> <span class="o">=</span> <span class="kc">true</span><span class="o">)</span>
-    <span class="kd">private</span> <span class="n">String</span> <span class="n">username</span><span class="o">;</span>
-
-    <span class="kd">private</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
-
-    <span class="kd">private</span> <span class="n">String</span> <span class="n">password</span><span class="o">;</span>
-
-    <span class="kd">private</span> <span class="n">Byte</span> <span class="n">state</span><span class="o">;</span>
-
-    <span class="nd">@ManyToMany</span><span class="o">(</span><span class="n">fetch</span> <span class="o">=</span> <span class="n">FetchType</span><span class="o">.</span><span class="na">EAGER</span><span class="o">)</span>
-    <span class="nd">@JoinTable</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">&#34;SysUserRole&#34;</span><span class="o">,</span>
-            <span class="n">joinColumns</span> <span class="o">=</span> <span class="o">{</span><span class="nd">@JoinColumn</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">&#34;u_id&#34;</span><span class="o">)},</span>
-            <span class="n">inverseJoinColumns</span> <span class="o">=</span> <span class="o">{</span><span class="nd">@JoinColumn</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">&#34;r_id&#34;</span><span class="o">)})</span>
-    <span class="kd">private</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">SysRole</span><span class="o">&gt;</span> <span class="n">roleList</span><span class="o">;</span>
-<span class="o">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="nd">@Data</span>
+</span></span><span class="line"><span class="cl"><span class="nd">@Entity</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">SysUser</span> <span class="kd">implements</span> <span class="n">Serializable</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">long</span> <span class="n">serialVersionUID</span> <span class="o">=</span> <span class="n">2057675669846796336L</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="nd">@Id</span>
+</span></span><span class="line"><span class="cl">    <span class="nd">@GeneratedValue</span><span class="o">(</span><span class="n">strategy</span> <span class="o">=</span> <span class="n">GenerationType</span><span class="o">.</span><span class="na">IDENTITY</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">Integer</span> <span class="n">id</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nd">@Column</span><span class="o">(</span><span class="n">unique</span> <span class="o">=</span> <span class="kc">true</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">String</span> <span class="n">username</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">String</span> <span class="n">password</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">Byte</span> <span class="n">state</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nd">@ManyToMany</span><span class="o">(</span><span class="n">fetch</span> <span class="o">=</span> <span class="n">FetchType</span><span class="o">.</span><span class="na">EAGER</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nd">@JoinTable</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">&#34;SysUserRole&#34;</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">            <span class="n">joinColumns</span> <span class="o">=</span> <span class="o">{</span><span class="nd">@JoinColumn</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">&#34;u_id&#34;</span><span class="o">)},</span>
+</span></span><span class="line"><span class="cl">            <span class="n">inverseJoinColumns</span> <span class="o">=</span> <span class="o">{</span><span class="nd">@JoinColumn</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">&#34;r_id&#34;</span><span class="o">)})</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">SysRole</span><span class="o">&gt;</span> <span class="n">roleList</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p><code>SysRole.java:</code></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -489,38 +497,38 @@
 </span><span class="lnt">26
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Data</span>
-<span class="nd">@Entity</span>
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">SysRole</span> <span class="kd">implements</span> <span class="n">Serializable</span> <span class="o">{</span>
-
-    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">long</span> <span class="n">serialVersionUID</span> <span class="o">=</span> <span class="o">-</span><span class="n">3276415633649319106L</span><span class="o">;</span>
-
-    <span class="nd">@Id</span>
-    <span class="nd">@GeneratedValue</span><span class="o">(</span><span class="n">strategy</span> <span class="o">=</span> <span class="n">GenerationType</span><span class="o">.</span><span class="na">IDENTITY</span><span class="o">)</span>
-    <span class="kd">private</span> <span class="n">Integer</span> <span class="n">id</span><span class="o">;</span>
-
-    <span class="kd">private</span> <span class="n">String</span> <span class="n">role</span><span class="o">;</span>
-
-    <span class="kd">private</span> <span class="n">String</span> <span class="n">description</span><span class="o">;</span>
-
-    <span class="kd">private</span> <span class="n">Boolean</span> <span class="n">available</span> <span class="o">=</span> <span class="n">Boolean</span><span class="o">.</span><span class="na">FALSE</span><span class="o">;</span>
-
-    <span class="nd">@ManyToMany</span><span class="o">(</span><span class="n">fetch</span> <span class="o">=</span> <span class="n">FetchType</span><span class="o">.</span><span class="na">EAGER</span><span class="o">)</span>
-    <span class="nd">@JoinTable</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">&#34;SysRolePermission&#34;</span><span class="o">,</span>
-            <span class="n">joinColumns</span> <span class="o">=</span> <span class="o">{</span><span class="nd">@JoinColumn</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">&#34;r_d&#34;</span><span class="o">)},</span>
-            <span class="n">inverseJoinColumns</span> <span class="o">=</span> <span class="o">{</span><span class="nd">@JoinColumn</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">&#34;p_id&#34;</span><span class="o">)})</span>
-    <span class="kd">private</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">SysPermission</span><span class="o">&gt;</span> <span class="n">permissionList</span><span class="o">;</span>
-
-    <span class="nd">@JsonIgnore</span>
-    <span class="nd">@ManyToMany</span><span class="o">(</span><span class="n">mappedBy</span> <span class="o">=</span> <span class="s">&#34;roleList&#34;</span><span class="o">)</span>
-    <span class="kd">private</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">SysUser</span><span class="o">&gt;</span> <span class="n">userList</span><span class="o">;</span>
-<span class="o">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="nd">@Data</span>
+</span></span><span class="line"><span class="cl"><span class="nd">@Entity</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">SysRole</span> <span class="kd">implements</span> <span class="n">Serializable</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">long</span> <span class="n">serialVersionUID</span> <span class="o">=</span> <span class="o">-</span><span class="n">3276415633649319106L</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nd">@Id</span>
+</span></span><span class="line"><span class="cl">    <span class="nd">@GeneratedValue</span><span class="o">(</span><span class="n">strategy</span> <span class="o">=</span> <span class="n">GenerationType</span><span class="o">.</span><span class="na">IDENTITY</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">Integer</span> <span class="n">id</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">String</span> <span class="n">role</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">String</span> <span class="n">description</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">Boolean</span> <span class="n">available</span> <span class="o">=</span> <span class="n">Boolean</span><span class="o">.</span><span class="na">FALSE</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nd">@ManyToMany</span><span class="o">(</span><span class="n">fetch</span> <span class="o">=</span> <span class="n">FetchType</span><span class="o">.</span><span class="na">EAGER</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nd">@JoinTable</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">&#34;SysRolePermission&#34;</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">            <span class="n">joinColumns</span> <span class="o">=</span> <span class="o">{</span><span class="nd">@JoinColumn</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">&#34;r_d&#34;</span><span class="o">)},</span>
+</span></span><span class="line"><span class="cl">            <span class="n">inverseJoinColumns</span> <span class="o">=</span> <span class="o">{</span><span class="nd">@JoinColumn</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">&#34;p_id&#34;</span><span class="o">)})</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">SysPermission</span><span class="o">&gt;</span> <span class="n">permissionList</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nd">@JsonIgnore</span>
+</span></span><span class="line"><span class="cl">    <span class="nd">@ManyToMany</span><span class="o">(</span><span class="n">mappedBy</span> <span class="o">=</span> <span class="s">&#34;roleList&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">SysUser</span><span class="o">&gt;</span> <span class="n">userList</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p><code>SysPermission.java:</code></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -542,32 +550,32 @@
 </span><span class="lnt">20
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Data</span>
-<span class="nd">@Entity</span>
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">SysPermission</span> <span class="kd">implements</span> <span class="n">Serializable</span> <span class="o">{</span>
-
-    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">long</span> <span class="n">serialVersionUID</span> <span class="o">=</span> <span class="n">5877361065104918109L</span><span class="o">;</span>
-
-    <span class="nd">@Id</span>
-    <span class="nd">@GeneratedValue</span><span class="o">(</span><span class="n">strategy</span> <span class="o">=</span> <span class="n">GenerationType</span><span class="o">.</span><span class="na">IDENTITY</span><span class="o">)</span>
-    <span class="kd">private</span> <span class="n">Integer</span> <span class="n">id</span><span class="o">;</span>
-
-    <span class="kd">private</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
-
-    <span class="kd">private</span> <span class="n">String</span> <span class="n">permission</span><span class="o">;</span>
-
-    <span class="kd">private</span> <span class="n">Boolean</span> <span class="n">available</span> <span class="o">=</span> <span class="n">Boolean</span><span class="o">.</span><span class="na">FALSE</span><span class="o">;</span>
-
-    <span class="nd">@JsonIgnore</span>
-    <span class="nd">@ManyToMany</span><span class="o">(</span><span class="n">mappedBy</span> <span class="o">=</span> <span class="s">&#34;permissions&#34;</span><span class="o">)</span>
-    <span class="kd">private</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">SysRole</span><span class="o">&gt;</span> <span class="n">roleList</span><span class="o">;</span>
-<span class="o">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="nd">@Data</span>
+</span></span><span class="line"><span class="cl"><span class="nd">@Entity</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">SysPermission</span> <span class="kd">implements</span> <span class="n">Serializable</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">long</span> <span class="n">serialVersionUID</span> <span class="o">=</span> <span class="n">5877361065104918109L</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nd">@Id</span>
+</span></span><span class="line"><span class="cl">    <span class="nd">@GeneratedValue</span><span class="o">(</span><span class="n">strategy</span> <span class="o">=</span> <span class="n">GenerationType</span><span class="o">.</span><span class="na">IDENTITY</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">Integer</span> <span class="n">id</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">String</span> <span class="n">permission</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">Boolean</span> <span class="n">available</span> <span class="o">=</span> <span class="n">Boolean</span><span class="o">.</span><span class="na">FALSE</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nd">@JsonIgnore</span>
+</span></span><span class="line"><span class="cl">    <span class="nd">@ManyToMany</span><span class="o">(</span><span class="n">mappedBy</span> <span class="o">=</span> <span class="s">&#34;permissions&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">SysRole</span><span class="o">&gt;</span> <span class="n">roleList</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>根据以上的代码会自动生成 sys_user（用户信息表）、sys_role（角色表）、sys_permission（权限表）、sys_user_role（用户角色表）、sys_role_permission（角色权限表）这五张表，为了方便测试我们给这五张表插入一些初始化数据：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -592,30 +600,30 @@
 </span><span class="lnt">23
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">INSERT</span> <span class="k">INTO</span> <span class="o">`</span><span class="n">sys_user</span><span class="o">`</span> <span class="p">(</span><span class="o">`</span><span class="n">id</span><span class="o">`</span><span class="p">,</span> <span class="o">`</span><span class="n">name</span><span class="o">`</span><span class="p">,</span> <span class="o">`</span><span class="n">password</span><span class="o">`</span><span class="p">,</span> <span class="o">`</span><span class="k">state</span><span class="o">`</span><span class="p">,</span> <span class="o">`</span><span class="n">username</span><span class="o">`</span><span class="p">)</span> <span class="k">VALUES</span>
-	<span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;admin&#39;</span><span class="p">,</span> <span class="s1">&#39;admin&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;admin&#39;</span><span class="p">),</span>
-	<span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;user&#39;</span><span class="p">,</span> <span class="s1">&#39;user&#39;</span><span class="p">,</span> <span class="s1">&#39;user&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;user&#39;</span><span class="p">);</span>
-	
-<span class="k">INSERT</span> <span class="k">INTO</span> <span class="o">`</span><span class="n">sys_role</span><span class="o">`</span> <span class="p">(</span><span class="o">`</span><span class="n">id</span><span class="o">`</span><span class="p">,</span> <span class="o">`</span><span class="k">role</span><span class="o">`</span><span class="p">,</span> <span class="o">`</span><span class="n">description</span><span class="o">`</span><span class="p">,</span> <span class="o">`</span><span class="n">available</span><span class="o">`</span><span class="p">)</span> <span class="k">VALUES</span>
-	<span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;admin&#39;</span><span class="p">,</span> <span class="s1">&#39;管理员&#39;</span><span class="p">,</span> <span class="n">b</span><span class="s1">&#39;1&#39;</span><span class="p">),</span>
-	<span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;vip&#39;</span><span class="p">,</span> <span class="s1">&#39;VIP会员&#39;</span><span class="p">,</span> <span class="n">b</span><span class="s1">&#39;1&#39;</span><span class="p">);</span>
-	
-<span class="k">INSERT</span> <span class="k">INTO</span> <span class="o">`</span><span class="n">sys_permission</span><span class="o">`</span> <span class="p">(</span><span class="o">`</span><span class="n">id</span><span class="o">`</span><span class="p">,</span> <span class="o">`</span><span class="n">name</span><span class="o">`</span><span class="p">,</span> <span class="o">`</span><span class="n">permission</span><span class="o">`</span><span class="p">,</span> <span class="o">`</span><span class="n">available</span><span class="o">`</span><span class="p">)</span> <span class="k">VALUES</span>
-	<span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;用户管理&#39;</span><span class="p">,</span> <span class="s1">&#39;user:view&#39;</span><span class="p">,</span> <span class="n">b</span><span class="s1">&#39;1&#39;</span><span class="p">),</span>
-	<span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;用户添加&#39;</span><span class="p">,</span> <span class="s1">&#39;user:add&#39;</span><span class="p">,</span> <span class="n">b</span><span class="s1">&#39;1&#39;</span><span class="p">),</span>
-	<span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;用户删除&#39;</span><span class="p">,</span> <span class="s1">&#39;user:del&#39;</span><span class="p">,</span> <span class="n">b</span><span class="s1">&#39;1&#39;</span><span class="p">);</span>
-	
-<span class="k">INSERT</span> <span class="k">INTO</span> <span class="o">`</span><span class="n">sys_user_role</span><span class="o">`</span> <span class="p">(</span><span class="o">`</span><span class="n">u_id</span><span class="o">`</span><span class="p">,</span> <span class="o">`</span><span class="n">r_id</span><span class="o">`</span><span class="p">)</span> <span class="k">VALUES</span>
-	<span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
-	<span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
-	<span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
-	
-<span class="k">INSERT</span> <span class="k">INTO</span> <span class="o">`</span><span class="n">sys_role_permission</span><span class="o">`</span> <span class="p">(</span><span class="o">`</span><span class="n">r_d</span><span class="o">`</span><span class="p">,</span> <span class="o">`</span><span class="n">p_id</span><span class="o">`</span><span class="p">)</span> <span class="k">VALUES</span>
-	<span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
-	<span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span>
-	<span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
-	<span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="o">`</span><span class="n">sys_user</span><span class="o">`</span><span class="w"> </span><span class="p">(</span><span class="o">`</span><span class="n">id</span><span class="o">`</span><span class="p">,</span><span class="w"> </span><span class="o">`</span><span class="n">name</span><span class="o">`</span><span class="p">,</span><span class="w"> </span><span class="o">`</span><span class="n">password</span><span class="o">`</span><span class="p">,</span><span class="w"> </span><span class="o">`</span><span class="k">state</span><span class="o">`</span><span class="p">,</span><span class="w"> </span><span class="o">`</span><span class="n">username</span><span class="o">`</span><span class="p">)</span><span class="w"> </span><span class="k">VALUES</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;admin&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;admin&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;admin&#39;</span><span class="p">),</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;user&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;user&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;user&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;user&#39;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="o">`</span><span class="n">sys_role</span><span class="o">`</span><span class="w"> </span><span class="p">(</span><span class="o">`</span><span class="n">id</span><span class="o">`</span><span class="p">,</span><span class="w"> </span><span class="o">`</span><span class="k">role</span><span class="o">`</span><span class="p">,</span><span class="w"> </span><span class="o">`</span><span class="n">description</span><span class="o">`</span><span class="p">,</span><span class="w"> </span><span class="o">`</span><span class="n">available</span><span class="o">`</span><span class="p">)</span><span class="w"> </span><span class="k">VALUES</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;admin&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;管理员&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="s1">&#39;1&#39;</span><span class="p">),</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;vip&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;VIP会员&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="s1">&#39;1&#39;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="o">`</span><span class="n">sys_permission</span><span class="o">`</span><span class="w"> </span><span class="p">(</span><span class="o">`</span><span class="n">id</span><span class="o">`</span><span class="p">,</span><span class="w"> </span><span class="o">`</span><span class="n">name</span><span class="o">`</span><span class="p">,</span><span class="w"> </span><span class="o">`</span><span class="n">permission</span><span class="o">`</span><span class="p">,</span><span class="w"> </span><span class="o">`</span><span class="n">available</span><span class="o">`</span><span class="p">)</span><span class="w"> </span><span class="k">VALUES</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;用户管理&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;user:view&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="s1">&#39;1&#39;</span><span class="p">),</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;用户添加&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;user:add&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="s1">&#39;1&#39;</span><span class="p">),</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;用户删除&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;user:del&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="s1">&#39;1&#39;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="o">`</span><span class="n">sys_user_role</span><span class="o">`</span><span class="w"> </span><span class="p">(</span><span class="o">`</span><span class="n">u_id</span><span class="o">`</span><span class="p">,</span><span class="w"> </span><span class="o">`</span><span class="n">r_id</span><span class="o">`</span><span class="p">)</span><span class="w"> </span><span class="k">VALUES</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">),</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">),</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="o">`</span><span class="n">sys_role_permission</span><span class="o">`</span><span class="w"> </span><span class="p">(</span><span class="o">`</span><span class="n">r_d</span><span class="o">`</span><span class="p">,</span><span class="w"> </span><span class="o">`</span><span class="n">p_id</span><span class="o">`</span><span class="p">)</span><span class="w"> </span><span class="k">VALUES</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">),</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">),</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">),</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><h1 id="4-编写shiroconfig与myrealm">4. 编写ShiroConfig与MyRealm</h1>
 <h2 id="41-shiroconfig">4.1 ShiroConfig</h2>
@@ -623,7 +631,7 @@
 <p>最简单的 ShiroConfig 定义如下</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -669,51 +677,51 @@
 </span><span class="lnt">44
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Configuration</span>
-<span class="nd">@Slf4j</span>
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ShiroConfig</span> <span class="o">{</span>
-
-    <span class="nd">@Bean</span>
-    <span class="kd">public</span> <span class="n">ShiroFilterFactoryBean</span> <span class="nf">shiroFilter</span><span class="o">(</span><span class="n">SecurityManager</span> <span class="n">securityManager</span><span class="o">)</span> <span class="o">{</span>
-        <span class="n">log</span><span class="o">.</span><span class="na">debug</span><span class="o">(</span><span class="s">&#34;ShiroConfig--------------------------&gt;shiroFilter()&#34;</span><span class="o">);</span>
-        <span class="n">ShiroFilterFactoryBean</span> <span class="n">shiroFilterFactoryBean</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ShiroFilterFactoryBean</span><span class="o">();</span>
-        <span class="n">shiroFilterFactoryBean</span><span class="o">.</span><span class="na">setSecurityManager</span><span class="o">(</span><span class="n">securityManager</span><span class="o">);</span>
-        <span class="c1">// 如果不设置默认会自动寻找Web工程根目录下的&#34;/login.jsp&#34;页面
-</span><span class="c1"></span>        <span class="n">shiroFilterFactoryBean</span><span class="o">.</span><span class="na">setLoginUrl</span><span class="o">(</span><span class="s">&#34;/login&#34;</span><span class="o">);</span>
-        <span class="c1">// 登录成功后要跳转的链接
-</span><span class="c1"></span>        <span class="n">shiroFilterFactoryBean</span><span class="o">.</span><span class="na">setSuccessUrl</span><span class="o">(</span><span class="s">&#34;/index&#34;</span><span class="o">);</span>
-        <span class="c1">// 未授权界面;
-</span><span class="c1"></span>        <span class="n">shiroFilterFactoryBean</span><span class="o">.</span><span class="na">setUnauthorizedUrl</span><span class="o">(</span><span class="s">&#34;/403&#34;</span><span class="o">);</span>
-        <span class="c1">// 拦截器
-</span><span class="c1"></span>        <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">filterChainDefinitionMap</span> <span class="o">=</span> <span class="k">new</span> <span class="n">LinkedHashMap</span><span class="o">&lt;&gt;();</span>
-        <span class="c1">// &lt;!-- authc:所有url都必须认证通过才可以访问; anon:所有url都都可以匿名访问--&gt;
-</span><span class="c1"></span>        <span class="c1">// 配置不会被拦截的链接 顺序判断
-</span><span class="c1"></span>        <span class="c1">// 静态文件运行访问
-</span><span class="c1"></span>        <span class="n">filterChainDefinitionMap</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;/static/**&#34;</span><span class="o">,</span> <span class="s">&#34;anon&#34;</span><span class="o">);</span>
-        <span class="c1">// 登录接口允许访问
-</span><span class="c1"></span>        <span class="n">filterChainDefinitionMap</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;/login&#34;</span><span class="o">,</span> <span class="s">&#34;anon&#34;</span><span class="o">);</span>
-        <span class="c1">// 配置退出过滤器,其中的具体的退出代码Shiro已经替我们实现了
-</span><span class="c1"></span>        <span class="n">filterChainDefinitionMap</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;/logout&#34;</span><span class="o">,</span> <span class="s">&#34;logout&#34;</span><span class="o">);</span>
-        <span class="c1">// 剩余的都需要认证
-</span><span class="c1"></span>        <span class="c1">// 主要这行代码必须放在所有权限设置的最后，不然会导致所有 url 都被拦截
-</span><span class="c1"></span>        <span class="n">filterChainDefinitionMap</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;/**&#34;</span><span class="o">,</span> <span class="s">&#34;authc&#34;</span><span class="o">);</span>
-        <span class="n">shiroFilterFactoryBean</span><span class="o">.</span><span class="na">setFilterChainDefinitionMap</span><span class="o">(</span><span class="n">filterChainDefinitionMap</span><span class="o">);</span>
-        <span class="k">return</span> <span class="n">shiroFilterFactoryBean</span><span class="o">;</span>
-    <span class="o">}</span>
-
-    <span class="nd">@Bean</span>
-    <span class="kd">public</span> <span class="n">SecurityManager</span> <span class="nf">securityManager</span><span class="o">()</span> <span class="o">{</span>
-        <span class="n">DefaultWebSecurityManager</span> <span class="n">securityManager</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DefaultWebSecurityManager</span><span class="o">();</span>
-        <span class="n">securityManager</span><span class="o">.</span><span class="na">setRealm</span><span class="o">(</span><span class="n">myRealm</span><span class="o">());</span>
-        <span class="k">return</span> <span class="n">securityManager</span><span class="o">;</span>
-    <span class="o">}</span>
-
-    <span class="nd">@Bean</span>
-    <span class="kd">public</span> <span class="n">MyRealm</span> <span class="nf">myRealm</span><span class="o">()</span> <span class="o">{</span>
-        <span class="k">return</span> <span class="k">new</span> <span class="n">MyRealm</span><span class="o">();</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="nd">@Configuration</span>
+</span></span><span class="line"><span class="cl"><span class="nd">@Slf4j</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">ShiroConfig</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nd">@Bean</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">ShiroFilterFactoryBean</span> <span class="nf">shiroFilter</span><span class="o">(</span><span class="n">SecurityManager</span> <span class="n">securityManager</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">log</span><span class="o">.</span><span class="na">debug</span><span class="o">(</span><span class="s">&#34;ShiroConfig--------------------------&gt;shiroFilter()&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">ShiroFilterFactoryBean</span> <span class="n">shiroFilterFactoryBean</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ShiroFilterFactoryBean</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">        <span class="n">shiroFilterFactoryBean</span><span class="o">.</span><span class="na">setSecurityManager</span><span class="o">(</span><span class="n">securityManager</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// 如果不设置默认会自动寻找Web工程根目录下的&#34;/login.jsp&#34;页面
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">shiroFilterFactoryBean</span><span class="o">.</span><span class="na">setLoginUrl</span><span class="o">(</span><span class="s">&#34;/login&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// 登录成功后要跳转的链接
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">shiroFilterFactoryBean</span><span class="o">.</span><span class="na">setSuccessUrl</span><span class="o">(</span><span class="s">&#34;/index&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// 未授权界面;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">shiroFilterFactoryBean</span><span class="o">.</span><span class="na">setUnauthorizedUrl</span><span class="o">(</span><span class="s">&#34;/403&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// 拦截器
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">filterChainDefinitionMap</span> <span class="o">=</span> <span class="k">new</span> <span class="n">LinkedHashMap</span><span class="o">&lt;&gt;();</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// &lt;!-- authc:所有url都必须认证通过才可以访问; anon:所有url都都可以匿名访问--&gt;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="c1">// 配置不会被拦截的链接 顺序判断
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="c1">// 静态文件运行访问
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">filterChainDefinitionMap</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;/static/**&#34;</span><span class="o">,</span> <span class="s">&#34;anon&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// 登录接口允许访问
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">filterChainDefinitionMap</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;/login&#34;</span><span class="o">,</span> <span class="s">&#34;anon&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// 配置退出过滤器,其中的具体的退出代码Shiro已经替我们实现了
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">filterChainDefinitionMap</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;/logout&#34;</span><span class="o">,</span> <span class="s">&#34;logout&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// 剩余的都需要认证
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="c1">// 主要这行代码必须放在所有权限设置的最后，不然会导致所有 url 都被拦截
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">filterChainDefinitionMap</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;/**&#34;</span><span class="o">,</span> <span class="s">&#34;authc&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">shiroFilterFactoryBean</span><span class="o">.</span><span class="na">setFilterChainDefinitionMap</span><span class="o">(</span><span class="n">filterChainDefinitionMap</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">shiroFilterFactoryBean</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nd">@Bean</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">SecurityManager</span> <span class="nf">securityManager</span><span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">DefaultWebSecurityManager</span> <span class="n">securityManager</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DefaultWebSecurityManager</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">        <span class="n">securityManager</span><span class="o">.</span><span class="na">setRealm</span><span class="o">(</span><span class="n">myRealm</span><span class="o">());</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">securityManager</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nd">@Bean</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">MyRealm</span> <span class="nf">myRealm</span><span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="k">new</span> <span class="n">MyRealm</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><blockquote>
 <ul>
@@ -755,7 +763,7 @@
 <p><code>doGetAuthorizationInfo</code>： 权限认证，获取登录成功的 Subject 的所属权限</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -796,64 +804,64 @@
 </span><span class="lnt">39
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Slf4j</span>
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyRealm</span> <span class="kd">extends</span> <span class="n">AuthorizingRealm</span> <span class="o">{</span>
-
-    <span class="nd">@Resource</span>
-    <span class="kd">private</span> <span class="n">SysUserRepository</span> <span class="n">sysUserRepository</span><span class="o">;</span>
-
-    <span class="nd">@Override</span>
-    <span class="kd">protected</span> <span class="n">AuthorizationInfo</span> <span class="nf">doGetAuthorizationInfo</span><span class="o">(</span><span class="n">PrincipalCollection</span> <span class="n">principalCollection</span><span class="o">)</span> <span class="o">{</span>
-        <span class="n">log</span><span class="o">.</span><span class="na">debug</span><span class="o">(</span><span class="s">&#34;UserRealm-------------------&gt;doGetAuthorizationInfo&#34;</span><span class="o">);</span>
-        <span class="n">SimpleAuthorizationInfo</span> <span class="n">authorizationInfo</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SimpleAuthorizationInfo</span><span class="o">();</span>
-        <span class="c1">// 1. 通过principalCollection.getPrimaryPrincipal()得到传入的用户信息
-</span><span class="c1"></span>        <span class="n">SysUser</span> <span class="n">user</span> <span class="o">=</span> <span class="o">(</span><span class="n">SysUser</span><span class="o">)</span> <span class="n">principalCollection</span><span class="o">.</span><span class="na">getPrimaryPrincipal</span><span class="o">();</span>
-        <span class="c1">// 2. 遍历Role集合 赋予角色
-</span><span class="c1"></span>        <span class="k">for</span> <span class="o">(</span><span class="n">SysRole</span> <span class="n">role</span> <span class="o">:</span> <span class="n">user</span><span class="o">.</span><span class="na">getRoleList</span><span class="o">())</span> <span class="o">{</span>
-            <span class="n">authorizationInfo</span><span class="o">.</span><span class="na">addRole</span><span class="o">(</span><span class="n">role</span><span class="o">.</span><span class="na">getRole</span><span class="o">());</span>
-            <span class="c1">// 2. 遍历Permission集合 赋予权限
-</span><span class="c1"></span>            <span class="k">for</span> <span class="o">(</span><span class="n">SysPermission</span> <span class="n">p</span> <span class="o">:</span> <span class="n">role</span><span class="o">.</span><span class="na">getPermissionList</span><span class="o">())</span> <span class="o">{</span>
-                <span class="n">authorizationInfo</span><span class="o">.</span><span class="na">addStringPermission</span><span class="o">(</span><span class="n">p</span><span class="o">.</span><span class="na">getPermission</span><span class="o">());</span>
-            <span class="o">}</span>
-        <span class="o">}</span>
-        <span class="k">return</span> <span class="n">authorizationInfo</span><span class="o">;</span>
-    <span class="o">}</span>
-
-    <span class="nd">@Override</span>
-    <span class="kd">protected</span> <span class="n">AuthenticationInfo</span> <span class="nf">doGetAuthenticationInfo</span><span class="o">(</span><span class="n">AuthenticationToken</span> <span class="n">authenticationToken</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">AuthenticationException</span> <span class="o">{</span>
-        <span class="n">log</span><span class="o">.</span><span class="na">debug</span><span class="o">(</span><span class="s">&#34;UserRealm----------------&gt;doGetAuthenticationInfo&#34;</span><span class="o">);</span>
-        <span class="c1">// 1. 把AuthenticationToken转换为UserToken
-</span><span class="c1"></span>        <span class="n">UsernamePasswordToken</span> <span class="n">token</span> <span class="o">=</span> <span class="o">(</span><span class="n">UsernamePasswordToken</span><span class="o">)</span> <span class="n">authenticationToken</span><span class="o">;</span>
-        <span class="c1">// 2. 从UserToken中获取username
-</span><span class="c1"></span>        <span class="n">String</span> <span class="n">username</span> <span class="o">=</span> <span class="n">token</span><span class="o">.</span><span class="na">getUsername</span><span class="o">();</span>
-        <span class="c1">// 3. 若用户不存在，抛出UnknownAccountException异常
-</span><span class="c1"></span>        <span class="n">SysUser</span> <span class="n">user</span> <span class="o">=</span> <span class="n">sysUserRepository</span><span class="o">.</span><span class="na">findByUsername</span><span class="o">(</span><span class="n">username</span><span class="o">);</span>
-        <span class="k">if</span> <span class="o">(</span><span class="n">user</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
-            <span class="k">throw</span> <span class="k">new</span> <span class="n">UnknownAccountException</span><span class="o">(</span><span class="s">&#34;用户不存在！&#34;</span><span class="o">);</span>
-        <span class="o">}</span>
-        <span class="c1">// 4. 根据用户的情况，来构建AuthenticationInfo对象并返回，通常使用的实现类为SimpleAuthenticationInfo
-</span><span class="c1"></span>        <span class="k">return</span> <span class="k">new</span> <span class="n">SimpleAuthenticationInfo</span><span class="o">(</span><span class="n">user</span><span class="o">,</span> <span class="n">user</span><span class="o">.</span><span class="na">getPassword</span><span class="o">(),</span> <span class="n">getName</span><span class="o">());</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="nd">@Slf4j</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyRealm</span> <span class="kd">extends</span> <span class="n">AuthorizingRealm</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nd">@Resource</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">SysUserRepository</span> <span class="n">sysUserRepository</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nd">@Override</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">protected</span> <span class="n">AuthorizationInfo</span> <span class="nf">doGetAuthorizationInfo</span><span class="o">(</span><span class="n">PrincipalCollection</span> <span class="n">principalCollection</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">log</span><span class="o">.</span><span class="na">debug</span><span class="o">(</span><span class="s">&#34;UserRealm-------------------&gt;doGetAuthorizationInfo&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">SimpleAuthorizationInfo</span> <span class="n">authorizationInfo</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SimpleAuthorizationInfo</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// 1. 通过principalCollection.getPrimaryPrincipal()得到传入的用户信息
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">SysUser</span> <span class="n">user</span> <span class="o">=</span> <span class="o">(</span><span class="n">SysUser</span><span class="o">)</span> <span class="n">principalCollection</span><span class="o">.</span><span class="na">getPrimaryPrincipal</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// 2. 遍历Role集合 赋予角色
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">for</span> <span class="o">(</span><span class="n">SysRole</span> <span class="n">role</span> <span class="o">:</span> <span class="n">user</span><span class="o">.</span><span class="na">getRoleList</span><span class="o">())</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">authorizationInfo</span><span class="o">.</span><span class="na">addRole</span><span class="o">(</span><span class="n">role</span><span class="o">.</span><span class="na">getRole</span><span class="o">());</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">// 2. 遍历Permission集合 赋予权限
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="k">for</span> <span class="o">(</span><span class="n">SysPermission</span> <span class="n">p</span> <span class="o">:</span> <span class="n">role</span><span class="o">.</span><span class="na">getPermissionList</span><span class="o">())</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">                <span class="n">authorizationInfo</span><span class="o">.</span><span class="na">addStringPermission</span><span class="o">(</span><span class="n">p</span><span class="o">.</span><span class="na">getPermission</span><span class="o">());</span>
+</span></span><span class="line"><span class="cl">            <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">authorizationInfo</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nd">@Override</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">protected</span> <span class="n">AuthenticationInfo</span> <span class="nf">doGetAuthenticationInfo</span><span class="o">(</span><span class="n">AuthenticationToken</span> <span class="n">authenticationToken</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">AuthenticationException</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">log</span><span class="o">.</span><span class="na">debug</span><span class="o">(</span><span class="s">&#34;UserRealm----------------&gt;doGetAuthenticationInfo&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// 1. 把AuthenticationToken转换为UserToken
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">UsernamePasswordToken</span> <span class="n">token</span> <span class="o">=</span> <span class="o">(</span><span class="n">UsernamePasswordToken</span><span class="o">)</span> <span class="n">authenticationToken</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// 2. 从UserToken中获取username
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">String</span> <span class="n">username</span> <span class="o">=</span> <span class="n">token</span><span class="o">.</span><span class="na">getUsername</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// 3. 若用户不存在，抛出UnknownAccountException异常
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">SysUser</span> <span class="n">user</span> <span class="o">=</span> <span class="n">sysUserRepository</span><span class="o">.</span><span class="na">findByUsername</span><span class="o">(</span><span class="n">username</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="o">(</span><span class="n">user</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">throw</span> <span class="k">new</span> <span class="n">UnknownAccountException</span><span class="o">(</span><span class="s">&#34;用户不存在！&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// 4. 根据用户的情况，来构建AuthenticationInfo对象并返回，通常使用的实现类为SimpleAuthenticationInfo
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">return</span> <span class="k">new</span> <span class="n">SimpleAuthenticationInfo</span><span class="o">(</span><span class="n">user</span><span class="o">,</span> <span class="n">user</span><span class="o">.</span><span class="na">getPassword</span><span class="o">(),</span> <span class="n">getName</span><span class="o">());</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>权限配置可以直接添加一整个 set 集合进去，如</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">authorizationInfo</span><span class="o">.</span><span class="na">setRoles</span><span class="o">(</span><span class="n">roles</span><span class="o">);</span>
-<span class="n">authorizationInfo</span><span class="o">.</span><span class="na">setStringPermissions</span><span class="o">(</span><span class="n">stringPermissions</span><span class="o">);</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">authorizationInfo</span><span class="o">.</span><span class="na">setRoles</span><span class="o">(</span><span class="n">roles</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">authorizationInfo</span><span class="o">.</span><span class="na">setStringPermissions</span><span class="o">(</span><span class="n">stringPermissions</span><span class="o">);</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>使用遍历的方法可以更加精细的控制权限配置，比如这里可以加上对 available 字段的使用</p>
 <h1 id="5-编写controller">5. 编写Controller</h1>
 <p>新建一个 <code>HomeIndexController</code></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -898,50 +906,50 @@
 </span><span class="lnt">43
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Controller</span>
-<span class="nd">@Slf4j</span>
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">HomeIndexController</span> <span class="o">{</span>
-
-    <span class="nd">@RequestMapping</span><span class="o">({</span><span class="s">&#34;/&#34;</span><span class="o">,</span> <span class="s">&#34;/index&#34;</span><span class="o">})</span>
-    <span class="kd">public</span> <span class="n">String</span> <span class="nf">index</span><span class="o">()</span> <span class="o">{</span>
-        <span class="k">return</span> <span class="s">&#34;/index&#34;</span><span class="o">;</span>
-    <span class="o">}</span>
-
-    <span class="nd">@RequestMapping</span><span class="o">(</span><span class="n">value</span> <span class="o">=</span> <span class="s">&#34;/login&#34;</span><span class="o">)</span>
-    <span class="kd">public</span> <span class="n">String</span> <span class="nf">login</span><span class="o">(</span><span class="nd">@RequestParam</span><span class="o">(</span><span class="n">value</span> <span class="o">=</span> <span class="s">&#34;username&#34;</span><span class="o">,</span> <span class="n">required</span> <span class="o">=</span> <span class="kc">false</span><span class="o">)</span> <span class="n">String</span> <span class="n">username</span><span class="o">,</span> <span class="nd">@RequestParam</span><span class="o">(</span><span class="n">value</span> <span class="o">=</span> <span class="s">&#34;password&#34;</span><span class="o">,</span> <span class="n">required</span> <span class="o">=</span> <span class="kc">false</span><span class="o">)</span> <span class="n">String</span> <span class="n">password</span><span class="o">)</span> <span class="o">{</span>
-        <span class="k">if</span> <span class="o">(</span><span class="n">username</span> <span class="o">==</span> <span class="kc">null</span> <span class="o">||</span> <span class="n">password</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
-            <span class="k">return</span> <span class="s">&#34;/login&#34;</span><span class="o">;</span>
-        <span class="o">}</span>
-        <span class="n">log</span><span class="o">.</span><span class="na">debug</span><span class="o">(</span><span class="s">&#34;HomeController-------------------------&gt;login()&#34;</span><span class="o">);</span>
-        <span class="c1">// 1. 从SecurityUtils里边创建一个 subject
-</span><span class="c1"></span>        <span class="n">Subject</span> <span class="n">subject</span> <span class="o">=</span> <span class="n">SecurityUtils</span><span class="o">.</span><span class="na">getSubject</span><span class="o">();</span>
-        <span class="n">UsernamePasswordToken</span> <span class="n">token</span> <span class="o">=</span> <span class="k">new</span> <span class="n">UsernamePasswordToken</span><span class="o">(</span><span class="n">username</span><span class="o">,</span> <span class="n">password</span><span class="o">);</span>
-        <span class="k">try</span> <span class="o">{</span>
-            <span class="c1">// 2. 执行认证登陆,没抛出异常则代表认证成功
-</span><span class="c1"></span>            <span class="n">subject</span><span class="o">.</span><span class="na">login</span><span class="o">(</span><span class="n">token</span><span class="o">);</span>
-        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">UnknownAccountException</span> <span class="n">uac</span><span class="o">)</span> <span class="o">{</span>
-            <span class="n">log</span><span class="o">.</span><span class="na">debug</span><span class="o">(</span><span class="s">&#34;UnknownAccountException -- &gt; 账号不存在：&#34;</span><span class="o">);</span>
-        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">IncorrectCredentialsException</span> <span class="n">ice</span><span class="o">)</span> <span class="o">{</span>
-            <span class="n">log</span><span class="o">.</span><span class="na">debug</span><span class="o">(</span><span class="s">&#34;IncorrectCredentialsException -- &gt; 密码不正确：&#34;</span><span class="o">);</span>
-        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">AuthenticationException</span> <span class="n">ae</span><span class="o">)</span> <span class="o">{</span>
-            <span class="n">log</span><span class="o">.</span><span class="na">debug</span><span class="o">(</span><span class="s">&#34;AuthenticationException -- &gt; 用户名或密码不正确：&#34;</span><span class="o">);</span>
-        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
-            <span class="n">log</span><span class="o">.</span><span class="na">debug</span><span class="o">(</span><span class="s">&#34;未知错误&#34;</span><span class="o">);</span>
-        <span class="o">}</span>
-        <span class="c1">// 3. 判断该subject是否为已经认证过的
-</span><span class="c1"></span>        <span class="k">if</span> <span class="o">(</span><span class="n">subject</span><span class="o">.</span><span class="na">isAuthenticated</span><span class="o">())</span> <span class="o">{</span>
-            <span class="k">return</span> <span class="s">&#34;redirect:/index&#34;</span><span class="o">;</span>
-        <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
-            <span class="k">return</span> <span class="s">&#34;/login&#34;</span><span class="o">;</span>
-        <span class="o">}</span>
-    <span class="o">}</span>
-    
-    <span class="nd">@RequestMapping</span><span class="o">(</span><span class="s">&#34;/403&#34;</span><span class="o">)</span>
-    <span class="kd">public</span> <span class="n">String</span> <span class="nf">unauthorized</span><span class="o">()</span> <span class="o">{</span>
-        <span class="k">return</span> <span class="s">&#34;/403&#34;</span><span class="o">;</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="nd">@Controller</span>
+</span></span><span class="line"><span class="cl"><span class="nd">@Slf4j</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">HomeIndexController</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nd">@RequestMapping</span><span class="o">({</span><span class="s">&#34;/&#34;</span><span class="o">,</span> <span class="s">&#34;/index&#34;</span><span class="o">})</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">String</span> <span class="nf">index</span><span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="s">&#34;/index&#34;</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nd">@RequestMapping</span><span class="o">(</span><span class="n">value</span> <span class="o">=</span> <span class="s">&#34;/login&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">String</span> <span class="nf">login</span><span class="o">(</span><span class="nd">@RequestParam</span><span class="o">(</span><span class="n">value</span> <span class="o">=</span> <span class="s">&#34;username&#34;</span><span class="o">,</span> <span class="n">required</span> <span class="o">=</span> <span class="kc">false</span><span class="o">)</span> <span class="n">String</span> <span class="n">username</span><span class="o">,</span> <span class="nd">@RequestParam</span><span class="o">(</span><span class="n">value</span> <span class="o">=</span> <span class="s">&#34;password&#34;</span><span class="o">,</span> <span class="n">required</span> <span class="o">=</span> <span class="kc">false</span><span class="o">)</span> <span class="n">String</span> <span class="n">password</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="o">(</span><span class="n">username</span> <span class="o">==</span> <span class="kc">null</span> <span class="o">||</span> <span class="n">password</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="s">&#34;/login&#34;</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="n">log</span><span class="o">.</span><span class="na">debug</span><span class="o">(</span><span class="s">&#34;HomeController-------------------------&gt;login()&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// 1. 从SecurityUtils里边创建一个 subject
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">Subject</span> <span class="n">subject</span> <span class="o">=</span> <span class="n">SecurityUtils</span><span class="o">.</span><span class="na">getSubject</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">        <span class="n">UsernamePasswordToken</span> <span class="n">token</span> <span class="o">=</span> <span class="k">new</span> <span class="n">UsernamePasswordToken</span><span class="o">(</span><span class="n">username</span><span class="o">,</span> <span class="n">password</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">try</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">// 2. 执行认证登陆,没抛出异常则代表认证成功
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="n">subject</span><span class="o">.</span><span class="na">login</span><span class="o">(</span><span class="n">token</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">UnknownAccountException</span> <span class="n">uac</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">log</span><span class="o">.</span><span class="na">debug</span><span class="o">(</span><span class="s">&#34;UnknownAccountException -- &gt; 账号不存在：&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">IncorrectCredentialsException</span> <span class="n">ice</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">log</span><span class="o">.</span><span class="na">debug</span><span class="o">(</span><span class="s">&#34;IncorrectCredentialsException -- &gt; 密码不正确：&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">AuthenticationException</span> <span class="n">ae</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">log</span><span class="o">.</span><span class="na">debug</span><span class="o">(</span><span class="s">&#34;AuthenticationException -- &gt; 用户名或密码不正确：&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">log</span><span class="o">.</span><span class="na">debug</span><span class="o">(</span><span class="s">&#34;未知错误&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// 3. 判断该subject是否为已经认证过的
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">if</span> <span class="o">(</span><span class="n">subject</span><span class="o">.</span><span class="na">isAuthenticated</span><span class="o">())</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="s">&#34;redirect:/index&#34;</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="s">&#34;/login&#34;</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="nd">@RequestMapping</span><span class="o">(</span><span class="s">&#34;/403&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">String</span> <span class="nf">unauthorized</span><span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="s">&#34;/403&#34;</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>启动项目，访问浏览器 <code>localhost:8080/login</code> ，输入正确的账号密码就进入 <code>index.html</code> 页面，这里也可以试下输入错误的账号密码观察下控制台的日志打印情况，来确保只有输入正确的账号密码才能登录成功。</p>
 <p>能成功登录后，需要做的就是给每一个需要权限的接口配置相应的权限了。</p>
@@ -950,7 +958,7 @@
 <p>在使用注解配置权限之前，我们先需要开启注解功能，在 ShiroConfig 中加入下面的代码即可</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -962,22 +970,22 @@
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java">    <span class="cm">/**
-</span><span class="cm">     * 开启shiro aop注解支持
-</span><span class="cm">     * 使用代理方式,所以需要开启代码支持
-</span><span class="cm">     */</span>
-    <span class="nd">@Bean</span>
-    <span class="kd">public</span> <span class="n">AuthorizationAttributeSourceAdvisor</span> <span class="nf">authorizationAttributeSourceAdvisor</span><span class="o">(</span><span class="n">SecurityManager</span> <span class="n">securityManager</span><span class="o">)</span> <span class="o">{</span>
-        <span class="n">AuthorizationAttributeSourceAdvisor</span> <span class="n">authorizationAttributeSourceAdvisor</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AuthorizationAttributeSourceAdvisor</span><span class="o">();</span>
-        <span class="n">authorizationAttributeSourceAdvisor</span><span class="o">.</span><span class="na">setSecurityManager</span><span class="o">(</span><span class="n">securityManager</span><span class="o">);</span>
-        <span class="k">return</span> <span class="n">authorizationAttributeSourceAdvisor</span><span class="o">;</span>
-    <span class="o">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl">    <span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * 开启shiro aop注解支持
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * 使用代理方式,所以需要开启代码支持
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
+</span></span><span class="line"><span class="cl">    <span class="nd">@Bean</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">AuthorizationAttributeSourceAdvisor</span> <span class="nf">authorizationAttributeSourceAdvisor</span><span class="o">(</span><span class="n">SecurityManager</span> <span class="n">securityManager</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">AuthorizationAttributeSourceAdvisor</span> <span class="n">authorizationAttributeSourceAdvisor</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AuthorizationAttributeSourceAdvisor</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">        <span class="n">authorizationAttributeSourceAdvisor</span><span class="o">.</span><span class="na">setSecurityManager</span><span class="o">(</span><span class="n">securityManager</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">authorizationAttributeSourceAdvisor</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>我们新建一个 <code>UserController</code> 来使用一下权限注解</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -989,17 +997,17 @@
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Controller</span>
-<span class="nd">@RequestMapping</span><span class="o">(</span><span class="s">&#34;/user&#34;</span><span class="o">)</span>
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">UserController</span> <span class="o">{</span>
-
-    <span class="nd">@GetMapping</span><span class="o">(</span><span class="s">&#34;/list&#34;</span><span class="o">)</span>
-    <span class="nd">@RequiresPermissions</span><span class="o">(</span><span class="s">&#34;user:view&#34;</span><span class="o">)</span> <span class="c1">// 只有拥有 user:view 权限的用户才能访问此接口
-</span><span class="c1"></span>    <span class="kd">public</span> <span class="n">String</span> <span class="nf">showUser</span><span class="o">()</span> <span class="o">{</span>
-        <span class="k">return</span> <span class="s">&#34;/userList&#34;</span><span class="o">;</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="nd">@Controller</span>
+</span></span><span class="line"><span class="cl"><span class="nd">@RequestMapping</span><span class="o">(</span><span class="s">&#34;/user&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">UserController</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nd">@GetMapping</span><span class="o">(</span><span class="s">&#34;/list&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nd">@RequiresPermissions</span><span class="o">(</span><span class="s">&#34;user:view&#34;</span><span class="o">)</span> <span class="c1">// 只有拥有 user:view 权限的用户才能访问此接口
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kd">public</span> <span class="n">String</span> <span class="nf">showUser</span><span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="s">&#34;/userList&#34;</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>刚开始未登录时，浏览器输入 <code>localhost:8080/user/list</code>，页面会跳转到 <code>localhost:8080/login</code> 让用户登录，登录成功后再输入 <code>localhost:8080/user/list</code> 则可以显示 <code>userList.html</code> 页面</p>
 <p>修改 <code>admin</code> 用户的权限重新登录试下权限处理是否成功</p>
@@ -1011,7 +1019,7 @@
 <p>首先在 <code>ShiroConfig</code> 中加入如下代码</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -1039,33 +1047,33 @@
 </span><span class="lnt">26
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java">    <span class="cm">/**
-</span><span class="cm">     * 凭证匹配器
-</span><span class="cm">     * （由于我们的密码校验交给Shiro的SimpleAuthenticationInfo进行处理了
-</span><span class="cm">     * ）
-</span><span class="cm">     *
-</span><span class="cm">     * @return HashedCredentialsMatcher
-</span><span class="cm">     */</span>
-    <span class="nd">@Bean</span>
-    <span class="kd">public</span> <span class="n">HashedCredentialsMatcher</span> <span class="nf">hashedCredentialsMatcher</span><span class="o">()</span> <span class="o">{</span>
-        <span class="n">HashedCredentialsMatcher</span> <span class="n">hashedCredentialsMatcher</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashedCredentialsMatcher</span><span class="o">();</span>
-        <span class="c1">//散列算法:这里使用MD5算法;
-</span><span class="c1"></span>        <span class="n">hashedCredentialsMatcher</span><span class="o">.</span><span class="na">setHashAlgorithmName</span><span class="o">(</span><span class="s">&#34;md5&#34;</span><span class="o">);</span>
-        <span class="c1">//散列的次数，比如散列两次，相当于 md5(md5(&#34;&#34;));
-</span><span class="c1"></span>        <span class="n">hashedCredentialsMatcher</span><span class="o">.</span><span class="na">setHashIterations</span><span class="o">(</span><span class="n">2</span><span class="o">);</span>
-        <span class="c1">// storedCredentialsHexEncoded默认是true，此时用的是密码加密用的是Hex编码；false时用Base64编码
-</span><span class="c1"></span>        <span class="n">hashedCredentialsMatcher</span><span class="o">.</span><span class="na">setStoredCredentialsHexEncoded</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
-        <span class="k">return</span> <span class="n">hashedCredentialsMatcher</span><span class="o">;</span>
-    <span class="o">}</span>
-
-    <span class="nd">@Bean</span>
-    <span class="kd">public</span> <span class="n">MyRealm</span> <span class="nf">myRealm</span><span class="o">()</span> <span class="o">{</span>
-        <span class="n">MyRealm</span> <span class="n">myRealm</span> <span class="o">=</span> <span class="k">new</span> <span class="n">MyRealm</span><span class="o">();</span>
-        <span class="c1">// 告诉realm,使用hashedCredentialsMatcher加密算法类来验证密文
-</span><span class="c1"></span>        <span class="n">myRealm</span><span class="o">.</span><span class="na">setCredentialsMatcher</span><span class="o">(</span><span class="n">hashedCredentialsMatcher</span><span class="o">());</span>
-        <span class="k">return</span> <span class="n">myRealm</span><span class="o">;</span>
-    <span class="o">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl">    <span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * 凭证匹配器
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * （由于我们的密码校验交给Shiro的SimpleAuthenticationInfo进行处理了
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * ）
+</span></span></span><span class="line"><span class="cl"><span class="cm">     *
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * @return HashedCredentialsMatcher
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
+</span></span><span class="line"><span class="cl">    <span class="nd">@Bean</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">HashedCredentialsMatcher</span> <span class="nf">hashedCredentialsMatcher</span><span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">HashedCredentialsMatcher</span> <span class="n">hashedCredentialsMatcher</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashedCredentialsMatcher</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//散列算法:这里使用MD5算法;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">hashedCredentialsMatcher</span><span class="o">.</span><span class="na">setHashAlgorithmName</span><span class="o">(</span><span class="s">&#34;md5&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//散列的次数，比如散列两次，相当于 md5(md5(&#34;&#34;));
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">hashedCredentialsMatcher</span><span class="o">.</span><span class="na">setHashIterations</span><span class="o">(</span><span class="n">2</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// storedCredentialsHexEncoded默认是true，此时用的是密码加密用的是Hex编码；false时用Base64编码
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">hashedCredentialsMatcher</span><span class="o">.</span><span class="na">setStoredCredentialsHexEncoded</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">hashedCredentialsMatcher</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nd">@Bean</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">MyRealm</span> <span class="nf">myRealm</span><span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">MyRealm</span> <span class="n">myRealm</span> <span class="o">=</span> <span class="k">new</span> <span class="n">MyRealm</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// 告诉realm,使用hashedCredentialsMatcher加密算法类来验证密文
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">myRealm</span><span class="o">.</span><span class="na">setCredentialsMatcher</span><span class="o">(</span><span class="n">hashedCredentialsMatcher</span><span class="o">());</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">myRealm</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>在这里我们首先创建一个 <code>hashedCredentialsMatcher</code>，这里面指定了加密算法、散列次数以及编码方式。</p>
 <p>然后修改我们之前的 <code>myRealm</code>，将 realm 的凭证匹配器设置为我们自定义的 <code>hashedCredentialsMatcher</code></p>
@@ -1073,7 +1081,7 @@
 <p>注册时，先将密码通过 Shiro 提供的 <code>SimpleHash</code> 帮助加密，这里的 <code>salt</code> 需要保存到数据库，解密的时候需要它</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -1082,19 +1090,19 @@
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java">    <span class="kd">public</span> <span class="kd">static</span> <span class="n">String</span> <span class="nf">encryption</span><span class="o">(</span><span class="n">String</span> <span class="n">password</span><span class="o">,</span> <span class="n">String</span> <span class="n">salt</span><span class="o">)</span> <span class="o">{</span>
-        <span class="c1">// 加密算法 MD5
-</span><span class="c1"></span>        <span class="c1">// salt = username + salt
-</span><span class="c1"></span>        <span class="c1">// 迭代次数 2
-</span><span class="c1"></span>        <span class="k">return</span> <span class="k">new</span> <span class="n">SimpleHash</span><span class="o">(</span><span class="s">&#34;MD5&#34;</span><span class="o">,</span> <span class="n">password</span><span class="o">,</span>
-                <span class="n">ByteSource</span><span class="o">.</span><span class="na">Util</span><span class="o">.</span><span class="na">bytes</span><span class="o">(</span><span class="n">salt</span><span class="o">),</span> <span class="n">2</span><span class="o">).</span><span class="na">toHex</span><span class="o">();</span>
-    <span class="o">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kd">static</span> <span class="n">String</span> <span class="nf">encryption</span><span class="o">(</span><span class="n">String</span> <span class="n">password</span><span class="o">,</span> <span class="n">String</span> <span class="n">salt</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// 加密算法 MD5
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="c1">// salt = username + salt
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="c1">// 迭代次数 2
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">return</span> <span class="k">new</span> <span class="n">SimpleHash</span><span class="o">(</span><span class="s">&#34;MD5&#34;</span><span class="o">,</span> <span class="n">password</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">                <span class="n">ByteSource</span><span class="o">.</span><span class="na">Util</span><span class="o">.</span><span class="na">bytes</span><span class="o">(</span><span class="n">salt</span><span class="o">),</span> <span class="n">2</span><span class="o">).</span><span class="na">toHex</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>然后在我们验证的时候交给 Shiro 的 <code>SimpleAuthenticationInfo</code> 进行处理</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -1114,25 +1122,25 @@
 </span><span class="lnt">18
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java">    <span class="nd">@Override</span>
-    <span class="kd">protected</span> <span class="n">AuthenticationInfo</span> <span class="nf">doGetAuthenticationInfo</span><span class="o">(</span><span class="n">AuthenticationToken</span> <span class="n">authenticationToken</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">AuthenticationException</span> <span class="o">{</span>
-        <span class="n">log</span><span class="o">.</span><span class="na">debug</span><span class="o">(</span><span class="s">&#34;UserRealm----------------&gt;doGetAuthenticationInfo&#34;</span><span class="o">);</span>
-        <span class="c1">// 1. 把AuthenticationToken转换为UserToken
-</span><span class="c1"></span>        <span class="n">UsernamePasswordToken</span> <span class="n">token</span> <span class="o">=</span> <span class="o">(</span><span class="n">UsernamePasswordToken</span><span class="o">)</span> <span class="n">authenticationToken</span><span class="o">;</span>
-        <span class="c1">// 2. 从UserToken中获取username
-</span><span class="c1"></span>        <span class="n">String</span> <span class="n">username</span> <span class="o">=</span> <span class="n">token</span><span class="o">.</span><span class="na">getUsername</span><span class="o">();</span>
-        <span class="c1">// 3. 若用户不存在，抛出UnknownAccountException异常
-</span><span class="c1"></span>        <span class="n">SysUser</span> <span class="n">user</span> <span class="o">=</span> <span class="n">sysUserRepository</span><span class="o">.</span><span class="na">findByUsername</span><span class="o">(</span><span class="n">username</span><span class="o">);</span>
-        <span class="k">if</span> <span class="o">(</span><span class="n">user</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
-            <span class="k">throw</span> <span class="k">new</span> <span class="n">UnknownAccountException</span><span class="o">(</span><span class="s">&#34;用户不存在！&#34;</span><span class="o">);</span>
-        <span class="o">}</span>
-        <span class="c1">// 4. 根据用户的情况，来构建AuthenticationInfo对象并返回，通常使用的实现类为SimpleAuthenticationInfo
-</span><span class="c1"></span>        <span class="k">return</span> <span class="k">new</span> <span class="n">SimpleAuthenticationInfo</span><span class="o">(</span><span class="n">user</span><span class="o">,</span>
-                <span class="n">user</span><span class="o">.</span><span class="na">getPassword</span><span class="o">(),</span>
-                <span class="n">ByteSource</span><span class="o">.</span><span class="na">Util</span><span class="o">.</span><span class="na">bytes</span><span class="o">(</span><span class="n">user</span><span class="o">.</span><span class="na">getSalt</span><span class="o">()),</span>
-                <span class="n">getName</span><span class="o">());</span>
-    <span class="o">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl">    <span class="nd">@Override</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">protected</span> <span class="n">AuthenticationInfo</span> <span class="nf">doGetAuthenticationInfo</span><span class="o">(</span><span class="n">AuthenticationToken</span> <span class="n">authenticationToken</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">AuthenticationException</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">log</span><span class="o">.</span><span class="na">debug</span><span class="o">(</span><span class="s">&#34;UserRealm----------------&gt;doGetAuthenticationInfo&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// 1. 把AuthenticationToken转换为UserToken
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">UsernamePasswordToken</span> <span class="n">token</span> <span class="o">=</span> <span class="o">(</span><span class="n">UsernamePasswordToken</span><span class="o">)</span> <span class="n">authenticationToken</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// 2. 从UserToken中获取username
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">String</span> <span class="n">username</span> <span class="o">=</span> <span class="n">token</span><span class="o">.</span><span class="na">getUsername</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// 3. 若用户不存在，抛出UnknownAccountException异常
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">SysUser</span> <span class="n">user</span> <span class="o">=</span> <span class="n">sysUserRepository</span><span class="o">.</span><span class="na">findByUsername</span><span class="o">(</span><span class="n">username</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="o">(</span><span class="n">user</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">throw</span> <span class="k">new</span> <span class="n">UnknownAccountException</span><span class="o">(</span><span class="s">&#34;用户不存在！&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// 4. 根据用户的情况，来构建AuthenticationInfo对象并返回，通常使用的实现类为SimpleAuthenticationInfo
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">return</span> <span class="k">new</span> <span class="n">SimpleAuthenticationInfo</span><span class="o">(</span><span class="n">user</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">                <span class="n">user</span><span class="o">.</span><span class="na">getPassword</span><span class="o">(),</span>
+</span></span><span class="line"><span class="cl">                <span class="n">ByteSource</span><span class="o">.</span><span class="na">Util</span><span class="o">.</span><span class="na">bytes</span><span class="o">(</span><span class="n">user</span><span class="o">.</span><span class="na">getSalt</span><span class="o">()),</span>
+</span></span><span class="line"><span class="cl">                <span class="n">getName</span><span class="o">());</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>注意这里的 <code>new SimpleAuthenticationInfo</code> 后加了 <code>ByteSource.Util.bytes(user.getSalt())</code></p>
 <p>密码加密需要注意的点就是：</p>
@@ -1235,13 +1243,10 @@
   <span class="copyright-year">
     &copy; 
     2019 - 
-    2020
-    <span class="heart">
-      <i class="iconfont icon-heart"></i>
-    </span>
-    <span class="author">ShangguanHong</span>
+    2022<span class="heart"><i class="iconfont icon-heart"></i></span><span>ShangguanHong</span>
   </span>
 </div>
+
     </footer>
 
     <div class="back-to-top" id="back-to-top">
@@ -1252,7 +1257,10 @@
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
-<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script>
 
 
 

@@ -6,11 +6,7 @@
     <description>Recent content in SpringDataJpa学习笔记 on ShangguanHong</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 22 Jul 2019 16:28:17 +0000</lastBuildDate>
-    
-	<atom:link href="https://shangguanhong.github.io/categories/springdatajpa%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Mon, 22 Jul 2019 16:28:17 +0000</lastBuildDate><atom:link href="https://shangguanhong.github.io/categories/springdatajpa%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>JPA使用Specification动态查询</title>
       <link>https://shangguanhong.github.io/2019/07/22/jpa%E4%BD%BF%E7%94%A8specification%E5%8A%A8%E6%80%81%E6%9F%A5%E8%AF%A2/</link>

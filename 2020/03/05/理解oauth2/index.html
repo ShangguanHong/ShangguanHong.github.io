@@ -23,7 +23,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.67.1 with theme even" />
+<meta name="generator" content="Hugo 0.101.0 with theme even" />
 
 
 <link rel="canonical" href="https://shangguanhong.github.io/2020/03/05/%E7%90%86%E8%A7%A3oauth2/" />
@@ -34,24 +34,22 @@
 <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
 
 
-<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+
+<link href="/sass/main.min.b5a744db6de49a86cadafb3b70f555ab443f83c307a483402259e94726b045ff.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
 <meta property="og:title" content="理解OAuth2" />
 <meta property="og:description" content="原文地址：理解OAuth 2.0 OAuth是一个关于授权（authorization）的开放网络标准，在全世界得到广泛应用，目前的版本是2.0版。" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://shangguanhong.github.io/2020/03/05/%E7%90%86%E8%A7%A3oauth2/" />
+<meta property="og:url" content="https://shangguanhong.github.io/2020/03/05/%E7%90%86%E8%A7%A3oauth2/" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2020-03-05T19:35:38+00:00" />
 <meta property="article:modified_time" content="2020-03-05T19:35:38+00:00" />
+
 <meta itemprop="name" content="理解OAuth2">
-<meta itemprop="description" content="原文地址：理解OAuth 2.0 OAuth是一个关于授权（authorization）的开放网络标准，在全世界得到广泛应用，目前的版本是2.0版。">
-<meta itemprop="datePublished" content="2020-03-05T19:35:38&#43;00:00" />
-<meta itemprop="dateModified" content="2020-03-05T19:35:38&#43;00:00" />
-<meta itemprop="wordCount" content="5344">
-
-
-
+<meta itemprop="description" content="原文地址：理解OAuth 2.0 OAuth是一个关于授权（authorization）的开放网络标准，在全世界得到广泛应用，目前的版本是2.0版。"><meta itemprop="datePublished" content="2020-03-05T19:35:38+00:00" />
+<meta itemprop="dateModified" content="2020-03-05T19:35:38+00:00" />
+<meta itemprop="wordCount" content="5336">
 <meta itemprop="keywords" content="OAuth2," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="理解OAuth2"/>
 <meta name="twitter:description" content="原文地址：理解OAuth 2.0 OAuth是一个关于授权（authorization）的开放网络标准，在全世界得到广泛应用，目前的版本是2.0版。"/>
@@ -89,12 +87,21 @@
         <li class="mobile-menu-item">Categories</li>
       </a>
   </ul>
+
+  
+
+
 </nav>
+
   <div class="container" id="mobile-panel">
     <header id="header" class="header">
         <div class="logo-wrapper">
   <a href="/" class="logo">赏我一个好梦如旧</a>
 </div>
+
+
+
+
 
 <nav class="site-navbar">
   <ul id="menu" class="menu">
@@ -109,6 +116,7 @@
       </li>
   </ul>
 </nav>
+
     </header>
 
     <main id="main" class="main">
@@ -124,7 +132,7 @@
         <div class="post-category">
             <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9F%A5%E8%AF%86/"> 计算机知识 </a>
             </div>
-          <span class="more-meta"> 约 5344 字 </span>
+          <span class="more-meta"> 约 5336 字 </span>
           <span class="more-meta"> 预计阅读 11 分钟 </span>
         
       </div>
@@ -172,8 +180,8 @@
 <p>在详细讲解OAuth 2.0之前，需要了解几个专用名词。它们对读懂后面的讲解，尤其是几张图，至关重要。</p>
 <blockquote>
 <p>（1） <strong>Third-party application</strong>：第三方应用程序，本文中又称&quot;客户端&rdquo;（client），即上一节例子中的&quot;云冲印&rdquo;。</p>
-<p>（2）<strong>HTTP service</strong>：HTTP服务提供商，本文中简称&quot;服务提供商&rdquo;，即上一节例子中的Google。</p>
-<p>（3）<strong>Resource Owner</strong>：资源所有者，本文中又称&quot;用户&rdquo;（user）。</p>
+<p>（2）<strong>HTTP service</strong>：HTTP服务提供商，本文中简称&quot;服务提供商&quot;，即上一节例子中的Google。</p>
+<p>（3）<strong>Resource Owner</strong>：资源所有者，本文中又称&quot;用户&quot;（user）。</p>
 <p>（4）<strong>User Agent</strong>：用户代理，本文中就是指浏览器。</p>
 <p>（5）<strong>Authorization server</strong>：认证服务器，即服务提供商专门用来处理认证的服务器。</p>
 <p>（6）<strong>Resource server</strong>：资源服务器，即服务提供商存放用户生成的资源的服务器。它与认证服务器，可以是同一台服务器，也可以是不同的服务器。</p>
@@ -226,15 +234,15 @@
 <p>下面是一个例子。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-http" data-lang="http"><span class="err">GET /authorize?response_type=code&amp;client_id=s6BhdRkqt3&amp;state=xyz
-</span><span class="err">        &amp;redirect_uri=https%3A%2F%2Fclient%2Eexample%2Ecom%2Fcb HTTP/1.1
-</span><span class="err">Host: server.example.com
-</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-http" data-lang="http"><span class="line"><span class="cl"><span class="err">GET /authorize?response_type=code&amp;client_id=s6BhdRkqt3&amp;state=xyz
+</span></span></span><span class="line"><span class="cl"><span class="err">        &amp;redirect_uri=https%3A%2F%2Fclient%2Eexample%2Ecom%2Fcb HTTP/1.1
+</span></span></span><span class="line"><span class="cl"><span class="err">Host: server.example.com
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>C步骤中，服务器回应客户端的URI，包含以下参数：</p>
 <ul>
@@ -244,19 +252,19 @@
 <p>下面是一个例子。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-http" data-lang="http"><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">302</span> <span class="ne">Found</span>
-<span class="n">Location</span><span class="o">:</span> <span class="l">https://client.example.com/cb?code=SplxlOBeZQQYbYS6WxSbIA</span>
-          <span class="l">&amp;state=xyz</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-http" data-lang="http"><span class="line"><span class="cl"><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">302</span> <span class="ne">Found</span>
+</span></span><span class="line"><span class="cl"><span class="n">Location</span><span class="o">:</span> <span class="l">https://client.example.com/cb?code=SplxlOBeZQQYbYS6WxSbIA</span>
+</span></span><span class="line"><span class="cl">          <span class="l">&amp;state=xyz</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>D步骤中，客户端向认证服务器申请令牌的HTTP请求，包含以下参数：</p>
 <ul>
-<li>grant_type：表示使用的授权模式，必选项，此处的值固定为&quot;authorization_code&rdquo;。</li>
+<li>grant_type：表示使用的授权模式，必选项，此处的值固定为&quot;authorization_code&quot;。</li>
 <li>code：表示上一步获得的授权码，必选项。</li>
 <li>redirect_uri：表示重定向URI，必选项，且必须与A步骤中的该参数值保持一致。</li>
 <li>client_id：表示客户端ID，必选项。</li>
@@ -264,7 +272,7 @@
 <p>下面是一个例子。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -273,14 +281,14 @@
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-http" data-lang="http"><span class="nf">POST</span> <span class="nn">/token</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="n">Host</span><span class="o">:</span> <span class="l">server.example.com</span>
-<span class="n">Authorization</span><span class="o">:</span> <span class="l">Basic czZCaGRSa3F0MzpnWDFmQmF0M2JW</span>
-<span class="n">Content-Type</span><span class="o">:</span> <span class="l">application/x-www-form-urlencoded</span>
-
-grant_type=authorization_code&amp;code=SplxlOBeZQQYbYS6WxSbIA
-&amp;redirect_uri=https%3A%2F%2Fclient%2Eexample%2Ecom%2Fcb
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-http" data-lang="http"><span class="line"><span class="cl"><span class="nf">POST</span> <span class="nn">/token</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+</span></span><span class="line"><span class="cl"><span class="n">Host</span><span class="o">:</span> <span class="l">server.example.com</span>
+</span></span><span class="line"><span class="cl"><span class="n">Authorization</span><span class="o">:</span> <span class="l">Basic czZCaGRSa3F0MzpnWDFmQmF0M2JW</span>
+</span></span><span class="line"><span class="cl"><span class="n">Content-Type</span><span class="o">:</span> <span class="l">application/x-www-form-urlencoded</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">grant_type=authorization_code&amp;code=SplxlOBeZQQYbYS6WxSbIA
+</span></span><span class="line"><span class="cl">&amp;redirect_uri=https%3A%2F%2Fclient%2Eexample%2Ecom%2Fcb
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>E步骤中，认证服务器发送的HTTP回复，包含以下参数：</p>
 <ul>
@@ -293,7 +301,7 @@ grant_type=authorization_code&amp;code=SplxlOBeZQQYbYS6WxSbIA
 <p>下面是一个例子。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -307,19 +315,19 @@ grant_type=authorization_code&amp;code=SplxlOBeZQQYbYS6WxSbIA
 </span><span class="lnt">12
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-http" data-lang="http"><span class="err">     </span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
-     <span class="l">Content-Type: application/json;charset=UTF-8</span>
-     <span class="l">Cache-Control: no-store</span>
-     <span class="l">Pragma: no-cache</span>
-
-<span class="g">     {
-</span><span class="g">       &#34;access_token&#34;:&#34;2YotnFZFEjr1zCsicMWpAA&#34;,
-</span><span class="g">       &#34;token_type&#34;:&#34;example&#34;,
-</span><span class="g">       &#34;expires_in&#34;:3600,
-</span><span class="g">       &#34;refresh_token&#34;:&#34;tGzv3JOkF0XG5Qx2TlKWIA&#34;,
-</span><span class="g">       &#34;example_parameter&#34;:&#34;example_value&#34;
-</span><span class="g">     }
-</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-http" data-lang="http"><span class="line"><span class="cl"><span class="err">     </span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+</span></span><span class="line"><span class="cl">     <span class="l">Content-Type: application/json;charset=UTF-8</span>
+</span></span><span class="line"><span class="cl">     <span class="l">Cache-Control: no-store</span>
+</span></span><span class="line"><span class="cl">     <span class="l">Pragma: no-cache</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="g">     {
+</span></span></span><span class="line"><span class="cl"><span class="g">       &#34;access_token&#34;:&#34;2YotnFZFEjr1zCsicMWpAA&#34;,
+</span></span></span><span class="line"><span class="cl"><span class="g">       &#34;token_type&#34;:&#34;example&#34;,
+</span></span></span><span class="line"><span class="cl"><span class="g">       &#34;expires_in&#34;:3600,
+</span></span></span><span class="line"><span class="cl"><span class="g">       &#34;refresh_token&#34;:&#34;tGzv3JOkF0XG5Qx2TlKWIA&#34;,
+</span></span></span><span class="line"><span class="cl"><span class="g">       &#34;example_parameter&#34;:&#34;example_value&#34;
+</span></span></span><span class="line"><span class="cl"><span class="g">     }
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>从上面代码可以看到，相关参数使用JSON格式发送（Content-Type: application/json）。此外，HTTP头信息中明确指定不得缓存。</p>
 <h2 id="七简化模式">七、简化模式</h2>
@@ -329,7 +337,7 @@ grant_type=authorization_code&amp;code=SplxlOBeZQQYbYS6WxSbIA
 <blockquote>
 <p>（A）客户端将用户导向认证服务器。</p>
 <p>（B）用户决定是否给于客户端授权。</p>
-<p>（C）假设用户给予授权，认证服务器将用户导向客户端指定的&quot;重定向URI&rdquo;，并在URI的Hash部分包含了访问令牌。</p>
+<p>（C）假设用户给予授权，认证服务器将用户导向客户端指定的&quot;重定向URI&quot;，并在URI的Hash部分包含了访问令牌。</p>
 <p>（D）浏览器向资源服务器发出请求，其中不包括上一步收到的Hash值。</p>
 <p>（E）资源服务器返回一个网页，其中包含的代码可以获取Hash值中的令牌。</p>
 <p>（F）浏览器执行上一步获得的脚本，提取出令牌。</p>
@@ -338,7 +346,7 @@ grant_type=authorization_code&amp;code=SplxlOBeZQQYbYS6WxSbIA
 <p>下面是上面这些步骤所需要的参数。</p>
 <p>A步骤中，客户端发出的HTTP请求，包含以下参数：</p>
 <ul>
-<li>response_type：表示授权类型，此处的值固定为&quot;token&rdquo;，必选项。</li>
+<li>response_type：表示授权类型，此处的值固定为&quot;token&quot;，必选项。</li>
 <li>client_id：表示客户端的ID，必选项。</li>
 <li>redirect_uri：表示重定向的URI，可选项。</li>
 <li>scope：表示权限范围，可选项。</li>
@@ -347,15 +355,15 @@ grant_type=authorization_code&amp;code=SplxlOBeZQQYbYS6WxSbIA
 <p>下面是一个例子。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-http" data-lang="http"><span class="err">    GET /authorize?response_type=token&amp;client_id=s6BhdRkqt3&amp;state=xyz
-</span><span class="err">        &amp;redirect_uri=https%3A%2F%2Fclient%2Eexample%2Ecom%2Fcb HTTP/1.1
-</span><span class="err">    Host: server.example.com
-</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-http" data-lang="http"><span class="line"><span class="cl"><span class="err">    GET /authorize?response_type=token&amp;client_id=s6BhdRkqt3&amp;state=xyz
+</span></span></span><span class="line"><span class="cl"><span class="err">        &amp;redirect_uri=https%3A%2F%2Fclient%2Eexample%2Ecom%2Fcb HTTP/1.1
+</span></span></span><span class="line"><span class="cl"><span class="err">    Host: server.example.com
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>C步骤中，认证服务器回应客户端的URI，包含以下参数：</p>
 <ul>
@@ -368,15 +376,15 @@ grant_type=authorization_code&amp;code=SplxlOBeZQQYbYS6WxSbIA
 <p>下面是一个例子。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-http" data-lang="http"><span class="err">     </span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">302</span> <span class="ne">Found</span>
-     <span class="l">Location: http://example.com/cb#access_token=2YotnFZFEjr1zCsicMWpAA</span>
-               <span class="l">&amp;state=xyz&amp;token_type=example&amp;expires_in=3600</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-http" data-lang="http"><span class="line"><span class="cl"><span class="err">     </span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">302</span> <span class="ne">Found</span>
+</span></span><span class="line"><span class="cl">     <span class="l">Location: http://example.com/cb#access_token=2YotnFZFEjr1zCsicMWpAA</span>
+</span></span><span class="line"><span class="cl">               <span class="l">&amp;state=xyz&amp;token_type=example&amp;expires_in=3600</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>在上面的例子中，认证服务器用HTTP头信息的Location栏，指定浏览器重定向的网址。注意，在这个网址的Hash部分包含了令牌。</p>
 <p>根据上面的D步骤，下一步浏览器会访问Location指定的网址，但是Hash部分不会发送。接下来的E步骤，服务提供商的资源服务器发送过来的代码，会提取出Hash中的令牌。</p>
@@ -392,7 +400,7 @@ grant_type=authorization_code&amp;code=SplxlOBeZQQYbYS6WxSbIA
 </blockquote>
 <p>B步骤中，客户端发出的HTTP请求，包含以下参数：</p>
 <ul>
-<li>grant_type：表示授权类型，此处的值固定为&quot;password&rdquo;，必选项。</li>
+<li>grant_type：表示授权类型，此处的值固定为&quot;password&quot;，必选项。</li>
 <li>username：表示用户名，必选项。</li>
 <li>password：表示用户的密码，必选项。</li>
 <li>scope：表示权限范围，可选项。</li>
@@ -400,7 +408,7 @@ grant_type=authorization_code&amp;code=SplxlOBeZQQYbYS6WxSbIA
 <p>下面是一个例子。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -408,18 +416,18 @@ grant_type=authorization_code&amp;code=SplxlOBeZQQYbYS6WxSbIA
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-http" data-lang="http"><span class="err">     </span><span class="nf">POST</span> <span class="nn">/token</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-     <span class="l">Host: server.example.com</span>
-     <span class="l">Authorization: Basic czZCaGRSa3F0MzpnWDFmQmF0M2JW</span>
-     <span class="l">Content-Type: application/x-www-form-urlencoded</span>
-
-<span class="g">     grant_type=password&amp;username=johndoe&amp;password=A3ddj3w
-</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-http" data-lang="http"><span class="line"><span class="cl"><span class="err">     </span><span class="nf">POST</span> <span class="nn">/token</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+</span></span><span class="line"><span class="cl">     <span class="l">Host: server.example.com</span>
+</span></span><span class="line"><span class="cl">     <span class="l">Authorization: Basic czZCaGRSa3F0MzpnWDFmQmF0M2JW</span>
+</span></span><span class="line"><span class="cl">     <span class="l">Content-Type: application/x-www-form-urlencoded</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="g">     grant_type=password&amp;username=johndoe&amp;password=A3ddj3w
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>C步骤中，认证服务器向客户端发送访问令牌，下面是一个例子。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -433,19 +441,19 @@ grant_type=authorization_code&amp;code=SplxlOBeZQQYbYS6WxSbIA
 </span><span class="lnt">12
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-http" data-lang="http"><span class="err">     </span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
-     <span class="l">Content-Type: application/json;charset=UTF-8</span>
-     <span class="l">Cache-Control: no-store</span>
-     <span class="l">Pragma: no-cache</span>
-
-<span class="g">     {
-</span><span class="g">       &#34;access_token&#34;:&#34;2YotnFZFEjr1zCsicMWpAA&#34;,
-</span><span class="g">       &#34;token_type&#34;:&#34;example&#34;,
-</span><span class="g">       &#34;expires_in&#34;:3600,
-</span><span class="g">       &#34;refresh_token&#34;:&#34;tGzv3JOkF0XG5Qx2TlKWIA&#34;,
-</span><span class="g">       &#34;example_parameter&#34;:&#34;example_value&#34;
-</span><span class="g">     }
-</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-http" data-lang="http"><span class="line"><span class="cl"><span class="err">     </span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+</span></span><span class="line"><span class="cl">     <span class="l">Content-Type: application/json;charset=UTF-8</span>
+</span></span><span class="line"><span class="cl">     <span class="l">Cache-Control: no-store</span>
+</span></span><span class="line"><span class="cl">     <span class="l">Pragma: no-cache</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="g">     {
+</span></span></span><span class="line"><span class="cl"><span class="g">       &#34;access_token&#34;:&#34;2YotnFZFEjr1zCsicMWpAA&#34;,
+</span></span></span><span class="line"><span class="cl"><span class="g">       &#34;token_type&#34;:&#34;example&#34;,
+</span></span></span><span class="line"><span class="cl"><span class="g">       &#34;expires_in&#34;:3600,
+</span></span></span><span class="line"><span class="cl"><span class="g">       &#34;refresh_token&#34;:&#34;tGzv3JOkF0XG5Qx2TlKWIA&#34;,
+</span></span></span><span class="line"><span class="cl"><span class="g">       &#34;example_parameter&#34;:&#34;example_value&#34;
+</span></span></span><span class="line"><span class="cl"><span class="g">     }
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>上面代码中，各个参数的含义参见《授权码模式》一节。</p>
 <p>整个过程中，客户端不得保存用户的密码。</p>
@@ -459,12 +467,12 @@ grant_type=authorization_code&amp;code=SplxlOBeZQQYbYS6WxSbIA
 </blockquote>
 <p>A步骤中，客户端发出的HTTP请求，包含以下参数：</p>
 <ul>
-<li>grant<em>type：表示授权类型，此处的值固定为&quot;client</em>credentials&rdquo;，必选项。</li>
+<li>grant<em>type：表示授权类型，此处的值固定为&quot;client</em>credentials&quot;，必选项。</li>
 <li>scope：表示权限范围，可选项。</li>
 </ul>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -472,19 +480,19 @@ grant_type=authorization_code&amp;code=SplxlOBeZQQYbYS6WxSbIA
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-http" data-lang="http"><span class="err">     </span><span class="nf">POST</span> <span class="nn">/token</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-     <span class="l">Host: server.example.com</span>
-     <span class="l">Authorization: Basic czZCaGRSa3F0MzpnWDFmQmF0M2JW</span>
-     <span class="l">Content-Type: application/x-www-form-urlencoded</span>
-
-<span class="g">     grant_type=client_credentials
-</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-http" data-lang="http"><span class="line"><span class="cl"><span class="err">     </span><span class="nf">POST</span> <span class="nn">/token</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+</span></span><span class="line"><span class="cl">     <span class="l">Host: server.example.com</span>
+</span></span><span class="line"><span class="cl">     <span class="l">Authorization: Basic czZCaGRSa3F0MzpnWDFmQmF0M2JW</span>
+</span></span><span class="line"><span class="cl">     <span class="l">Content-Type: application/x-www-form-urlencoded</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="g">     grant_type=client_credentials
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>认证服务器必须以某种方式，验证客户端身份。</p>
 <p>B步骤中，认证服务器向客户端发送访问令牌，下面是一个例子。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -497,32 +505,32 @@ grant_type=authorization_code&amp;code=SplxlOBeZQQYbYS6WxSbIA
 </span><span class="lnt">11
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-http" data-lang="http"><span class="err">     </span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
-     <span class="l">Content-Type: application/json;charset=UTF-8</span>
-     <span class="l">Cache-Control: no-store</span>
-     <span class="l">Pragma: no-cache</span>
-
-<span class="g">     {
-</span><span class="g">       &#34;access_token&#34;:&#34;2YotnFZFEjr1zCsicMWpAA&#34;,
-</span><span class="g">       &#34;token_type&#34;:&#34;example&#34;,
-</span><span class="g">       &#34;expires_in&#34;:3600,
-</span><span class="g">       &#34;example_parameter&#34;:&#34;example_value&#34;
-</span><span class="g">     }
-</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-http" data-lang="http"><span class="line"><span class="cl"><span class="err">     </span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+</span></span><span class="line"><span class="cl">     <span class="l">Content-Type: application/json;charset=UTF-8</span>
+</span></span><span class="line"><span class="cl">     <span class="l">Cache-Control: no-store</span>
+</span></span><span class="line"><span class="cl">     <span class="l">Pragma: no-cache</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="g">     {
+</span></span></span><span class="line"><span class="cl"><span class="g">       &#34;access_token&#34;:&#34;2YotnFZFEjr1zCsicMWpAA&#34;,
+</span></span></span><span class="line"><span class="cl"><span class="g">       &#34;token_type&#34;:&#34;example&#34;,
+</span></span></span><span class="line"><span class="cl"><span class="g">       &#34;expires_in&#34;:3600,
+</span></span></span><span class="line"><span class="cl"><span class="g">       &#34;example_parameter&#34;:&#34;example_value&#34;
+</span></span></span><span class="line"><span class="cl"><span class="g">     }
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>上面代码中，各个参数的含义参见《授权码模式》一节。</p>
 <h2 id="十更新令牌">十、更新令牌</h2>
 <p>如果用户访问的时候，客户端的&quot;访问令牌&quot;已经过期，则需要使用&quot;更新令牌&quot;申请一个新的访问令牌。</p>
 <p>客户端发出更新令牌的HTTP请求，包含以下参数：</p>
 <ul>
-<li>grant<em>type：表示使用的授权模式，此处的值固定为&quot;refresh</em>token&rdquo;，必选项。</li>
+<li>grant<em>type：表示使用的授权模式，此处的值固定为&quot;refresh</em>token&quot;，必选项。</li>
 <li>refresh_token：表示早前收到的更新令牌，必选项。</li>
 <li>scope：表示申请的授权范围，不可以超出上一次申请的范围，如果省略该参数，则表示与上一次一致。</li>
 </ul>
 <p>下面是一个例子。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -530,13 +538,13 @@ grant_type=authorization_code&amp;code=SplxlOBeZQQYbYS6WxSbIA
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-http" data-lang="http"><span class="err">     </span><span class="nf">POST</span> <span class="nn">/token</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-     <span class="l">Host: server.example.com</span>
-     <span class="l">Authorization: Basic czZCaGRSa3F0MzpnWDFmQmF0M2JW</span>
-     <span class="l">Content-Type: application/x-www-form-urlencoded</span>
-
-<span class="g">     grant_type=refresh_token&amp;refresh_token=tGzv3JOkF0XG5Qx2TlKWIA
-</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-http" data-lang="http"><span class="line"><span class="cl"><span class="err">     </span><span class="nf">POST</span> <span class="nn">/token</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+</span></span><span class="line"><span class="cl">     <span class="l">Host: server.example.com</span>
+</span></span><span class="line"><span class="cl">     <span class="l">Authorization: Basic czZCaGRSa3F0MzpnWDFmQmF0M2JW</span>
+</span></span><span class="line"><span class="cl">     <span class="l">Content-Type: application/x-www-form-urlencoded</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="g">     grant_type=refresh_token&amp;refresh_token=tGzv3JOkF0XG5Qx2TlKWIA
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
     </div>
@@ -626,13 +634,10 @@ grant_type=authorization_code&amp;code=SplxlOBeZQQYbYS6WxSbIA
   <span class="copyright-year">
     &copy; 
     2019 - 
-    2020
-    <span class="heart">
-      <i class="iconfont icon-heart"></i>
-    </span>
-    <span class="author">ShangguanHong</span>
+    2022<span class="heart"><i class="iconfont icon-heart"></i></span><span>ShangguanHong</span>
   </span>
 </div>
+
     </footer>
 
     <div class="back-to-top" id="back-to-top">
@@ -643,7 +648,10 @@ grant_type=authorization_code&amp;code=SplxlOBeZQQYbYS6WxSbIA
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
-<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script>
 
 
 

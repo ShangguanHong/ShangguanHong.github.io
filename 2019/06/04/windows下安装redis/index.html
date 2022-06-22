@@ -16,14 +16,14 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="ShangguanHong" /><meta name="description" content="1. 下载 **下载地址：**https://github.com/MSOpenTech/redis/releases。 Redis 支持 32 位和 64 位。这个需要" /><meta name="keywords" content="go, golang, hugo" />
+<meta name="author" content="ShangguanHong" /><meta name="description" content="1. 下载 下载地址：https://github.com/MSOpenTech/redis/releases。 Redis 支持 32 位和 64 位。这个需要根据你系" /><meta name="keywords" content="go, golang, hugo" />
 
 
 
 
 
 
-<meta name="generator" content="Hugo 0.67.1 with theme even" />
+<meta name="generator" content="Hugo 0.101.0 with theme even" />
 
 
 <link rel="canonical" href="https://shangguanhong.github.io/2019/06/04/windows%E4%B8%8B%E5%AE%89%E8%A3%85redis/" />
@@ -34,27 +34,25 @@
 <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
 
 
-<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+
+<link href="/sass/main.min.b5a744db6de49a86cadafb3b70f555ab443f83c307a483402259e94726b045ff.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
 <meta property="og:title" content="Windows下安装Redis" />
-<meta property="og:description" content="1. 下载 **下载地址：**https://github.com/MSOpenTech/redis/releases。 Redis 支持 32 位和 64 位。这个需要" />
+<meta property="og:description" content="1. 下载 下载地址：https://github.com/MSOpenTech/redis/releases。 Redis 支持 32 位和 64 位。这个需要根据你系" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://shangguanhong.github.io/2019/06/04/windows%E4%B8%8B%E5%AE%89%E8%A3%85redis/" />
+<meta property="og:url" content="https://shangguanhong.github.io/2019/06/04/windows%E4%B8%8B%E5%AE%89%E8%A3%85redis/" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2019-06-04T21:45:14+00:00" />
 <meta property="article:modified_time" content="2019-06-04T21:45:14+00:00" />
+
 <meta itemprop="name" content="Windows下安装Redis">
-<meta itemprop="description" content="1. 下载 **下载地址：**https://github.com/MSOpenTech/redis/releases。 Redis 支持 32 位和 64 位。这个需要">
-<meta itemprop="datePublished" content="2019-06-04T21:45:14&#43;00:00" />
-<meta itemprop="dateModified" content="2019-06-04T21:45:14&#43;00:00" />
-<meta itemprop="wordCount" content="597">
-
-
-
+<meta itemprop="description" content="1. 下载 下载地址：https://github.com/MSOpenTech/redis/releases。 Redis 支持 32 位和 64 位。这个需要根据你系"><meta itemprop="datePublished" content="2019-06-04T21:45:14+00:00" />
+<meta itemprop="dateModified" content="2019-06-04T21:45:14+00:00" />
+<meta itemprop="wordCount" content="593">
 <meta itemprop="keywords" content="Redis," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Windows下安装Redis"/>
-<meta name="twitter:description" content="1. 下载 **下载地址：**https://github.com/MSOpenTech/redis/releases。 Redis 支持 32 位和 64 位。这个需要"/>
+<meta name="twitter:description" content="1. 下载 下载地址：https://github.com/MSOpenTech/redis/releases。 Redis 支持 32 位和 64 位。这个需要根据你系"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -89,12 +87,21 @@
         <li class="mobile-menu-item">Categories</li>
       </a>
   </ul>
+
+  
+
+
 </nav>
+
   <div class="container" id="mobile-panel">
     <header id="header" class="header">
         <div class="logo-wrapper">
   <a href="/" class="logo">赏我一个好梦如旧</a>
 </div>
+
+
+
+
 
 <nav class="site-navbar">
   <ul id="menu" class="menu">
@@ -109,6 +116,7 @@
       </li>
   </ul>
 </nav>
+
     </header>
 
     <main id="main" class="main">
@@ -124,7 +132,7 @@
         <div class="post-category">
             <a href="/categories/redis%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"> Redis学习笔记 </a>
             </div>
-          <span class="more-meta"> 约 597 字 </span>
+          <span class="more-meta"> 约 593 字 </span>
           <span class="more-meta"> 预计阅读 2 分钟 </span>
         
       </div>
@@ -138,7 +146,7 @@
 </div>
     <div class="post-content">
       <h1 id="1-下载">1. 下载</h1>
-<p>**下载地址：**<a href="https://github.com/MSOpenTech/redis/releases">https://github.com/MSOpenTech/redis/releases</a>。</p>
+<p><strong>下载地址：</strong><a href="https://github.com/MSOpenTech/redis/releases">https://github.com/MSOpenTech/redis/releases</a>。</p>
 <p>Redis 支持 32 位和 64 位。这个需要根据你系统平台的实际情况选择，这里我下载 <strong>Redis-x64-3.2.100.zip</strong>压缩包到 C 盘，解压后，将文件夹重新命名为 <strong>redis</strong>。</p>
 <p><img src="https://raw.githubusercontent.com/ShangguanHong/PictureBed/master/1559657324563.png" alt="1559657324563"></p>
 <p>打开文件夹，内容如下，其中 <code>redis-server</code> 是服务端程序， <code>redis-cli</code> 是客户端程序</p>
@@ -148,11 +156,11 @@
 <p>打开一个 <strong>cmd</strong> 窗体，使用 <code>cd</code> 命令切换到redis目录下，运行</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">redis-server.exe redis.windows.conf
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">redis-server.exe redis.windows.conf
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>后面的那个 <code>redis.windows.conf</code>  可以省略，如果省略，会启用默认的配置文件 <code>redis.windows-service.conf</code> 。输入之后，会显示如下界面：</p>
 <p><img src="https://raw.githubusercontent.com/ShangguanHong/PictureBed/master/1559658168232.png" alt="1559658168232"></p>
@@ -160,11 +168,11 @@
 <p>切换到 redis 目录下运行:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">redis-cli.exe -h 127.0.0.1 -p <span class="m">6379</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">redis-cli.exe -h 127.0.0.1 -p <span class="m">6379</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>显示如下</p>
 <p><img src="https://raw.githubusercontent.com/ShangguanHong/PictureBed/master/1559658340653.png" alt="1559658340653"></p>
@@ -175,32 +183,32 @@
 <p>安装redis服务， <strong>cmd</strong> 输入以下命令</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">C:<span class="se">\r</span>edis<span class="se">\r</span>edis-server.exe --service-install C:<span class="se">\r</span>edis<span class="se">\r</span>edis.windows.conf --loglevel verbose  
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">C:<span class="se">\r</span>edis<span class="se">\r</span>edis-server.exe --service-install C:<span class="se">\r</span>edis<span class="se">\r</span>edis.windows.conf --loglevel verbose  
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>输入命令后，出现以下界面， 出现 <code>Redis successfully installed as a service</code> 表明安装redis服务成功。</p>
 <p><img src="https://raw.githubusercontent.com/ShangguanHong/PictureBed/master/1559658962556.png" alt="1559658962556"></p>
 <p>之后可以通过 <strong>cmd</strong> （管理员身份运行），输入以下命令开启redis服务</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">net start redis
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">net start redis
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p><img src="https://raw.githubusercontent.com/ShangguanHong/PictureBed/master/1559659104404.png" alt="1559659104404"></p>
 <p>输入以下命令停止redis服务</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">net stop redis
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">net stop redis
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p><img src="https://raw.githubusercontent.com/ShangguanHong/PictureBed/master/1559659163242.png" alt="1559659163242"></p>
 <p>如果你想卸载redis服务，可以输入以下命令卸载</p>
@@ -298,13 +306,10 @@
   <span class="copyright-year">
     &copy; 
     2019 - 
-    2020
-    <span class="heart">
-      <i class="iconfont icon-heart"></i>
-    </span>
-    <span class="author">ShangguanHong</span>
+    2022<span class="heart"><i class="iconfont icon-heart"></i></span><span>ShangguanHong</span>
   </span>
 </div>
+
     </footer>
 
     <div class="back-to-top" id="back-to-top">
@@ -315,7 +320,10 @@
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
-<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script>
 
 
 

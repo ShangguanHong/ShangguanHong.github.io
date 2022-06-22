@@ -14,32 +14,17 @@ jobs:
               with:
                   submodules: true
                   fetch-depth: 0
-
-            - name: Set up Python
-              uses: actions/setup-python@v2
-              with:
-                  python-version: 3.8
-            - name: Commit and push if changed
-              run: |-
-                  git diff
-                  git config --global user.email "action@github.com"
-                  git config --global user.name "GitHub Action"
-                  git add -A
-                  git commit -m "ci: update about page (automatically)" || exit 0
-                  git push
             - name: Setup Hugo
               uses: peaceiris/actions-hugo@v2
               with:
                 hugo-version: latest
                 extended: true
-            
             - name: Build Web
               run: hugo --minify
-
             - name: Deploy Web
               uses: peaceiris/actions-gh-pages@v3
               with:
-                  github_token: ${{ secrets.PERSONAL_TOKEN }}
+                  PERSONAL_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
                   EXTERNAL_REPOSITORY: ShangguanHong/ShangguanHong.github.io
                   PUBLISH_BRANCH: master
                   PUBLISH_DIR: ./public

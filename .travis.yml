@@ -39,3 +39,4 @@ deploy:
   keep-history: true # 是否保持target-branch分支的提交记录
   on:
     branch: hugo # 博客源码的分支
+    

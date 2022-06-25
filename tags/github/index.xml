@@ -1,12 +1,21 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>github on ShangguanHong</title>
+    <title>GitHub on ShangguanHong</title>
     <link>https://shangguanhong.github.io/tags/github/</link>
-    <description>Recent content in github on ShangguanHong</description>
+    <description>Recent content in GitHub on ShangguanHong</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 19 Dec 2019 20:39:10 +0000</lastBuildDate><atom:link href="https://shangguanhong.github.io/tags/github/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 25 Jun 2022 12:58:34 +0800</lastBuildDate><atom:link href="https://shangguanhong.github.io/tags/github/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>GitHub Actions介绍</title>
+      <link>https://shangguanhong.github.io/2022/06/25/github-actions%E4%BB%8B%E7%BB%8D/</link>
+      <pubDate>Sat, 25 Jun 2022 12:58:34 +0800</pubDate>
+      
+      <guid>https://shangguanhong.github.io/2022/06/25/github-actions%E4%BB%8B%E7%BB%8D/</guid>
+      <description>GitHub Acions 是什么 GitHub Actions 是一个持续集成和持续交付 (CI/CD) 平台，可用于自动执行构建、测试和部署管道。GitHub 在 2018 年 10 月推出，在 2019 年 11 月后对该功能全面开放，</description>
+    </item>
+    
     <item>
       <title>github使用Travis CI</title>
       <link>https://shangguanhong.github.io/2019/12/19/github%E4%BD%BF%E7%94%A8travis-ci/</link>

@@ -6,7 +6,16 @@
     <description>Recent content in 工具使用 on ShangguanHong</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 25 Jun 2022 12:58:34 +0800</lastBuildDate><atom:link href="https://shangguanhong.github.io/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 26 Jun 2022 00:49:46 +0800</lastBuildDate><atom:link href="https://shangguanhong.github.io/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>使用 GitHub Actions &#43; Hugo 自动发布博文</title>
+      <link>https://shangguanhong.github.io/2022/06/26/%E4%BD%BF%E7%94%A8-github-actions--hugo-%E8%87%AA%E5%8A%A8%E5%8F%91%E5%B8%83%E5%8D%9A%E6%96%87/</link>
+      <pubDate>Sun, 26 Jun 2022 00:49:46 +0800</pubDate>
+      
+      <guid>https://shangguanhong.github.io/2022/06/26/%E4%BD%BF%E7%94%A8-github-actions--hugo-%E8%87%AA%E5%8A%A8%E5%8F%91%E5%B8%83%E5%8D%9A%E6%96%87/</guid>
+      <description>之前写过一篇 使用 Travis CI 自动部署 Hugo 的文章，最近更新文章的时候发现失效了。查看失败原因，原来是因为之前使用的 travis-ci 的网站已经更新了，变成了使用 trav</description>
+    </item>
+    
     <item>
       <title>GitHub Actions介绍</title>
       <link>https://shangguanhong.github.io/2022/06/25/github-actions%E4%BB%8B%E7%BB%8D/</link>

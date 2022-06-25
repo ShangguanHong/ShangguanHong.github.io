@@ -3,7 +3,56 @@
   
   <url>
     <loc>https://shangguanhong.github.io/categories/</loc>
-    <lastmod>2022-06-25T12:58:34+08:00</lastmod>
+    <lastmod>2022-06-26T00:49:46+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://shangguanhong.github.io/tags/github-actions/</loc>
+    <lastmod>2022-06-26T00:49:46+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://shangguanhong.github.io/tags/hugo/</loc>
+    <lastmod>2022-06-26T00:49:46+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://shangguanhong.github.io/post/</loc>
+    <lastmod>2022-06-26T00:49:46+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://shangguanhong.github.io/</loc>
+    <lastmod>2022-06-26T00:49:46+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://shangguanhong.github.io/tags/</loc>
+    <lastmod>2022-06-26T00:49:46+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://shangguanhong.github.io/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/</loc>
+    <lastmod>2022-06-26T00:49:46+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://shangguanhong.github.io/2022/06/26/%E4%BD%BF%E7%94%A8-github-actions--hugo-%E8%87%AA%E5%8A%A8%E5%8F%91%E5%B8%83%E5%8D%9A%E6%96%87/</loc>
+    <lastmod>2022-06-26T00:49:46+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -17,34 +66,6 @@
   
   <url>
     <loc>https://shangguanhong.github.io/2022/06/25/github-actions%E4%BB%8B%E7%BB%8D/</loc>
-    <lastmod>2022-06-25T12:58:34+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://shangguanhong.github.io/post/</loc>
-    <lastmod>2022-06-25T12:58:34+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://shangguanhong.github.io/</loc>
-    <lastmod>2022-06-25T12:58:34+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://shangguanhong.github.io/tags/</loc>
-    <lastmod>2022-06-25T12:58:34+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://shangguanhong.github.io/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/</loc>
     <lastmod>2022-06-25T12:58:34+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -73,13 +94,6 @@
   
   <url>
     <loc>https://shangguanhong.github.io/tags/hexo/</loc>
-    <lastmod>2020-03-20T22:26:01+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://shangguanhong.github.io/tags/hugo/</loc>
     <lastmod>2020-03-20T22:26:01+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>

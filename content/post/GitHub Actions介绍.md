@@ -134,9 +134,9 @@ workflow 文件的主体是`jobs`字段，表示要执行的一项或多项任�
 
 `runs-on`字段指定运行所需要的虚拟机环境。它是必填字段。目前可用的虚拟机如下。
 
-> - `ubuntu-latest`，`ubuntu-22.04`、`ubuntu-20.04`、`ubuntu-18.04`
-> - `windows-latest`，`windows-2022`、`windows-2019`
-> - `macos-latest`'、' `macos-12`、`macos-11`、`macos-10.15`
+> - `ubuntu-latest`、`ubuntu-22.04`、`ubuntu-20.04`、`ubuntu-18.04`
+> - `windows-latest`、`windows-2022`、`windows-2019`
+> - `macos-latest`、 `macos-12`、`macos-11`、`macos-10.15`
 
 下面代码指定虚拟机环境为`ubuntu-18.04`。
 

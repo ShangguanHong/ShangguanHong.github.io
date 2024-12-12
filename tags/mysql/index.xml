@@ -20,7 +20,7 @@
       <link>https://shangguanhong.github.io/2019/05/28/phpstudy%E4%B8%AD%E5%8D%87%E7%BA%A7mysql/</link>
       <pubDate>Tue, 28 May 2019 14:45:56 +0000</pubDate>
       <guid>https://shangguanhong.github.io/2019/05/28/phpstudy%E4%B8%AD%E5%8D%87%E7%BA%A7mysql/</guid>
-      <description>&lt;h2 id=&#34;1-正文&#34;&gt;1. 正文&lt;/h2&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;从官网下载对应平台最新的 MySQL 解压缩版 &lt;a href=&#34;http://www.mysql.com/downloads/&#34;&gt;http://www.mysql.com/downloads/&lt;/a&gt;&lt;/p&gt;&#xA;&lt;!-- raw HTML omitted --&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;解压缩下载的文件，复制到phpStudy的MySQL文件夹下，我是把文件夹清空后复制过去的；&lt;/p&gt;</description>
+      <description>&lt;h2 id=&#34;1-正文&#34;&gt;1. 正文&lt;/h2&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;从官网下载对应平台最新的 MySQL 解压缩版 &lt;a href=&#34;http://www.mysql.com/downloads/&#34;&gt;http://www.mysql.com/downloads/&lt;/a&gt;&lt;/p&gt;&#xA;&lt;!-- more --&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;解压缩下载的文件，复制到phpStudy的MySQL文件夹下，我是把文件夹清空后复制过去的；&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;将../phpStudy/MySQL/bin路径追加到Path&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

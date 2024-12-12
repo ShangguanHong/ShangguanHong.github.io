@@ -16,14 +16,14 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="ShangguanHong" /><meta name="description" content="golang后端研发工程师" /><meta name="keywords" content="go, golang, hugo" />
+<meta name="author" content="" /><meta name="description" content="golang后端研发工程师" /><meta name="keywords" content="go, golang, hugo" />
 
 
 
 
 
 
-<meta name="generator" content="Hugo 0.101.0 with theme even" />
+<meta name="generator" content="Hugo 0.139.4 with theme even" />
 
 
 <link rel="canonical" href="https://shangguanhong.github.io/" />
@@ -37,19 +37,24 @@
 
 
 
-<link href="/sass/main.min.b5a744db6de49a86cadafb3b70f555ab443f83c307a483402259e94726b045ff.css" rel="stylesheet">
+<link href="/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
-<meta property="og:title" content="ShangguanHong" />
-<meta property="og:description" content="golang后端研发工程师" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://shangguanhong.github.io/" />
+<meta property="og:url" content="https://shangguanhong.github.io/">
+  <meta property="og:site_name" content="ShangguanHong">
+  <meta property="og:title" content="ShangguanHong">
+  <meta property="og:description" content="golang后端研发工程师">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="website">
 
-<meta itemprop="name" content="ShangguanHong">
-<meta itemprop="description" content="golang后端研发工程师"><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="ShangguanHong"/>
-<meta name="twitter:description" content="golang后端研发工程师"/>
+  <meta itemprop="name" content="ShangguanHong">
+  <meta itemprop="description" content="golang后端研发工程师">
+  <meta itemprop="datePublished" content="2022-06-26T00:49:46+08:00">
+  <meta itemprop="dateModified" content="2022-06-26T00:49:46+08:00">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="ShangguanHong">
+  <meta name="twitter:description" content="golang后端研发工程师">
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -64,7 +69,7 @@
 <body>
   <div id="mobile-navbar" class="mobile-navbar">
   <div class="mobile-header-logo">
-    <a href="/" class="logo">赏我一个好梦如旧</a>
+    <a href="/" class="logo">希望有羽毛和翅膀</a>
   </div>
   <div class="mobile-navbar-icon">
     <span></span>
@@ -93,7 +98,7 @@
   <div class="container" id="mobile-panel">
     <header id="header" class="header">
         <div class="logo-wrapper">
-  <a href="/" class="logo">赏我一个好梦如旧</a>
+  <a href="/" class="logo">希望有羽毛和翅膀</a>
 </div>
 
 
@@ -135,7 +140,14 @@
   
   <div class="post-content">
     <div class="post-summary">
-      本文转载自 Java中的对象术语(PO/POJO/VO/BO/DAO/DTO) 1. PO(persistant object) : 持久对象 理解为dao层中接收和返回的java bean，也
+      <p>本文转载自 <a href="https://blog.csdn.net/u010297957/article/details/49817563">Java中的对象术语(PO/POJO/VO/BO/DAO/DTO)</a></p>
+<h2 id="1-popersistant-object--持久对象"><strong>1. PO(persistant object) : 持久对象</strong></h2>
+<ol>
+<li>
+<p>理解为dao层中接收和返回的java bean，也就是通常写在model包中的model</p>
+</li>
+<li>
+<p>有时也被称为Data对象，对应数据库中的entity，可以简单认为一个PO对应数据库中的一条记录，多个记录可以用PO的集合。</p>
     </div>
     <div class="read-more">
       <a href="/2019/07/17/java%E4%B8%AD%E7%9A%84%E5%AF%B9%E8%B1%A1%E6%9C%AF%E8%AF%AD-po-pojo-vo-bo-dao-dto/" class="read-more-link">阅读更多</a>
@@ -158,7 +170,9 @@
   
   <div class="post-content">
     <div class="post-summary">
-      1. 前言 官网地址：http://mapstruct.org/ MapStruct 是一个代码生成器，简化了不同的 Java Bean 之间映射的处理，所谓的映射指的就是从一个实体变
+      <h1 id="1-前言">1. 前言</h1>
+<p>官网地址：http://mapstruct.org/</p>
+<p>MapStruct 是一个代码生成器，简化了不同的 Java Bean 之间映射的处理，所谓的映射指的就是从一个实体变化成一个实体。例如我们在实际开发中，DAO 层的实体(PO)和一些数据传输对象(DTO)，大部分属性都是相同的，只有少部分的不同，通过 mapStruct，可以让不同实体之间的转换变的简单。我们只需要按照约定的方式进行配置即可。</p>
     </div>
     <div class="read-more">
       <a href="/2019/07/17/java%E5%AE%9E%E4%BD%93%E6%98%A0%E5%B0%84%E5%B7%A5%E5%85%B7mapstruct%E7%9A%84%E4%BD%BF%E7%94%A8/" class="read-more-link">阅读更多</a>
@@ -182,7 +196,9 @@
   
   <div class="post-content">
     <div class="post-summary">
-      1. 前言 ​ 现如今，前后端分离已经逐渐成为互联网项目一种标准的开发方式，前端与后端交给不同的人员开发，但是项目开发中的沟通成本也随之升高，这部分
+      <h1 id="1-前言">1. 前言</h1>
+<blockquote>
+<p>​		现如今，前后端分离已经逐渐成为互联网项目一种标准的开发方式，前端与后端交给不同的人员开发，但是项目开发中的沟通成本也随之升高，这部分沟通成本主要在于前端开发人员与后端开发人员对Web API接口的沟通。</p>
     </div>
     <div class="read-more">
       <a href="/2019/07/16/spring-boot%E6%95%B4%E5%90%88swagger2/" class="read-more-link">阅读更多</a>
@@ -205,7 +221,8 @@
   
   <div class="post-content">
     <div class="post-summary">
-      1. 前言 POI 是常用的解析 Excel 文件的工具库，Excel 文件有两种格式(.xls和.xlsx)，POI 都支持解析。解析 Excel 文件的流程为读取工作簿(Wor
+      <h3 id="1-前言">1. 前言</h3>
+<p>POI 是常用的解析 Excel 文件的工具库，Excel 文件有两种格式(.xls和.xlsx)，POI 都支持解析。解析 Excel 文件的流程为读取工作簿(Workbook) → 工作表(Sheet) → 行 (Row)→ 单元格(Cell)。</p>
     </div>
     <div class="read-more">
       <a href="/2019/07/14/%E5%88%A9%E7%94%A8poi%E6%93%8D%E7%BA%B5excel/" class="read-more-link">阅读更多</a>
@@ -229,7 +246,11 @@
   
   <div class="post-content">
     <div class="post-summary">
-      1. 前言 之前的文章中写到了如何使用 Spring Boot 整合 mybatis(传送门: Spring-Boot整合MyBatis)，今天学习一下如何使用 Spring Boot 整合 Spring Data
+      <h1 id="1-前言">1. 前言</h1>
+<p>之前的文章中写到了如何使用 Spring Boot 整合 mybatis(传送门: <a href="https://shangguanhong.github.io/2019/06/03/Spring-Boot%E6%95%B4%E5%90%88MyBatis/">Spring-Boot整合MyBatis</a>)，今天学习一下如何使用 Spring Boot 整合 Spring Data Jpa。</p>
+<p>项目代码:  <a href="https://github.com/ShangguanHong/SpringBootDemo/tree/master/springboot-jpa">https://github.com/ShangguanHong/SpringBootDemo/tree/master/springboot-jpa</a></p>
+<h1 id="2-spring-data-jpa简介">2. Spring Data JPA简介</h1>
+<p>Spring Data JPA 是 Spring 基于 ORM 框架、JPA 规范封装的一套 JPA 应用框架，可使开发者用极简的代码即可实现对数据的访问和操作。它提供了包括增删改查等在内的常用功能， 且易于扩展！学习并使用 Spring Data JPA 可以极大的提供开发效率。</p>
     </div>
     <div class="read-more">
       <a href="/2019/07/08/spring-boot%E6%95%B4%E5%90%88springdatajpa/" class="read-more-link">阅读更多</a>
@@ -252,7 +273,8 @@
   
   <div class="post-content">
     <div class="post-summary">
-      1. 前言 我们在开发中反复修改类、页面等资源，每次修改后都是需要重新启动服务才能使得修改生效，这是非常麻烦的，浪费了大量的时间。我们能够在修改代
+      <h1 id="1-前言">1. 前言</h1>
+<p>我们在开发中反复修改类、页面等资源，每次修改后都是需要重新启动服务才能使得修改生效，这是非常麻烦的，浪费了大量的时间。我们能够在修改代码之后不重启服务就能使修改生效，我们称之为热部署，下面进行Spring-Boot实现热部署的过程。</p>
     </div>
     <div class="read-more">
       <a href="/2019/07/07/spring-boot%E5%AE%9E%E7%8E%B0%E7%83%AD%E9%83%A8%E7%BD%B2/" class="read-more-link">阅读更多</a>
@@ -275,7 +297,8 @@
   
   <div class="post-content">
     <div class="post-summary">
-      1. 前言 利用hexo搭建博后（还不懂的朋友可以看这篇文章 [利用GithubPages + Hexo搭建自己的博客](https://shanggu
+      <h1 id="1-前言">1. 前言</h1>
+<p>利用hexo搭建博后（还不懂的朋友可以看这篇文章 [利用GithubPages + Hexo搭建自己的博客](<a href="https://shangguanhong.github.io/2019/05/28/GithubPages">https://shangguanhong.github.io/2019/05/28/GithubPages</a> + Hexo搭建自己的博客/) ），仓库里只有生成的静态网页文件，是没有Hexo的源文件的。如果一不小心删除或者损坏了hexo源文件，那可就不得了了。这个时候就需要将hexo源文件也进行一下备份，我们这里就利用github的分支功能进行备份。</p>
     </div>
     <div class="read-more">
       <a href="/2019/06/26/%E9%80%9A%E8%BF%87github%E5%88%86%E6%94%AF%E5%A4%87%E4%BB%BDhexo%E6%BA%90%E6%96%87%E4%BB%B6/" class="read-more-link">阅读更多</a>
@@ -298,7 +321,8 @@
   
   <div class="post-content">
     <div class="post-summary">
-      1. 前言 在数据库设计中，有的字段需要用字符串来标识，拿用户角色role来说比如0代表管理员，1代表普通用户。在Java里面定义这样的字段为 枚举
+      <h1 id="1-前言">1. 前言</h1>
+<p>在数据库设计中，有的字段需要用字符串来标识，拿用户角色role来说比如<code>0</code>代表管理员，<code>1</code>代表普通用户。在Java里面定义这样的字段为 <code>枚举</code> ，但是一般使用 <code>mybatis</code> 查出来的话不符合我们的期望，我们想要让它自动装换成我们想要的枚举，不需要再手动根据数值去判断设置成我们想要的枚举。要是实现这样的效果，那么我们就要用到 <code>mybatis</code> 的<code>BaseTypeHandler</code> 了。</p>
     </div>
     <div class="read-more">
       <a href="/2019/06/20/mybatis%E4%B8%AD%E6%9E%9A%E4%B8%BE%E7%9A%84%E5%A4%84%E7%90%86/" class="read-more-link">阅读更多</a>
@@ -321,7 +345,9 @@
   
   <div class="post-content">
     <div class="post-summary">
-      1. 前言 在用命令行设置了密码之后，下次启动redis的时候密码又没了，这是因为 config set requirepass password 这种设置只是临时的，当服务器重启后，密码就会失效。 真正的
+      <h1 id="1-前言">1. 前言</h1>
+<p>在用命令行设置了密码之后，下次启动redis的时候密码又没了，这是因为 <code>config set requirepass password</code> 这种设置只是临时的，当服务器重启后，密码就会失效。</p>
+<p>真正的配置密码应该是要去配置文件中配置。</p>
     </div>
     <div class="read-more">
       <a href="/2019/06/04/%E8%A7%A3%E5%86%B3redis%E9%87%8D%E5%90%AF%E5%90%8E%E5%AF%86%E7%A0%81%E5%A4%B1%E6%95%88%E9%97%AE%E9%A2%98/" class="read-more-link">阅读更多</a>
@@ -344,7 +370,9 @@
   
   <div class="post-content">
     <div class="post-summary">
-      1. 下载 下载地址：https://github.com/MSOpenTech/redis/releases。 Redis 支持 32 位和 64 位。这个需要根据你系
+      <h1 id="1-下载">1. 下载</h1>
+<p><strong>下载地址：</strong><a href="https://github.com/MSOpenTech/redis/releases">https://github.com/MSOpenTech/redis/releases</a>。</p>
+<p>Redis 支持 32 位和 64 位。这个需要根据你系统平台的实际情况选择，这里我下载 <strong>Redis-x64-3.2.100.zip</strong>压缩包到 C 盘，解压后，将文件夹重新命名为 <strong>redis</strong>。</p>
     </div>
     <div class="read-more">
       <a href="/2019/06/04/windows%E4%B8%8B%E5%AE%89%E8%A3%85redis/" class="read-more-link">阅读更多</a>
@@ -376,7 +404,9 @@
       <a href="https://github.com/ShangguanHong" class="iconfont icon-github" title="github"></a>
       <a href="https://weibo.com/5590338381" class="iconfont icon-weibo" title="weibo"></a>
       <a href="https://space.bilibili.com/105190849" class="iconfont icon-bilibili" title="bilibili"></a>
-  <a href="https://shangguanhong.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+  
+    <a href="/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+  
 </div>
 
 <div class="copyright">
@@ -394,7 +424,7 @@
   <span class="copyright-year">
     &copy; 
     2019 - 
-    2022<span class="heart"><i class="iconfont icon-heart"></i></span><span>ShangguanHong</span>
+    2024<span class="heart"><i class="iconfont icon-heart"></i></span><span></span>
   </span>
 </div>
 

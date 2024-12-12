@@ -16,14 +16,19 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="ShangguanHong" /><meta name="description" content="备份源文件，以防止操作失误后无法还原文件 1 sudo cp /etc/apt/sources.list /ect/apt/sources.list.backup 打开 /etc/apt/sources.list 文件 1 sudo vim /ect/apt/sources.list 将源文件里的内容全部注释或者全部删除，然后写入以下内容 阿里云源 1 2 3 4 5" /><meta name="keywords" content="go, golang, hugo" />
+<meta name="author" content="" /><meta name="description" content=" 备份源文件，以防止操作失误后无法还原文件
+1 sudo cp /etc/apt/sources.list /ect/apt/sources.list.backup 打开 /etc/apt/sources.list 文件
+1 sudo vim /ect/apt/sources.list 将源文件里的内容全部注释或者全部删除，然后写入以下内容
+阿里云源
+1 2 3 4 5 6 7 8 9 10 deb http://mirrors.aliyun.com/ubuntu/ bionic main restricted universe multiverse deb http://mirrors.aliyun.com/ubuntu/ bionic-security main restricted universe multiverse deb http://mirrors.aliyun.com/ubuntu/ bionic-updates main restricted universe multiverse deb http://mirrors.aliyun.com/ubuntu/ bionic-proposed main restricted universe multiverse deb http://mirrors.aliyun.com/ubuntu/ bionic-backports main restricted universe multiverse deb-src http://mirrors.aliyun.com/ubuntu/ bionic main restricted universe multiverse deb-src http://mirrors.aliyun.com/ubuntu/ bionic-security main restricted universe multiverse deb-src http://mirrors.aliyun.com/ubuntu/ bionic-updates main restricted universe multiverse deb-src http://mirrors.aliyun.com/ubuntu/ bionic-proposed main restricted universe multiverse deb-src http://mirrors.aliyun.com/ubuntu/ bionic-backports main restricted universe multiverse 清华源
+" /><meta name="keywords" content="go, golang, hugo" />
 
 
 
 
 
 
-<meta name="generator" content="Hugo 0.101.0 with theme even" />
+<meta name="generator" content="Hugo 0.139.4 with theme even" />
 
 
 <link rel="canonical" href="https://shangguanhong.github.io/2020/02/16/ubuntu18.04%E6%9B%B4%E6%8D%A2%E5%9B%BD%E5%86%85%E6%BA%90/" />
@@ -35,24 +40,43 @@
 
 
 
-<link href="/sass/main.min.b5a744db6de49a86cadafb3b70f555ab443f83c307a483402259e94726b045ff.css" rel="stylesheet">
+<link href="/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
-<meta property="og:title" content="Ubuntu18.04更换国内源" />
-<meta property="og:description" content="备份源文件，以防止操作失误后无法还原文件 1 sudo cp /etc/apt/sources.list /ect/apt/sources.list.backup 打开 /etc/apt/sources.list 文件 1 sudo vim /ect/apt/sources.list 将源文件里的内容全部注释或者全部删除，然后写入以下内容 阿里云源 1 2 3 4 5" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://shangguanhong.github.io/2020/02/16/ubuntu18.04%E6%9B%B4%E6%8D%A2%E5%9B%BD%E5%86%85%E6%BA%90/" /><meta property="article:section" content="post" />
-<meta property="article:published_time" content="2020-02-16T21:06:13+00:00" />
-<meta property="article:modified_time" content="2020-02-16T21:06:13+00:00" />
+<meta property="og:url" content="https://shangguanhong.github.io/2020/02/16/ubuntu18.04%E6%9B%B4%E6%8D%A2%E5%9B%BD%E5%86%85%E6%BA%90/">
+  <meta property="og:site_name" content="ShangguanHong">
+  <meta property="og:title" content="Ubuntu18.04更换国内源">
+  <meta property="og:description" content="备份源文件，以防止操作失误后无法还原文件
+1 sudo cp /etc/apt/sources.list /ect/apt/sources.list.backup 打开 /etc/apt/sources.list 文件
+1 sudo vim /ect/apt/sources.list 将源文件里的内容全部注释或者全部删除，然后写入以下内容
+阿里云源
+1 2 3 4 5 6 7 8 9 10 deb http://mirrors.aliyun.com/ubuntu/ bionic main restricted universe multiverse deb http://mirrors.aliyun.com/ubuntu/ bionic-security main restricted universe multiverse deb http://mirrors.aliyun.com/ubuntu/ bionic-updates main restricted universe multiverse deb http://mirrors.aliyun.com/ubuntu/ bionic-proposed main restricted universe multiverse deb http://mirrors.aliyun.com/ubuntu/ bionic-backports main restricted universe multiverse deb-src http://mirrors.aliyun.com/ubuntu/ bionic main restricted universe multiverse deb-src http://mirrors.aliyun.com/ubuntu/ bionic-security main restricted universe multiverse deb-src http://mirrors.aliyun.com/ubuntu/ bionic-updates main restricted universe multiverse deb-src http://mirrors.aliyun.com/ubuntu/ bionic-proposed main restricted universe multiverse deb-src http://mirrors.aliyun.com/ubuntu/ bionic-backports main restricted universe multiverse 清华源">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2020-02-16T21:06:13+00:00">
+    <meta property="article:modified_time" content="2020-02-16T21:06:13+00:00">
+    <meta property="article:tag" content="Linux">
+    <meta property="article:tag" content="Ubuntu">
 
-<meta itemprop="name" content="Ubuntu18.04更换国内源">
-<meta itemprop="description" content="备份源文件，以防止操作失误后无法还原文件 1 sudo cp /etc/apt/sources.list /ect/apt/sources.list.backup 打开 /etc/apt/sources.list 文件 1 sudo vim /ect/apt/sources.list 将源文件里的内容全部注释或者全部删除，然后写入以下内容 阿里云源 1 2 3 4 5"><meta itemprop="datePublished" content="2020-02-16T21:06:13+00:00" />
-<meta itemprop="dateModified" content="2020-02-16T21:06:13+00:00" />
-<meta itemprop="wordCount" content="342">
-<meta itemprop="keywords" content="linux,ubuntu," /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Ubuntu18.04更换国内源"/>
-<meta name="twitter:description" content="备份源文件，以防止操作失误后无法还原文件 1 sudo cp /etc/apt/sources.list /ect/apt/sources.list.backup 打开 /etc/apt/sources.list 文件 1 sudo vim /ect/apt/sources.list 将源文件里的内容全部注释或者全部删除，然后写入以下内容 阿里云源 1 2 3 4 5"/>
+  <meta itemprop="name" content="Ubuntu18.04更换国内源">
+  <meta itemprop="description" content="备份源文件，以防止操作失误后无法还原文件
+1 sudo cp /etc/apt/sources.list /ect/apt/sources.list.backup 打开 /etc/apt/sources.list 文件
+1 sudo vim /ect/apt/sources.list 将源文件里的内容全部注释或者全部删除，然后写入以下内容
+阿里云源
+1 2 3 4 5 6 7 8 9 10 deb http://mirrors.aliyun.com/ubuntu/ bionic main restricted universe multiverse deb http://mirrors.aliyun.com/ubuntu/ bionic-security main restricted universe multiverse deb http://mirrors.aliyun.com/ubuntu/ bionic-updates main restricted universe multiverse deb http://mirrors.aliyun.com/ubuntu/ bionic-proposed main restricted universe multiverse deb http://mirrors.aliyun.com/ubuntu/ bionic-backports main restricted universe multiverse deb-src http://mirrors.aliyun.com/ubuntu/ bionic main restricted universe multiverse deb-src http://mirrors.aliyun.com/ubuntu/ bionic-security main restricted universe multiverse deb-src http://mirrors.aliyun.com/ubuntu/ bionic-updates main restricted universe multiverse deb-src http://mirrors.aliyun.com/ubuntu/ bionic-proposed main restricted universe multiverse deb-src http://mirrors.aliyun.com/ubuntu/ bionic-backports main restricted universe multiverse 清华源">
+  <meta itemprop="datePublished" content="2020-02-16T21:06:13+00:00">
+  <meta itemprop="dateModified" content="2020-02-16T21:06:13+00:00">
+  <meta itemprop="wordCount" content="342">
+  <meta itemprop="keywords" content="Linux,Ubuntu">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Ubuntu18.04更换国内源">
+  <meta name="twitter:description" content="备份源文件，以防止操作失误后无法还原文件
+1 sudo cp /etc/apt/sources.list /ect/apt/sources.list.backup 打开 /etc/apt/sources.list 文件
+1 sudo vim /ect/apt/sources.list 将源文件里的内容全部注释或者全部删除，然后写入以下内容
+阿里云源
+1 2 3 4 5 6 7 8 9 10 deb http://mirrors.aliyun.com/ubuntu/ bionic main restricted universe multiverse deb http://mirrors.aliyun.com/ubuntu/ bionic-security main restricted universe multiverse deb http://mirrors.aliyun.com/ubuntu/ bionic-updates main restricted universe multiverse deb http://mirrors.aliyun.com/ubuntu/ bionic-proposed main restricted universe multiverse deb http://mirrors.aliyun.com/ubuntu/ bionic-backports main restricted universe multiverse deb-src http://mirrors.aliyun.com/ubuntu/ bionic main restricted universe multiverse deb-src http://mirrors.aliyun.com/ubuntu/ bionic-security main restricted universe multiverse deb-src http://mirrors.aliyun.com/ubuntu/ bionic-updates main restricted universe multiverse deb-src http://mirrors.aliyun.com/ubuntu/ bionic-proposed main restricted universe multiverse deb-src http://mirrors.aliyun.com/ubuntu/ bionic-backports main restricted universe multiverse 清华源">
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -67,7 +91,7 @@
 <body>
   <div id="mobile-navbar" class="mobile-navbar">
   <div class="mobile-header-logo">
-    <a href="/" class="logo">赏我一个好梦如旧</a>
+    <a href="/" class="logo">希望有羽毛和翅膀</a>
   </div>
   <div class="mobile-navbar-icon">
     <span></span>
@@ -96,7 +120,7 @@
   <div class="container" id="mobile-panel">
     <header id="header" class="header">
         <div class="logo-wrapper">
-  <a href="/" class="logo">赏我一个好梦如旧</a>
+  <a href="/" class="logo">希望有羽毛和翅膀</a>
 </div>
 
 
@@ -286,7 +310,7 @@
     <div class="post-copyright">
   <p class="copyright-item">
     <span class="item-title">文章作者</span>
-    <span class="item-content">ShangguanHong</span>
+    <span class="item-content"></span>
   </p>
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
@@ -351,7 +375,7 @@
       <a href="https://github.com/ShangguanHong" class="iconfont icon-github" title="github"></a>
       <a href="https://weibo.com/5590338381" class="iconfont icon-weibo" title="weibo"></a>
       <a href="https://space.bilibili.com/105190849" class="iconfont icon-bilibili" title="bilibili"></a>
-  <a href="https://shangguanhong.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+  
 </div>
 
 <div class="copyright">
@@ -369,7 +393,7 @@
   <span class="copyright-year">
     &copy; 
     2019 - 
-    2022<span class="heart"><i class="iconfont icon-heart"></i></span><span>ShangguanHong</span>
+    2024<span class="heart"><i class="iconfont icon-heart"></i></span><span></span>
   </span>
 </div>
 

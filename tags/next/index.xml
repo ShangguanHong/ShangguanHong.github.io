@@ -4,17 +4,16 @@
     <title>NexT on ShangguanHong</title>
     <link>https://shangguanhong.github.io/tags/next/</link>
     <description>Recent content in NexT on ShangguanHong</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 29 May 2019 16:18:40 +0000</lastBuildDate><atom:link href="https://shangguanhong.github.io/tags/next/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 29 May 2019 16:18:40 +0000</lastBuildDate>
+    <atom:link href="https://shangguanhong.github.io/tags/next/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Hexo的NexT主题详细配置过程</title>
       <link>https://shangguanhong.github.io/2019/05/29/hexo%E7%9A%84next%E4%B8%BB%E9%A2%98%E8%AF%A6%E7%BB%86%E9%85%8D%E7%BD%AE%E8%BF%87%E7%A8%8B/</link>
       <pubDate>Wed, 29 May 2019 16:18:40 +0000</pubDate>
-      
       <guid>https://shangguanhong.github.io/2019/05/29/hexo%E7%9A%84next%E4%B8%BB%E9%A2%98%E8%AF%A6%E7%BB%86%E9%85%8D%E7%BD%AE%E8%BF%87%E7%A8%8B/</guid>
-      <description>1. 前言 之前的 利用GithubPages + Hexo搭建自己的博客 中，已经拥有了一个自己的博客，但是它是非常的简陋的，所以这里将介绍 Hexo 中最热门的</description>
+      <description>&lt;h1 id=&#34;1-前言&#34;&gt;1. 前言&lt;/h1&gt;&#xA;&lt;p&gt;之前的 &lt;a href=&#34;https://shangguanhong.github.io/2019/05/28/GithubPages%20+%20Hexo%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E5%8D%9A%E5%AE%A2/&#34;&gt;利用GithubPages + Hexo搭建自己的博客&lt;/a&gt; 中，已经拥有了一个自己的博客，但是它是非常的简陋的，所以这里将介绍 &lt;code&gt;Hexo&lt;/code&gt; 中最热门的 &lt;code&gt;NexT&lt;/code&gt; 主题的详细配置过程，将博客变得更加美观&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

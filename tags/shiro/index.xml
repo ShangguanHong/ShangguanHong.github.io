@@ -4,26 +4,23 @@
     <title>Shiro on ShangguanHong</title>
     <link>https://shangguanhong.github.io/tags/shiro/</link>
     <description>Recent content in Shiro on ShangguanHong</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 23 Aug 2019 20:35:19 +0000</lastBuildDate><atom:link href="https://shangguanhong.github.io/tags/shiro/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 23 Aug 2019 20:35:19 +0000</lastBuildDate>
+    <atom:link href="https://shangguanhong.github.io/tags/shiro/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Shiro的多Realm配置</title>
       <link>https://shangguanhong.github.io/2019/08/23/shiro%E7%9A%84%E5%A4%9Arealm%E9%85%8D%E7%BD%AE/</link>
       <pubDate>Fri, 23 Aug 2019 20:35:19 +0000</pubDate>
-      
       <guid>https://shangguanhong.github.io/2019/08/23/shiro%E7%9A%84%E5%A4%9Arealm%E9%85%8D%E7%BD%AE/</guid>
-      <description>前言 之前写了一篇 Spring Boot整合Shiro，如果不了解 Shiro 的建议先去阅读之前的文章，因为这篇是在它的基础上进行的拓展，需要您具备一定的 Shiro 知识。 之</description>
+      <description>&lt;h1 id=&#34;前言&#34;&gt;前言&lt;/h1&gt;&#xA;&lt;p&gt;之前写了一篇 &lt;a href=&#34;https://shangguanhong.github.io/2019/08/20/Spring-Boot%E6%95%B4%E5%90%88Shiro/&#34;&gt;Spring Boot整合Shiro&lt;/a&gt;，如果不了解 &lt;code&gt;Shiro&lt;/code&gt; 的建议先去阅读之前的文章，因为这篇是在它的基础上进行的拓展，需要您具备一定的 Shiro 知识。&lt;/p&gt;&#xA;&lt;p&gt;之前所介绍的 Shiro 仅仅是针对单个 Realm 的使用，但是考虑一下以下场景：&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Spring Boot整合Shiro</title>
       <link>https://shangguanhong.github.io/2019/08/20/spring-boot%E6%95%B4%E5%90%88shiro/</link>
       <pubDate>Tue, 20 Aug 2019 20:11:28 +0000</pubDate>
-      
       <guid>https://shangguanhong.github.io/2019/08/20/spring-boot%E6%95%B4%E5%90%88shiro/</guid>
-      <description>1. 前言 在 Java 领域一般有 Spring Security、Apache Shiro 等安全框架，之前写了一篇关于 JWT整合Spring Security 的文章，里面介绍了使用 Spring Boot + JWT + Spring</description>
+      <description>&lt;h1 id=&#34;1-前言&#34;&gt;1. 前言&lt;/h1&gt;&#xA;&lt;p&gt;在 Java 领域一般有 Spring Security、Apache Shiro 等安全框架，之前写了一篇关于 &lt;a href=&#34;https://shangguanhong.github.io/2019/08/14/JWT%E6%95%B4%E5%90%88Spring-Security/&#34;&gt;JWT整合Spring Security&lt;/a&gt; 的文章，里面介绍了使用 Spring Boot + JWT + Spring Security 来完成用户的登录与权限认证。&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

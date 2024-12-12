@@ -4,53 +4,44 @@
     <title>Redis on ShangguanHong</title>
     <link>https://shangguanhong.github.io/tags/redis/</link>
     <description>Recent content in Redis on ShangguanHong</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 19 Sep 2019 21:55:45 +0000</lastBuildDate><atom:link href="https://shangguanhong.github.io/tags/redis/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 19 Sep 2019 21:55:45 +0000</lastBuildDate>
+    <atom:link href="https://shangguanhong.github.io/tags/redis/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Spring Cache整合Redis</title>
       <link>https://shangguanhong.github.io/2019/09/19/spring-cache%E6%95%B4%E5%90%88redis/</link>
       <pubDate>Thu, 19 Sep 2019 21:55:45 +0000</pubDate>
-      
       <guid>https://shangguanhong.github.io/2019/09/19/spring-cache%E6%95%B4%E5%90%88redis/</guid>
-      <description>前言 缓存现在已经成为了互联网必不可少的利器，合理的利用缓存不仅能大大的提升网站的访问速度，还能够降低数据库的访问压力。 在上一篇文章中，介绍了</description>
+      <description>&lt;h1 id=&#34;前言&#34;&gt;前言&lt;/h1&gt;&#xA;&lt;p&gt;缓存现在已经成为了互联网必不可少的利器，合理的利用缓存不仅能大大的提升网站的访问速度，还能够降低数据库的访问压力。&lt;/p&gt;&#xA;&lt;p&gt;在上一篇文章中，介绍了 &lt;a href=&#34;https://shangguanhong.github.io/2019/09/10/Spring-Boot%E6%95%B4%E5%90%88Redis/&#34;&gt;如何在 SpringBoot 中整合 Redis&lt;/a&gt;，接下来继续在其基础上介绍上如何利用 Spring Cache 与 Redis 来做缓存。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Spring Boot整合Redis</title>
       <link>https://shangguanhong.github.io/2019/09/10/spring-boot%E6%95%B4%E5%90%88redis/</link>
       <pubDate>Tue, 10 Sep 2019 16:51:20 +0000</pubDate>
-      
       <guid>https://shangguanhong.github.io/2019/09/10/spring-boot%E6%95%B4%E5%90%88redis/</guid>
-      <description>Redis简介 Redis 是完全开元免费的，遵守BSD协议，是一个高性能的 key-value 数据库。 Redis 与其他 key - value 缓存产品有以下三个特点： Redis 支持数据的持久化，可以将内</description>
+      <description>&lt;h1 id=&#34;redis简介&#34;&gt;Redis简介&lt;/h1&gt;&#xA;&lt;p&gt;Redis 是完全开元免费的，遵守BSD协议，是一个高性能的 key-value 数据库。&lt;/p&gt;&#xA;&lt;p&gt;Redis 与其他 key - value 缓存产品有以下三个特点：&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Redis 支持数据的持久化，可以将内存中的数据保存在磁盘中，重启的时候可以再次加载进行使用。&lt;/li&gt;&#xA;&lt;li&gt;Redis 不仅仅支持简单的 key-value 类型的数据，同时还提供 list，set，zset，hash 等数据结构的存储。&lt;/li&gt;&#xA;&lt;li&gt;Redis 支持数据的备份，即 master-slave 模式的数据备份。&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Redis 的命令教学建议参考菜鸟教程的教程: &lt;a href=&#34;https://www.runoob.com/redis/redis-tutorial.html&#34;&gt;https://www.runoob.com/redis/redis-tutorial.html&lt;/a&gt;&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Ubuntu 18.04.2 安装redis</title>
       <link>https://shangguanhong.github.io/2019/07/28/ubuntu-18-04-2-%E5%AE%89%E8%A3%85redis/</link>
       <pubDate>Sun, 28 Jul 2019 22:49:37 +0000</pubDate>
-      
       <guid>https://shangguanhong.github.io/2019/07/28/ubuntu-18-04-2-%E5%AE%89%E8%A3%85redis/</guid>
-      <description>1. 前言 Redis 是目前业界使用最广泛的内存数据存储。相比 Memcached，Redis 支持更丰富的数据结构，例如 hashes, lists, sets 等，同时支持数据持久化。除此之</description>
+      <description>&lt;h1 id=&#34;1-前言&#34;&gt;1. 前言&lt;/h1&gt;&#xA;&lt;p&gt;Redis 是目前业界使用最广泛的内存数据存储。相比 Memcached，Redis 支持更丰富的数据结构，例如 hashes, lists, sets 等，同时支持数据持久化。除此之外，Redis 还提供一些类数据库的特性，比如事务，HA，主从库。可以说 Redis 兼具了缓存系统和数据库的一些特性，因此有着丰富的应用场景。本文介绍 Redis 在Ubuntu 18.04.2 系统下的安装，为后续学习奠定基础。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>解决Redis重启后密码失效问题</title>
       <link>https://shangguanhong.github.io/2019/06/04/%E8%A7%A3%E5%86%B3redis%E9%87%8D%E5%90%AF%E5%90%8E%E5%AF%86%E7%A0%81%E5%A4%B1%E6%95%88%E9%97%AE%E9%A2%98/</link>
       <pubDate>Tue, 04 Jun 2019 21:48:22 +0000</pubDate>
-      
       <guid>https://shangguanhong.github.io/2019/06/04/%E8%A7%A3%E5%86%B3redis%E9%87%8D%E5%90%AF%E5%90%8E%E5%AF%86%E7%A0%81%E5%A4%B1%E6%95%88%E9%97%AE%E9%A2%98/</guid>
-      <description>1. 前言 在用命令行设置了密码之后，下次启动redis的时候密码又没了，这是因为 config set requirepass password 这种设置只是临时的，当服务器重启后，密码就会失效。 真正的</description>
+      <description>&lt;h1 id=&#34;1-前言&#34;&gt;1. 前言&lt;/h1&gt;&#xA;&lt;p&gt;在用命令行设置了密码之后，下次启动redis的时候密码又没了，这是因为 &lt;code&gt;config set requirepass password&lt;/code&gt; 这种设置只是临时的，当服务器重启后，密码就会失效。&lt;/p&gt;&#xA;&lt;p&gt;真正的配置密码应该是要去配置文件中配置。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Windows下安装Redis</title>
       <link>https://shangguanhong.github.io/2019/06/04/windows%E4%B8%8B%E5%AE%89%E8%A3%85redis/</link>
       <pubDate>Tue, 04 Jun 2019 21:45:14 +0000</pubDate>
-      
       <guid>https://shangguanhong.github.io/2019/06/04/windows%E4%B8%8B%E5%AE%89%E8%A3%85redis/</guid>
-      <description>1. 下载 下载地址：https://github.com/MSOpenTech/redis/releases。 Redis 支持 32 位和 64 位。这个需要根据你系</description>
+      <description>&lt;h1 id=&#34;1-下载&#34;&gt;1. 下载&lt;/h1&gt;&#xA;&lt;p&gt;&lt;strong&gt;下载地址：&lt;/strong&gt;&lt;a href=&#34;https://github.com/MSOpenTech/redis/releases&#34;&gt;https://github.com/MSOpenTech/redis/releases&lt;/a&gt;。&lt;/p&gt;&#xA;&lt;p&gt;Redis 支持 32 位和 64 位。这个需要根据你系统平台的实际情况选择，这里我下载 &lt;strong&gt;Redis-x64-3.2.100.zip&lt;/strong&gt;压缩包到 C 盘，解压后，将文件夹重新命名为 &lt;strong&gt;redis&lt;/strong&gt;。&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

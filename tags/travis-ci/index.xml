@@ -4,26 +4,23 @@
     <title>Travis CI on ShangguanHong</title>
     <link>https://shangguanhong.github.io/tags/travis-ci/</link>
     <description>Recent content in Travis CI on ShangguanHong</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 20 Mar 2020 13:24:09 +0800</lastBuildDate><atom:link href="https://shangguanhong.github.io/tags/travis-ci/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 20 Mar 2020 13:24:09 +0800</lastBuildDate>
+    <atom:link href="https://shangguanhong.github.io/tags/travis-ci/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>使用Travis CI自动部署hugo</title>
       <link>https://shangguanhong.github.io/2020/03/20/%E4%BD%BF%E7%94%A8travis-ci%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2hugo/</link>
       <pubDate>Fri, 20 Mar 2020 13:24:09 +0800</pubDate>
-      
       <guid>https://shangguanhong.github.io/2020/03/20/%E4%BD%BF%E7%94%A8travis-ci%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2hugo/</guid>
-      <description>之前写过了一篇使用 Travis CI 自动部署hexo的文章(传送门)，最近从hexo迁移到了hugo，那自然也是要使用一下自动部署工具来自动部署，操作基本</description>
+      <description>&lt;p&gt;之前写过了一篇使用 &lt;code&gt;Travis CI&lt;/code&gt; 自动部署hexo的文章(&lt;a href=&#34;%5Bhttps://shangguanhong.github.io/2019/12/19/github%E4%BD%BF%E7%94%A8travis-ci/%5D(https://shangguanhong.github.io/2019/12/19/github%E4%BD%BF%E7%94%A8travis-ci/)&#34;&gt;传送门&lt;/a&gt;)，最近从hexo迁移到了hugo，那自然也是要使用一下自动部署工具来自动部署，操作基本和之前的一样，就是最后使用的&lt;code&gt;.travis.yml&lt;/code&gt; 文件内容需要更改一下，因此如果不知道如何使用 &lt;code&gt;Travis CI&lt;/code&gt;的可以查看之前的文章，这里就直接把 &lt;code&gt;.travis.yml&lt;/code&gt; 的配置贴出来，修改部分参数即可直接使用。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>github使用Travis CI</title>
       <link>https://shangguanhong.github.io/2019/12/19/github%E4%BD%BF%E7%94%A8travis-ci/</link>
       <pubDate>Thu, 19 Dec 2019 20:39:10 +0000</pubDate>
-      
       <guid>https://shangguanhong.github.io/2019/12/19/github%E4%BD%BF%E7%94%A8travis-ci/</guid>
-      <description>前言 使用 hexo + gitPages 搭建个人博客的都知道，每当要发表一篇博文的时候，都需要手动使用 hexo g 生成静态网页，然后再通过 hexo d 命令将静态文件推送到 GitHub</description>
+      <description>&lt;h1 id=&#34;前言&#34;&gt;前言&lt;/h1&gt;&#xA;&lt;p&gt;使用 hexo + gitPages 搭建个人博客的都知道，每当要发表一篇博文的时候，都需要手动使用 &lt;code&gt;hexo g&lt;/code&gt;  生成静态网页，然后再通过 &lt;code&gt;hexo d&lt;/code&gt; 命令将静态文件推送到 GitHub远程仓库，这段操作在你执行一次两次的时候还不觉得有什么，但是当你频繁的修改博文的时候，你就会明白每次都需要执行这两条语句是多么的枯燥。对于一个程序猿来说，最不想干的就是一些重复且枯燥的工作（懒惰促使程序猿进步！）😋。现在，我们可以通过 Travis CI自动构建博客，我们只需要将写好的博文推送到GitHub上即可。&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

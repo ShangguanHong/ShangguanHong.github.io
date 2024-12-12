@@ -16,14 +16,14 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="ShangguanHong" /><meta name="description" content="golang后端研发工程师" /><meta name="keywords" content="go, golang, hugo" />
+<meta name="author" content="" /><meta name="description" content="golang后端研发工程师" /><meta name="keywords" content="go, golang, hugo" />
 
 
 
 
 
 
-<meta name="generator" content="Hugo 0.101.0 with theme even" />
+<meta name="generator" content="Hugo 0.139.4 with theme even" />
 
 
 <link rel="canonical" href="https://shangguanhong.github.io/" />
@@ -37,19 +37,24 @@
 
 
 
-<link href="/sass/main.min.b5a744db6de49a86cadafb3b70f555ab443f83c307a483402259e94726b045ff.css" rel="stylesheet">
+<link href="/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
-<meta property="og:title" content="ShangguanHong" />
-<meta property="og:description" content="golang后端研发工程师" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://shangguanhong.github.io/" />
+<meta property="og:url" content="https://shangguanhong.github.io/">
+  <meta property="og:site_name" content="ShangguanHong">
+  <meta property="og:title" content="ShangguanHong">
+  <meta property="og:description" content="golang后端研发工程师">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="website">
 
-<meta itemprop="name" content="ShangguanHong">
-<meta itemprop="description" content="golang后端研发工程师"><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="ShangguanHong"/>
-<meta name="twitter:description" content="golang后端研发工程师"/>
+  <meta itemprop="name" content="ShangguanHong">
+  <meta itemprop="description" content="golang后端研发工程师">
+  <meta itemprop="datePublished" content="2022-06-26T00:49:46+08:00">
+  <meta itemprop="dateModified" content="2022-06-26T00:49:46+08:00">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="ShangguanHong">
+  <meta name="twitter:description" content="golang后端研发工程师">
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -64,7 +69,7 @@
 <body>
   <div id="mobile-navbar" class="mobile-navbar">
   <div class="mobile-header-logo">
-    <a href="/" class="logo">赏我一个好梦如旧</a>
+    <a href="/" class="logo">希望有羽毛和翅膀</a>
   </div>
   <div class="mobile-navbar-icon">
     <span></span>
@@ -93,7 +98,7 @@
   <div class="container" id="mobile-panel">
     <header id="header" class="header">
         <div class="logo-wrapper">
-  <a href="/" class="logo">赏我一个好梦如旧</a>
+  <a href="/" class="logo">希望有羽毛和翅膀</a>
 </div>
 
 
@@ -162,7 +167,10 @@
   
   <div class="post-content">
     <div class="post-summary">
-      1. 前言 本文介绍如何将mybatis整合进Spring Boot, 并且使用mybatis-generator插件自动根据数据库生成一些基本的代码。 本文用
+      <h1 id="1-前言">1. 前言</h1>
+<p>本文介绍如何将mybatis整合进Spring Boot,  并且使用mybatis-generator插件自动根据数据库生成一些基本的代码。</p>
+<blockquote>
+<p>本文用的是mybatis的xml配置模式，它还有一种注解模式，需要了解的可以搜索学习</p>
     </div>
     <div class="read-more">
       <a href="/2019/06/03/spring-boot%E6%95%B4%E5%90%88mybatis/" class="read-more-link">阅读更多</a>
@@ -229,7 +237,12 @@
   
   <div class="post-content">
     <div class="post-summary">
-      修改 站点配置文件_config.yml 里的 post_asset_folder: false 为 post_asset_folder: true 当设置了 post_asset_folder 为 true 后，用 hexo new &quot;new page&quot; 生成新的博客时，Hexo会自动建立一个同名的文件夹，当文章用
+      <ol>
+<li>
+<p>修改 <code>站点配置文件_config.yml</code> 里的 <code>post_asset_folder: false</code> 为 <code>post_asset_folder: true</code></p>
+</li>
+<li>
+<p>当设置了 <code>post_asset_folder</code> 为 <code>true</code> 后，用 <code>hexo new &quot;new page&quot;</code> 生成新的博客时，Hexo会自动建立一个同名的文件夹，当文章用到了资源时，只需要将该资源放入此文件夹即可</p>
     </div>
     <div class="read-more">
       <a href="/2019/05/30/hexo%E4%B8%8A%E4%BC%A0%E5%9B%BE%E7%89%87/" class="read-more-link">阅读更多</a>
@@ -252,7 +265,8 @@
   
   <div class="post-content">
     <div class="post-summary">
-      1. 前言 Spring Boot是由Pivotal团队提供的全新框架，其设计目的是用来简化新Spring应用的初始搭建以及开发过程。该框架使用了特定的方式来
+      <h1 id="1-前言">1. 前言</h1>
+<p>Spring Boot是由Pivotal团队提供的全新框架，其设计目的是用来简化新Spring应用的初始搭建以及开发过程。该框架使用了特定的方式来进行配置，从而使开发人员不再需要定义样板化的配置。通过这种方式，Spring Boot致力于在蓬勃发展的快速应用开发领域（rapid application development）成为领导者。</p>
     </div>
     <div class="read-more">
       <a href="/2019/05/30/spring-boot%E6%96%B0%E5%BB%BA%E9%A1%B9%E7%9B%AE/" class="read-more-link">阅读更多</a>
@@ -275,7 +289,8 @@
   
   <div class="post-content">
     <div class="post-summary">
-      1. 前言 之前的 利用GithubPages + Hexo搭建自己的博客 中，已经拥有了一个自己的博客，但是它是非常的简陋的，所以这里将介绍 Hexo 中最热门的
+      <h1 id="1-前言">1. 前言</h1>
+<p>之前的 <a href="https://shangguanhong.github.io/2019/05/28/GithubPages%20+%20Hexo%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E5%8D%9A%E5%AE%A2/">利用GithubPages + Hexo搭建自己的博客</a> 中，已经拥有了一个自己的博客，但是它是非常的简陋的，所以这里将介绍 <code>Hexo</code> 中最热门的 <code>NexT</code> 主题的详细配置过程，将博客变得更加美观</p>
     </div>
     <div class="read-more">
       <a href="/2019/05/29/hexo%E7%9A%84next%E4%B8%BB%E9%A2%98%E8%AF%A6%E7%BB%86%E9%85%8D%E7%BD%AE%E8%BF%87%E7%A8%8B/" class="read-more-link">阅读更多</a>
@@ -298,7 +313,62 @@
   
   <div class="post-content">
     <div class="post-summary">
-      1. Hexo 1 2 3 $ npm install hexp -g #安装 $ npm update hexo -g #升级 $ hexo init #初始化 2. 简写 1 2 3 4 5 $ hexo n &#34;title&#34; == $ hexo new &#34;title&#34; # 新建博客文章 $ hexo p == $ hexo publish #新建草稿draft $
+      <h1 id="1-hexo">1. Hexo</h1>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ npm install hexp -g <span class="c1">#安装</span>
+</span></span><span class="line"><span class="cl">$ npm update hexo -g <span class="c1">#升级</span>
+</span></span><span class="line"><span class="cl">$ hexo init <span class="c1">#初始化</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h1 id="2-简写">2. 简写</h1>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ hexo n <span class="s2">&#34;title&#34;</span> <span class="o">==</span> $ hexo new <span class="s2">&#34;title&#34;</span> <span class="c1"># 新建博客文章</span>
+</span></span><span class="line"><span class="cl">$ hexo <span class="nv">p</span> <span class="o">==</span> $ hexo publish <span class="c1">#新建草稿draft</span>
+</span></span><span class="line"><span class="cl">$ hexo <span class="nv">g</span> <span class="o">==</span> $ hexo generate <span class="c1"># 生成静态文件</span>
+</span></span><span class="line"><span class="cl">$ hexo <span class="nv">s</span> <span class="o">==</span> $ hexo server <span class="c1"># 启动服务预览</span>
+</span></span><span class="line"><span class="cl">$ hexo <span class="nv">d</span> <span class="o">==</span> $ hexo deploy <span class="c1"># 部署上服务器</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h1 id="3-服务器">3. 服务器</h1>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ hexo server <span class="c1"># hexo会监视文件变动并启动更新，无需重启服务</span>
+</span></span><span class="line"><span class="cl">$ hexo server -s <span class="c1"># hexo的静态模式</span>
+</span></span><span class="line"><span class="cl">$ hexp server -p <span class="m">5000</span> <span class="c1"># 更改服务端口</span>
+</span></span><span class="line"><span class="cl">$ hexo server -i 192.168.1.1 <span class="c1"># 自定义IP</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">$ hexo clean <span class="c1"># 清楚缓存，网页出现莫名错误时可以试试</span>
+</span></span><span class="line"><span class="cl">$ hexo g <span class="c1"># 生成静态网页</span>
+</span></span><span class="line"><span class="cl">$ hexo d <span class="c1"># 部署上服务器</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h1 id="4-常见错误">4. 常见错误</h1>
+<h2 id="41-找不到git部署">4.1 找不到git部署</h2>
+<p>错误提示：ERROR Deployer not found: git</p>
     </div>
     <div class="read-more">
       <a href="/2019/05/29/hexo%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" class="read-more-link">阅读更多</a>
@@ -321,7 +391,16 @@
   
   <div class="post-content">
     <div class="post-summary">
-      1. 部署本地博客 安装Node.js, 参考 https://www.runoob.com/nodejs/nodejs-install-setup.html 安装Git, 参考 https://www.runoob.com/git/git-install-setup.html 安装Hexo：右键选择Git Bash，输入命令 npm install -g hexo-cli , 安装完成后，输入 hexo -v 查看是
+      <h2 id="1-部署本地博客">1. 部署本地博客</h2>
+<ol>
+<li>
+<p>安装Node.js, 参考 <a href="https://www.runoob.com/nodejs/nodejs-install-setup.html">https://www.runoob.com/nodejs/nodejs-install-setup.html</a></p>
+</li>
+<li>
+<p>安装Git, 参考 <a href="https://www.runoob.com/git/git-install-setup.html">https://www.runoob.com/git/git-install-setup.html</a></p>
+</li>
+<li>
+<p>安装Hexo：右键选择Git Bash，输入命令 <code>npm install -g hexo-cli</code> , 安装完成后，输入 <code>hexo -v</code> 查看是否安装成功</p>
     </div>
     <div class="read-more">
       <a href="/2019/05/28/githubpages--hexo%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E5%8D%9A%E5%AE%A2/" class="read-more-link">阅读更多</a>
@@ -344,7 +423,18 @@
   
   <div class="post-content">
     <div class="post-summary">
-      1. 简介 本文的内容是基于Linux Kernel 2.6 的源码, 深入分析其进程模型, 主要分析的内容如下: 什么是进程(进程的概念) 操作系统是如何组织进程的 进程状态
+      <h1 id="1-简介">1. 简介</h1>
+<p>本文的内容是基于Linux Kernel 2.6 的源码, 深入分析其进程模型, 主要分析的内容如下:</p>
+<ul>
+<li>什么是进程(进程的概念)</li>
+<li>操作系统是如何组织进程的</li>
+<li>进程状态之间是如何转换的</li>
+<li>进程是如何进行调度的</li>
+<li>对该操作系统进程模型的看法</li>
+</ul>
+<h1 id="2-什么是进程">2. 什么是进程</h1>
+<p>既然我们要分析操作系统的进程模型, 那么我们首先需要了解一下什么是进程。
+首先, 我们先看下<a href="https://baike.baidu.com/item/%E8%BF%9B%E7%A8%8B/382503?fr=aladdin">百度上对进程(Process)的定义</a>:</p>
     </div>
     <div class="read-more">
       <a href="/2019/05/28/%E5%9F%BA%E4%BA%8Elinux-kernel-2-6-%E7%9A%84%E6%BA%90%E7%A0%81-%E5%88%86%E6%9E%90%E5%85%B6%E8%BF%9B%E7%A8%8B%E6%A8%A1%E5%9E%8B/" class="read-more-link">阅读更多</a>
@@ -367,7 +457,14 @@
   
   <div class="post-content">
     <div class="post-summary">
-      1. 正文 从官网下载对应平台最新的 MySQL 解压缩版 http://www.mysql.com/downloads/ 解压缩下载的文件，复制到phpStudy的MySQL文件夹下，我是把文件夹清空后复制过去的； 将..
+      <h2 id="1-正文">1. 正文</h2>
+<ol>
+<li>
+<p>从官网下载对应平台最新的 MySQL 解压缩版 <a href="http://www.mysql.com/downloads/">http://www.mysql.com/downloads/</a></p>
+<!-- raw HTML omitted -->
+</li>
+<li>
+<p>解压缩下载的文件，复制到phpStudy的MySQL文件夹下，我是把文件夹清空后复制过去的；</p>
     </div>
     <div class="read-more">
       <a href="/2019/05/28/phpstudy%E4%B8%AD%E5%8D%87%E7%BA%A7mysql/" class="read-more-link">阅读更多</a>
@@ -396,7 +493,9 @@
       <a href="https://github.com/ShangguanHong" class="iconfont icon-github" title="github"></a>
       <a href="https://weibo.com/5590338381" class="iconfont icon-weibo" title="weibo"></a>
       <a href="https://space.bilibili.com/105190849" class="iconfont icon-bilibili" title="bilibili"></a>
-  <a href="https://shangguanhong.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+  
+    <a href="/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+  
 </div>
 
 <div class="copyright">
@@ -414,7 +513,7 @@
   <span class="copyright-year">
     &copy; 
     2019 - 
-    2022<span class="heart"><i class="iconfont icon-heart"></i></span><span>ShangguanHong</span>
+    2024<span class="heart"><i class="iconfont icon-heart"></i></span><span></span>
   </span>
 </div>
 

@@ -1,83 +1,68 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>hexo on ShangguanHong</title>
+    <title>Hexo on ShangguanHong</title>
     <link>https://shangguanhong.github.io/tags/hexo/</link>
-    <description>Recent content in hexo on ShangguanHong</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <description>Recent content in Hexo on ShangguanHong</description>
+    <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 20 Mar 2020 22:26:01 +0800</lastBuildDate><atom:link href="https://shangguanhong.github.io/tags/hexo/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 20 Mar 2020 22:26:01 +0800</lastBuildDate>
+    <atom:link href="https://shangguanhong.github.io/tags/hexo/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>从Hexo迁移到Hugo</title>
       <link>https://shangguanhong.github.io/2020/03/20/%E4%BB%8Ehexo%E8%BF%81%E7%A7%BB%E5%88%B0hugo/</link>
       <pubDate>Fri, 20 Mar 2020 22:26:01 +0800</pubDate>
-      
       <guid>https://shangguanhong.github.io/2020/03/20/%E4%BB%8Ehexo%E8%BF%81%E7%A7%BB%E5%88%B0hugo/</guid>
-      <description>之前使用Hexo工具来作为博客生成工具的，使用了大概半年左右，期间换过了一两次电脑，这就使得每次使用的时候都需要重新下载 nodejs、npm</description>
+      <description>&lt;p&gt;之前使用Hexo工具来作为博客生成工具的，使用了大概半年左右，期间换过了一两次电脑，这就使得每次使用的时候都需要重新下载 nodejs、npm，然后下载安装hexo，执行 &lt;code&gt;npm install&lt;/code&gt; 等等一系列的命令，期间可能还会遇到各种各样的问题。最近看到了Hugo这款博客生成工具，它是使用Go语言编写的，只有一个二进制文件，使用非常简单，在尝试了之后决定将之前在hexo的博文全部迁移到hugo上。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>github使用Travis CI</title>
       <link>https://shangguanhong.github.io/2019/12/19/github%E4%BD%BF%E7%94%A8travis-ci/</link>
       <pubDate>Thu, 19 Dec 2019 20:39:10 +0000</pubDate>
-      
       <guid>https://shangguanhong.github.io/2019/12/19/github%E4%BD%BF%E7%94%A8travis-ci/</guid>
-      <description>前言 使用 hexo + gitPages 搭建个人博客的都知道，每当要发表一篇博文的时候，都需要手动使用 hexo g 生成静态网页，然后再通过 hexo d 命令将静态文件推送到 GitHub</description>
+      <description>&lt;h1 id=&#34;前言&#34;&gt;前言&lt;/h1&gt;&#xA;&lt;p&gt;使用 hexo + gitPages 搭建个人博客的都知道，每当要发表一篇博文的时候，都需要手动使用 &lt;code&gt;hexo g&lt;/code&gt;  生成静态网页，然后再通过 &lt;code&gt;hexo d&lt;/code&gt; 命令将静态文件推送到 GitHub远程仓库，这段操作在你执行一次两次的时候还不觉得有什么，但是当你频繁的修改博文的时候，你就会明白每次都需要执行这两条语句是多么的枯燥。对于一个程序猿来说，最不想干的就是一些重复且枯燥的工作（懒惰促使程序猿进步！）😋。现在，我们可以通过 Travis CI自动构建博客，我们只需要将写好的博文推送到GitHub上即可。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>gulp优化hexo方法</title>
       <link>https://shangguanhong.github.io/2019/08/18/gulp%E4%BC%98%E5%8C%96hexo%E6%96%B9%E6%B3%95/</link>
       <pubDate>Sun, 18 Aug 2019 00:45:17 +0000</pubDate>
-      
       <guid>https://shangguanhong.github.io/2019/08/18/gulp%E4%BC%98%E5%8C%96hexo%E6%96%B9%E6%B3%95/</guid>
-      <description>本文转载自：gulp优化hexo方法 gulp 通过对站点使用的静态资源进行压缩，来优化网站的访问速度。 首先安装 gulp 以及所需要的模块： 1 npm install gulp -g 1 npm install gulp-htmlclean</description>
+      <description>&lt;p&gt;本文转载自：&lt;a href=&#34;https://www.cnblogs.com/Mayfly-nymph/p/10623234.html&#34;&gt;gulp优化hexo方法&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;code&gt;gulp&lt;/code&gt; 通过对站点使用的静态资源进行压缩，来优化网站的访问速度。&lt;/p&gt;&#xA;&lt;p&gt;首先安装 &lt;code&gt;gulp&lt;/code&gt; 以及所需要的模块：&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;&#xA;&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;&#xA;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1&#xA;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&#xA;&lt;td class=&#34;lntd&#34;&gt;&#xA;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;npm install gulp -g&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;&#xA;&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;&#xA;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1&#xA;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&#xA;&lt;td class=&#34;lntd&#34;&gt;&#xA;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;npm install gulp-htmlclean gulp-htmlmin gulp-minify-css gulp-uglify gulp-imagemin --save&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;&lt;p&gt;然后在博客的根目录下创建 &lt;strong&gt;gulpfile.js&lt;/strong&gt; 文件写入代码：&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>通过github分支备份Hexo源文件</title>
       <link>https://shangguanhong.github.io/2019/06/26/%E9%80%9A%E8%BF%87github%E5%88%86%E6%94%AF%E5%A4%87%E4%BB%BDhexo%E6%BA%90%E6%96%87%E4%BB%B6/</link>
       <pubDate>Wed, 26 Jun 2019 13:08:15 +0000</pubDate>
-      
       <guid>https://shangguanhong.github.io/2019/06/26/%E9%80%9A%E8%BF%87github%E5%88%86%E6%94%AF%E5%A4%87%E4%BB%BDhexo%E6%BA%90%E6%96%87%E4%BB%B6/</guid>
-      <description>1. 前言 利用hexo搭建博后（还不懂的朋友可以看这篇文章 [利用GithubPages + Hexo搭建自己的博客](https://shanggu</description>
+      <description>&lt;h1 id=&#34;1-前言&#34;&gt;1. 前言&lt;/h1&gt;&#xA;&lt;p&gt;利用hexo搭建博后（还不懂的朋友可以看这篇文章 [利用GithubPages + Hexo搭建自己的博客](&lt;a href=&#34;https://shangguanhong.github.io/2019/05/28/GithubPages&#34;&gt;https://shangguanhong.github.io/2019/05/28/GithubPages&lt;/a&gt; + Hexo搭建自己的博客/) ），仓库里只有生成的静态网页文件，是没有Hexo的源文件的。如果一不小心删除或者损坏了hexo源文件，那可就不得了了。这个时候就需要将hexo源文件也进行一下备份，我们这里就利用github的分支功能进行备份。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Hexo上传图片</title>
       <link>https://shangguanhong.github.io/2019/05/30/hexo%E4%B8%8A%E4%BC%A0%E5%9B%BE%E7%89%87/</link>
       <pubDate>Thu, 30 May 2019 21:27:06 +0000</pubDate>
-      
       <guid>https://shangguanhong.github.io/2019/05/30/hexo%E4%B8%8A%E4%BC%A0%E5%9B%BE%E7%89%87/</guid>
-      <description>修改 站点配置文件_config.yml 里的 post_asset_folder: false 为 post_asset_folder: true 当设置了 post_asset_folder 为 true 后，用 hexo new &amp;quot;new page&amp;quot; 生成新的博客时，Hexo会自动建立一个同名的文件夹，当文章用</description>
+      <description>&lt;ol&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;修改 &lt;code&gt;站点配置文件_config.yml&lt;/code&gt; 里的 &lt;code&gt;post_asset_folder: false&lt;/code&gt; 为 &lt;code&gt;post_asset_folder: true&lt;/code&gt;&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;当设置了 &lt;code&gt;post_asset_folder&lt;/code&gt; 为 &lt;code&gt;true&lt;/code&gt; 后，用 &lt;code&gt;hexo new &amp;quot;new page&amp;quot;&lt;/code&gt; 生成新的博客时，Hexo会自动建立一个同名的文件夹，当文章用到了资源时，只需要将该资源放入此文件夹即可&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Hexo的NexT主题详细配置过程</title>
       <link>https://shangguanhong.github.io/2019/05/29/hexo%E7%9A%84next%E4%B8%BB%E9%A2%98%E8%AF%A6%E7%BB%86%E9%85%8D%E7%BD%AE%E8%BF%87%E7%A8%8B/</link>
       <pubDate>Wed, 29 May 2019 16:18:40 +0000</pubDate>
-      
       <guid>https://shangguanhong.github.io/2019/05/29/hexo%E7%9A%84next%E4%B8%BB%E9%A2%98%E8%AF%A6%E7%BB%86%E9%85%8D%E7%BD%AE%E8%BF%87%E7%A8%8B/</guid>
-      <description>1. 前言 之前的 利用GithubPages + Hexo搭建自己的博客 中，已经拥有了一个自己的博客，但是它是非常的简陋的，所以这里将介绍 Hexo 中最热门的</description>
+      <description>&lt;h1 id=&#34;1-前言&#34;&gt;1. 前言&lt;/h1&gt;&#xA;&lt;p&gt;之前的 &lt;a href=&#34;https://shangguanhong.github.io/2019/05/28/GithubPages%20+%20Hexo%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E5%8D%9A%E5%AE%A2/&#34;&gt;利用GithubPages + Hexo搭建自己的博客&lt;/a&gt; 中，已经拥有了一个自己的博客，但是它是非常的简陋的，所以这里将介绍 &lt;code&gt;Hexo&lt;/code&gt; 中最热门的 &lt;code&gt;NexT&lt;/code&gt; 主题的详细配置过程，将博客变得更加美观&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>hexo常用命令</title>
       <link>https://shangguanhong.github.io/2019/05/29/hexo%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</link>
       <pubDate>Wed, 29 May 2019 12:38:52 +0000</pubDate>
-      
       <guid>https://shangguanhong.github.io/2019/05/29/hexo%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</guid>
-      <description>1. Hexo 1 2 3 $ npm install hexp -g #安装 $ npm update hexo -g #升级 $ hexo init #初始化 2. 简写 1 2 3 4 5 $ hexo n &amp;#34;title&amp;#34; == $ hexo new &amp;#34;title&amp;#34; # 新建博客文章 $ hexo p == $ hexo publish #新建草稿draft $</description>
+      <description>&lt;h1 id=&#34;1-hexo&#34;&gt;1. Hexo&lt;/h1&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;&#xA;&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;&#xA;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3&#xA;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&#xA;&lt;td class=&#34;lntd&#34;&gt;&#xA;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ npm install hexp -g &lt;span class=&#34;c1&#34;&gt;#安装&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ npm update hexo -g &lt;span class=&#34;c1&#34;&gt;#升级&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ hexo init &lt;span class=&#34;c1&#34;&gt;#初始化&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;&lt;h1 id=&#34;2-简写&#34;&gt;2. 简写&lt;/h1&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;&#xA;&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;&#xA;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5&#xA;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&#xA;&lt;td class=&#34;lntd&#34;&gt;&#xA;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ hexo n &lt;span class=&#34;s2&#34;&gt;&amp;#34;title&amp;#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; $ hexo new &lt;span class=&#34;s2&#34;&gt;&amp;#34;title&amp;#34;&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;# 新建博客文章&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ hexo &lt;span class=&#34;nv&#34;&gt;p&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; $ hexo publish &lt;span class=&#34;c1&#34;&gt;#新建草稿draft&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ hexo &lt;span class=&#34;nv&#34;&gt;g&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; $ hexo generate &lt;span class=&#34;c1&#34;&gt;# 生成静态文件&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ hexo &lt;span class=&#34;nv&#34;&gt;s&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; $ hexo server &lt;span class=&#34;c1&#34;&gt;# 启动服务预览&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ hexo &lt;span class=&#34;nv&#34;&gt;d&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; $ hexo deploy &lt;span class=&#34;c1&#34;&gt;# 部署上服务器&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;&lt;h1 id=&#34;3-服务器&#34;&gt;3. 服务器&lt;/h1&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;&#xA;&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;&#xA;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7&#xA;&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8&#xA;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&#xA;&lt;td class=&#34;lntd&#34;&gt;&#xA;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ hexo server &lt;span class=&#34;c1&#34;&gt;# hexo会监视文件变动并启动更新，无需重启服务&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ hexo server -s &lt;span class=&#34;c1&#34;&gt;# hexo的静态模式&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ hexp server -p &lt;span class=&#34;m&#34;&gt;5000&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;# 更改服务端口&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ hexo server -i 192.168.1.1 &lt;span class=&#34;c1&#34;&gt;# 自定义IP&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ hexo clean &lt;span class=&#34;c1&#34;&gt;# 清楚缓存，网页出现莫名错误时可以试试&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ hexo g &lt;span class=&#34;c1&#34;&gt;# 生成静态网页&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ hexo d &lt;span class=&#34;c1&#34;&gt;# 部署上服务器&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;&lt;h1 id=&#34;4-常见错误&#34;&gt;4. 常见错误&lt;/h1&gt;&#xA;&lt;h2 id=&#34;41-找不到git部署&#34;&gt;4.1 找不到git部署&lt;/h2&gt;&#xA;&lt;p&gt;错误提示：ERROR Deployer not found: git&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>利用GithubPages &#43; Hexo搭建自己的博客</title>
       <link>https://shangguanhong.github.io/2019/05/28/githubpages--hexo%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E5%8D%9A%E5%AE%A2/</link>
       <pubDate>Tue, 28 May 2019 20:48:13 +0000</pubDate>
-      
       <guid>https://shangguanhong.github.io/2019/05/28/githubpages--hexo%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E5%8D%9A%E5%AE%A2/</guid>
-      <description>1. 部署本地博客 安装Node.js, 参考 https://www.runoob.com/nodejs/nodejs-install-setup.html 安装Git, 参考 https://www.runoob.com/git/git-install-setup.html 安装Hexo：右键选择Git Bash，输入命令 npm install -g hexo-cli , 安装完成后，输入 hexo -v 查看是</description>
+      <description>&lt;h2 id=&#34;1-部署本地博客&#34;&gt;1. 部署本地博客&lt;/h2&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;安装Node.js, 参考 &lt;a href=&#34;https://www.runoob.com/nodejs/nodejs-install-setup.html&#34;&gt;https://www.runoob.com/nodejs/nodejs-install-setup.html&lt;/a&gt;&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;安装Git, 参考 &lt;a href=&#34;https://www.runoob.com/git/git-install-setup.html&#34;&gt;https://www.runoob.com/git/git-install-setup.html&lt;/a&gt;&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;安装Hexo：右键选择Git Bash，输入命令 &lt;code&gt;npm install -g hexo-cli&lt;/code&gt; , 安装完成后，输入 &lt;code&gt;hexo -v&lt;/code&gt; 查看是否安装成功&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

@@ -16,14 +16,17 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="ShangguanHong" /><meta name="description" content="1. 前言 之前的文章中写到了如何使用 Spring Boot 整合 mybatis(传送门: Spring-Boot整合MyBatis)，今天学习一下如何使用 Spring Boot 整合 Spring Data" /><meta name="keywords" content="go, golang, hugo" />
+<meta name="author" content="" /><meta name="description" content="1. 前言 之前的文章中写到了如何使用 Spring Boot 整合 mybatis(传送门: Spring-Boot整合MyBatis)，今天学习一下如何使用 Spring Boot 整合 Spring Data Jpa。
+项目代码: https://github.com/ShangguanHong/SpringBootDemo/tree/master/springboot-jpa
+2. Spring Data JPA简介 Spring Data JPA 是 Spring 基于 ORM 框架、JPA 规范封装的一套 JPA 应用框架，可使开发者用极简的代码即可实现对数据的访问和操作。它提供了包括增删改查等在内的常用功能， 且易于扩展！学习并使用 Spring Data JPA 可以极大的提供开发效率。
+" /><meta name="keywords" content="go, golang, hugo" />
 
 
 
 
 
 
-<meta name="generator" content="Hugo 0.101.0 with theme even" />
+<meta name="generator" content="Hugo 0.139.4 with theme even" />
 
 
 <link rel="canonical" href="https://shangguanhong.github.io/2019/07/08/spring-boot%E6%95%B4%E5%90%88springdatajpa/" />
@@ -35,24 +38,37 @@
 
 
 
-<link href="/sass/main.min.b5a744db6de49a86cadafb3b70f555ab443f83c307a483402259e94726b045ff.css" rel="stylesheet">
+<link href="/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
-<meta property="og:title" content="Spring Boot整合Spring Data Jpa" />
-<meta property="og:description" content="1. 前言 之前的文章中写到了如何使用 Spring Boot 整合 mybatis(传送门: Spring-Boot整合MyBatis)，今天学习一下如何使用 Spring Boot 整合 Spring Data" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://shangguanhong.github.io/2019/07/08/spring-boot%E6%95%B4%E5%90%88springdatajpa/" /><meta property="article:section" content="post" />
-<meta property="article:published_time" content="2019-07-08T14:14:55+00:00" />
-<meta property="article:modified_time" content="2019-07-08T14:14:55+00:00" />
+<meta property="og:url" content="https://shangguanhong.github.io/2019/07/08/spring-boot%E6%95%B4%E5%90%88springdatajpa/">
+  <meta property="og:site_name" content="ShangguanHong">
+  <meta property="og:title" content="Spring Boot整合Spring Data Jpa">
+  <meta property="og:description" content="1. 前言 之前的文章中写到了如何使用 Spring Boot 整合 mybatis(传送门: Spring-Boot整合MyBatis)，今天学习一下如何使用 Spring Boot 整合 Spring Data Jpa。
+项目代码: https://github.com/ShangguanHong/SpringBootDemo/tree/master/springboot-jpa
+2. Spring Data JPA简介 Spring Data JPA 是 Spring 基于 ORM 框架、JPA 规范封装的一套 JPA 应用框架，可使开发者用极简的代码即可实现对数据的访问和操作。它提供了包括增删改查等在内的常用功能， 且易于扩展！学习并使用 Spring Data JPA 可以极大的提供开发效率。">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2019-07-08T14:14:55+00:00">
+    <meta property="article:modified_time" content="2019-07-08T14:14:55+00:00">
+    <meta property="article:tag" content="Spring Boot">
+    <meta property="article:tag" content="Spring Data Jpa">
 
-<meta itemprop="name" content="Spring Boot整合Spring Data Jpa">
-<meta itemprop="description" content="1. 前言 之前的文章中写到了如何使用 Spring Boot 整合 mybatis(传送门: Spring-Boot整合MyBatis)，今天学习一下如何使用 Spring Boot 整合 Spring Data"><meta itemprop="datePublished" content="2019-07-08T14:14:55+00:00" />
-<meta itemprop="dateModified" content="2019-07-08T14:14:55+00:00" />
-<meta itemprop="wordCount" content="2093">
-<meta itemprop="keywords" content="Spring Boot,Spring Data Jpa," /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Spring Boot整合Spring Data Jpa"/>
-<meta name="twitter:description" content="1. 前言 之前的文章中写到了如何使用 Spring Boot 整合 mybatis(传送门: Spring-Boot整合MyBatis)，今天学习一下如何使用 Spring Boot 整合 Spring Data"/>
+  <meta itemprop="name" content="Spring Boot整合Spring Data Jpa">
+  <meta itemprop="description" content="1. 前言 之前的文章中写到了如何使用 Spring Boot 整合 mybatis(传送门: Spring-Boot整合MyBatis)，今天学习一下如何使用 Spring Boot 整合 Spring Data Jpa。
+项目代码: https://github.com/ShangguanHong/SpringBootDemo/tree/master/springboot-jpa
+2. Spring Data JPA简介 Spring Data JPA 是 Spring 基于 ORM 框架、JPA 规范封装的一套 JPA 应用框架，可使开发者用极简的代码即可实现对数据的访问和操作。它提供了包括增删改查等在内的常用功能， 且易于扩展！学习并使用 Spring Data JPA 可以极大的提供开发效率。">
+  <meta itemprop="datePublished" content="2019-07-08T14:14:55+00:00">
+  <meta itemprop="dateModified" content="2019-07-08T14:14:55+00:00">
+  <meta itemprop="wordCount" content="2093">
+  <meta itemprop="keywords" content="Spring Boot,Spring Data Jpa">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Spring Boot整合Spring Data Jpa">
+  <meta name="twitter:description" content="1. 前言 之前的文章中写到了如何使用 Spring Boot 整合 mybatis(传送门: Spring-Boot整合MyBatis)，今天学习一下如何使用 Spring Boot 整合 Spring Data Jpa。
+项目代码: https://github.com/ShangguanHong/SpringBootDemo/tree/master/springboot-jpa
+2. Spring Data JPA简介 Spring Data JPA 是 Spring 基于 ORM 框架、JPA 规范封装的一套 JPA 应用框架，可使开发者用极简的代码即可实现对数据的访问和操作。它提供了包括增删改查等在内的常用功能， 且易于扩展！学习并使用 Spring Data JPA 可以极大的提供开发效率。">
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -67,7 +83,7 @@
 <body>
   <div id="mobile-navbar" class="mobile-navbar">
   <div class="mobile-header-logo">
-    <a href="/" class="logo">赏我一个好梦如旧</a>
+    <a href="/" class="logo">希望有羽毛和翅膀</a>
   </div>
   <div class="mobile-navbar-icon">
     <span></span>
@@ -96,7 +112,7 @@
   <div class="container" id="mobile-panel">
     <header id="header" class="header">
         <div class="logo-wrapper">
-  <a href="/" class="logo">赏我一个好梦如旧</a>
+  <a href="/" class="logo">希望有羽毛和翅膀</a>
 </div>
 
 
@@ -277,31 +293,31 @@
 </span><span class="lnt">24
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kn">package</span> <span class="nn">com.example.domain</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">lombok.Data</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">javax.persistence.*</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nd">@Entity</span>
-</span></span><span class="line"><span class="cl"><span class="nd">@Data</span>
-</span></span><span class="line"><span class="cl"><span class="nd">@Table</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">&#34;sys_user&#34;</span><span class="o">)</span>
-</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">User</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="nd">@Id</span>
-</span></span><span class="line"><span class="cl">    <span class="nd">@GeneratedValue</span><span class="o">(</span><span class="n">strategy</span> <span class="o">=</span> <span class="n">GenerationType</span><span class="o">.</span><span class="na">IDENTITY</span><span class="o">)</span>
-</span></span><span class="line"><span class="cl">    <span class="nd">@Column</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">&#34;id&#34;</span><span class="o">)</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">Long</span> <span class="n">id</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="nd">@Column</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">&#34;user_name&#34;</span><span class="o">)</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">String</span> <span class="n">userName</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="nd">@Column</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">&#34;user_addr&#34;</span><span class="o">)</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">String</span> <span class="n">userAddr</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">    
-</span></span><span class="line"><span class="cl">    <span class="nd">@Column</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">&#34;email&#34;</span><span class="o">)</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">String</span> <span class="n">Email</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl"><span class="o">}</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kn">package</span><span class="w"> </span><span class="nn">com.example.domain</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">lombok.Data</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">javax.persistence.*</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nd">@Entity</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nd">@Data</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nd">@Table</span><span class="p">(</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#34;sys_user&#34;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">User</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Id</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@GeneratedValue</span><span class="p">(</span><span class="n">strategy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GenerationType</span><span class="p">.</span><span class="na">IDENTITY</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Column</span><span class="p">(</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#34;id&#34;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Long</span><span class="w"> </span><span class="n">id</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Column</span><span class="p">(</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#34;user_name&#34;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">userName</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Column</span><span class="p">(</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#34;user_addr&#34;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">userAddr</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Column</span><span class="p">(</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#34;email&#34;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">Email</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><blockquote>
 <ul>
@@ -354,16 +370,16 @@
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kn">package</span> <span class="nn">com.example.repository</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">com.example.domain.User</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">org.springframework.data.jpa.repository.JpaRepository</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">org.springframework.data.jpa.repository.JpaSpecificationExecutor</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">UserRepository</span> <span class="kd">extends</span> <span class="n">JpaRepository</span><span class="o">&lt;</span><span class="n">User</span><span class="o">,</span> <span class="n">Long</span><span class="o">&gt;,</span> <span class="n">JpaSpecificationExecutor</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="o">}</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kn">package</span><span class="w"> </span><span class="nn">com.example.repository</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">com.example.domain.User</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.data.jpa.repository.JpaRepository</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.data.jpa.repository.JpaSpecificationExecutor</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">interface</span> <span class="nc">UserRepository</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">JpaRepository</span><span class="o">&lt;</span><span class="n">User</span><span class="p">,</span><span class="w"> </span><span class="n">Long</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="n">JpaSpecificationExecutor</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><blockquote>
 <ul>
@@ -403,31 +419,31 @@
 </span><span class="lnt">24
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="nd">@RunWith</span><span class="o">(</span><span class="n">SpringRunner</span><span class="o">.</span><span class="na">class</span><span class="o">)</span>
-</span></span><span class="line"><span class="cl"><span class="nd">@SpringBootTest</span>
-</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">UserDaoTest</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="nd">@Autowired</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">UserRepository</span> <span class="n">userRepository</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">testUserDaoBaseOperate</span><span class="o">()</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">        <span class="n">User</span> <span class="n">user</span> <span class="o">=</span> <span class="k">new</span> <span class="n">User</span><span class="o">();</span>
-</span></span><span class="line"><span class="cl">        <span class="c1">// 查找所有用户
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">userRepository</span><span class="o">.</span><span class="na">findAll</span><span class="o">();</span>
-</span></span><span class="line"><span class="cl">        <span class="c1">// 根据id查找用户
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">userRepository</span><span class="o">.</span><span class="na">findById</span><span class="o">(</span><span class="n">1l</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="c1">// 保存/更新用户信息
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">userRepository</span><span class="o">.</span><span class="na">save</span><span class="o">(</span><span class="n">user</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="c1">// 删除用户
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">userRepository</span><span class="o">.</span><span class="na">delete</span><span class="o">(</span><span class="n">user</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="c1">// 统计用户数量
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">userRepository</span><span class="o">.</span><span class="na">count</span><span class="o">();</span>
-</span></span><span class="line"><span class="cl">        <span class="c1">// 通过id查找用户是否存在
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">userRepository</span><span class="o">.</span><span class="na">existsById</span><span class="o">(</span><span class="n">1l</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">        <span class="c1">// ...
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="o">}</span>
-</span></span><span class="line"><span class="cl"><span class="o">}</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="nd">@RunWith</span><span class="p">(</span><span class="n">SpringRunner</span><span class="p">.</span><span class="na">class</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nd">@SpringBootTest</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">UserDaoTest</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Autowired</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">UserRepository</span><span class="w"> </span><span class="n">userRepository</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">testUserDaoBaseOperate</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">User</span><span class="w"> </span><span class="n">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">User</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">// 查找所有用户</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">userRepository</span><span class="p">.</span><span class="na">findAll</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">// 根据id查找用户</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">userRepository</span><span class="p">.</span><span class="na">findById</span><span class="p">(</span><span class="n">1l</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">// 保存/更新用户信息</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">userRepository</span><span class="p">.</span><span class="na">save</span><span class="p">(</span><span class="n">user</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">// 删除用户</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">userRepository</span><span class="p">.</span><span class="na">delete</span><span class="p">(</span><span class="n">user</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">// 统计用户数量</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">userRepository</span><span class="p">.</span><span class="na">count</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">// 通过id查找用户是否存在</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">userRepository</span><span class="p">.</span><span class="na">existsById</span><span class="p">(</span><span class="n">1l</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">// ...</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><blockquote>
 <p>Spring Data Jpa 的更新和新建都由 save 方法来实现，根据传入 save的实体类是否带有主键来进行判断，含有主键为更新操作，无主键进行新建操作</p>
@@ -439,8 +455,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">User</span> <span class="nf">findByUserName</span><span class="o">(</span><span class="n">String</span> <span class="n">userName</span><span class="o">);</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">User</span><span class="w"> </span><span class="nf">findByUserName</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">userName</span><span class="p">);</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>也可以使用一些关键字 <code>And </code> 、 <code>Or</code></p>
 <div class="highlight"><div class="chroma">
@@ -448,8 +464,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">User</span> <span class="nf">findByUserNameOrEmail</span><span class="o">(</span><span class="n">String</span> <span class="n">userName</span><span class="o">,</span> <span class="n">String</span> <span class="n">email</span><span class="o">);</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">User</span><span class="w"> </span><span class="nf">findByUserNameOrEmail</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">userName</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">email</span><span class="p">);</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>修改、删除、统计也是类似语法</p>
 <div class="highlight"><div class="chroma">
@@ -458,9 +474,9 @@
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">Long</span> <span class="nf">deleteById</span><span class="o">(</span><span class="n">Long</span> <span class="n">id</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl"><span class="n">Long</span> <span class="nf">countByUserName</span><span class="o">(</span><span class="n">String</span> <span class="n">userName</span><span class="o">)</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">Long</span><span class="w"> </span><span class="nf">deleteById</span><span class="p">(</span><span class="n">Long</span><span class="w"> </span><span class="n">id</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">Long</span><span class="w"> </span><span class="nf">countByUserName</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">userName</span><span class="p">)</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>基本上 SQL 体系中的关键词都可以使用，例如：<code>LIKE</code>、 <code>IgnoreCase</code>、 <code>OrderBy</code>。</p>
 <div class="highlight"><div class="chroma">
@@ -470,142 +486,142 @@
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">List</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span> <span class="nf">findByEmailLike</span><span class="o">(</span><span class="n">String</span> <span class="n">email</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl"><span class="n">User</span> <span class="nf">findByUserNameIgnoreCase</span><span class="o">(</span><span class="n">String</span> <span class="n">userName</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl"><span class="n">List</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span> <span class="nf">findByUserNameOrderByEmailDesc</span><span class="o">(</span><span class="n">String</span> <span class="n">email</span><span class="o">);</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">List</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">findByEmailLike</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">email</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">User</span><span class="w"> </span><span class="nf">findByUserNameIgnoreCase</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">userName</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">List</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">findByUserNameOrderByEmailDesc</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">email</span><span class="p">);</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p><strong>具体的关键字，使用方法和生产成SQL如下表所示</strong></p>
 <table>
-<thead>
-<tr>
-<th style="text-align:left">Keyword</th>
-<th style="text-align:left">Sample</th>
-<th style="text-align:left">JPQL snippet</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">And</td>
-<td style="text-align:left">findByLastnameAndFirstname</td>
-<td style="text-align:left">… where x.lastname = ?1 and x.firstname = ?2</td>
-</tr>
-<tr>
-<td style="text-align:left">Or</td>
-<td style="text-align:left">findByLastnameOrFirstname</td>
-<td style="text-align:left">… where x.lastname = ?1 or x.firstname = ?2</td>
-</tr>
-<tr>
-<td style="text-align:left">Is,Equals</td>
-<td style="text-align:left">findByFirstnameIs,findByFirstnameEquals</td>
-<td style="text-align:left">… where x.firstname = ?1</td>
-</tr>
-<tr>
-<td style="text-align:left">Between</td>
-<td style="text-align:left">findByStartDateBetween</td>
-<td style="text-align:left">… where x.startDate between ?1 and ?2</td>
-</tr>
-<tr>
-<td style="text-align:left">LessThan</td>
-<td style="text-align:left">findByAgeLessThan</td>
-<td style="text-align:left">… where x.age &lt; ?1</td>
-</tr>
-<tr>
-<td style="text-align:left">LessThanEqual</td>
-<td style="text-align:left">findByAgeLessThanEqual</td>
-<td style="text-align:left">… where x.age ⇐ ?1</td>
-</tr>
-<tr>
-<td style="text-align:left">GreaterThan</td>
-<td style="text-align:left">findByAgeGreaterThan</td>
-<td style="text-align:left">… where x.age &gt; ?1</td>
-</tr>
-<tr>
-<td style="text-align:left">GreaterThanEqual</td>
-<td style="text-align:left">findByAgeGreaterThanEqual</td>
-<td style="text-align:left">… where x.age &gt;= ?1</td>
-</tr>
-<tr>
-<td style="text-align:left">After</td>
-<td style="text-align:left">findByStartDateAfter</td>
-<td style="text-align:left">… where x.startDate &gt; ?1</td>
-</tr>
-<tr>
-<td style="text-align:left">Before</td>
-<td style="text-align:left">findByStartDateBefore</td>
-<td style="text-align:left">… where x.startDate &lt; ?1</td>
-</tr>
-<tr>
-<td style="text-align:left">IsNull</td>
-<td style="text-align:left">findByAgeIsNull</td>
-<td style="text-align:left">… where x.age is null</td>
-</tr>
-<tr>
-<td style="text-align:left">IsNotNull,NotNull</td>
-<td style="text-align:left">findByAge(Is)NotNull</td>
-<td style="text-align:left">… where x.age not null</td>
-</tr>
-<tr>
-<td style="text-align:left">Like</td>
-<td style="text-align:left">findByFirstnameLike</td>
-<td style="text-align:left">… where x.firstname like ?1</td>
-</tr>
-<tr>
-<td style="text-align:left">NotLike</td>
-<td style="text-align:left">findByFirstnameNotLike</td>
-<td style="text-align:left">… where x.firstname not like ?1</td>
-</tr>
-<tr>
-<td style="text-align:left">StartingWith</td>
-<td style="text-align:left">findByFirstnameStartingWith</td>
-<td style="text-align:left">… where x.firstname like ?1 (parameter bound with appended %)</td>
-</tr>
-<tr>
-<td style="text-align:left">EndingWith</td>
-<td style="text-align:left">findByFirstnameEndingWith</td>
-<td style="text-align:left">… where x.firstname like ?1 (parameter bound with prepended %)</td>
-</tr>
-<tr>
-<td style="text-align:left">Containing</td>
-<td style="text-align:left">findByFirstnameContaining</td>
-<td style="text-align:left">… where x.firstname like ?1 (parameter bound wrapped in %)</td>
-</tr>
-<tr>
-<td style="text-align:left">OrderBy</td>
-<td style="text-align:left">findByAgeOrderByLastnameDesc</td>
-<td style="text-align:left">… where x.age = ?1 order by x.lastname desc</td>
-</tr>
-<tr>
-<td style="text-align:left">Not</td>
-<td style="text-align:left">findByLastnameNot</td>
-<td style="text-align:left">… where x.lastname &lt;&gt; ?1</td>
-</tr>
-<tr>
-<td style="text-align:left">In</td>
-<td style="text-align:left">findByAgeIn(Collection ages)</td>
-<td style="text-align:left">… where x.age in ?1</td>
-</tr>
-<tr>
-<td style="text-align:left">NotIn</td>
-<td style="text-align:left">findByAgeNotIn(Collection age)</td>
-<td style="text-align:left">… where x.age not in ?1</td>
-</tr>
-<tr>
-<td style="text-align:left">TRUE</td>
-<td style="text-align:left">findByActiveTrue()</td>
-<td style="text-align:left">… where x.active = true</td>
-</tr>
-<tr>
-<td style="text-align:left">FALSE</td>
-<td style="text-align:left">findByActiveFalse()</td>
-<td style="text-align:left">… where x.active = false</td>
-</tr>
-<tr>
-<td style="text-align:left">IgnoreCase</td>
-<td style="text-align:left">findByFirstnameIgnoreCase</td>
-<td style="text-align:left">… where UPPER(x.firstame) = UPPER(?1)</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">Keyword</th>
+          <th style="text-align: left">Sample</th>
+          <th style="text-align: left">JPQL snippet</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">And</td>
+          <td style="text-align: left">findByLastnameAndFirstname</td>
+          <td style="text-align: left">… where x.lastname = ?1 and x.firstname = ?2</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Or</td>
+          <td style="text-align: left">findByLastnameOrFirstname</td>
+          <td style="text-align: left">… where x.lastname = ?1 or x.firstname = ?2</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Is,Equals</td>
+          <td style="text-align: left">findByFirstnameIs,findByFirstnameEquals</td>
+          <td style="text-align: left">… where x.firstname = ?1</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Between</td>
+          <td style="text-align: left">findByStartDateBetween</td>
+          <td style="text-align: left">… where x.startDate between ?1 and ?2</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">LessThan</td>
+          <td style="text-align: left">findByAgeLessThan</td>
+          <td style="text-align: left">… where x.age &lt; ?1</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">LessThanEqual</td>
+          <td style="text-align: left">findByAgeLessThanEqual</td>
+          <td style="text-align: left">… where x.age ⇐ ?1</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">GreaterThan</td>
+          <td style="text-align: left">findByAgeGreaterThan</td>
+          <td style="text-align: left">… where x.age &gt; ?1</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">GreaterThanEqual</td>
+          <td style="text-align: left">findByAgeGreaterThanEqual</td>
+          <td style="text-align: left">… where x.age &gt;= ?1</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">After</td>
+          <td style="text-align: left">findByStartDateAfter</td>
+          <td style="text-align: left">… where x.startDate &gt; ?1</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Before</td>
+          <td style="text-align: left">findByStartDateBefore</td>
+          <td style="text-align: left">… where x.startDate &lt; ?1</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">IsNull</td>
+          <td style="text-align: left">findByAgeIsNull</td>
+          <td style="text-align: left">… where x.age is null</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">IsNotNull,NotNull</td>
+          <td style="text-align: left">findByAge(Is)NotNull</td>
+          <td style="text-align: left">… where x.age not null</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Like</td>
+          <td style="text-align: left">findByFirstnameLike</td>
+          <td style="text-align: left">… where x.firstname like ?1</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">NotLike</td>
+          <td style="text-align: left">findByFirstnameNotLike</td>
+          <td style="text-align: left">… where x.firstname not like ?1</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">StartingWith</td>
+          <td style="text-align: left">findByFirstnameStartingWith</td>
+          <td style="text-align: left">… where x.firstname like ?1 (parameter bound with appended %)</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">EndingWith</td>
+          <td style="text-align: left">findByFirstnameEndingWith</td>
+          <td style="text-align: left">… where x.firstname like ?1 (parameter bound with prepended %)</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Containing</td>
+          <td style="text-align: left">findByFirstnameContaining</td>
+          <td style="text-align: left">… where x.firstname like ?1 (parameter bound wrapped in %)</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">OrderBy</td>
+          <td style="text-align: left">findByAgeOrderByLastnameDesc</td>
+          <td style="text-align: left">… where x.age = ?1 order by x.lastname desc</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Not</td>
+          <td style="text-align: left">findByLastnameNot</td>
+          <td style="text-align: left">… where x.lastname &lt;&gt; ?1</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">In</td>
+          <td style="text-align: left">findByAgeIn(Collection ages)</td>
+          <td style="text-align: left">… where x.age in ?1</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">NotIn</td>
+          <td style="text-align: left">findByAgeNotIn(Collection age)</td>
+          <td style="text-align: left">… where x.age not in ?1</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">TRUE</td>
+          <td style="text-align: left">findByActiveTrue()</td>
+          <td style="text-align: left">… where x.active = true</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">FALSE</td>
+          <td style="text-align: left">findByActiveFalse()</td>
+          <td style="text-align: left">… where x.active = false</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">IgnoreCase</td>
+          <td style="text-align: left">findByFirstnameIgnoreCase</td>
+          <td style="text-align: left">… where UPPER(x.firstame) = UPPER(?1)</td>
+      </tr>
+  </tbody>
 </table>
 <h1 id="4-使用-jpql-自定义语句">4. 使用 JPQL 自定义语句</h1>
 <p>有时我们想使用自定义的 JPQL 来查询，Spring Data JPA 也是完美支持的，编写在 DAO 中。不懂 JPQL 的可以先了解一下(传送门：<a href="https://blog.csdn.net/dtttyc/article/details/80001826">JPQL详解</a>)</p>
@@ -624,18 +640,18 @@
 </span><span class="lnt">11
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="nd">@Query</span><span class="o">(</span><span class="n">value</span> <span class="o">=</span> <span class="s">&#34;from User where userName = ?1&#34;</span><span class="o">)</span>
-</span></span><span class="line"><span class="cl"><span class="n">User</span> <span class="nf">findByUserName</span><span class="o">(</span><span class="n">String</span> <span class="n">userName</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nd">@Modifying</span>
-</span></span><span class="line"><span class="cl"><span class="nd">@Query</span><span class="o">(</span><span class="n">value</span> <span class="o">=</span> <span class="s">&#34;update User set userName = ?1 where id = ?2&#34;</span><span class="o">)</span>
-</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">modifyByIdAndUserId</span><span class="o">(</span><span class="n">String</span> <span class="n">userName</span><span class="o">,</span> <span class="n">Long</span> <span class="n">id</span><span class="o">);</span>
-</span></span><span class="line"><span class="cl">	
-</span></span><span class="line"><span class="cl"><span class="nd">@Transactional</span>
-</span></span><span class="line"><span class="cl"><span class="nd">@Modifying</span>
-</span></span><span class="line"><span class="cl"><span class="nd">@Query</span><span class="o">(</span><span class="n">value</span> <span class="o">=</span> <span class="s">&#34;delete from User where id = ?1&#34;</span><span class="o">)</span>
-</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">deleteByUserId</span><span class="o">(</span><span class="n">Long</span> <span class="n">id</span><span class="o">);</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="nd">@Query</span><span class="p">(</span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#34;from User where userName = ?1&#34;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">User</span><span class="w"> </span><span class="nf">findByUserName</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">userName</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nd">@Modifying</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nd">@Query</span><span class="p">(</span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#34;update User set userName = ?1 where id = ?2&#34;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kt">int</span><span class="w"> </span><span class="nf">modifyByIdAndUserId</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">userName</span><span class="p">,</span><span class="w"> </span><span class="n">Long</span><span class="w"> </span><span class="n">id</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nd">@Transactional</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nd">@Modifying</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nd">@Query</span><span class="p">(</span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#34;delete from User where id = ?1&#34;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kt">void</span><span class="w"> </span><span class="nf">deleteByUserId</span><span class="p">(</span><span class="n">Long</span><span class="w"> </span><span class="n">id</span><span class="p">);</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><blockquote>
 <ul>
@@ -654,7 +670,7 @@
     <div class="post-copyright">
   <p class="copyright-item">
     <span class="item-title">文章作者</span>
-    <span class="item-content">ShangguanHong</span>
+    <span class="item-content"></span>
   </p>
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
@@ -719,7 +735,7 @@
       <a href="https://github.com/ShangguanHong" class="iconfont icon-github" title="github"></a>
       <a href="https://weibo.com/5590338381" class="iconfont icon-weibo" title="weibo"></a>
       <a href="https://space.bilibili.com/105190849" class="iconfont icon-bilibili" title="bilibili"></a>
-  <a href="https://shangguanhong.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+  
 </div>
 
 <div class="copyright">
@@ -737,7 +753,7 @@
   <span class="copyright-year">
     &copy; 
     2019 - 
-    2022<span class="heart"><i class="iconfont icon-heart"></i></span><span>ShangguanHong</span>
+    2024<span class="heart"><i class="iconfont icon-heart"></i></span><span></span>
   </span>
 </div>
 

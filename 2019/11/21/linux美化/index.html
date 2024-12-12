@@ -16,14 +16,16 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="ShangguanHong" /><meta name="description" content="记录每次安装Linux系统必完成的流程，方便以后的开发 zsh 1 2 3 4 5 6 # ubuntu $ sudo apt-get install zsh # contos $ sudo yum install zsh -y # arch $ sudo pacman -S zsh on-my-zsh 安装 通过在线脚本安装 1 sh -c" /><meta name="keywords" content="go, golang, hugo" />
+<meta name="author" content="" /><meta name="description" content="记录每次安装Linux系统必完成的流程，方便以后的开发
+zsh 1 2 3 4 5 6 # ubuntu $ sudo apt-get install zsh # contos $ sudo yum install zsh -y # arch $ sudo pacman -S zsh on-my-zsh 安装 通过在线脚本安装 1 sh -c &#34;$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)&#34; 主题 1 $ vim ~/.zshrc 找到 ZSH_THEME，将其更改为 ZSH_THEME=&quot;agnoster&quot;
+" /><meta name="keywords" content="go, golang, hugo" />
 
 
 
 
 
 
-<meta name="generator" content="Hugo 0.101.0 with theme even" />
+<meta name="generator" content="Hugo 0.139.4 with theme even" />
 
 
 <link rel="canonical" href="https://shangguanhong.github.io/2019/11/21/linux%E7%BE%8E%E5%8C%96/" />
@@ -35,24 +37,34 @@
 
 
 
-<link href="/sass/main.min.b5a744db6de49a86cadafb3b70f555ab443f83c307a483402259e94726b045ff.css" rel="stylesheet">
+<link href="/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
-<meta property="og:title" content="Linux美化" />
-<meta property="og:description" content="记录每次安装Linux系统必完成的流程，方便以后的开发 zsh 1 2 3 4 5 6 # ubuntu $ sudo apt-get install zsh # contos $ sudo yum install zsh -y # arch $ sudo pacman -S zsh on-my-zsh 安装 通过在线脚本安装 1 sh -c" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://shangguanhong.github.io/2019/11/21/linux%E7%BE%8E%E5%8C%96/" /><meta property="article:section" content="post" />
-<meta property="article:published_time" content="2019-11-21T21:11:12+00:00" />
-<meta property="article:modified_time" content="2019-11-21T21:11:12+00:00" />
+<meta property="og:url" content="https://shangguanhong.github.io/2019/11/21/linux%E7%BE%8E%E5%8C%96/">
+  <meta property="og:site_name" content="ShangguanHong">
+  <meta property="og:title" content="Linux美化">
+  <meta property="og:description" content="记录每次安装Linux系统必完成的流程，方便以后的开发
+zsh 1 2 3 4 5 6 # ubuntu $ sudo apt-get install zsh # contos $ sudo yum install zsh -y # arch $ sudo pacman -S zsh on-my-zsh 安装 通过在线脚本安装 1 sh -c &#34;$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)&#34; 主题 1 $ vim ~/.zshrc 找到 ZSH_THEME，将其更改为 ZSH_THEME=&#34;agnoster&#34;">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2019-11-21T21:11:12+00:00">
+    <meta property="article:modified_time" content="2019-11-21T21:11:12+00:00">
+    <meta property="article:tag" content="Linux">
+    <meta property="article:tag" content="Zsh">
 
-<meta itemprop="name" content="Linux美化">
-<meta itemprop="description" content="记录每次安装Linux系统必完成的流程，方便以后的开发 zsh 1 2 3 4 5 6 # ubuntu $ sudo apt-get install zsh # contos $ sudo yum install zsh -y # arch $ sudo pacman -S zsh on-my-zsh 安装 通过在线脚本安装 1 sh -c"><meta itemprop="datePublished" content="2019-11-21T21:11:12+00:00" />
-<meta itemprop="dateModified" content="2019-11-21T21:11:12+00:00" />
-<meta itemprop="wordCount" content="735">
-<meta itemprop="keywords" content="linux,zsh," /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Linux美化"/>
-<meta name="twitter:description" content="记录每次安装Linux系统必完成的流程，方便以后的开发 zsh 1 2 3 4 5 6 # ubuntu $ sudo apt-get install zsh # contos $ sudo yum install zsh -y # arch $ sudo pacman -S zsh on-my-zsh 安装 通过在线脚本安装 1 sh -c"/>
+  <meta itemprop="name" content="Linux美化">
+  <meta itemprop="description" content="记录每次安装Linux系统必完成的流程，方便以后的开发
+zsh 1 2 3 4 5 6 # ubuntu $ sudo apt-get install zsh # contos $ sudo yum install zsh -y # arch $ sudo pacman -S zsh on-my-zsh 安装 通过在线脚本安装 1 sh -c &#34;$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)&#34; 主题 1 $ vim ~/.zshrc 找到 ZSH_THEME，将其更改为 ZSH_THEME=&#34;agnoster&#34;">
+  <meta itemprop="datePublished" content="2019-11-21T21:11:12+00:00">
+  <meta itemprop="dateModified" content="2019-11-21T21:11:12+00:00">
+  <meta itemprop="wordCount" content="735">
+  <meta itemprop="keywords" content="Linux,Zsh">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Linux美化">
+  <meta name="twitter:description" content="记录每次安装Linux系统必完成的流程，方便以后的开发
+zsh 1 2 3 4 5 6 # ubuntu $ sudo apt-get install zsh # contos $ sudo yum install zsh -y # arch $ sudo pacman -S zsh on-my-zsh 安装 通过在线脚本安装 1 sh -c &#34;$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)&#34; 主题 1 $ vim ~/.zshrc 找到 ZSH_THEME，将其更改为 ZSH_THEME=&#34;agnoster&#34;">
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -67,7 +79,7 @@
 <body>
   <div id="mobile-navbar" class="mobile-navbar">
   <div class="mobile-header-logo">
-    <a href="/" class="logo">赏我一个好梦如旧</a>
+    <a href="/" class="logo">希望有羽毛和翅膀</a>
   </div>
   <div class="mobile-navbar-icon">
     <span></span>
@@ -96,7 +108,7 @@
   <div class="container" id="mobile-panel">
     <header id="header" class="header">
         <div class="logo-wrapper">
-  <a href="/" class="logo">赏我一个好梦如旧</a>
+  <a href="/" class="logo">希望有羽毛和翅膀</a>
 </div>
 
 
@@ -385,7 +397,7 @@
     <div class="post-copyright">
   <p class="copyright-item">
     <span class="item-title">文章作者</span>
-    <span class="item-content">ShangguanHong</span>
+    <span class="item-content"></span>
   </p>
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
@@ -450,7 +462,7 @@
       <a href="https://github.com/ShangguanHong" class="iconfont icon-github" title="github"></a>
       <a href="https://weibo.com/5590338381" class="iconfont icon-weibo" title="weibo"></a>
       <a href="https://space.bilibili.com/105190849" class="iconfont icon-bilibili" title="bilibili"></a>
-  <a href="https://shangguanhong.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+  
 </div>
 
 <div class="copyright">
@@ -468,7 +480,7 @@
   <span class="copyright-year">
     &copy; 
     2019 - 
-    2022<span class="heart"><i class="iconfont icon-heart"></i></span><span>ShangguanHong</span>
+    2024<span class="heart"><i class="iconfont icon-heart"></i></span><span></span>
   </span>
 </div>
 

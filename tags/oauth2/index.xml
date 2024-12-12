@@ -4,17 +4,16 @@
     <title>OAuth2 on ShangguanHong</title>
     <link>https://shangguanhong.github.io/tags/oauth2/</link>
     <description>Recent content in OAuth2 on ShangguanHong</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 05 Mar 2020 19:35:38 +0000</lastBuildDate><atom:link href="https://shangguanhong.github.io/tags/oauth2/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 05 Mar 2020 19:35:38 +0000</lastBuildDate>
+    <atom:link href="https://shangguanhong.github.io/tags/oauth2/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>理解OAuth2</title>
       <link>https://shangguanhong.github.io/2020/03/05/%E7%90%86%E8%A7%A3oauth2/</link>
       <pubDate>Thu, 05 Mar 2020 19:35:38 +0000</pubDate>
-      
       <guid>https://shangguanhong.github.io/2020/03/05/%E7%90%86%E8%A7%A3oauth2/</guid>
-      <description>原文地址：理解OAuth 2.0 OAuth是一个关于授权（authorization）的开放网络标准，在全世界得到广泛应用，目前的版本是2.0版。</description>
+      <description>&lt;p&gt;原文地址：&lt;a href=&#34;https://www.ruanyifeng.com/blog/2014/05/oauth_2_0.html&#34;&gt;理解OAuth 2.0&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;http://en.wikipedia.org/wiki/OAuth&#34;&gt;OAuth&lt;/a&gt;是一个关于授权（authorization）的开放网络标准，在全世界得到广泛应用，目前的版本是2.0版。&lt;/p&gt;&#xA;&lt;p&gt;本文对OAuth 2.0的设计思路和运行流程，做一个简明通俗的解释，主要参考材料为&lt;a href=&#34;http://www.rfcreader.com/#rfc6749&#34;&gt;RFC 6749&lt;/a&gt;。&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/ShangguanHong/PictureBed/master/bg2014051201.png&#34; alt=&#34;OAuth Logo&#34;&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;一应用场景&#34;&gt;一、应用场景&lt;/h2&gt;&#xA;&lt;p&gt;为了理解OAuth的适用场合，让我举一个假设的例子。&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

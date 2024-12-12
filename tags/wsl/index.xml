@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>wsl on ShangguanHong</title>
+    <title>Wsl on ShangguanHong</title>
     <link>https://shangguanhong.github.io/tags/wsl/</link>
-    <description>Recent content in wsl on ShangguanHong</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <description>Recent content in Wsl on ShangguanHong</description>
+    <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 21 Nov 2019 20:12:53 +0000</lastBuildDate><atom:link href="https://shangguanhong.github.io/tags/wsl/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 21 Nov 2019 20:12:53 +0000</lastBuildDate>
+    <atom:link href="https://shangguanhong.github.io/tags/wsl/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>windows上安装WSL</title>
       <link>https://shangguanhong.github.io/2019/11/21/windows%E4%B8%8A%E5%AE%89%E8%A3%85wsl/</link>
       <pubDate>Thu, 21 Nov 2019 20:12:53 +0000</pubDate>
-      
       <guid>https://shangguanhong.github.io/2019/11/21/windows%E4%B8%8A%E5%AE%89%E8%A3%85wsl/</guid>
-      <description>介绍 Windows Subsystem for Linux（简称WSL）是一个为在Windows 10上能够原生运行Linux二进制可执行文件（ELF格式）的兼容层。 意思就是一个能</description>
+      <description>&lt;h1 id=&#34;介绍&#34;&gt;介绍&lt;/h1&gt;&#xA;&lt;p&gt;Windows Subsystem for Linux（简称WSL）是一个为在Windows 10上能够原生运行Linux二进制可执行文件（ELF格式）的兼容层。&lt;/p&gt;&#xA;&lt;p&gt;意思就是一个能在windows系统上运行的linux系统。&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

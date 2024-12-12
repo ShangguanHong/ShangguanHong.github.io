@@ -4,17 +4,16 @@
     <title>更换镜像 on ShangguanHong</title>
     <link>https://shangguanhong.github.io/categories/%E6%9B%B4%E6%8D%A2%E9%95%9C%E5%83%8F/</link>
     <description>Recent content in 更换镜像 on ShangguanHong</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 07 Aug 2019 19:12:57 +0000</lastBuildDate><atom:link href="https://shangguanhong.github.io/categories/%E6%9B%B4%E6%8D%A2%E9%95%9C%E5%83%8F/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 07 Aug 2019 19:12:57 +0000</lastBuildDate>
+    <atom:link href="https://shangguanhong.github.io/categories/%E6%9B%B4%E6%8D%A2%E9%95%9C%E5%83%8F/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Maven更换阿里镜像</title>
       <link>https://shangguanhong.github.io/2019/08/07/maven%E6%9B%B4%E6%8D%A2%E9%98%BF%E9%87%8C%E9%95%9C%E5%83%8F/</link>
       <pubDate>Wed, 07 Aug 2019 19:12:57 +0000</pubDate>
-      
       <guid>https://shangguanhong.github.io/2019/08/07/maven%E6%9B%B4%E6%8D%A2%E9%98%BF%E9%87%8C%E9%95%9C%E5%83%8F/</guid>
-      <description>1. 前言 Maven 默认的中央仓库速度慢，可以考虑换成阿里的镜像。修改方式主要有两种，全局修改和针对当前项目的修改。 2. 全局修改 2.1 Windows Windows 下 maven 的 .m2 文件夹地址在</description>
+      <description>&lt;h1 id=&#34;1-前言&#34;&gt;1. 前言&lt;/h1&gt;&#xA;&lt;p&gt;&lt;code&gt;Maven&lt;/code&gt; 默认的中央仓库速度慢，可以考虑换成阿里的镜像。修改方式主要有两种，全局修改和针对当前项目的修改。&lt;/p&gt;&#xA;&lt;h1 id=&#34;2-全局修改&#34;&gt;2. 全局修改&lt;/h1&gt;&#xA;&lt;h2 id=&#34;21-windows&#34;&gt;2.1 Windows&lt;/h2&gt;&#xA;&lt;p&gt;&lt;code&gt;Windows&lt;/code&gt; 下 &lt;code&gt;maven&lt;/code&gt; 的 &lt;code&gt;.m2&lt;/code&gt; 文件夹地址在 &lt;code&gt;C:\User\****\.m2&lt;/code&gt; (***为具体的用户名)&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

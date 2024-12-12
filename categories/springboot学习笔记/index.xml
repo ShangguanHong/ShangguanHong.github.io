@@ -4,128 +4,86 @@
     <title>SpringBoot学习笔记 on ShangguanHong</title>
     <link>https://shangguanhong.github.io/categories/springboot%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</link>
     <description>Recent content in SpringBoot学习笔记 on ShangguanHong</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 19 Sep 2019 21:55:45 +0000</lastBuildDate><atom:link href="https://shangguanhong.github.io/categories/springboot%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 19 Sep 2019 21:55:45 +0000</lastBuildDate>
+    <atom:link href="https://shangguanhong.github.io/categories/springboot%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Spring Cache整合Redis</title>
       <link>https://shangguanhong.github.io/2019/09/19/spring-cache%E6%95%B4%E5%90%88redis/</link>
       <pubDate>Thu, 19 Sep 2019 21:55:45 +0000</pubDate>
-      
       <guid>https://shangguanhong.github.io/2019/09/19/spring-cache%E6%95%B4%E5%90%88redis/</guid>
-      <description>前言 缓存现在已经成为了互联网必不可少的利器，合理的利用缓存不仅能大大的提升网站的访问速度，还能够降低数据库的访问压力。 在上一篇文章中，介绍了</description>
+      <description>&lt;h1 id=&#34;前言&#34;&gt;前言&lt;/h1&gt;&#xA;&lt;p&gt;缓存现在已经成为了互联网必不可少的利器，合理的利用缓存不仅能大大的提升网站的访问速度，还能够降低数据库的访问压力。&lt;/p&gt;&#xA;&lt;p&gt;在上一篇文章中，介绍了 &lt;a href=&#34;https://shangguanhong.github.io/2019/09/10/Spring-Boot%E6%95%B4%E5%90%88Redis/&#34;&gt;如何在 SpringBoot 中整合 Redis&lt;/a&gt;，接下来继续在其基础上介绍上如何利用 Spring Cache 与 Redis 来做缓存。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Spring Boot整合Redis</title>
       <link>https://shangguanhong.github.io/2019/09/10/spring-boot%E6%95%B4%E5%90%88redis/</link>
       <pubDate>Tue, 10 Sep 2019 16:51:20 +0000</pubDate>
-      
       <guid>https://shangguanhong.github.io/2019/09/10/spring-boot%E6%95%B4%E5%90%88redis/</guid>
-      <description>Redis简介 Redis 是完全开元免费的，遵守BSD协议，是一个高性能的 key-value 数据库。 Redis 与其他 key - value 缓存产品有以下三个特点： Redis 支持数据的持久化，可以将内</description>
+      <description>&lt;h1 id=&#34;redis简介&#34;&gt;Redis简介&lt;/h1&gt;&#xA;&lt;p&gt;Redis 是完全开元免费的，遵守BSD协议，是一个高性能的 key-value 数据库。&lt;/p&gt;&#xA;&lt;p&gt;Redis 与其他 key - value 缓存产品有以下三个特点：&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Redis 支持数据的持久化，可以将内存中的数据保存在磁盘中，重启的时候可以再次加载进行使用。&lt;/li&gt;&#xA;&lt;li&gt;Redis 不仅仅支持简单的 key-value 类型的数据，同时还提供 list，set，zset，hash 等数据结构的存储。&lt;/li&gt;&#xA;&lt;li&gt;Redis 支持数据的备份，即 master-slave 模式的数据备份。&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Redis 的命令教学建议参考菜鸟教程的教程: &lt;a href=&#34;https://www.runoob.com/redis/redis-tutorial.html&#34;&gt;https://www.runoob.com/redis/redis-tutorial.html&lt;/a&gt;&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Spring Boot中CommandLineRunner的使用</title>
       <link>https://shangguanhong.github.io/2019/08/29/spring-boot%E4%B8%ADcommandlinerunner%E7%9A%84%E4%BD%BF%E7%94%A8/</link>
       <pubDate>Thu, 29 Aug 2019 21:24:02 +0000</pubDate>
-      
       <guid>https://shangguanhong.github.io/2019/08/29/spring-boot%E4%B8%ADcommandlinerunner%E7%9A%84%E4%BD%BF%E7%94%A8/</guid>
-      <description>前言 在项目中经常会遇到需要在项目启动之前做一些初始化数据的操作，例如初始化线程池、初始化一些脚本等等。但是往往这些操作又需要在 Spring Beans 加载完成之</description>
+      <description>&lt;h1 id=&#34;前言&#34;&gt;前言&lt;/h1&gt;&#xA;&lt;p&gt;在项目中经常会遇到需要在项目启动之前做一些初始化数据的操作，例如初始化线程池、初始化一些脚本等等。但是往往这些操作又需要在 &lt;code&gt;Spring Beans&lt;/code&gt; 加载完成之后，因为需要依赖于一些 &lt;code&gt;Spring Beans&lt;/code&gt;。&lt;code&gt;CommandLineRunner&lt;/code&gt; 可以很好的解决这个问题，继承了 &lt;code&gt;ComandLineRunner&lt;/code&gt; 接口并且加上了 &lt;code&gt;@Component&lt;/code&gt; 注解的类可以在  &lt;code&gt;Spring Beans&lt;/code&gt;  都初始化之后，而又在 &lt;code&gt;SpringApplication.run()&lt;/code&gt;  之前执行。下面来详细介绍 &lt;code&gt;CommandLineRunner&lt;/code&gt; 的使用。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Spring Boot整合Shiro</title>
       <link>https://shangguanhong.github.io/2019/08/20/spring-boot%E6%95%B4%E5%90%88shiro/</link>
       <pubDate>Tue, 20 Aug 2019 20:11:28 +0000</pubDate>
-      
       <guid>https://shangguanhong.github.io/2019/08/20/spring-boot%E6%95%B4%E5%90%88shiro/</guid>
-      <description>1. 前言 在 Java 领域一般有 Spring Security、Apache Shiro 等安全框架，之前写了一篇关于 JWT整合Spring Security 的文章，里面介绍了使用 Spring Boot + JWT + Spring</description>
+      <description>&lt;h1 id=&#34;1-前言&#34;&gt;1. 前言&lt;/h1&gt;&#xA;&lt;p&gt;在 Java 领域一般有 Spring Security、Apache Shiro 等安全框架，之前写了一篇关于 &lt;a href=&#34;https://shangguanhong.github.io/2019/08/14/JWT%E6%95%B4%E5%90%88Spring-Security/&#34;&gt;JWT整合Spring Security&lt;/a&gt; 的文章，里面介绍了使用 Spring Boot + JWT + Spring Security 来完成用户的登录与权限认证。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Spring Boot中配置Slf4j&#43;logback日志框架</title>
       <link>https://shangguanhong.github.io/2019/07/31/spring-boot%E4%B8%AD%E9%85%8D%E7%BD%AElogback/</link>
       <pubDate>Wed, 31 Jul 2019 23:50:50 +0000</pubDate>
-      
       <guid>https://shangguanhong.github.io/2019/07/31/spring-boot%E4%B8%AD%E9%85%8D%E7%BD%AElogback/</guid>
-      <description>1. 前言 Slf4j的全称是 Simple Loging Facade For Java(Java简单日志门面)，它仅仅是一个为Java程序提供日志输出的统一接口，并不是一个具体的日志实现</description>
+      <description>&lt;h1 id=&#34;1-前言&#34;&gt;1. 前言&lt;/h1&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;Slf4j的全称是 Simple Loging Facade For Java(Java简单日志门面)，它仅仅是一个为Java程序提供日志输出的统一接口，并不是一个具体的日志实现方案，就比如JPA一样，只是一种规则而已。所以单独的Slf4j是不能工作的，必须搭配其他具体的日志实现方案，比如apache的org.apache.log4j.Logger，jdk自带的java.util.logging.Logger等。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Spring Boot整合Swagger2</title>
       <link>https://shangguanhong.github.io/2019/07/16/spring-boot%E6%95%B4%E5%90%88swagger2/</link>
       <pubDate>Tue, 16 Jul 2019 16:15:21 +0000</pubDate>
-      
       <guid>https://shangguanhong.github.io/2019/07/16/spring-boot%E6%95%B4%E5%90%88swagger2/</guid>
-      <description>1. 前言 ​ 现如今，前后端分离已经逐渐成为互联网项目一种标准的开发方式，前端与后端交给不同的人员开发，但是项目开发中的沟通成本也随之升高，这部分</description>
+      <description>&lt;h1 id=&#34;1-前言&#34;&gt;1. 前言&lt;/h1&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;​&#x9;&#x9;现如今，前后端分离已经逐渐成为互联网项目一种标准的开发方式，前端与后端交给不同的人员开发，但是项目开发中的沟通成本也随之升高，这部分沟通成本主要在于前端开发人员与后端开发人员对Web API接口的沟通。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Spring Boot整合Spring Data Jpa</title>
       <link>https://shangguanhong.github.io/2019/07/08/spring-boot%E6%95%B4%E5%90%88springdatajpa/</link>
       <pubDate>Mon, 08 Jul 2019 14:14:55 +0000</pubDate>
-      
       <guid>https://shangguanhong.github.io/2019/07/08/spring-boot%E6%95%B4%E5%90%88springdatajpa/</guid>
-      <description>1. 前言 之前的文章中写到了如何使用 Spring Boot 整合 mybatis(传送门: Spring-Boot整合MyBatis)，今天学习一下如何使用 Spring Boot 整合 Spring Data</description>
+      <description>&lt;h1 id=&#34;1-前言&#34;&gt;1. 前言&lt;/h1&gt;&#xA;&lt;p&gt;之前的文章中写到了如何使用 Spring Boot 整合 mybatis(传送门: &lt;a href=&#34;https://shangguanhong.github.io/2019/06/03/Spring-Boot%E6%95%B4%E5%90%88MyBatis/&#34;&gt;Spring-Boot整合MyBatis&lt;/a&gt;)，今天学习一下如何使用 Spring Boot 整合 Spring Data Jpa。&lt;/p&gt;&#xA;&lt;p&gt;项目代码:  &lt;a href=&#34;https://github.com/ShangguanHong/SpringBootDemo/tree/master/springboot-jpa&#34;&gt;https://github.com/ShangguanHong/SpringBootDemo/tree/master/springboot-jpa&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h1 id=&#34;2-spring-data-jpa简介&#34;&gt;2. Spring Data JPA简介&lt;/h1&gt;&#xA;&lt;p&gt;Spring Data JPA 是 Spring 基于 ORM 框架、JPA 规范封装的一套 JPA 应用框架，可使开发者用极简的代码即可实现对数据的访问和操作。它提供了包括增删改查等在内的常用功能， 且易于扩展！学习并使用 Spring Data JPA 可以极大的提供开发效率。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Spring Boot实现热部署</title>
       <link>https://shangguanhong.github.io/2019/07/07/spring-boot%E5%AE%9E%E7%8E%B0%E7%83%AD%E9%83%A8%E7%BD%B2/</link>
       <pubDate>Sun, 07 Jul 2019 17:18:15 +0000</pubDate>
-      
       <guid>https://shangguanhong.github.io/2019/07/07/spring-boot%E5%AE%9E%E7%8E%B0%E7%83%AD%E9%83%A8%E7%BD%B2/</guid>
-      <description>1. 前言 我们在开发中反复修改类、页面等资源，每次修改后都是需要重新启动服务才能使得修改生效，这是非常麻烦的，浪费了大量的时间。我们能够在修改代</description>
+      <description>&lt;h1 id=&#34;1-前言&#34;&gt;1. 前言&lt;/h1&gt;&#xA;&lt;p&gt;我们在开发中反复修改类、页面等资源，每次修改后都是需要重新启动服务才能使得修改生效，这是非常麻烦的，浪费了大量的时间。我们能够在修改代码之后不重启服务就能使修改生效，我们称之为热部署，下面进行Spring-Boot实现热部署的过程。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Spring Boot整合MyBatis</title>
       <link>https://shangguanhong.github.io/2019/06/03/spring-boot%E6%95%B4%E5%90%88mybatis/</link>
       <pubDate>Mon, 03 Jun 2019 09:38:28 +0000</pubDate>
-      
       <guid>https://shangguanhong.github.io/2019/06/03/spring-boot%E6%95%B4%E5%90%88mybatis/</guid>
-      <description>1. 前言 本文介绍如何将mybatis整合进Spring Boot, 并且使用mybatis-generator插件自动根据数据库生成一些基本的代码。 本文用</description>
+      <description>&lt;h1 id=&#34;1-前言&#34;&gt;1. 前言&lt;/h1&gt;&#xA;&lt;p&gt;本文介绍如何将mybatis整合进Spring Boot,  并且使用mybatis-generator插件自动根据数据库生成一些基本的代码。&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;本文用的是mybatis的xml配置模式，它还有一种注解模式，需要了解的可以搜索学习&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Spring Boot配置文件</title>
       <link>https://shangguanhong.github.io/2019/05/31/spring-boot%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/</link>
       <pubDate>Fri, 31 May 2019 10:40:42 +0000</pubDate>
-      
       <guid>https://shangguanhong.github.io/2019/05/31/spring-boot%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/</guid>
-      <description>&lt;h1 id=&#34;1-启动spring-boot项目&#34;&gt;1. 启动Spring Boot项目&lt;/h1&gt;
-&lt;ol&gt;
-&lt;li&gt;第一种方法是使用IDE(集成开发环境)，例如IDEA、Eclipse等，我这里使用的是IDEA，所以我只需点击右上角的Run按钮即可&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/ShangguanHong/PictureBed/master/1559271612805.png&#34; alt=&#34;1559271612805&#34;&gt;&lt;/p&gt;
-&lt;ol start=&#34;2&#34;&gt;
-&lt;li&gt;使用maven命令行启动。在项目根目录下运行 &lt;code&gt;mvn spring-boot:run&lt;/code&gt;即可&lt;/li&gt;
-&lt;/ol&gt;
-&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;注意:使用mvn命令请确保电脑上安装了maven并且配置了maven环境变量，可以输入 &lt;code&gt;mvn --version&lt;/code&gt; 查看是否 安装（成功安装如下图），若没安装自行百度，按照教程一步一步完成即可&lt;/strong&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/ShangguanHong/PictureBed/master/1559271875750.png&#34; alt=&#34;1559271875750&#34;&gt;&lt;/p&gt;
-&lt;ol start=&#34;3&#34;&gt;
-&lt;li&gt;
-&lt;p&gt;使用jar文件启动。在项目根目录下运行命令 &lt;code&gt;mvn clean install&lt;/code&gt; (clean表示清空之前编译的文件，install表示打包项目文件成为jar文件)&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/ShangguanHong/PictureBed/master/1559272084746.png&#34; alt=&#34;1559272084746&#34;&gt;&lt;/p&gt;
-&lt;p&gt;出现 &lt;code&gt;BUILD SUCCESS&lt;/code&gt; 表示创建jar成功，之后可以在项目根目录下的target目录下查看到对应的jar文件&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/ShangguanHong/PictureBed/master/1559272191102.png&#34; alt=&#34;1559272191102&#34;&gt;&lt;/p&gt;
-&lt;p&gt;然后执行 &lt;code&gt;java -jar demo-0.0.1-SNAPSHOT.jar&lt;/code&gt; 运行该文件即可。&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h1 id=&#34;2-编写配置文件&#34;&gt;2. 编写配置文件&lt;/h1&gt;</description>
+      <description>&lt;h1 id=&#34;1-启动spring-boot项目&#34;&gt;1. 启动Spring Boot项目&lt;/h1&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;第一种方法是使用IDE(集成开发环境)，例如IDEA、Eclipse等，我这里使用的是IDEA，所以我只需点击右上角的Run按钮即可&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/ShangguanHong/PictureBed/master/1559271612805.png&#34; alt=&#34;1559271612805&#34;&gt;&lt;/p&gt;&#xA;&lt;ol start=&#34;2&#34;&gt;&#xA;&lt;li&gt;使用maven命令行启动。在项目根目录下运行 &lt;code&gt;mvn spring-boot:run&lt;/code&gt;即可&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;&lt;strong&gt;注意:使用mvn命令请确保电脑上安装了maven并且配置了maven环境变量，可以输入 &lt;code&gt;mvn --version&lt;/code&gt; 查看是否 安装（成功安装如下图），若没安装自行百度，按照教程一步一步完成即可&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/ShangguanHong/PictureBed/master/1559271875750.png&#34; alt=&#34;1559271875750&#34;&gt;&lt;/p&gt;&#xA;&lt;ol start=&#34;3&#34;&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;使用jar文件启动。在项目根目录下运行命令 &lt;code&gt;mvn clean install&lt;/code&gt; (clean表示清空之前编译的文件，install表示打包项目文件成为jar文件)&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/ShangguanHong/PictureBed/master/1559272084746.png&#34; alt=&#34;1559272084746&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;出现 &lt;code&gt;BUILD SUCCESS&lt;/code&gt; 表示创建jar成功，之后可以在项目根目录下的target目录下查看到对应的jar文件&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/ShangguanHong/PictureBed/master/1559272191102.png&#34; alt=&#34;1559272191102&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;然后执行 &lt;code&gt;java -jar demo-0.0.1-SNAPSHOT.jar&lt;/code&gt; 运行该文件即可。&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;h1 id=&#34;2-编写配置文件&#34;&gt;2. 编写配置文件&lt;/h1&gt;</description>
     </item>
-    
     <item>
       <title>Spring Boot新建项目</title>
       <link>https://shangguanhong.github.io/2019/05/30/spring-boot%E6%96%B0%E5%BB%BA%E9%A1%B9%E7%9B%AE/</link>
       <pubDate>Thu, 30 May 2019 18:39:55 +0000</pubDate>
-      
       <guid>https://shangguanhong.github.io/2019/05/30/spring-boot%E6%96%B0%E5%BB%BA%E9%A1%B9%E7%9B%AE/</guid>
-      <description>1. 前言 Spring Boot是由Pivotal团队提供的全新框架，其设计目的是用来简化新Spring应用的初始搭建以及开发过程。该框架使用了特定的方式来</description>
+      <description>&lt;h1 id=&#34;1-前言&#34;&gt;1. 前言&lt;/h1&gt;&#xA;&lt;p&gt;Spring Boot是由Pivotal团队提供的全新框架，其设计目的是用来简化新Spring应用的初始搭建以及开发过程。该框架使用了特定的方式来进行配置，从而使开发人员不再需要定义样板化的配置。通过这种方式，Spring Boot致力于在蓬勃发展的快速应用开发领域（rapid application development）成为领导者。&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

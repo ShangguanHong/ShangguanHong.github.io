@@ -16,7 +16,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="ShangguanHong" /><meta name="description" content="1. 前言 互联网服务离不开用户认证，一般流程是下面这样。
+<meta name="author" content="" /><meta name="description" content="1. 前言 互联网服务离不开用户认证，一般流程是下面这样。
 1、用户向服务器发送用户名和密码。
 2、服务器验证通过后，在当前对话（session）里面保存相关数据，比如用户角色、登录时间等等。
 3、服务器向用户返回一个 session_id，写入用户的 Cookie。
@@ -34,7 +34,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.101.0 with theme even" />
+<meta name="generator" content="Hugo 0.139.4 with theme even" />
 
 
 <link rel="canonical" href="https://shangguanhong.github.io/2019/08/08/%E4%BA%86%E8%A7%A3json-web-token-jwt/" />
@@ -46,63 +46,61 @@
 
 
 
-<link href="/sass/main.min.b5a744db6de49a86cadafb3b70f555ab443f83c307a483402259e94726b045ff.css" rel="stylesheet">
+<link href="/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
-<meta property="og:title" content="了解JSON Web Token(JWT)" />
-<meta property="og:description" content="1. 前言
-互联网服务离不开用户认证，一般流程是下面这样。
-
+<meta property="og:url" content="https://shangguanhong.github.io/2019/08/08/%E4%BA%86%E8%A7%A3json-web-token-jwt/">
+  <meta property="og:site_name" content="ShangguanHong">
+  <meta property="og:title" content="了解JSON Web Token(JWT)">
+  <meta property="og:description" content="1. 前言 互联网服务离不开用户认证，一般流程是下面这样。
 1、用户向服务器发送用户名和密码。
 2、服务器验证通过后，在当前对话（session）里面保存相关数据，比如用户角色、登录时间等等。
 3、服务器向用户返回一个 session_id，写入用户的 Cookie。
 4、用户随后的每一次请求，都会通过 Cookie，将 session_id 传回服务器。
 5、服务器收到 session_id，找到前期保存的数据，由此得知用户的身份。
-
 这种模式的问题在于，扩展性（scaling）不好。单机当然没有问题，如果是服务器集群，或者是跨域的服务导向架构，就要求 session 数据共享，每台服务器都能够读取 session。
 举例来说，A 网站和 B 网站是同一家公司的关联服务。现在要求，用户只要在其中一个网站登录，再访问另一个网站就会自动登录，请问怎么实现？
 一种解决方案是 session 数据持久化，写入数据库或别的持久层。各种服务收到请求后，都向持久层请求数据。这种方案的优点是架构清晰，缺点是工程量比较大。另外，持久层万一挂了，就会单点失败。
 另一种方案是服务器索性不保存 session 数据了，所有数据都保存在客户端，每次请求都发回服务器。JWT 就是这种方案的一个代表。
-下面介绍 JWT 的使用。" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://shangguanhong.github.io/2019/08/08/%E4%BA%86%E8%A7%A3json-web-token-jwt/" /><meta property="article:section" content="post" />
-<meta property="article:published_time" content="2019-08-08T22:04:06+00:00" />
-<meta property="article:modified_time" content="2019-08-08T22:04:06+00:00" />
+下面介绍 JWT 的使用。">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2019-08-08T22:04:06+00:00">
+    <meta property="article:modified_time" content="2019-08-08T22:04:06+00:00">
+    <meta property="article:tag" content="Spring Boot">
+    <meta property="article:tag" content="JWT">
 
-<meta itemprop="name" content="了解JSON Web Token(JWT)">
-<meta itemprop="description" content="1. 前言
-互联网服务离不开用户认证，一般流程是下面这样。
-
+  <meta itemprop="name" content="了解JSON Web Token(JWT)">
+  <meta itemprop="description" content="1. 前言 互联网服务离不开用户认证，一般流程是下面这样。
 1、用户向服务器发送用户名和密码。
 2、服务器验证通过后，在当前对话（session）里面保存相关数据，比如用户角色、登录时间等等。
 3、服务器向用户返回一个 session_id，写入用户的 Cookie。
 4、用户随后的每一次请求，都会通过 Cookie，将 session_id 传回服务器。
 5、服务器收到 session_id，找到前期保存的数据，由此得知用户的身份。
-
 这种模式的问题在于，扩展性（scaling）不好。单机当然没有问题，如果是服务器集群，或者是跨域的服务导向架构，就要求 session 数据共享，每台服务器都能够读取 session。
 举例来说，A 网站和 B 网站是同一家公司的关联服务。现在要求，用户只要在其中一个网站登录，再访问另一个网站就会自动登录，请问怎么实现？
 一种解决方案是 session 数据持久化，写入数据库或别的持久层。各种服务收到请求后，都向持久层请求数据。这种方案的优点是架构清晰，缺点是工程量比较大。另外，持久层万一挂了，就会单点失败。
 另一种方案是服务器索性不保存 session 数据了，所有数据都保存在客户端，每次请求都发回服务器。JWT 就是这种方案的一个代表。
-下面介绍 JWT 的使用。"><meta itemprop="datePublished" content="2019-08-08T22:04:06+00:00" />
-<meta itemprop="dateModified" content="2019-08-08T22:04:06+00:00" />
-<meta itemprop="wordCount" content="2565">
-<meta itemprop="keywords" content="Spring Boot,JWT," /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="了解JSON Web Token(JWT)"/>
-<meta name="twitter:description" content="1. 前言
-互联网服务离不开用户认证，一般流程是下面这样。
-
+下面介绍 JWT 的使用。">
+  <meta itemprop="datePublished" content="2019-08-08T22:04:06+00:00">
+  <meta itemprop="dateModified" content="2019-08-08T22:04:06+00:00">
+  <meta itemprop="wordCount" content="2565">
+  <meta itemprop="keywords" content="Spring Boot,JWT">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="了解JSON Web Token(JWT)">
+  <meta name="twitter:description" content="1. 前言 互联网服务离不开用户认证，一般流程是下面这样。
 1、用户向服务器发送用户名和密码。
 2、服务器验证通过后，在当前对话（session）里面保存相关数据，比如用户角色、登录时间等等。
 3、服务器向用户返回一个 session_id，写入用户的 Cookie。
 4、用户随后的每一次请求，都会通过 Cookie，将 session_id 传回服务器。
 5、服务器收到 session_id，找到前期保存的数据，由此得知用户的身份。
-
 这种模式的问题在于，扩展性（scaling）不好。单机当然没有问题，如果是服务器集群，或者是跨域的服务导向架构，就要求 session 数据共享，每台服务器都能够读取 session。
 举例来说，A 网站和 B 网站是同一家公司的关联服务。现在要求，用户只要在其中一个网站登录，再访问另一个网站就会自动登录，请问怎么实现？
 一种解决方案是 session 数据持久化，写入数据库或别的持久层。各种服务收到请求后，都向持久层请求数据。这种方案的优点是架构清晰，缺点是工程量比较大。另外，持久层万一挂了，就会单点失败。
 另一种方案是服务器索性不保存 session 数据了，所有数据都保存在客户端，每次请求都发回服务器。JWT 就是这种方案的一个代表。
-下面介绍 JWT 的使用。"/>
+下面介绍 JWT 的使用。">
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -117,7 +115,7 @@
 <body>
   <div id="mobile-navbar" class="mobile-navbar">
   <div class="mobile-header-logo">
-    <a href="/" class="logo">赏我一个好梦如旧</a>
+    <a href="/" class="logo">希望有羽毛和翅膀</a>
   </div>
   <div class="mobile-navbar-icon">
     <span></span>
@@ -146,7 +144,7 @@
   <div class="container" id="mobile-panel">
     <header id="header" class="header">
         <div class="logo-wrapper">
-  <a href="/" class="logo">赏我一个好梦如旧</a>
+  <a href="/" class="logo">希望有羽毛和翅膀</a>
 </div>
 
 
@@ -255,7 +253,7 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Header.Payload.Signature
+<pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="n">Header</span><span class="o">.</span><span class="n">Payload</span><span class="o">.</span><span class="n">Signature</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="41-header">4.1 Header</h2>
@@ -386,14 +384,14 @@
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-JAVA" data-lang="JAVA"><span class="line"><span class="cl"><span class="n">String</span> <span class="nf">generateToken</span><span class="o">(</span><span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Object</span><span class="o">&gt;</span> <span class="n">claims</span><span class="o">)</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">Jwts</span><span class="o">.</span><span class="na">builder</span><span class="o">()</span>
-</span></span><span class="line"><span class="cl">            <span class="o">.</span><span class="na">setClaims</span><span class="o">(</span><span class="n">claims</span><span class="o">)</span>
-</span></span><span class="line"><span class="cl">            <span class="o">.</span><span class="na">setExpiration</span><span class="o">(</span><span class="n">generateExpirationDate</span><span class="o">())</span>
-</span></span><span class="line"><span class="cl">            <span class="o">.</span><span class="na">signWith</span><span class="o">(</span><span class="n">SignatureAlgorithm</span><span class="o">.</span><span class="na">HS512</span><span class="o">,</span> <span class="n">secret</span><span class="o">)</span> <span class="c1">//采用什么算法是可以自己选择的，不一定非要采用HS512
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="o">.</span><span class="na">compact</span><span class="o">();</span>
-</span></span><span class="line"><span class="cl"><span class="o">}</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-JAVA" data-lang="JAVA"><span class="line"><span class="cl"><span class="n">String</span><span class="w"> </span><span class="nf">generateToken</span><span class="p">(</span><span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">Object</span><span class="o">&gt;</span><span class="w"> </span><span class="n">claims</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">Jwts</span><span class="p">.</span><span class="na">builder</span><span class="p">()</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="p">.</span><span class="na">setClaims</span><span class="p">(</span><span class="n">claims</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="p">.</span><span class="na">setExpiration</span><span class="p">(</span><span class="n">generateExpirationDate</span><span class="p">())</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="p">.</span><span class="na">signWith</span><span class="p">(</span><span class="n">SignatureAlgorithm</span><span class="p">.</span><span class="na">HS512</span><span class="p">,</span><span class="w"> </span><span class="n">secret</span><span class="p">)</span><span class="w"> </span><span class="c1">//采用什么算法是可以自己选择的，不一定非要采用HS512</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="p">.</span><span class="na">compact</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>数据声明 (Claim) 其实就是一个 Map，比如我们想放入用户名，可以简单的创建一个 Map 然后 put 进去就可以了。</p>
 <div class="highlight"><div class="chroma">
@@ -402,9 +400,9 @@
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-JAVA" data-lang="JAVA"><span class="line"><span class="cl"><span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Object</span><span class="o">&gt;</span> <span class="n">claims</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;&gt;();</span>
-</span></span><span class="line"><span class="cl"><span class="n">claims</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">CLAIM_KEY_USERNAME</span><span class="o">,</span> <span class="s">&#34;sgh&#34;</span><span class="o">);</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-JAVA" data-lang="JAVA"><span class="line"><span class="cl"><span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">Object</span><span class="o">&gt;</span><span class="w"> </span><span class="n">claims</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">HashMap</span><span class="o">&lt;&gt;</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">claims</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="n">CLAIM_KEY_USERNAME</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;sgh&#34;</span><span class="p">);</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>解析也很简单，利用 <code>jjwt</code> 提供的 parser 传入秘钥，然后就可以解析 token 了。</p>
 <div class="highlight"><div class="chroma">
@@ -423,19 +421,19 @@
 </span><span class="lnt">12
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">Claims</span> <span class="nf">getClaimsFromToken</span><span class="o">(</span><span class="n">String</span> <span class="n">token</span><span class="o">)</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">    <span class="n">Claims</span> <span class="n">claims</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">    <span class="k">try</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">        <span class="n">claims</span> <span class="o">=</span> <span class="n">Jwts</span><span class="o">.</span><span class="na">parser</span><span class="o">()</span>
-</span></span><span class="line"><span class="cl">                <span class="o">.</span><span class="na">setSigningKey</span><span class="o">(</span><span class="n">secret</span><span class="o">)</span>
-</span></span><span class="line"><span class="cl">                <span class="o">.</span><span class="na">parseClaimsJws</span><span class="o">(</span><span class="n">token</span><span class="o">)</span>
-</span></span><span class="line"><span class="cl">                <span class="o">.</span><span class="na">getBody</span><span class="o">();</span>
-</span></span><span class="line"><span class="cl">    <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">        <span class="n">claims</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">    <span class="o">}</span>
-</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">claims</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl"><span class="o">}</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">Claims</span><span class="w"> </span><span class="nf">getClaimsFromToken</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">token</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">Claims</span><span class="w"> </span><span class="n">claims</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">try</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">claims</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Jwts</span><span class="p">.</span><span class="na">parser</span><span class="p">()</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="p">.</span><span class="na">setSigningKey</span><span class="p">(</span><span class="n">secret</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="p">.</span><span class="na">parseClaimsJws</span><span class="p">(</span><span class="n">token</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="p">.</span><span class="na">getBody</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">Exception</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">claims</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">claims</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>JWT 本身没啥难度，但安全整体是一个比较复杂的事情，JWT 只不过提供了一种基于 token 的请求验证机制。但我们的用户权限，对于 API 的权限划分、资源的权限划分，用户的验证等等都不是 JWT 负责的。也就是说，请求验证后，你是否有权限看对应的内容是由你的用户角色决定的。所以我们这里要利用 Spring 的一个子项目 Spring Security 来简化我们的工作。</p>
 <p>具体如何操作，请看 <a href="https://shangguanhong.github.io/2019/08/14/JWT%E6%95%B4%E5%90%88Spring-Security/">JWT整合Spring-Security</a></p>
@@ -449,7 +447,7 @@
     <div class="post-copyright">
   <p class="copyright-item">
     <span class="item-title">文章作者</span>
-    <span class="item-content">ShangguanHong</span>
+    <span class="item-content"></span>
   </p>
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
@@ -514,7 +512,7 @@
       <a href="https://github.com/ShangguanHong" class="iconfont icon-github" title="github"></a>
       <a href="https://weibo.com/5590338381" class="iconfont icon-weibo" title="weibo"></a>
       <a href="https://space.bilibili.com/105190849" class="iconfont icon-bilibili" title="bilibili"></a>
-  <a href="https://shangguanhong.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+  
 </div>
 
 <div class="copyright">
@@ -532,7 +530,7 @@
   <span class="copyright-year">
     &copy; 
     2019 - 
-    2022<span class="heart"><i class="iconfont icon-heart"></i></span><span>ShangguanHong</span>
+    2024<span class="heart"><i class="iconfont icon-heart"></i></span><span></span>
   </span>
 </div>
 

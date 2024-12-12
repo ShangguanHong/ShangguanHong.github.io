@@ -16,14 +16,16 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="ShangguanHong" /><meta name="description" content="Windows 去golang官方下载页面下载最新的安装程序 进行安装，安装过程中需要记住go的安装目录，默认为 C:\Go\ 增加 GOROOT 变量(如果没有的话)，值为第二步的时" /><meta name="keywords" content="go, golang, hugo" />
+<meta name="author" content="" /><meta name="description" content="Windows 去golang官方下载页面下载最新的安装程序 进行安装，安装过程中需要记住go的安装目录，默认为 C:\Go\
+增加 GOROOT 变量(如果没有的话)，值为第二步的时候 go 的安装目录
+增加 GOPATH 变量(如果没有的话)，GOPATH 是一个我们的工作路径，go 下面的开发都是在该工作路径下进行的，这个工作路径可以是一个随意的目录，但不能是 go 的安装目录，这里我设置为 D:\go_project，在该路径下创建三个文件夹，bin、pkg、src。其中bin是存放由go install生成的可执行文件,pkg是存放go编译生成的文件，src是存放是我们的go源代码，不同工程项目的代码以包名区分。 " /><meta name="keywords" content="go, golang, hugo" />
 
 
 
 
 
 
-<meta name="generator" content="Hugo 0.101.0 with theme even" />
+<meta name="generator" content="Hugo 0.139.4 with theme even" />
 
 
 <link rel="canonical" href="https://shangguanhong.github.io/2020/02/09/golang%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" />
@@ -35,24 +37,36 @@
 
 
 
-<link href="/sass/main.min.b5a744db6de49a86cadafb3b70f555ab443f83c307a483402259e94726b045ff.css" rel="stylesheet">
+<link href="/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
-<meta property="og:title" content="golang环境配置" />
-<meta property="og:description" content="Windows 去golang官方下载页面下载最新的安装程序 进行安装，安装过程中需要记住go的安装目录，默认为 C:\Go\ 增加 GOROOT 变量(如果没有的话)，值为第二步的时" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://shangguanhong.github.io/2020/02/09/golang%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" /><meta property="article:section" content="post" />
-<meta property="article:published_time" content="2020-02-09T19:26:33+00:00" />
-<meta property="article:modified_time" content="2020-02-09T19:26:33+00:00" />
+<meta property="og:url" content="https://shangguanhong.github.io/2020/02/09/golang%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/">
+  <meta property="og:site_name" content="ShangguanHong">
+  <meta property="og:title" content="golang环境配置">
+  <meta property="og:description" content="Windows 去golang官方下载页面下载最新的安装程序 进行安装，安装过程中需要记住go的安装目录，默认为 C:\Go\
+增加 GOROOT 变量(如果没有的话)，值为第二步的时候 go 的安装目录
+增加 GOPATH 变量(如果没有的话)，GOPATH 是一个我们的工作路径，go 下面的开发都是在该工作路径下进行的，这个工作路径可以是一个随意的目录，但不能是 go 的安装目录，这里我设置为 D:\go_project，在该路径下创建三个文件夹，bin、pkg、src。其中bin是存放由go install生成的可执行文件,pkg是存放go编译生成的文件，src是存放是我们的go源代码，不同工程项目的代码以包名区分。">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2020-02-09T19:26:33+00:00">
+    <meta property="article:modified_time" content="2020-02-09T19:26:33+00:00">
+    <meta property="article:tag" content="Golang">
 
-<meta itemprop="name" content="golang环境配置">
-<meta itemprop="description" content="Windows 去golang官方下载页面下载最新的安装程序 进行安装，安装过程中需要记住go的安装目录，默认为 C:\Go\ 增加 GOROOT 变量(如果没有的话)，值为第二步的时"><meta itemprop="datePublished" content="2020-02-09T19:26:33+00:00" />
-<meta itemprop="dateModified" content="2020-02-09T19:26:33+00:00" />
-<meta itemprop="wordCount" content="756">
-<meta itemprop="keywords" content="golang," /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="golang环境配置"/>
-<meta name="twitter:description" content="Windows 去golang官方下载页面下载最新的安装程序 进行安装，安装过程中需要记住go的安装目录，默认为 C:\Go\ 增加 GOROOT 变量(如果没有的话)，值为第二步的时"/>
+  <meta itemprop="name" content="golang环境配置">
+  <meta itemprop="description" content="Windows 去golang官方下载页面下载最新的安装程序 进行安装，安装过程中需要记住go的安装目录，默认为 C:\Go\
+增加 GOROOT 变量(如果没有的话)，值为第二步的时候 go 的安装目录
+增加 GOPATH 变量(如果没有的话)，GOPATH 是一个我们的工作路径，go 下面的开发都是在该工作路径下进行的，这个工作路径可以是一个随意的目录，但不能是 go 的安装目录，这里我设置为 D:\go_project，在该路径下创建三个文件夹，bin、pkg、src。其中bin是存放由go install生成的可执行文件,pkg是存放go编译生成的文件，src是存放是我们的go源代码，不同工程项目的代码以包名区分。">
+  <meta itemprop="datePublished" content="2020-02-09T19:26:33+00:00">
+  <meta itemprop="dateModified" content="2020-02-09T19:26:33+00:00">
+  <meta itemprop="wordCount" content="756">
+  <meta itemprop="keywords" content="Golang">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="golang环境配置">
+  <meta name="twitter:description" content="Windows 去golang官方下载页面下载最新的安装程序 进行安装，安装过程中需要记住go的安装目录，默认为 C:\Go\
+增加 GOROOT 变量(如果没有的话)，值为第二步的时候 go 的安装目录
+增加 GOPATH 变量(如果没有的话)，GOPATH 是一个我们的工作路径，go 下面的开发都是在该工作路径下进行的，这个工作路径可以是一个随意的目录，但不能是 go 的安装目录，这里我设置为 D:\go_project，在该路径下创建三个文件夹，bin、pkg、src。其中bin是存放由go install生成的可执行文件,pkg是存放go编译生成的文件，src是存放是我们的go源代码，不同工程项目的代码以包名区分。">
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -67,7 +81,7 @@
 <body>
   <div id="mobile-navbar" class="mobile-navbar">
   <div class="mobile-header-logo">
-    <a href="/" class="logo">赏我一个好梦如旧</a>
+    <a href="/" class="logo">希望有羽毛和翅膀</a>
   </div>
   <div class="mobile-navbar-icon">
     <span></span>
@@ -96,7 +110,7 @@
   <div class="container" id="mobile-panel">
     <header id="header" class="header">
         <div class="logo-wrapper">
-  <a href="/" class="logo">赏我一个好梦如旧</a>
+  <a href="/" class="logo">希望有羽毛和翅膀</a>
 </div>
 
 
@@ -241,7 +255,7 @@
     <div class="post-copyright">
   <p class="copyright-item">
     <span class="item-title">文章作者</span>
-    <span class="item-content">ShangguanHong</span>
+    <span class="item-content"></span>
   </p>
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
@@ -305,7 +319,7 @@
       <a href="https://github.com/ShangguanHong" class="iconfont icon-github" title="github"></a>
       <a href="https://weibo.com/5590338381" class="iconfont icon-weibo" title="weibo"></a>
       <a href="https://space.bilibili.com/105190849" class="iconfont icon-bilibili" title="bilibili"></a>
-  <a href="https://shangguanhong.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+  
 </div>
 
 <div class="copyright">
@@ -323,7 +337,7 @@
   <span class="copyright-year">
     &copy; 
     2019 - 
-    2022<span class="heart"><i class="iconfont icon-heart"></i></span><span>ShangguanHong</span>
+    2024<span class="heart"><i class="iconfont icon-heart"></i></span><span></span>
   </span>
 </div>
 

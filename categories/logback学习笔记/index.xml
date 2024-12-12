@@ -4,17 +4,16 @@
     <title>Logback学习笔记 on ShangguanHong</title>
     <link>https://shangguanhong.github.io/categories/logback%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</link>
     <description>Recent content in Logback学习笔记 on ShangguanHong</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 31 Jul 2019 23:50:50 +0000</lastBuildDate><atom:link href="https://shangguanhong.github.io/categories/logback%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 31 Jul 2019 23:50:50 +0000</lastBuildDate>
+    <atom:link href="https://shangguanhong.github.io/categories/logback%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Spring Boot中配置Slf4j&#43;logback日志框架</title>
       <link>https://shangguanhong.github.io/2019/07/31/spring-boot%E4%B8%AD%E9%85%8D%E7%BD%AElogback/</link>
       <pubDate>Wed, 31 Jul 2019 23:50:50 +0000</pubDate>
-      
       <guid>https://shangguanhong.github.io/2019/07/31/spring-boot%E4%B8%AD%E9%85%8D%E7%BD%AElogback/</guid>
-      <description>1. 前言 Slf4j的全称是 Simple Loging Facade For Java(Java简单日志门面)，它仅仅是一个为Java程序提供日志输出的统一接口，并不是一个具体的日志实现</description>
+      <description>&lt;h1 id=&#34;1-前言&#34;&gt;1. 前言&lt;/h1&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;Slf4j的全称是 Simple Loging Facade For Java(Java简单日志门面)，它仅仅是一个为Java程序提供日志输出的统一接口，并不是一个具体的日志实现方案，就比如JPA一样，只是一种规则而已。所以单独的Slf4j是不能工作的，必须搭配其他具体的日志实现方案，比如apache的org.apache.log4j.Logger，jdk自带的java.util.logging.Logger等。&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

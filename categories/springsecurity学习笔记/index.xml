@@ -4,17 +4,16 @@
     <title>SpringSecurity学习笔记 on ShangguanHong</title>
     <link>https://shangguanhong.github.io/categories/springsecurity%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</link>
     <description>Recent content in SpringSecurity学习笔记 on ShangguanHong</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 14 Aug 2019 10:56:07 +0000</lastBuildDate><atom:link href="https://shangguanhong.github.io/categories/springsecurity%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 14 Aug 2019 10:56:07 +0000</lastBuildDate>
+    <atom:link href="https://shangguanhong.github.io/categories/springsecurity%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>JWT整合Spring Security</title>
       <link>https://shangguanhong.github.io/2019/08/14/jwt%E6%95%B4%E5%90%88spring-security/</link>
       <pubDate>Wed, 14 Aug 2019 10:56:07 +0000</pubDate>
-      
       <guid>https://shangguanhong.github.io/2019/08/14/jwt%E6%95%B4%E5%90%88spring-security/</guid>
-      <description>1. 前言 之前介绍了一下 JWT ,在最后提到了 JWT 本身没啥难度，但安全整体是一个比较复杂的事情，JWT 只不过提供了一种基于 token 的请求验证机制。但我们的用户</description>
+      <description>&lt;h1 id=&#34;1-前言&#34;&gt;1. 前言&lt;/h1&gt;&#xA;&lt;p&gt;之前介绍了一下 &lt;a href=&#34;https://shangguanhong.github.io/2019/08/08/%E4%BA%86%E8%A7%A3JSON-Web-Token-JWT/&#34;&gt;JWT&lt;/a&gt; ,在最后提到了&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;JWT 本身没啥难度，但安全整体是一个比较复杂的事情，JWT 只不过提供了一种基于 token 的请求验证机制。但我们的用户权限，对于 API 的权限划分、资源的权限划分，用户的验证等等都不是 JWT 负责的。也就是说，请求验证后，你是否有权限看对应的内容是由你的用户角色决定的。所以我们这里要利用 Spring 的一个子项目 Spring Security 来简化我们的工作。&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

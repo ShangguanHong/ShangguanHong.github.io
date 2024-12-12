@@ -1,29 +1,26 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>GitHub on ShangguanHong</title>
+    <title>Github on ShangguanHong</title>
     <link>https://shangguanhong.github.io/tags/github/</link>
-    <description>Recent content in GitHub on ShangguanHong</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <description>Recent content in Github on ShangguanHong</description>
+    <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 25 Jun 2022 12:58:34 +0800</lastBuildDate><atom:link href="https://shangguanhong.github.io/tags/github/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 25 Jun 2022 12:58:34 +0800</lastBuildDate>
+    <atom:link href="https://shangguanhong.github.io/tags/github/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>GitHub Actions介绍</title>
       <link>https://shangguanhong.github.io/2022/06/25/github-actions%E4%BB%8B%E7%BB%8D/</link>
       <pubDate>Sat, 25 Jun 2022 12:58:34 +0800</pubDate>
-      
       <guid>https://shangguanhong.github.io/2022/06/25/github-actions%E4%BB%8B%E7%BB%8D/</guid>
-      <description>GitHub Acions 是什么 GitHub Actions 是一个持续集成和持续交付 (CI/CD) 平台，可用于自动执行构建、测试和部署管道。GitHub 在 2018 年 10 月推出，在 2019 年 11 月后对该功能全面开放，</description>
+      <description>&lt;h2 id=&#34;github-acions-是什么&#34;&gt;GitHub Acions 是什么&lt;/h2&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/features/actions&#34;&gt;GitHub Actions&lt;/a&gt; 是一个持续集成和持续交付 (CI/CD) 平台，可用于自动执行构建、测试和部署管道。GitHub 在 2018 年 10 月推出，在 2019 年 11 月后对该功能全面开放，现在所有的github用户可以直接使用该功能。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>github使用Travis CI</title>
       <link>https://shangguanhong.github.io/2019/12/19/github%E4%BD%BF%E7%94%A8travis-ci/</link>
       <pubDate>Thu, 19 Dec 2019 20:39:10 +0000</pubDate>
-      
       <guid>https://shangguanhong.github.io/2019/12/19/github%E4%BD%BF%E7%94%A8travis-ci/</guid>
-      <description>前言 使用 hexo + gitPages 搭建个人博客的都知道，每当要发表一篇博文的时候，都需要手动使用 hexo g 生成静态网页，然后再通过 hexo d 命令将静态文件推送到 GitHub</description>
+      <description>&lt;h1 id=&#34;前言&#34;&gt;前言&lt;/h1&gt;&#xA;&lt;p&gt;使用 hexo + gitPages 搭建个人博客的都知道，每当要发表一篇博文的时候，都需要手动使用 &lt;code&gt;hexo g&lt;/code&gt;  生成静态网页，然后再通过 &lt;code&gt;hexo d&lt;/code&gt; 命令将静态文件推送到 GitHub远程仓库，这段操作在你执行一次两次的时候还不觉得有什么，但是当你频繁的修改博文的时候，你就会明白每次都需要执行这两条语句是多么的枯燥。对于一个程序猿来说，最不想干的就是一些重复且枯燥的工作（懒惰促使程序猿进步！）😋。现在，我们可以通过 Travis CI自动构建博客，我们只需要将写好的博文推送到GitHub上即可。&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

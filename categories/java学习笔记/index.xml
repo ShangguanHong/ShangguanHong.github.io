@@ -4,72 +4,51 @@
     <title>Java学习笔记 on ShangguanHong</title>
     <link>https://shangguanhong.github.io/categories/java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</link>
     <description>Recent content in Java学习笔记 on ShangguanHong</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 14 Oct 2019 08:59:57 +0000</lastBuildDate><atom:link href="https://shangguanhong.github.io/categories/java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 14 Oct 2019 08:59:57 +0000</lastBuildDate>
+    <atom:link href="https://shangguanhong.github.io/categories/java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>十大排序算法总结</title>
       <link>https://shangguanhong.github.io/2019/10/14/%E5%8D%81%E5%A4%A7%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E6%80%BB%E7%BB%93/</link>
       <pubDate>Mon, 14 Oct 2019 08:59:57 +0000</pubDate>
-      
       <guid>https://shangguanhong.github.io/2019/10/14/%E5%8D%81%E5%A4%A7%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E6%80%BB%E7%BB%93/</guid>
-      <description>最近在准备面试, 看到一篇公众号总结的排序算法十分详细 面试常问的十个排序算法都在这里了（含JAVA代码实现） , 因此在这里记录下. 本文将采取文字</description>
+      <description>&lt;p&gt;最近在准备面试, 看到一篇公众号总结的排序算法十分详细 &lt;a href=&#34;https://mp.weixin.qq.com/s?__biz=MzIwNTk5NjEzNw==&amp;amp;mid=2247486726&amp;amp;idx=1&amp;amp;sn=2ab01d70d3411b1db3f0cf0c7dbfab21&amp;amp;chksm=97292400a05ead16926aca0e192de97be69d0a36d2563306aefa7b27bd30d734303fba3c815a&amp;amp;scene=21#wechat_redirect&#34;&gt;面试常问的十个排序算法都在这里了（含JAVA代码实现）&lt;/a&gt; , 因此在这里记录下.&lt;/p&gt;&#xA;&lt;p&gt;本文将采取文字描述 + 正确的java代码实现来讲解以下的十大排序算法:&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;冒泡排序&lt;/li&gt;&#xA;&lt;li&gt;选择排序&lt;/li&gt;&#xA;&lt;li&gt;插入排序&lt;/li&gt;&#xA;&lt;li&gt;希尔排序&lt;/li&gt;&#xA;&lt;li&gt;归并排序&lt;/li&gt;&#xA;&lt;li&gt;快速排序&lt;/li&gt;&#xA;&lt;li&gt;堆排序&lt;/li&gt;&#xA;&lt;li&gt;计算排序&lt;/li&gt;&#xA;&lt;li&gt;桶排序&lt;/li&gt;&#xA;&lt;li&gt;基数排序&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;h1 id=&#34;1-冒泡排序&#34;&gt;1. 冒泡排序&lt;/h1&gt;&#xA;&lt;h2 id=&#34;介绍&#34;&gt;介绍&lt;/h2&gt;&#xA;&lt;p&gt;冒泡排序是一种简单的排序算法. 它重复的走访要排序的数列, 一次比较两个元素, 如果他们的顺序错误就把它们交换过来.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>在java中调用python脚本</title>
       <link>https://shangguanhong.github.io/2019/09/09/%E5%A6%82%E4%BD%95%E5%9C%A8java%E4%B8%AD%E8%B0%83%E7%94%A8python%E8%84%9A%E6%9C%AC/</link>
       <pubDate>Mon, 09 Sep 2019 14:34:16 +0000</pubDate>
-      
       <guid>https://shangguanhong.github.io/2019/09/09/%E5%A6%82%E4%BD%95%E5%9C%A8java%E4%B8%AD%E8%B0%83%E7%94%A8python%E8%84%9A%E6%9C%AC/</guid>
-      <description>1. 前言 最近的项目中遇到了一个问题，我的后台管理系统是使用 Java 语言来开发的，然后有一个模块需要调用使用 Python 写的一个脚本，为此查了许多资料，在这里记</description>
+      <description>&lt;h1 id=&#34;1-前言&#34;&gt;1. 前言&lt;/h1&gt;&#xA;&lt;p&gt;最近的项目中遇到了一个问题，我的后台管理系统是使用 Java 语言来开发的，然后有一个模块需要调用使用 Python 写的一个脚本，为此查了许多资料，在这里记录一下。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>如何在Java8中处理日期和时间</title>
       <link>https://shangguanhong.github.io/2019/08/15/%E5%A6%82%E4%BD%95%E5%9C%A8java8%E4%B8%AD%E5%A4%84%E7%90%86%E6%97%A5%E6%9C%9F%E5%92%8C%E6%97%B6%E9%97%B4/</link>
       <pubDate>Thu, 15 Aug 2019 22:11:56 +0000</pubDate>
-      
       <guid>https://shangguanhong.github.io/2019/08/15/%E5%A6%82%E4%BD%95%E5%9C%A8java8%E4%B8%AD%E5%A4%84%E7%90%86%E6%97%A5%E6%9C%9F%E5%92%8C%E6%97%B6%E9%97%B4/</guid>
-      <description>&lt;h1 id=&#34;1-前言&#34;&gt;1. 前言&lt;/h1&gt;
-&lt;p&gt;在 Java 8 之前处理日期时间的 &lt;code&gt;API&lt;/code&gt; 存在着一些诸如非线程安全、设计差、时区处理麻烦等问题，为了解决这一系列的问题，Java 8 推出了全新的日期时间 &lt;code&gt;API&lt;/code&gt; 供使用，包路径为 &lt;code&gt;java.time&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;其中最常使用的为下面的几个类&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;Instant&lt;/code&gt;：瞬时实例&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;LocalDate&lt;/code&gt;：本地日期，不包含具体时间&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;LocalTime&lt;/code&gt;：本地时间，不包含日期&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;LocalDateTime&lt;/code&gt;：组合了日期和时间，但不包含时差和时区信息。&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;ZonedDateTime&lt;/code&gt;：最完整的日期时间，包含时区和相对&lt;code&gt;UTC&lt;/code&gt;或格林威治的时差。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;下面将举出具体例子来详细介绍&lt;/p&gt;</description>
+      <description>&lt;h1 id=&#34;1-前言&#34;&gt;1. 前言&lt;/h1&gt;&#xA;&lt;p&gt;在 Java 8 之前处理日期时间的 &lt;code&gt;API&lt;/code&gt; 存在着一些诸如非线程安全、设计差、时区处理麻烦等问题，为了解决这一系列的问题，Java 8 推出了全新的日期时间 &lt;code&gt;API&lt;/code&gt; 供使用，包路径为 &lt;code&gt;java.time&lt;/code&gt;&lt;/p&gt;&#xA;&lt;p&gt;其中最常使用的为下面的几个类&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;code&gt;Instant&lt;/code&gt;：瞬时实例&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;LocalDate&lt;/code&gt;：本地日期，不包含具体时间&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;LocalTime&lt;/code&gt;：本地时间，不包含日期&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;LocalDateTime&lt;/code&gt;：组合了日期和时间，但不包含时差和时区信息。&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;ZonedDateTime&lt;/code&gt;：最完整的日期时间，包含时区和相对&lt;code&gt;UTC&lt;/code&gt;或格林威治的时差。&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;下面将举出具体例子来详细介绍&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Java常用工具类之StringUtils类</title>
       <link>https://shangguanhong.github.io/2019/08/14/java%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7%E7%B1%BB%E4%B9%8Bstringutils%E7%B1%BB/</link>
       <pubDate>Wed, 14 Aug 2019 22:45:28 +0000</pubDate>
-      
       <guid>https://shangguanhong.github.io/2019/08/14/java%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7%E7%B1%BB%E4%B9%8Bstringutils%E7%B1%BB/</guid>
-      <description>原文链接：https://blog.csdn.net/diypp2012/article/details/82971716 该工具类是用于操作</description>
+      <description>&lt;p&gt;原文链接：https://blog.csdn.net/diypp2012/article/details/82971716&lt;/p&gt;&#xA;&lt;p&gt;该工具类是用于操作 Java.lang.String 类的。&#xA;StringUtils 类与 String 类的区别在于：此类是 null 安全的，即如果输入参数 String 为 null，则不会抛出NullPointerException 异常，代码更健壮。&#xA;以函数 isEmpty 为例子：&#xA;存在字符串stringTest， 若该字符串为空，返回 true&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Java中的对象术语(PO/POJO/VO/BO/DAO/DTO)</title>
       <link>https://shangguanhong.github.io/2019/07/17/java%E4%B8%AD%E7%9A%84%E5%AF%B9%E8%B1%A1%E6%9C%AF%E8%AF%AD-po-pojo-vo-bo-dao-dto/</link>
       <pubDate>Wed, 17 Jul 2019 20:09:34 +0000</pubDate>
-      
       <guid>https://shangguanhong.github.io/2019/07/17/java%E4%B8%AD%E7%9A%84%E5%AF%B9%E8%B1%A1%E6%9C%AF%E8%AF%AD-po-pojo-vo-bo-dao-dto/</guid>
-      <description>本文转载自 Java中的对象术语(PO/POJO/VO/BO/DAO/DTO) 1. PO(persistant object) : 持久对象 理解为dao层中接收和返回的java bean，也</description>
+      <description>&lt;p&gt;本文转载自 &lt;a href=&#34;https://blog.csdn.net/u010297957/article/details/49817563&#34;&gt;Java中的对象术语(PO/POJO/VO/BO/DAO/DTO)&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;1-popersistant-object--持久对象&#34;&gt;&lt;strong&gt;1. PO(persistant object) : 持久对象&lt;/strong&gt;&lt;/h2&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;理解为dao层中接收和返回的java bean，也就是通常写在model包中的model&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;有时也被称为Data对象，对应数据库中的entity，可以简单认为一个PO对应数据库中的一条记录，多个记录可以用PO的集合。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Java实体映射工具MapStruct的使用</title>
       <link>https://shangguanhong.github.io/2019/07/17/java%E5%AE%9E%E4%BD%93%E6%98%A0%E5%B0%84%E5%B7%A5%E5%85%B7mapstruct%E7%9A%84%E4%BD%BF%E7%94%A8/</link>
       <pubDate>Wed, 17 Jul 2019 19:49:06 +0000</pubDate>
-      
       <guid>https://shangguanhong.github.io/2019/07/17/java%E5%AE%9E%E4%BD%93%E6%98%A0%E5%B0%84%E5%B7%A5%E5%85%B7mapstruct%E7%9A%84%E4%BD%BF%E7%94%A8/</guid>
-      <description>1. 前言 官网地址：http://mapstruct.org/ MapStruct 是一个代码生成器，简化了不同的 Java Bean 之间映射的处理，所谓的映射指的就是从一个实体变</description>
+      <description>&lt;h1 id=&#34;1-前言&#34;&gt;1. 前言&lt;/h1&gt;&#xA;&lt;p&gt;官网地址：http://mapstruct.org/&lt;/p&gt;&#xA;&lt;p&gt;MapStruct 是一个代码生成器，简化了不同的 Java Bean 之间映射的处理，所谓的映射指的就是从一个实体变化成一个实体。例如我们在实际开发中，DAO 层的实体(PO)和一些数据传输对象(DTO)，大部分属性都是相同的，只有少部分的不同，通过 mapStruct，可以让不同实体之间的转换变的简单。我们只需要按照约定的方式进行配置即可。&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

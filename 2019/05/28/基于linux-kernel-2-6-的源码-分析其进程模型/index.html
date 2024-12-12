@@ -16,14 +16,16 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="ShangguanHong" /><meta name="description" content="1. 简介 本文的内容是基于Linux Kernel 2.6 的源码, 深入分析其进程模型, 主要分析的内容如下: 什么是进程(进程的概念) 操作系统是如何组织进程的 进程状态" /><meta name="keywords" content="go, golang, hugo" />
+<meta name="author" content="" /><meta name="description" content="1. 简介 本文的内容是基于Linux Kernel 2.6 的源码, 深入分析其进程模型, 主要分析的内容如下:
+什么是进程(进程的概念) 操作系统是如何组织进程的 进程状态之间是如何转换的 进程是如何进行调度的 对该操作系统进程模型的看法 2. 什么是进程 既然我们要分析操作系统的进程模型, 那么我们首先需要了解一下什么是进程。 首先, 我们先看下百度上对进程(Process)的定义:
+" /><meta name="keywords" content="go, golang, hugo" />
 
 
 
 
 
 
-<meta name="generator" content="Hugo 0.101.0 with theme even" />
+<meta name="generator" content="Hugo 0.139.4 with theme even" />
 
 
 <link rel="canonical" href="https://shangguanhong.github.io/2019/05/28/%E5%9F%BA%E4%BA%8Elinux-kernel-2-6-%E7%9A%84%E6%BA%90%E7%A0%81-%E5%88%86%E6%9E%90%E5%85%B6%E8%BF%9B%E7%A8%8B%E6%A8%A1%E5%9E%8B/" />
@@ -35,24 +37,33 @@
 
 
 
-<link href="/sass/main.min.b5a744db6de49a86cadafb3b70f555ab443f83c307a483402259e94726b045ff.css" rel="stylesheet">
+<link href="/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
-<meta property="og:title" content="基于Linux Kernel 2.6 的源码, 分析其进程模型" />
-<meta property="og:description" content="1. 简介 本文的内容是基于Linux Kernel 2.6 的源码, 深入分析其进程模型, 主要分析的内容如下: 什么是进程(进程的概念) 操作系统是如何组织进程的 进程状态" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://shangguanhong.github.io/2019/05/28/%E5%9F%BA%E4%BA%8Elinux-kernel-2-6-%E7%9A%84%E6%BA%90%E7%A0%81-%E5%88%86%E6%9E%90%E5%85%B6%E8%BF%9B%E7%A8%8B%E6%A8%A1%E5%9E%8B/" /><meta property="article:section" content="post" />
-<meta property="article:published_time" content="2019-05-28T15:10:02+00:00" />
-<meta property="article:modified_time" content="2019-05-28T15:10:02+00:00" />
+<meta property="og:url" content="https://shangguanhong.github.io/2019/05/28/%E5%9F%BA%E4%BA%8Elinux-kernel-2-6-%E7%9A%84%E6%BA%90%E7%A0%81-%E5%88%86%E6%9E%90%E5%85%B6%E8%BF%9B%E7%A8%8B%E6%A8%A1%E5%9E%8B/">
+  <meta property="og:site_name" content="ShangguanHong">
+  <meta property="og:title" content="基于Linux Kernel 2.6 的源码, 分析其进程模型">
+  <meta property="og:description" content="1. 简介 本文的内容是基于Linux Kernel 2.6 的源码, 深入分析其进程模型, 主要分析的内容如下:
+什么是进程(进程的概念) 操作系统是如何组织进程的 进程状态之间是如何转换的 进程是如何进行调度的 对该操作系统进程模型的看法 2. 什么是进程 既然我们要分析操作系统的进程模型, 那么我们首先需要了解一下什么是进程。 首先, 我们先看下百度上对进程(Process)的定义:">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2019-05-28T15:10:02+00:00">
+    <meta property="article:modified_time" content="2019-05-28T15:10:02+00:00">
+    <meta property="article:tag" content="Linux">
 
-<meta itemprop="name" content="基于Linux Kernel 2.6 的源码, 分析其进程模型">
-<meta itemprop="description" content="1. 简介 本文的内容是基于Linux Kernel 2.6 的源码, 深入分析其进程模型, 主要分析的内容如下: 什么是进程(进程的概念) 操作系统是如何组织进程的 进程状态"><meta itemprop="datePublished" content="2019-05-28T15:10:02+00:00" />
-<meta itemprop="dateModified" content="2019-05-28T15:10:02+00:00" />
-<meta itemprop="wordCount" content="5585">
-<meta itemprop="keywords" content="linux," /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="基于Linux Kernel 2.6 的源码, 分析其进程模型"/>
-<meta name="twitter:description" content="1. 简介 本文的内容是基于Linux Kernel 2.6 的源码, 深入分析其进程模型, 主要分析的内容如下: 什么是进程(进程的概念) 操作系统是如何组织进程的 进程状态"/>
+  <meta itemprop="name" content="基于Linux Kernel 2.6 的源码, 分析其进程模型">
+  <meta itemprop="description" content="1. 简介 本文的内容是基于Linux Kernel 2.6 的源码, 深入分析其进程模型, 主要分析的内容如下:
+什么是进程(进程的概念) 操作系统是如何组织进程的 进程状态之间是如何转换的 进程是如何进行调度的 对该操作系统进程模型的看法 2. 什么是进程 既然我们要分析操作系统的进程模型, 那么我们首先需要了解一下什么是进程。 首先, 我们先看下百度上对进程(Process)的定义:">
+  <meta itemprop="datePublished" content="2019-05-28T15:10:02+00:00">
+  <meta itemprop="dateModified" content="2019-05-28T15:10:02+00:00">
+  <meta itemprop="wordCount" content="5585">
+  <meta itemprop="keywords" content="Linux">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="基于Linux Kernel 2.6 的源码, 分析其进程模型">
+  <meta name="twitter:description" content="1. 简介 本文的内容是基于Linux Kernel 2.6 的源码, 深入分析其进程模型, 主要分析的内容如下:
+什么是进程(进程的概念) 操作系统是如何组织进程的 进程状态之间是如何转换的 进程是如何进行调度的 对该操作系统进程模型的看法 2. 什么是进程 既然我们要分析操作系统的进程模型, 那么我们首先需要了解一下什么是进程。 首先, 我们先看下百度上对进程(Process)的定义:">
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -67,7 +78,7 @@
 <body>
   <div id="mobile-navbar" class="mobile-navbar">
   <div class="mobile-header-logo">
-    <a href="/" class="logo">赏我一个好梦如旧</a>
+    <a href="/" class="logo">希望有羽毛和翅膀</a>
   </div>
   <div class="mobile-navbar-icon">
     <span></span>
@@ -96,7 +107,7 @@
   <div class="container" id="mobile-panel">
     <header id="header" class="header">
         <div class="logo-wrapper">
-  <a href="/" class="logo">赏我一个好梦如旧</a>
+  <a href="/" class="logo">希望有羽毛和翅膀</a>
 </div>
 
 
@@ -244,42 +255,42 @@ define TASK_DEAD		128</p>
 以下列举一些state的常用取值</p>
 <blockquote>
 <table>
-<thead>
-<tr>
-<th style="text-align:left">状态</th>
-<th style="text-align:left">描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">0(TASK_RUNNING)</td>
-<td style="text-align:left">进程处于正在运行或者准备运行的状态中</td>
-</tr>
-<tr>
-<td style="text-align:left">1(TASK_INTERRUPTIBLE)</td>
-<td style="text-align:left">进程处于可中断睡眠状态, 可通过信号唤醒</td>
-</tr>
-<tr>
-<td style="text-align:left">2(TASK_UNINTERRUPTIBLE)</td>
-<td style="text-align:left">进程处于不可中断睡眠状态, 不可通过信号进行唤醒</td>
-</tr>
-<tr>
-<td style="text-align:left">4( TASK_STOPPED)</td>
-<td style="text-align:left">进程被停止执行</td>
-</tr>
-<tr>
-<td style="text-align:left">8( TASK_TRACED)</td>
-<td style="text-align:left">进程被监视</td>
-</tr>
-<tr>
-<td style="text-align:left">16( EXIT_ZOMBIE)</td>
-<td style="text-align:left">僵尸状态进程, 表示进程被终止, 但是其父程序还未获取其被终止的信息。</td>
-</tr>
-<tr>
-<td style="text-align:left">32(EXIT_DEAD)</td>
-<td style="text-align:left">进程死亡, 此状态为进程的最终状态</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">状态</th>
+          <th style="text-align: left">描述</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">0(TASK_RUNNING)</td>
+          <td style="text-align: left">进程处于正在运行或者准备运行的状态中</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">1(TASK_INTERRUPTIBLE)</td>
+          <td style="text-align: left">进程处于可中断睡眠状态, 可通过信号唤醒</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">2(TASK_UNINTERRUPTIBLE)</td>
+          <td style="text-align: left">进程处于不可中断睡眠状态, 不可通过信号进行唤醒</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">4( TASK_STOPPED)</td>
+          <td style="text-align: left">进程被停止执行</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">8( TASK_TRACED)</td>
+          <td style="text-align: left">进程被监视</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">16( EXIT_ZOMBIE)</td>
+          <td style="text-align: left">僵尸状态进程, 表示进程被终止, 但是其父程序还未获取其被终止的信息。</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">32(EXIT_DEAD)</td>
+          <td style="text-align: left">进程死亡, 此状态为进程的最终状态</td>
+      </tr>
+  </tbody>
 </table>
 </blockquote>
 <h2 id="32-进程标识符pid">3.2 进程标识符(PID)</h2>
@@ -294,9 +305,9 @@ define TASK_DEAD		128</p>
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="n">pid_t</span> <span class="n">pid</span><span class="p">;</span> <span class="cm">/*进程的唯一表示*/</span>
-</span></span><span class="line"><span class="cl"><span class="n">pid_t</span> <span class="n">tgid</span><span class="p">;</span> <span class="cm">/*进程组的标识符*/</span><span class="err">```</span>
-</span></span><span class="line"><span class="cl"><span class="o">&gt;</span> <span class="o">**</span><span class="err">在</span><span class="n">Linux系统中</span><span class="err">，一个线程组中的所有线程使用和该线程组的领头线程（该组中的第一个轻量级进程）相同的</span><span class="n">PID</span><span class="err">，并被存放在</span><span class="n">tgid成员中</span><span class="err">。只有线程组的领头线程的</span><span class="n">pid成员才会被设置为与tgid相同的值</span><span class="err">。注意，</span><span class="n">getpid</span><span class="p">()</span><span class="err">系统调用返回的是当前进程的</span><span class="n">tgid值而不是pid值</span><span class="err">。（线程是程序运行的最小单位，进程是程序运行的基本单位。）</span><span class="o">**</span>
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="kt">pid_t</span> <span class="n">pid</span><span class="p">;</span> <span class="cm">/*进程的唯一表示*/</span>
+</span></span><span class="line"><span class="cl"><span class="kt">pid_t</span> <span class="n">tgid</span><span class="p">;</span> <span class="cm">/*进程组的标识符*/</span><span class="err">```</span>
+</span></span><span class="line"><span class="cl"><span class="o">&gt;</span> <span class="o">**</span><span class="err">在</span><span class="n">Linux系统中</span><span class="err">，一个线程组中的所有线程使用和该线程组的领头线程（该组中的第一个轻量级进程）相同的</span><span class="n">PID</span><span class="err">，并被存放在</span><span class="n">tgid成员中</span><span class="err">。只有线程组的领头线程的</span><span class="n">pid成员才会被设置为与tgid相同的值</span><span class="err">。注意，</span><span class="nf">getpid</span><span class="p">()</span><span class="err">系统调用返回的是当前进程的</span><span class="n">tgid值而不是pid值</span><span class="err">。（线程是程序运行的最小单位，进程是程序运行的基本单位。）</span><span class="o">**</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="cp">## 3.3 进程的标记(FLAGS)
 </span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="err">​```</span><span class="n">C</span>
@@ -446,7 +457,7 @@ define TASK_DEAD		128</p>
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="line"><span class="cl"><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">policy</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="n">cpumask_t</span> <span class="n">cpus_allowed</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kt">cpumask_t</span> <span class="n">cpus_allowed</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="cm">/*
 </span></span></span><span class="line"><span class="cl"><span class="cm">	policy: 表示进程的调度策略
 </span></span></span><span class="line"><span class="cl"><span class="cm">	cpus_allowed: 用于控制进程可以在哪个处理器上运行
@@ -478,40 +489,40 @@ define TASK_DEAD		128</p>
 </div>
 </div><blockquote>
 <table>
-<thead>
-<tr>
-<th style="text-align:left">字段</th>
-<th style="text-align:left">描述</th>
-<th>所在调度器类</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">SCHED_NORMAL</td>
-<td style="text-align:left">（也叫SCHED_OTHER）用于普通进程，通过CFS调度器实现。SCHED_BATCH用于非交互的处理器消耗型进程。SCHED_IDLE是在系统负载很低时使用</td>
-<td>CFS</td>
-</tr>
-<tr>
-<td style="text-align:left">SCHED_FIFO</td>
-<td style="text-align:left">先入先出调度算法（实时调度策略），相同优先级的任务先到先服务，高优先级的任务可以抢占低优先级的任务</td>
-<td>RT</td>
-</tr>
-<tr>
-<td style="text-align:left">SCHED_RR</td>
-<td style="text-align:left">轮流调度算法（实时调度策略），后 者提供 Roound-Robin 语义，采用时间片，相同优先级的任务当用完时间片会被放到队列尾部，以保证公平性，同样，高优先级的任务可以抢占低优先级的任务。不同要求的实时任务可以根据需要用sched_setscheduler()API 设置策略</td>
-<td>RT</td>
-</tr>
-<tr>
-<td style="text-align:left">SCHED_BATCH</td>
-<td style="text-align:left">SCHED_NORMAL普通进程策略的分化版本。采用分时策略，根据动态优先级(可用nice()API设置），分配 CPU 运算资源。注意：这类进程比上述两类实时进程优先级低，换言之，在有实时进程存在时，实时进程优先调度。但针对吞吐量优化</td>
-<td>CFS</td>
-</tr>
-<tr>
-<td style="text-align:left">SCHED_IDLE</td>
-<td style="text-align:left">优先级最低，在系统空闲时才跑这类进程(如利用闲散计算机资源跑地外文明搜索，蛋白质结构分析等任务，是此调度策略的适用者）</td>
-<td>CFS</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">字段</th>
+          <th style="text-align: left">描述</th>
+          <th>所在调度器类</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">SCHED_NORMAL</td>
+          <td style="text-align: left">（也叫SCHED_OTHER）用于普通进程，通过CFS调度器实现。SCHED_BATCH用于非交互的处理器消耗型进程。SCHED_IDLE是在系统负载很低时使用</td>
+          <td>CFS</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">SCHED_FIFO</td>
+          <td style="text-align: left">先入先出调度算法（实时调度策略），相同优先级的任务先到先服务，高优先级的任务可以抢占低优先级的任务</td>
+          <td>RT</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">SCHED_RR</td>
+          <td style="text-align: left">轮流调度算法（实时调度策略），后 者提供 Roound-Robin 语义，采用时间片，相同优先级的任务当用完时间片会被放到队列尾部，以保证公平性，同样，高优先级的任务可以抢占低优先级的任务。不同要求的实时任务可以根据需要用sched_setscheduler()API 设置策略</td>
+          <td>RT</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">SCHED_BATCH</td>
+          <td style="text-align: left">SCHED_NORMAL普通进程策略的分化版本。采用分时策略，根据动态优先级(可用nice()API设置），分配 CPU 运算资源。注意：这类进程比上述两类实时进程优先级低，换言之，在有实时进程存在时，实时进程优先调度。但针对吞吐量优化</td>
+          <td>CFS</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">SCHED_IDLE</td>
+          <td style="text-align: left">优先级最低，在系统空闲时才跑这类进程(如利用闲散计算机资源跑地外文明搜索，蛋白质结构分析等任务，是此调度策略的适用者）</td>
+          <td>CFS</td>
+      </tr>
+  </tbody>
 </table>
 </blockquote>
 <h2 id="36-进程的地址空间">3.6 进程的地址空间</h2>
@@ -574,7 +585,7 @@ define TASK_DEAD		128</p>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="line"><span class="cl">							<span class="cm">/*   选取出部分字段做注释   */</span>
 </span></span><span class="line"><span class="cl">    <span class="c1">//runqueue的自旋锁，当对runqueue进行操作的时候，需要对其加锁。由于每个CPU都有一个runqueue，这样会大大减少竞争的机会
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">spinlock_t</span> <span class="n">lock</span><span class="p">;</span> 
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kt">spinlock_t</span> <span class="n">lock</span><span class="p">;</span> 
 </span></span><span class="line"><span class="cl">    
 </span></span><span class="line"><span class="cl">    <span class="c1">// 此变量是用来记录active array中最早用完时间片的时间
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">expired_timestamp</span><span class="p">;</span> 
@@ -608,7 +619,7 @@ Linux kernel 2.6版本中, 在rq中多加了两个按优先级排序的数组<co
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="line"><span class="cl"><span class="k">struct</span> <span class="n">prio_array</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">	<span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">nr_active</span><span class="p">;</span> <span class="c1">// 
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">DECLARE_BITMAP</span><span class="p">(</span><span class="n">bitmap</span><span class="p">,</span> <span class="n">MAX_PRIO</span><span class="o">+</span><span class="mi">1</span><span class="p">);</span> <span class="cm">/* include 1 bit for delimiter */</span>
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nf">DECLARE_BITMAP</span><span class="p">(</span><span class="n">bitmap</span><span class="p">,</span> <span class="n">MAX_PRIO</span><span class="o">+</span><span class="mi">1</span><span class="p">);</span> <span class="cm">/* include 1 bit for delimiter */</span>
 </span></span><span class="line"><span class="cl">    <span class="cm">/*开辟MAX_PRIO + 1个bit的空间, 当某一个优先级的task正处于TASK_RUNNING状态时, 其优先级对应的二进制位将会被标记为1, 因此当你需要找此时需要运行的最高的优先级时, 只需要找到bitmap的哪一位被标记为1了即可*/</span>
 </span></span><span class="line"><span class="cl">    
 </span></span><span class="line"><span class="cl">	<span class="k">struct</span> <span class="n">list_head</span> <span class="n">queue</span><span class="p">[</span><span class="n">MAX_PRIO</span><span class="p">];</span> <span class="c1">// 每一个优先级都有一个list头
@@ -652,11 +663,11 @@ O(1)调度算法每次都是选取在active array数组中且优先级最高的�
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="n">prev</span> <span class="o">=</span> <span class="n">current</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="n">array</span> <span class="o">=</span> <span class="n">rq</span><span class="o">-&gt;</span><span class="n">active</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="n">idx</span> <span class="o">=</span> <span class="n">sehed_find_first_bit</span><span class="p">(</span><span class="n">array</span><span class="o">-&gt;</span><span class="n">bitmap</span><span class="p">);</span> <span class="c1">//找到位图中第一个不为0的位的序号
+</span></span><span class="line"><span class="cl"><span class="n">idx</span> <span class="o">=</span> <span class="nf">sehed_find_first_bit</span><span class="p">(</span><span class="n">array</span><span class="o">-&gt;</span><span class="n">bitmap</span><span class="p">);</span> <span class="c1">//找到位图中第一个不为0的位的序号
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">queue</span> <span class="o">=</span> <span class="n">array</span><span class="o">-&gt;</span><span class="n">queue</span> <span class="o">+</span> <span class="n">idx</span><span class="p">;</span> <span class="c1">//得到对应的队列链表头
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">next</span> <span class="o">=</span> <span class="n">list_entry</span><span class="p">(</span><span class="n">queue</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">,</span> <span class="k">struct</span> <span class="n">task_struct</span><span class="p">,</span> <span class="n">run_list</span><span class="p">);</span> <span class="c1">//得到进程描述符
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">next</span> <span class="o">=</span> <span class="nf">list_entry</span><span class="p">(</span><span class="n">queue</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">,</span> <span class="k">struct</span> <span class="n">task_struct</span><span class="p">,</span> <span class="n">run_list</span><span class="p">);</span> <span class="c1">//得到进程描述符
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">if</span> <span class="p">(</span><span class="n">prev</span> <span class="o">!=</span> <span class="n">next</span><span class="p">)</span> <span class="c1">//如果选出的进程和当前进程不是同一个,则交换上下文
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">context_switch</span><span class="p">();</span>
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nf">context_switch</span><span class="p">();</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><h1 id="6-对该操作系统进程模型的看法">6. 对该操作系统进程模型的看法</h1>
@@ -676,7 +687,7 @@ O(1)调度算法每次都是选取在active array数组中且优先级最高的�
     <div class="post-copyright">
   <p class="copyright-item">
     <span class="item-title">文章作者</span>
-    <span class="item-content">ShangguanHong</span>
+    <span class="item-content"></span>
   </p>
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
@@ -740,7 +751,7 @@ O(1)调度算法每次都是选取在active array数组中且优先级最高的�
       <a href="https://github.com/ShangguanHong" class="iconfont icon-github" title="github"></a>
       <a href="https://weibo.com/5590338381" class="iconfont icon-weibo" title="weibo"></a>
       <a href="https://space.bilibili.com/105190849" class="iconfont icon-bilibili" title="bilibili"></a>
-  <a href="https://shangguanhong.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+  
 </div>
 
 <div class="copyright">
@@ -758,7 +769,7 @@ O(1)调度算法每次都是选取在active array数组中且优先级最高的�
   <span class="copyright-year">
     &copy; 
     2019 - 
-    2022<span class="heart"><i class="iconfont icon-heart"></i></span><span>ShangguanHong</span>
+    2024<span class="heart"><i class="iconfont icon-heart"></i></span><span></span>
   </span>
 </div>
 
